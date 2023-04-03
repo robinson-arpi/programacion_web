@@ -16,6 +16,7 @@
   --color-fuerte2: #bfbfbf;
   --color-before: #737373;  
   --color-fondo: white;
+  --color-texto: black;
 
 }
 
@@ -91,7 +92,7 @@ form .correo{
 .correo input:valid ~ label{
 
   top: -5px;
-  color: black;
+  color: var(--color-texto);
   font-weight: bold;
 }
 
@@ -102,7 +103,7 @@ form .correo{
 
 .recordar{
   margin: -5px 0 20px 5px;
-  color: black;
+  color: var(--color-texto);
   text-decoration: underline;
   cursor: pointer;
 }
@@ -119,7 +120,7 @@ input[type="submit"]{
   background: var(--color-fuerte);
   border:none;
   border-radius: 25px;
-  color: black;
+  color: var(--color-texto);
   cursor: pointer;
   
 }
@@ -133,12 +134,12 @@ input[type="submit"]:hover{
   margin: 30px 0;
   text-align: center;
   font-size: 16;
-  color: black;
+  color: var(--color-texto);
   text-decoration: underline;
 }
 
 .registrarse a{
-  color: black;
+  color: var(--color-texto);
   text-decoration: none;
 }
 
