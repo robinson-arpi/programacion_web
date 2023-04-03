@@ -125,7 +125,7 @@ input[type="submit"]{
 }
 
 input[type="submit"]:hover{
-  color: white;
+  color: var(--color-fondo);
   transition: .5s;
 }
 
