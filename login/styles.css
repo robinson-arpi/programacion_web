@@ -14,9 +14,8 @@
 :root {
 	--color-fuerte: #ffc221;
   --color-fuerte2: #bfbfbf;
-  --color-before: #737373;
-  --color-resaltado: #21d1ff;
-  --color-test: #737373;
+  --color-before: #737373;  
+  --color-fondo: white;
 
 }
 
@@ -35,7 +34,7 @@ body {
   left: 50%;
   transform: translate(-50%,-50%);
   width: 400px;
-  background: white;
+  background: var(--color-fondo);
   border-radius: 10px;
   box-shadow: 0 0 10px var(--color-fuerte);
 }
