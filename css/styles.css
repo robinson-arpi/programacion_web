@@ -78,8 +78,21 @@ form .entrada {
 }
 
 /*
-
+input date cambio de colores
 */
+input[type = "date"] {
+  color: white;
+
+}
+
+input[type = "date"]:focus,
+input[type = "date"]:valid {
+  color: var(--color-texto);
+}
+
+
+
+
 .entrada span::before {
   content: '';
   position: absolute;
