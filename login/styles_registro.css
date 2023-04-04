@@ -1,0 +1,154 @@
+
+/*---------------------------------------------------------------------
+    import Fonts
+---------------------------------------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css?family=Rajdhani:300,400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+
+/*****----------------------------------------
+     1) font-family: 'Rajdhani', sans-serif;  
+     2) font-family: 'Poppins', sans-serif; 
+----------------------------------------*****/
+
+:root {
+	--color-fuerte: #ffc221;
+  --color-fuerte2: #bfbfbf;
+  --color-before: #737373;  
+  --color-fondo: white;
+  --color-texto: black;
+  --tamano-texto: 16px
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Rajdhani', sans-serif; 
+  background: linear-gradient(150deg, var(--color-fuerte2), var(--color-fuerte2));
+  height: 100vh;
+}
+
+.formulario {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 400px;
+  background: var(--color-fondo);
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--color-fuerte);
+}
+
+.formulario h1{
+  text-align: center;
+  padding: 0, 0, 20px, 0;
+  border-bottom: 1px solid var(--color-fuerte);
+}
+
+
+.formulario form{
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+form .correo{
+  position: relative;
+  border-bottom: 2px solid silver;
+  margin: 30px 0;
+}
+
+.correo input{
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: var(--tamano-texto);
+  border: none;
+  background: none;
+  outline: none;
+}
+
+input[type="date"] {
+  color: white;
+}
+
+
+.correo label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: var(--color-before);
+  transform: translateY(-50%);
+  font-size: var(--tamano-texto);
+  pointer-events: none;
+  transition: .5s;
+}
+
+.correo span::before {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--color-fuerte);
+}
+
+.correo input:focus ~ label,
+.correo input:valid ~ label {
+  top: -5px;
+  color: var(--color-texto);
+  font-weight: bold;
+}
+
+.correo input:focus ~ span::before,
+.correo input:valid ~ span::before {
+  width: 100%
+}
+
+.recordar{
+  margin: -5px 0 20px 5px;
+  color: var(--color-texto);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.recordar:hover{
+  font-weight: bold;
+}
+
+input[type="submit"]{
+  width: 100%;
+  height: 50px;
+  font-size: var(--tamano-texto);
+  font-weight: bold;
+  background: var(--color-fuerte);
+  border:none;
+  border-radius: 25px;
+  color: var(--color-texto);
+  cursor: pointer;
+  
+}
+
+input[type="submit"]:hover{
+  color: var(--color-fondo);
+  transition: .5s;
+}
+
+.registrarse{
+  margin: 10px 0;
+  text-align: center;
+  font-size: var(--tamano-texto);
+  color: var(--color-texto);
+  text-decoration: underline;
+}
+
+.registrarse a{
+  color: var(--color-texto);
+  text-decoration: none;
+}
+
+.registrarse:hover{
+  text-decoration: underline;
+  font-weight: bold;
+}
