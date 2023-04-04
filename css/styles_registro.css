@@ -69,7 +69,8 @@ form .correo{
 }
 
 input[type="date"] {
-  color: white;
+  color: black;
+  content: '';
 }
 
 
@@ -106,16 +107,6 @@ input[type="date"] {
   width: 100%
 }
 
-.recordar{
-  margin: -5px 0 20px 5px;
-  color: var(--color-texto);
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.recordar:hover{
-  font-weight: bold;
-}
 
 input[type="submit"]{
   width: 100%;

@@ -13,19 +13,18 @@
 
 :root {
 	--color-fuerte: #ffc221;
-  --color-fuerte2: #bfbfbf;
-  --color-before: #737373;  
+  --color-before: #737373;
+ /* --color-before: #bfbfbf; */
   --color-fondo: white;
   --color-texto: black;
   --tamano-texto: 16px
 }
 
-
 body {
   margin: 0;
   padding: 0;
   font-family: 'Rajdhani', sans-serif; 
-  background: linear-gradient(150deg, var(--color-fuerte2), var(--color-fuerte2));
+  background: linear-gradient(150deg, var(--color-before), var(--color-before));
   height: 100vh;
 }
 
@@ -40,25 +39,25 @@ body {
   box-shadow: 0 0 10px var(--color-fuerte);
 }
 
-.formulario h1{
+.formulario h1 {
   text-align: center;
   padding: 0, 0, 20px, 0;
   border-bottom: 1px solid var(--color-fuerte);
 }
 
 
-.formulario form{
+.formulario form {
   padding: 0 40px;
   box-sizing: border-box;
 }
 
-form .correo{
+form .entrada {
   position: relative;
   border-bottom: 2px solid silver;
   margin: 30px 0;
 }
 
-.correo input{
+.entrada input {
   width: 100%;
   padding: 0 5px;
   height: 40px;
@@ -68,17 +67,7 @@ form .correo{
   outline: none;
 }
 
-.correo date{
-  width: 100%;
-  padding: 0 5px;
-  height: 40px;
-  font-size: var(--tamano-texto);
-  border: none;
-  background: none;
-  outline: none;
-}
-
-.correo label{
+.entrada label{
   position: absolute;
   top: 50%;
   left: 5px;
@@ -89,7 +78,10 @@ form .correo{
   transition: .5s;
 }
 
-.correo span::before {
+/*
+
+*/
+.entrada span::before {
   content: '';
   position: absolute;
   top: 40px;
@@ -99,17 +91,26 @@ form .correo{
   background: var(--color-fuerte);
 }
 
-.correo input:focus ~ label,
-.correo input:valid ~ label {
+
+/*
+Campos de entrada
+*/
+
+input:focus ~ label,
+input:valid ~ label {
   top: -5px;
   color: var(--color-texto);
   font-weight: bold;
 }
 
-.correo input:focus ~ span::before,
-.correo input:valid ~ span::before {
+input:focus ~ span::before,
+input:valid ~ span::before {
   width: 100%
 }
+
+/*
+Opcion recordar
+*/
 
 .recordar{
   margin: -5px 0 20px 5px;
@@ -122,6 +123,10 @@ form .correo{
   font-weight: bold;
 }
 
+
+/*
+Boton
+*/
 input[type="submit"]{
   width: 100%;
   height: 50px;
@@ -140,8 +145,11 @@ input[type="submit"]:hover{
   transition: .5s;
 }
 
+/*
+Opcion registro
+*/
 .registrarse{
-  margin: 30px 0;
+  margin: 20px 0;
   text-align: center;
   font-size: var(--tamano-texto);
   color: var(--color-texto);
