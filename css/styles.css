@@ -10,7 +10,8 @@
 
 ----------------------------------------*****/
 :root {
-	--color-fuerte: #ffc221;
+  --color-fuerte: #c53678;
+  --color-fuerte2: #ff5841;
   --color-before: #737373;
   --color-fondo: white;
   --color-texto: black;
@@ -20,26 +21,28 @@
 
 
 
-
-
 body {
   box-sizing: border-box; /* asegura que el ancho del div incluya el borde y el padding */
   margin: 0; /* elimina los márgenes predeterminados del div */
   border: none; /* elimina el borde del div */
   padding: none; /* elimina el padding del div */
-  font-family: 'Rajdhani', sans-serif; 
-  font-size: var(--tamano-texto);
   height: 100%;
-  width: 100%;
+  width: 100%;  
+/*fuente*/
+  font-size: var(--tamano-texto);
+  font-weight: bold;
+  font-family: 'Sofia-pro';   
+  color: var(--color-fuerte);
 }
 
 header {
+  /*posicionamiento de header*/
   box-sizing: border-box; /* asegura que el ancho del div incluya el borde y el padding */
-  background-color: var(--color-fuerte);
   display: grid;
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto auto;
-  padding-top: 1%;
+  border-bottom: 2px solid #c53678;
+  padding-top: 1%; /*para separación de cabecera*/
 }
 
 /*
@@ -81,29 +84,34 @@ input de búsqueda
 */
 
 .c_busqueda_entrada {
-  
   width: 75%;
   height: 30px;
-  border: none;
   background: var(--color-fondo);
   outline: none;
   flex-grow: 1;
-  border: none;
+  border: 1px solid var(--color-fuerte);
   font-size: 16px;
   border-radius: 5px;
+}
+
+.c_busqueda_entrada:hover {
+  width: 75%;
+  height: 30px;
+  box-shadow: 0 0 10px var(--color-fuerte);
 }
 
 .c_busqueda_boton {
   width: 15%;
   height: 30px;
-  border: none;
+
   outline: none;
-  background-color: white;
-  color: black;
-  border: none;
+  background-color: var(--color-fuerte);
+  color: var(--color-fondo);
+
+  border: 1px solid var(--color-fuerte);
   font-size: 16px;
   cursor: pointer;
-  border-radius: 5px;
+
 }
 
 
@@ -129,18 +137,18 @@ nav li {
 }
 
 nav a {
-  display: block;
+  display: flex;
+  justify-content: flex-start;
   padding: 0.5em;
-  text-decoration: none;
-  color: #333;
+  text-decoration: none; /*quita los subrayados*/
+  color: var(--color-texto);
 }
 
 nav a:hover {
-  background-color: var(--color-resaltado);
-  color:black
+  background-color: var(--color-fuerte);
+  color:var(--color-fondo);
+  border-radius: 20px;
 }
-
-
 
 #header_usuario {
   display: flex;
@@ -148,12 +156,9 @@ nav a:hover {
   transition: all 0.2s;
 }
 
-
 .lista_desplegable {
   flex-basis: 30%;
 }
-
-
 
 /*Barra desplegable*/
 nav ul {
