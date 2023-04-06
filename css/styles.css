@@ -24,12 +24,7 @@ body {
   border: none; /* elimina el borde del div */
   padding: none; /* elimina el padding del div */
   height: 100%;
-  width: 100%;  
-/*fuente*/
-  font-size: var(--tamano-texto);
-  font-weight: bold;
-  font-family: 'Poppins', sans-serif;
-  color: var(--color-fuerte);
+  width: 100%;
 }
 
 header {
