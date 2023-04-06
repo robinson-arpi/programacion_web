@@ -11,7 +11,7 @@
 ----------------------------------------*****/
 
 :root {
-	--color-fuerte: red;
+	--color-fuerte: #c53678;
   --color-before: #737373;
  /* --color-before: #bfbfbf; */
   --color-fondo: white;
@@ -91,9 +91,6 @@ input[type = "date"]:valid {
   font-family: 'Rajdhani', sans-serif; 
 
 }
-
-
-
 
 .entrada span::before {
   content: '';
