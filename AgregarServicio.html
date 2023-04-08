@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang = "es">
+<head>
+    <meta cahrset = "UTF-8">
+    <meta name = "viewport" content = "width-device-width, inital-scale=1.0">
+    <title>Agregar un servicio</title>
+    <link rel = "stylesheet" href = "css/styles_inicio.css">
+</head>
+<body>
+    <form>
+        <h2>Agregar Servicio</h2>
+        <div style="display:flex">
+          <div style="flex:1; padding-right: 20px">
+            <label for="imagen">Imagen:</label>
+            <input type="file" id="imagen" name="imagen"><br><br>
+            <label for="duracion">Duración:</label>
+            <input type="text" id="duracion" name="duracion"><br><br>
+            <label for="ubicacion">Ubicación:</label>
+            <input type="text" id="ubicacion" name="ubicacion"><br><br>
+          </div>
+          <div style="flex:1; padding-left: 20px">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo"><br><br>
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion"></textarea><br><br>
+            <label for="categoria">Categoría:</label>
+            <select id="categoria" name="categoria">
+              <option value="opcion1">Opción 1</option>
+              <option value="opcion2">Opción 2</option>
+              <option value="opcion3">Opción 3</option>
+            </select><br><br>
+            <label for="disponibilidad">Disponibilidad:</label>
+            <input type="checkbox" id="disponibilidad" name="disponibilidad" value="disponible">
+            <label for="disponibilidad">Disponible</label><br><br>
+          </div>
+        </div>
+        <label for="requisitos">Requisitos:</label>
+        <div style="display:flex">
+          <input type="text" id="requisito" name="requisito" placeholder="Agregar requisito...">
+          <button type="button" onclick="agregarRequisito()">Agregar</button>
+        </div>
+        <ul id="lista-requisitos"></ul>
+        <br>
+        <button type="submit">Aceptar</button>
+        <button type="button" onclick="cancelar()">Cancelar</button>
+      </form>      
+</body>
+
+<script>
+    function agregarRequisito() {
+      var requisito = document.getElementById("requisito").value;
+      if (requisito != "") {
+        var listaRequisitos = document.getElementById("lista-requisitos");
+        var nuevoRequisito = document.createElement("li");
+        nuevoRequisito.innerHTML = requisito;
+        listaRequisitos.appendChild(nuevoRequisito);
+        document.getElementById("requisito").value = "";
+      }
+    }
+    
+    function cancelar() {
+      document.getElementById("titulo").value = "";
+      document.getElementById("descripcion").value = "";
+      document.getElementById("categoria").selectedIndex = 0;
+      document.getElementById("disponibilidad").checked = false;
+      document.getElementById("lista-requisitos").innerHTML = "";
+    }
+  </script>
+
+</html>
