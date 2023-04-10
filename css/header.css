@@ -1,0 +1,161 @@
+header {
+    /*posicionamiento de header y decorado*/
+    box-sizing: border-box; /* asegura que el ancho del div incluya el borde y el padding */
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-rows: auto auto;
+    border-bottom: 2px solid #c53678;
+    padding-top: 1%; /*para separación de cabecera*/
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  /*
+  Primer container-logo
+  */
+  .fa-book {
+    color: var(--color-texto) !important;
+    font-size: 30px;
+    margin: none;
+    padding: none;
+  }
+  
+  
+  /*--------------------------------------*/
+  
+  #header_logo {
+    /*border: 1px solid black; Aplicar un borde de 1 píxel de ancho con un color negro */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 20px;
+  }
+  
+  #header_logo2 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: 20px;
+  }
+  
+  
+  #busqueda-contenedor {
+    display: flex;
+    align-items: stretch; /* Ajusta la altura de los elementos al contenedor */
+    
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+  }
+  
+  .c_busqueda_entrada {
+    flex-grow: 1; /* Permite que el campo de búsqueda ocupe todo el ancho restante */
+    width: 75%;
+    height: 34px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid var(--color-fuerte);
+    padding-left: 10px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .c_busqueda_entrada:hover, .c_busqueda_boton:hover {
+    box-shadow: 0 0 10px var(--color-fuerte);
+  }
+  
+  .c_busqueda_boton {
+    height: 38px;
+    background-color: var(--color-fuerte);
+    border: 1px solid var(--color-fuerte);
+    color: var(--color-fondo);
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    color: var(--color-fondo);
+  }
+  
+  .fa-search {
+    color: var(--color-texto);
+    font-size: 16px;
+    margin: none;
+    padding: none;
+  }
+
+  .fa-user, .fa-bell{
+    font-size: 16px; /* Cambiar el tamaño de fuente según sea necesario */
+    color: var(--color-texto);
+    margin: none;
+    padding: none;
+  }
+  
+  /*campo navegacion*/
+  #header_navegacion {
+    display: flex;
+    align-items: center;
+  }
+  
+  /*
+  Barra de navegacion
+  */
+  
+  nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    list-style: none;
+    
+  }
+  
+  nav li {
+    display: inline-block;
+  }
+  
+  nav a {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.5em;
+    text-decoration: none; /*quita los subrayados*/
+    color: var(--color-texto);
+  }
+  
+  nav a:hover {
+    background-color: var(--color-fuerte);
+    color:var(--color-fondo);
+    border-radius: 20px;
+  }
+  
+  #header_usuario {
+    display: flex;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  
+  .lista_desplegable {
+    display: flex;
+    flex-basis: 30%;
+    align-items: center;
+  }
+  
+  /*Barra desplegable*/
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav > ul > li {
+    display: inline-block;
+    position: relative;
+  }
+  
+  nav > ul > li > ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    padding: 0;
+  }
+  
+  nav > ul > li:hover > ul {
+    display: block;
+  }
+  
+  
+  
