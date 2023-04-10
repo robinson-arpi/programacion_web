@@ -22,7 +22,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Rajdhani', sans-serif; 
+  font-family: 'Poppins', sans-serif; 
   background: linear-gradient(150deg, var(--color-before), var(--color-before));
   height: 100vh;
 }

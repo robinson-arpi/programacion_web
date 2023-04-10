@@ -156,6 +156,11 @@ header {
   nav > ul > li:hover > ul {
     display: block;
   }
+
+  body {
+    margin: 0;
+    padding: 0;
+  }
   
   
   
