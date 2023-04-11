@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang = "es">
+<head>
+    <meta cahrset = "UTF-8">
+    <meta name = "viewport" content = "width-device-width, inital-scale=1.0">
+    <title>Agendar un servicio</title>
+    <link rel = "stylesheet" href = "css/styles_inicio.css">
+    <link rel = "stylesheet" href = "css/styles_agendar.css">
+</head>
+<body>
+    <div class = "contenedor-total">
+        <div class="fila-titulo">
+            <h1>Agendar Servicio</h1>
+        </div>
+        <div class="contenedor">
+            <div class="columna-imagen">
+                <img src="images/service.png" alt="Imagen Servicio">
+                <p id="nom-servicio">Nombre del servicio</p>
+                <p id="nom-operador">Nombre del operador</p>
+                <p id="descripcion">Descripción del servicio</p>
+            </div>
+    
+            <div class="columna-formulario">
+                <form id="formulario-agendar" method = "post">
+                    <div class = "entrada">
+                        <input type = "date" name = "fecha" id="fecha" required>
+                        <label>Fecha</label>
+                    </div>
+                    <div class = "entrada">
+                        <input type = "time" name = "hora" id="hora" required>
+                        <label>Hora</label>
+                    </div>
+                    <div class = "entrada">
+                        <input type = "text" required>
+                        <label>Dirección</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="fila-botones">
+            <div class="boton1">
+                <input type = "submit" value = "Cancelar">
+            </div>
+            <div class="boton2">
+                <input type = "submit" value = "Agendar">
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>

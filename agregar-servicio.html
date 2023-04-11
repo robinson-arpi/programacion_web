@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang = "es">
+<head>
+    <meta cahrset = "UTF-8">
+    <meta name = "viewport" content = "width-device-width, inital-scale=1.0">
+    <title>Agregar un servicio</title>
+    <link rel = "stylesheet" href = "css/styles_inicio.css">
+    <link rel = "stylesheet" href = "css/styles_registro.css">
+    <link rel = "stylesheet" href = "css/styles_agregarServicio.css">
+</head>
+<body>
+    <form>
+      <div class = "cuatro-filas">
+        <div class="titulo">
+          <h1>Agregar Servicio</h1>
+        </div>
+        <div class="fila fila-2">
+          <div class="columna">
+            <div class="subir-imagen">
+              <p>Subir imagen</p>
+            </div>
+            <div class = "entrada">
+              <input type = "text" required>
+              <label>Duración</label>
+            </div>
+            <div class = "entrada">
+              <input type = "text" required>
+              <label>Ubicación</label>
+            </div>
+          </div>
+          <div class="columna">
+            <div class = "entrada">
+              <input type = "text" required>
+              <label>Título</label>
+            </div>
+            <div class = "entrada">
+              <input type = "text" required>
+              <label>Descipción</label>
+            </div>
+            <div class = "campo">              
+              <label for="categoria">Categoría:</label>
+              <select id="categoria" name="categoria">
+                <option value="" selected disabled>Selecione ...</option>
+                <option value="Cuidado personal">Cuidado personal</option>
+                <option value="Jardinería y mantenimiento">Jardinería y mantenimiento</option>
+                <option value="Tutorías y asesoramiento">Tutorías y asesoramiento</option>
+                <option value="Otro">Otro</option>
+              </select><br><br>
+            </div>
+            <div class = "entrada">
+              <input type = "text" required>
+              <label>Disponibilidad</label>
+            </div>
+          </div>
+        </div>
+        <div class="fila fila-3"> 
+          <label for="requisitos">Requisitos: &nbsp;</label>
+          <div style="display:flex">
+            <input type="text" id="requisito" name="requisito" placeholder="Agregar requisito...">
+            <button type="button" onclick="agregarRequisito()">Agregar</button>
+          </div>
+          <ul id="lista-requisitos"></ul>
+          <br>            
+        </div>
+        <div class="fila fila-4">
+          <div class="columna">
+            <input type="submit" value="Cancelar">
+          </div>
+          <div class = "columna">
+            <input type="submit" value="Aceptar">            
+          </div>
+      </div>        
+    </form>      
+</body>
+
+  <script>
+    function agregarRequisito() {
+      var requisito = document.getElementById("requisito").value;
+      if (requisito != "") {
+        var listaRequisitos = document.getElementById("lista-requisitos");
+        var nuevoRequisito = document.createElement("li");
+        nuevoRequisito.innerHTML = requisito;
+        listaRequisitos.appendChild(nuevoRequisito);
+        document.getElementById("requisito").value = "";
+      }
+    }
+    
+    function cancelar() {
+      document.getElementById("titulo").value = "";
+      document.getElementById("descripcion").value = "";
+      document.getElementById("categoria").selectedIndex = 0;
+      document.getElementById("disponibilidad").checked = false;
+      document.getElementById("lista-requisitos").innerHTML = "";
+    }
+  </script>
+
+</html>
