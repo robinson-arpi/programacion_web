@@ -1,0 +1,15 @@
+.imagen-descripcion {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .imagen-descripcion img {
+    width: 300px;
+    margin-right: 20px;
+  }
+  
+  .imagen-descripcion p {
+    font-size: 18px;
+    line-height: 1.5;
+  }

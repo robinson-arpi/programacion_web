@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang = "es">
+<head>
+    <meta cahrset = "UTF-8">
+    <meta name = "viewport" content = "width-device-width, inital-scale=1.0">
+    <title>Agendar un servicio</title>
+    <link rel = "stylesheet" href = "css/styles_registro.css">
+    <link rel = "stylesheet" href = "css/styles_inicio.css">
+    <link rel = "stylesheet" href = "css/styles_agendar.css">
+    <script src="js/registro.js"></script>
+</head>
+<body>
+    <div class="imagen-descripcion">
+        <img src="images/service.png" alt="Imagen Servicio"> <br>
+        <p>Descripción de la imagen</p>
+    </div>
+    
+    <div class = "formulario">
+        <h1>Agendar Servicio</h1>
+        
+        <form id="formulario-agendar" method = "post">
+            <div class = "entrada">
+                <input type = "date" name = "fecha" id="fecha" required>
+                <label>Fecha</label>
+            </div>
+            <div class = "entrada">
+                <input type = "time" name = "hora" id="hora" required>
+                <label>Hora</label>
+            </div>
+            <div class = "entrada">
+                <input type = "text" required>
+                <label>Dirección</label>
+            </div>
+                <input type = "submit" value = "Agendar">
+            <div class = "registrarse"></div>
+        </form>
+    </div>
+</body>
+</html>

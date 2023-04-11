@@ -80,13 +80,13 @@ form .entrada {
 /*
 input date cambio de colores
 */
-input[type = "date"] {
+input[type = "date"], input[type = "time"] {
   color: white;
 
 }
 
-input[type = "date"]:focus,
-input[type = "date"]:valid {
+input[type = "date"]:focus, input[type = "time"]:focus,
+input[type = "date"]:valid, input[type = "time"]:valid {
   color: var(--color-texto);
   font-family: 'Rajdhani', sans-serif; 
 
