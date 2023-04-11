@@ -1,0 +1,12 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+  /* Estilos de las secciones */
+  section {
+    margin: 2em 0;
+    padding: 1em;
+  }

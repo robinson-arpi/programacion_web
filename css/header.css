@@ -59,9 +59,14 @@ header {
   .c_busqueda_entrada:hover, .c_busqueda_boton:hover {
     box-shadow: 0 0 10px var(--color-fuerte);
   }
+
+  .c_busqueda_boton:hover {
+    box-shadow: 0 0 10px var(--color-fuerte);
+    color: var(--color-fondo)
+  }
   
   .c_busqueda_boton {
-    height: 38px;
+    height: 34px;
     background-color: var(--color-fuerte);
     border: 1px solid var(--color-fuerte);
     color: var(--color-fondo);
@@ -70,20 +75,12 @@ header {
     color: var(--color-fondo);
   }
   
-  .fa-search {
-    color: var(--color-texto);
-    font-size: 16px;
-    margin: none;
-    padding: none;
-  }
-
-  .fa-user, .fa-bell{
-    font-size: 16px; /* Cambiar el tamaño de fuente según sea necesario */
+  .fa-user, .fa-bell, .fa-search{
+    font-size: var(--tamanio-texto); /* Cambiar el tamaño de fuente según sea necesario */
     color: var(--color-texto);
     margin: none;
     padding: none;
   }
-  
   /*campo navegacion*/
   #header_navegacion {
     display: flex;
@@ -131,10 +128,19 @@ header {
     flex-basis: 30%;
     align-items: center;
   }
+
+  .lista_desplegable li:hover {
+    color: white;
+  }
+  
+  .lista_desplegable li:hover a i {
+    color: white;
+  }
   
   /*Barra desplegable*/
   nav ul {
     list-style: none;
+    align-items: center;
     margin: 0;
     padding: 0;
   }
@@ -155,6 +161,11 @@ header {
   
   nav > ul > li:hover > ul {
     display: block;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
   }
   
   
