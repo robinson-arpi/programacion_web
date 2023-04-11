@@ -1,15 +1,74 @@
-.imagen-descripcion {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+.columna-imagen {
+  flex-basis: 50%;
+  align-items: center;
+}
 
-  .imagen-descripcion img {
-    width: 300px;
-    margin-right: 20px;
+.columna-formulario {
+  flex-basis: 50%;
+
+}
+
+  .columna-imagen img {
+    padding: 10%;
+    width: 80%;
   }
   
-  .imagen-descripcion p {
-    font-size: 18px;
-    line-height: 1.5;
+  .columna-imagen p {
+    text-align: center;
+    /* line-height: 1.5;  */
   }
+
+  #nom-servicio {
+    font-size: 18;
+    font-weight: bolder;
+  }
+
+  #descripcion {
+    font-size: small;
+  }
+
+  #nom-operador {
+    font-size: medium;
+  }
+
+  .contenedor-total {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    transform: translate(0%,25%);
+    width: 700px;
+    background: var(--color-fondo);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--color-fuerte);
+  }
+
+  .contenedor {
+    display: flex;
+    flex-direction: row;
+  }
+
+.columna-formulario form{
+  padding: 10%;
+  box-sizing: border-box;
+ }
+
+ .contenedor-total h1 {
+  text-align: center;
+  padding: 0, 0, 20px, 0;
+  border-bottom: 1px solid var(--color-fuerte);
+}
+.fila-botones {
+  display:flex;
+  flex-direction: row;
+  padding-left: 50%;
+}
+
+.boton1 {
+  flex-basis: 48%;
+  padding: 3%;
+}
+
+.boton2{
+  flex-basis: 48%;
+  padding: 3%;
+}
