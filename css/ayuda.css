@@ -1,18 +1,3 @@
-/*---------------------------------------------------------------------
-    import Fonts
----------------------------------------------------------------------*/
-@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
-
-:root {
-  --color-fuerte: #c53678;
-  --color-fuerte2: #ff5841;
-  --color-before: #737373;
-  --color-fondo: white;
-  --color-texto: black;
-  --color-resaltado: #bfbfbf;
-  --tamano-texto: 16px
-}
-
 /* Estilos generales */
 body {
     margin: 0;
@@ -24,13 +9,4 @@ body {
   section {
     margin: 2em 0;
     padding: 1em;
-  }
-  
-  
-  /* Estilos del pie de página */
-  footer {
-    background-color: #ccc;
-    color: #333;
-    padding: 1em;
-    text-align: center;
   }

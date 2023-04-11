@@ -3,10 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <link rel = "stylesheet" href = "css/styles.css">
-    <link rel = "stylesheet" href = "css/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <script src="bootstrap/bootstrap.min.js"></script>
+
     <title>Sabiduría en línea</title>
   </head>
+  
   <body> 
     <header>
       <div class="header-section" id ="header_logo" >
@@ -36,7 +39,7 @@
       <div class="header-section" id ="header_usuario">
         <nav class = "lista_desplegable">
           <ul>
-              <li><a href="perfil-usuario.html"><i class="fas fa-user"></i>Usuario</a>
+              <li><a href="HTML/perfil-usuario.html"><i class="fas fa-user"></i>Usuario</a>
                   <ul>
                   <li><a href="HTML/inicio-sesion.html">Iniciar sesión</a></li>
                   <li><a href="HTML/registro_servicios.html">Dar servicio</a></li>
@@ -44,11 +47,36 @@
                   <li><a href="HTML/favoritos.html">Favoritos</a></li>
                   </ul>
               </li>
-              <li><a href="HTML/notificaciones.html"><i class="fas fa-bell"></i></a></li>
+              <li><a href="HTML/notificaciones.html"><i class="fas fa-bell"></i>Notificaciones</a>
 
           </ul>    
       </nav>
       </div>
     </header>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <ul class="nav justify-content-star ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="HTML/acerca-de-nosotros.html">Acerca de nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="HTML/terminos-y-condiciones.html">Términos y condiciones</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="HTML/ayuda.html">Ayuda</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="HTML/contacto.html">Contáctenos</a>
+              </li>
+            </ul>
+            <p id = "footer_p">© Sabiduría en línea - Todos los derechos reservados</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </body>
 </html>
