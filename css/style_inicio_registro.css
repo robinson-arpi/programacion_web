@@ -53,12 +53,17 @@ section {
 
 .registro-container {
   max-width: 450px;
-  padding: 24px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: none;
   margin: none;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .title {
