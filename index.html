@@ -2,41 +2,40 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content="IE=edge">
+    <meta name = "viewport" content = "width-device-width, inital-scale=1.0">
     <link rel = "stylesheet" href = "css/styles.css">
+    <link rel = "stylesheet" href = "css/styles_index.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
     <script src="bootstrap/bootstrap.min.js"></script>
-
     <title>Sabiduría en línea</title>
   </head>
   
   <body> 
-    <header>
-      <div class="header-section" id ="header_logo" >
-        <i class="fas fa-book"></i>
-        <span class="mensaje">Sabiduría</span>
-        
+    <header class = cabecera>
+      <div class="header_logo">
+        <div><i class="fas fa-book"></i></div>
+        <div><span class="mensaje">Sabiduría <br>en línea</span></div>        
       </div>
-      <div class="header-section" id ="header_busqueda">
+
+      <div class="header_busqueda">
         <input class = "c_busqueda_entrada" type="text" id="busqueda" name="busqueda" placeholder="Escriba su consulta aquí"></input>
         <button class="c_busqueda_boton" type = "submit"><i class="fas fa-search"></i></button>
       </div>
-      <div class="header-section"></div>
-      <div class="header-section" id = "header_logo2">
-        <span class="mensaje">en línea</span>
-      </div>
-      <div class="header-section" id ="header_navegacion">
+      
+      <div class="header_navegacion">
         <nav>
           <ul>
             <li><a href="index.html">Inicio</a></li>
-            <li><a href="HTML/servicios.html">Servicios</a></li>
-            <li><a href="HTML/historial.html">Historial</a></li>
+            <li><a href="HTML/agregar-servicio.html">Servicios</a></li>
             <li><a href="HTML/blog.html">Blog</a></li>
             <li><a href="HTML/ayuda.html">Ayuda</a></li>
           </ul>
         </nav>
       </div>
-      <div class="header-section" id ="header_usuario">
+
+      <div class="header_usuario">
         <nav class = "lista_desplegable">
           <ul>
               <li><a href="HTML/perfil-usuario.html"><i class="fas fa-user"></i>Usuario</a>
@@ -48,11 +47,71 @@
                   </ul>
               </li>
               <li><a href="HTML/notificaciones.html"><i class="fas fa-bell"></i>Notificaciones</a>
-
-          </ul>    
-      </nav>
+          </ul>
+        </nav>
       </div>
+
     </header>
+
+    <div class = "portada">
+      <img src="Images/portada.jpg" alt="Portada" style="max-width: 100%;">
+    </div>
+    
+    
+    <!-- Categorias populares -->
+    <div>
+      <div>
+        <h2>Categorías populares</h2>
+      </div>
+      <section class="categorias_populares">
+        <div class="categoria">
+          <i class="fas fa-desktop"></i>
+          <span>Computación</span>
+        </div>
+
+        <div class="categoria">
+          <i class="fas fa-bolt"></i>
+          <span>Electricidad</span>
+        </div>
+
+        <div class="categoria">
+          <i class="fas fa-hard-hat"></i>
+          <span>Construcción</span>
+        </div>
+
+        <div class="categoria">
+          <i class="fas fa-leaf"></i>
+          <span>Jardinería</span>
+        </div>
+
+
+        <div class="categoria">
+          <i class="fas fa-book-reader"></i>
+          <span>Literatura</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- Testimonios -->
+    <div class = "contenedor_testimonios">
+      <div>
+        <h2>Testimonios</h2>
+      </div>
+      <section class="testimonios">
+        <div class="testimonio">
+          Testionio 1
+        </div>
+
+        <div class="testimonio">
+          Testimonio 2
+        </div>
+        
+        <div class="testimonio">
+          Testimonio 3  
+        </div>
+
+      </section>
+    </div>
 
     <footer>
       <div class="container">
@@ -72,7 +131,6 @@
                 <a class="nav-link" href="HTML/contacto.html">Contáctenos</a>
               </li>
             </ul>
-            <p id = "footer_p">© Sabiduría en línea - Todos los derechos reservados</p>
           </div>
         </div>
       </div>
