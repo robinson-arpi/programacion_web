@@ -14,3 +14,13 @@ body {
     margin: 2em 0;
     padding: 1em;
   }
+  
+  .navegacion_preguntas {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .pregunta {
+    flex-basis: 50%;
+    text-align: center;
+  }
