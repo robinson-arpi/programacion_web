@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang = "es">
+<head>
+    <meta cahrset = "UTF-8">
+    <meta name = "viewport" content = "width-device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel = "stylesheet" href = "../css/style_inicio_registro.css">
+    <script src="../JS/registro.js"></script>
+</head>
+<body>
+    <section class="side imagen_registro">
+        <img src="../Images/welcome.svg" alt="">
+    </section>
+ 
+    <div class = "main">
+        <div class = "registro-container">
+            <p class="title">Bienvenido</p>
+            <div class="separator"></div>
+            <p class="mensaje_bienvenida">Por favor, ingrese los campos requeridos para acceder a todos nuestro servicios</p>
+            <form class = "registro-form" method = "post">
+                <div class = "nombre_completo">
+                    <div class = "entrada">
+                        <input type = "text" required>
+                        <label>Nombre</label>
+                    </div>
+                    <div class = "entrada">
+                        <input type = "text" required>
+                        <label>Apellido</label>
+                    </div>
+                </div>    
+                <div class = "entrada">
+                    <input type = "text" required >
+                    <label>Correo</label>
+                </div>
+                <div class = "passwords">
+                    <div class = "entrada">
+                        <input type = "password" required>
+                        <label>Contraseña</label>
+                    </div>
+                    <div class = "entrada">
+                        <input type = "password" required> 
+                        <label>Confirmar contraseña</label>
+                    </div>
+                </div>    
+                <div class = "entrada">
+                    <input type = "date" name = "fecha" id="fecha" required>
+                    <label>Fecha de nacimiento</label>
+                </div>
+                    <button class = "iniciar">Registrarme</button>
+                <div class = "registrarse">
+                    <a href = "inicio.html">¿Ya tiene una cuenta?</a>
+                </div>
+            </form>
+        </div>    
+    </div>
+</body>
+</html>

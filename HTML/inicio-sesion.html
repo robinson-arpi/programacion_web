@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang = "es">
+<head>
+    <meta cahrset = "UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+    <link rel = "stylesheet" href="../bootstrap/bootstrap.min.css">
+    <link rel = "stylesheet" href = "../css/styles_inicio.css">
+    
+
+    <!-- Última versión de Bootstrap CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<!-- Opcional: Tema opcional de Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap-theme.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Última versión de jQuery (requerido para los plugins de JavaScript de Bootstrap) -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+<!-- Última versión de Popper.js (requerido para los plugins de JavaScript de Bootstrap) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<!-- Última versión de Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row"> 
+            <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-sm-10 offset-sm-1 contenedor">
+                <div class = "formulario">
+                    <h1 class="text-center">Inicio de sesión</h1>
+                    <form id="formulario-login" method = "post">
+                        <div class = "entrada form-group">
+                            <input type = "text" required >
+                            <label>Correo</label>
+                        </div>
+                        <div class = "entrada form-group">
+                            <input type = "password" required>
+                            <label>Contraseña</label>
+                        </div>
+                        <div class = "recordar text-center">
+                            ¿Olvidó su contraseña?
+                        </div>
+                        <div class = "text-center">
+                            <input type = "submit" value = "Iniciar">
+                        </div>    
+                        <div class = "registrarse text-center">
+                            <a href = "registro.html">¿Quiere registrarse?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>    
+</body>
+</html>

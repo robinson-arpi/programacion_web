@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/style_inicio_registro.css">
+    <script src="autentificacion.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
+
+    <title>Inicio de sesión</title>
+</head>
+
+<body>
+    <section class="side imagen_login">
+        <img src="../Images/login.svg" alt="">
+    </section>
+ 
+    <section class="main">
+        <div class="login-container">
+            <p class="title">Bienvenido</p>
+            <div class="separator"></div>
+            <p class="mensaje_bienvenida">Por favor, ingrese su correo y contraseña para acceder a todos nuestro servicios</p>
+            <form class="login-form">
+                <div class="entrada">
+                    <input type="text" required>
+                    <label>Correo</label>
+                </div>
+                <div class="entrada">
+                    <input type="password" required>
+                    <label>Contraseña</label>
+                </div>
+                <button class="iniciar">Iniciar</button>
+                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                <div class = "registrarse">
+                    <a href = "registro.html">¿Quiere registrarse?</a>
+                </div>
+            </form>
+        </div>
+    </section>
+    
+</body>
+</html>

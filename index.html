@@ -2,52 +2,167 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <link rel = "stylesheet" href = "css/header.css">
+    <meta http-equiv = "X-UA-Compatible" content="IE=edge">
+    <meta name = "viewport" content = "width-device-width, inital-scale=1.0">
     <link rel = "stylesheet" href = "css/styles.css">
+    <link rel = "stylesheet" href = "css/styles_index.css">
+    <!-- Agregar los iconos de fonstawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <!-- Agregar los enlaces a los archivos CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <title>Sabiduría en línea</title>
   </head>
+  
   <body> 
-    <header>
-      <div class="header-section" id ="header_logo" >
-        <i class="fas fa-book"></i>
-        <span class="mensaje">Sabiduría</span>
-        
+    <header class = cabecera>
+      <div class="header_logo">
+        <div><i class="fas fa-book"></i></div>
+        <div><span class="mensaje">Sabiduría <br>en línea</span></div>        
       </div>
-      <div class="header-section" id ="header_busqueda">
+
+      <div class="header_busqueda">
         <input class = "c_busqueda_entrada" type="text" id="busqueda" name="busqueda" placeholder="Escriba su consulta aquí"></input>
         <button class="c_busqueda_boton" type = "submit"><i class="fas fa-search"></i></button>
       </div>
-      <div class="header-section"></div>
-      <div class="header-section" id = "header_logo2">
-        <span class="mensaje">en línea</span>
+      
+      <div class="header_navegacion">
+        <nav class = "navbar navbar-expand-lg navbar-light bg-light">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class = "navbar-nav">
+              <li class = "nav-item active">
+                <a class = "nav-link" href="index.html">Inicio</a>
+              </li>
+              <li class = "nav-item">
+                <a class = "nav-link" href="HTML/agregar-servicio.html">Servicios</a>
+              </li>
+              <li class = "nav-item">
+                <a class = "nav-link" href="HTML/blog.html">Blog</a>
+              </li>
+              <li class = "nav-item">
+                <a class = "nav-link" href="HTML/ayuda.html">Ayuda</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
-      <div class="header-section" id ="header_navegacion">
-        <nav>
+
+      <div class="header_usuario">
+        <nav class = "lista_desplegable">
           <ul>
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="historial.html">Historial</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
+              <li><a href="HTML/perfil-usuario.html"><i class="fas fa-user"></i>Usuario</a>
+                  <ul>
+                  <li><a href="HTML/inicio.html">Iniciar sesión</a></li>
+                  <li><a href="HTML/registro_servicios.html">Dar servicio</a></li>
+                  <li><a href="HTML/historial.html">Cronograma</a></li>
+                  <li><a href="HTML/favoritos.html">Favoritos</a></li>
+                  </ul>
+              </li>
+              <li><a href="HTML/notificaciones.html"><i class="fas fa-bell"></i>Notificaciones</a>
           </ul>
         </nav>
       </div>
-      <div class="header-section" id ="header_usuario">
-        <nav class = "lista_desplegable">
-          <ul>
-              <li><a href="perfil-usuario.html"><i class="fas fa-user"></i>Usuario</a>
-                  <ul>
-                  <li><a href="servicios.html">Dar servicio</a></li>
-                  <li><a href="historial.html">Cronograma</a></li>
-                  <li><a href="blog.html">Favoritos</a></li>
-                  </ul>
-              </li>
-              <li><a href="perfil-usuario.html"><i class="fas fa-bell"></i></a></li>
 
-          </ul>    
-      </nav>
-      </div>
     </header>
+
+    <div class = "portada">
+      <img src="Images/portada.jpg" alt="Portada" style="max-width: 100%;">
+    </div>
+    <main>
+      <!-- Categorias populares -->
+      <section class="categorias_populares">
+        <h2>Categorías populares</h2>
+        <ul>
+            <li>
+                <div class="categoria">
+                  <i class="fas fa-desktop"></i>
+                  <span>Computación</span>
+                </div>
+            </li>
+            <li>
+              <div class="categoria">
+                <i class="fas fa-history"></i>
+                <span>Historia</span>
+              </div>
+            </li>
+            <li>
+              <div class="categoria">
+                <i class="fas fa-bolt"></i>
+                <span>Electricidad</span>
+              </div>      
+            </li>
+            <li>
+              <div class="categoria">
+                <i class="fas fa-hard-hat"></i>
+                <span>Construcción</span>
+              </div>
+            </li>
+            <li>
+              <div class="categoria">
+                <i class="fas fa-leaf"></i>
+                <span>Jardinería</span>
+              </div>      
+            </li>
+            <li>
+              <div class="categoria">
+                <i class="fas fa-book-reader"></i>
+                <span>Literatura</span>
+              </div>
+            </li>
+        </ul>
+    </section>
+  </main>
+
+
+    <!-- Testimonios -->
+    <div class = "contenedor_testimonios">
+      <div>
+        <h2>Testimonios</h2>
+      </div>
+      <section class="testimonios">
+        <div class="testimonio">
+          Testionio 1
+        </div>
+
+        <div class="testimonio">
+          Testimonio 2
+        </div>
+        
+        <div class="testimonio">
+          Testimonio 3  
+        </div>
+
+      </section>
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-8">
+            <ul class="nav justify-content-star ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="HTML/acerca-de-nosotros.html">Acerca de nosotros</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="HTML/terminos-condiciones.html">Términos y condiciones</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="HTML/ayuda.html">Ayuda</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="HTML/contacto.html">Contáctenos</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Agregar los enlaces a los archivos JavaScript de Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   </body>
 </html>
