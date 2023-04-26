@@ -4,70 +4,76 @@
     <meta cahrset = "UTF-8">
     <meta name = "viewport" content = "width-device-width, inital-scale=1.0">
     <title>Agregar un servicio</title>
-    <link rel = "stylesheet" href = "../css/styles_inicio.css">
-    <link rel = "stylesheet" href = "../css/styles_agregarServicio.css">
+    <link rel = "stylesheet" href = "/css/styles_inicio.css">
+    <link rel = "stylesheet" href = "/css/styles_registro.css">
+    <link rel = "stylesheet" href = "/css/styles_agregarServicio.css">
 </head>
 <body>
     <form>
-      <div class = "cuatro-filas">
-        <div class="titulo">
+      <div class = "contenedor-agregar-servicio">
+        <header class="header border" >
           <h1>Agregar Servicio</h1>
-        </div>
-        <div class="fila fila-2">
-          <div class="columna">
-            <div class="subir-imagen">
-              <p>Subir imagen</p>
-            </div>
-            <div class = "entrada">
-              <input type = "text" required>
-              <label>Duración</label>
-            </div>
-            <div class = "entrada">
-              <input type = "text" required>
-              <label>Ubicación</label>
-            </div>
+        </header>
+        <section class="section1 border subir-imagen">
+          <p>Subir imagen</p>
+        </section>
+        <section class="section2 border">
+          <div class = "entrada">
+            <input type = "text" required>
+            <label>Título</label>
           </div>
-          <div class="columna">
-            <div class = "entrada">
-              <input type = "text" required>
-              <label>Título</label>
-            </div>
-            <div class = "entrada">
-              <input type = "text" required>
-              <label>Descipción</label>
-            </div>
-            <div class = "campo">
-              <label for="categoria">Categoría:</label>
-              <select id="categoria" name="categoria">
-                <option value="" selected disabled>Selecione ...</option>
-                <option value="Cuidado personal">Cuidado personal</option>
-                <option value="Jardinería y mantenimiento">Jardinería y mantenimiento</option>
-                <option value="Tutorías y asesoramiento">Tutorías y asesoramiento</option>
-                <option value="Otro">Otro</option>
-              </select><br><br>
-            </div>
-            <div class = "entrada">
-              <input type = "text" required>
-              <label>Disponibilidad</label>
-            </div>
+        </section>
+        <section class="section3 border">
+          <div class = "entrada">
+            <input type = "text" required>
+            <label>Descipción</label>
           </div>
-        </div>
-        <div class="fila fila-3"> 
+        </section>
+        <section class="section4 border">
+          <div class = "entrada">
+            <input type = "text" required>
+            <label>Duración</label>
+          </div>
+        </section>
+        <section class="section5 border">
+          <label for="categoria">Categoría:</label>
+          <select id="categoria" name="categoria">
+            <option value="" selected disabled>Selecione ...</option>
+            <option value="Cuidado personal">Cuidado personal</option>
+            <option value="Jardinería y mantenimiento">Jardinería y mantenimiento</option>
+            <option value="Tutorías y asesoramiento">Tutorías y asesoramiento</option>
+            <option value="Otro">Otro</option>
+          </select><br><br>
+        </section>
+        <section class="section6 border">
+          <div class = "entrada">            
+            <input type = "text" required>
+            <label>Ubicación</label>
+          </div>
+        </section>
+        <section class="section7 border">
+          <div class = "entrada">            
+            <input type = "text" required>
+            <label>Disponibilidad</label>
+          </div>
+        </section>
+        <section class="section8 border">
           <label for="requisitos">Requisitos: &nbsp;</label>
           <div style="display:flex">
             <input type="text" id="requisito" name="requisito" placeholder="Agregar requisito...">
             <button type="button" onclick="agregarRequisito()">Agregar</button>
           </div>
           <ul id="lista-requisitos"></ul>
-          <br>            
-        </div>
-        <div class="fila fila-4">
-          <div class="columna">
-            <input type="submit" value="Cancelar" onclick="cancelar()">
+          <br>
+        </section>
+        <section class="section9 border">
+          <div class="boton1">
+            <input type = "submit" value = "Cancelar">
           </div>
-          <div class = "columna">
-            <input type="submit" value="Aceptar">            
+          <div class="boton2">
+            <input type = "submit" value = "Aceptar">
           </div>
+        </section>       
       </div>        
     </form>      
 </body>
