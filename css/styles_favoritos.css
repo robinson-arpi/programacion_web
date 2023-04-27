@@ -1,0 +1,19 @@
+body{
+	font-family: Arial, Helvetica, sans-serif;
+}
+.btn-rosado {
+	background-color: rgb(247, 139, 207);
+	font-weight: bold;
+  }
+
+.btn-rosado:hover{
+color: var(--color-fondo);
+transition: .5s;
+}
+
+a.btn-rosado {
+	color: black;
+	text-decoration: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+  }
