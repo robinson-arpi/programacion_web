@@ -247,7 +247,7 @@ footer .nav-link:hover {
     display: grid;
     grid-template-areas:
       "header_logo header_buscador header_menu";
-    grid-template-columns: 20% 70% 10%;
+    grid-template-columns: 10% 80% 10%;
     grid-template-rows: auto;
     height: 8vh;
 
@@ -256,6 +256,15 @@ footer .nav-link:hover {
   /*Oculata el nombre d el a pagina*/
   .nombre_pagina {
     display: none;
+  }
+
+  .header_busqueda {
+    grid-area: header_buscador;
+    display: flex;
+    align-items: stretch; /* Ajusta la altura de los elementos al contenedor */
+    width: 100%;
+    padding-top: 1%;
+    /*border: 1px solid black;*/
   }
 
   .header_menu {
