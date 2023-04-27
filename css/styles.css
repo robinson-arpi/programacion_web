@@ -241,7 +241,7 @@ footer .nav-link:hover {
 }
 
 /* Estilos para dispositivos móviles */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 750px) {
   /* Cambiar la estructura de la cuadrícula a una sola fila de 3 columnas */
   .cabecera {
     display: grid;
