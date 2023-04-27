@@ -1,21 +1,31 @@
 .contenedor-acerca-nosotros {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-    transform: translate(0%,10%);
-    width: 700px;
-    background: var(--color-fondo);
-    border-radius: 10px;
-    box-shadow: 0 0 10px var(--color-fuerte);
-  }
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  transform: translate(0%,10%);
+  width: 90%; /* Usa porcentaje para establecer la anchura */
+  max-width: 800px; /* Establece un ancho máximo para evitar que se haga demasiado grande */
+  background: var(--color-fondo);
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--color-fuerte);
+}
 
-  .contenedor-acerca-nosotros h1 {
-    text-align: center;
-    padding: 0, 0, 20px, 0;
-    border-bottom: 1px solid var(--color-fuerte);
+.contenedor-acerca-nosotros h1 {
+  text-align: center;
+  padding: 0, 0, 20px, 0;
+  border-bottom: 1px solid var(--color-fuerte);
+}
+  
+/* Usa media queries para ajustar el contenedor en pantallas pequeñas */
+@media screen and (max-width: 600px) {
+  .contenedor-acerca-nosotros {
+    transform: none; /* Elimina la transformación para que el contenedor no se desplace hacia abajo */
+    width: 100%; /* Usa el 100% de la anchura en pantallas pequeñas */
+    /*border-radius: 0;  Elimina el borde redondeado */
   }
-
-  #parrafos{
-    padding: 3%;
-    text-align: justify
-  }
+}
+  
+#parrafos {
+  padding: 3vw; /* Usa unidades flexibles */
+  text-align: justify;
+}
