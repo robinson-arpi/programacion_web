@@ -4,47 +4,45 @@
     <meta cahrset = "UTF-8">
     <meta name = "viewport" content = "width-device-width, inital-scale=1.0">
     <title>Agendar un servicio</title>
+    <link rel="stylesheet" href="../css/styles_favoritos.css">
     <link rel = "stylesheet" href = "../css/styles_inicio.css">
     <link rel = "stylesheet" href = "../css/styles_agendar.css">
 </head>
 <body>
-    <div class = "contenedor-total">
-        <div class="fila-titulo">
+    <div class = "contenedor-total grid">
+        <header class="border">
             <h1>Agendar Servicio</h1>
+        </header>
+        <div class="section1 border">
+            <img src="../images/service.png" alt="Imagen Servicio">
         </div>
-        <div class="contenedor">
-            <div class="columna-imagen">
-                <img src="../Images/service.png" alt="Imagen Servicio">
-                <p id="nom-servicio">Nombre del servicio</p>
-                <p id="nom-operador">Nombre del operador</p>
-                <p id="descripcion">Descripción del servicio</p>
-            </div>
-    
-            <div class="columna-formulario">
-                <form id="formulario-agendar" method = "post">
-                    <div class = "entrada">
-                        <input type = "date" name = "fecha" id="fecha" required>
-                        <label>Fecha</label>
-                    </div>
-                    <div class = "entrada">
-                        <input type = "time" name = "hora" id="hora" required>
-                        <label>Hora</label>
-                    </div>
-                    <div class = "entrada">
-                        <input type = "text" required>
-                        <label>Dirección</label>
-                    </div>
-                </form>
-            </div>
+        <div class="section2 border">
+            <p id="nom-servicio">Nombre del servicio</p>
+            <p id="nom-operador">Nombre del operador</p>
+            <a href="" id="descripcion" class="btn-rosado">Descripción del Servicio ...</a>
         </div>
-        <div class="fila-botones">
+        <form method = "post" class="border">
+            <div class = "entrada">
+                <input type = "date" name = "fecha" id="fecha" required>
+                <label>Fecha</label>
+            </div>
+            <div class = "entrada">
+                <input type = "time" name = "hora" id="hora" required>
+                <label>Hora</label>
+            </div>
+            <div class = "entrada">
+                <input type = "text" required>
+                <label>Dirección</label>
+            </div>
+        </form>
+        <footer class="fila-botones border">
             <div class="boton1">
                 <input type = "submit" value = "Cancelar">
             </div>
             <div class="boton2">
                 <input type = "submit" value = "Agendar">
             </div>
-        </div>
+        </footer>
         
     </div>
 </body>
