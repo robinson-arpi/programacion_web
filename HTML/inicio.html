@@ -8,22 +8,22 @@
 </head>
 
 <body>
-    <section class="side imagen_login">
+    <section class="lateral_izquierdo imagen_login">
         <img src="../Images/login.svg" alt="">
     </section>
  
-    <section class="main">
-        <div class="login-container">
-            <p class="title">Bienvenido</p>
-            <div class="separator"></div>
+    <main>
+        <div class="contenedor_login">
+            <p class="titulo">Bienvenido</p>
+            <div class="sepador"></div>
             <p class="mensaje_bienvenida">Por favor, ingrese su correo y contraseña para acceder a todos nuestro servicios</p>
-            <form class="login-form">
+            <form class="form_login">
                 <div class="entrada">
-                    <input type="text" required>
+                    <input class = "correo" type = "email" required>
                     <label>Correo</label>
                 </div>
                 <div class="entrada">
-                    <input type="password" required>
+                    <input class = "password" type="password" required>
                     <label>Contraseña</label>
                 </div>
                 <button class="iniciar">Inicio</button>
@@ -33,9 +33,8 @@
                 </div>
             </form>
         </div>
-    </section>
+    </main>
     
     <script src="../JS/inicio.js"></script>
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </body>
 </html>
