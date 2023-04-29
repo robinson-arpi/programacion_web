@@ -1,22 +1,25 @@
-// Obtener los elementos del menú de hamburguesa y la lista de enlaces
-const menuHamburguesa = document.querySelectorAll('.menu-hamburguesa');
-const navbarNav = document.querySelectorAll('.navbar-nav');
+// Obtener elementos del DOM
+const menuButton = document.getElementById('menu-button');
+const headerNavegacion = document.querySelector('.header_navegacion');
+const headerUsuario = document.querySelector('.header_usuario');
 
-// Agregar evento de clic al menú de hamburguesa
-menuHamburguesa.forEach((element) => {
-  element.addEventListener('click', () => {
-    // Alternar la clase 'active' en la lista de enlaces al hacer clic en el menú de hamburguesa
-    navbarNav.forEach((nav) => {
-      nav.classList.toggle('active');
-    });
-  });
-});
+// Variable para controlar el estado del menú
+let menuVisible = false;
 
-document.addEventListener("DOMContentLoaded", function() {
-  var menuButton = document.getElementById("menu-button");
-  var menuItems = document.getElementById("menu-items");
+// Función para mostrar u ocultar las secciones
+function toggleMenu() {
+  if (menuVisible) {
+    // Si el menú está visible, ocultar las secciones
+    headerNavegacion.style.display = 'none';
+    headerUsuario.style.display = 'none';
+    menuVisible = false;
+  } else {
+    // Si el menú está oculto, mostrar las secciones
+    headerNavegacion.style.display = 'block';
+    headerUsuario.style.display = 'block';
+    menuVisible = true;
+  }
+}
 
-  menuButton.addEventListener("click", function() {
-    menuItems.classList.toggle("show");
-  });
-});
+// Agregar evento click al botón hamburguesa
+menuButton.addEventListener('click', toggleMenu);
