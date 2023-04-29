@@ -1,0 +1,18 @@
+.header_navegacion ul{
+    display: inline-block;
+    margin-right: 10px; /* Agrega un margen derecho para separar los elementos */
+}
+
+.card {
+    max-width: 100%;
+    box-shadow: 0 0 10px var(--color-fuerte);
+}
+
+
+.card-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
