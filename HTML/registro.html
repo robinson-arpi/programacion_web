@@ -2,48 +2,47 @@
 <html lang = "es">
 <head>
     <meta cahrset = "UTF-8">
-    <meta name = "viewport" content = "width-device-width, initial-scale=1.0">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link rel = "stylesheet" href = "../css/style_inicio_registro.css">
-    <script src="../JS/registro.js"></script>
+    <link rel = "stylesheet" href = "../css/estilo_inicio_registro.css">
 </head>
 <body>
-    <section class="side imagen_registro">
+    <section class="lateral_izquierdo imagen_registro">
         <img src="../Images/welcome.svg" alt="">
     </section>
  
-    <div class = "main">
-        <div class = "registro-container">
-            <p class="title">Bienvenido</p>
-            <div class="separator"></div>
+    <main>
+        <div class = "contenedor_registro">
+            <p class="titulo">Bienvenido</p>
+            <div class="separador"></div>
             <p class="mensaje_bienvenida">Por favor, ingrese los campos requeridos para acceder a todos nuestro servicios</p>
-            <form class = "registro-form" method = "post">
+            <form class = "form_registro" method = "post">
                 <div class = "nombre_completo">
                     <div class = "entrada">
-                        <input type = "text" required>
+                        <input class = "nombre" type = "text" required>
                         <label>Nombre</label>
                     </div>
                     <div class = "entrada">
-                        <input type = "text" required>
+                        <input class = "apellido" type = "text" required>
                         <label>Apellido</label>
                     </div>
                 </div>    
                 <div class = "entrada">
-                    <input type = "text" required >
+                    <input class = "correo" type ="email" required >
                     <label>Correo</label>
                 </div>
                 <div class = "passwords">
                     <div class = "entrada">
-                        <input type = "password" required>
+                        <input class = "password1" type = "password" required>
                         <label>Contraseña</label>
                     </div>
                     <div class = "entrada">
-                        <input type = "password" required> 
+                        <input class = "password2" type = "password" required> 
                         <label>Confirmar contraseña</label>
                     </div>
                 </div>    
                 <div class = "entrada">
-                    <input type = "date" name = "fecha" id="fecha" required>
+                    <input class = "f_nacimiento" type = "date" name = "fecha" id="fecha" required>
                     <label>Fecha de nacimiento</label>
                 </div>
                     <button class = "iniciar">Registrarme</button>
@@ -52,6 +51,8 @@
                 </div>
             </form>
         </div>    
-    </div>
+    </main>
+
+    <script src="../JS/registro.js"></script>
 </body>
 </html>
