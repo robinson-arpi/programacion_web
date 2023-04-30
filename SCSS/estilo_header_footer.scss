@@ -11,7 +11,7 @@ footer {
     background-color: var(--color-resaltado);
     .footer_contenedor {
         padding-top: .5%;
-        padding-bottom: .5%;
+        padding-bottom: 1%;
         margin: 0 auto;
         .footer_enlaces {
             display: flex;
@@ -23,9 +23,10 @@ footer {
                 margin: 0 10px;
                 color: #333;
                 text-decoration: none;
-            }
-            a:hover {
-              font-weight: bold;
+
+                &:hover {
+                    font-weight: bold;
+                }
             }
           }
     }
