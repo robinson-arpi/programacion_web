@@ -26,6 +26,9 @@ footer .footer_contenedor .footer_enlaces a {
   color: #333;
   text-decoration: none;
 }
+footer .footer_contenedor .footer_enlaces a:hover {
+  font-weight: bold;
+}
 
 @media screen and (max-width: 768px) {
   .footer_enlaces {

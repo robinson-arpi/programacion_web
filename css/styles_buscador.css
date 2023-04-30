@@ -1,5 +1,5 @@
-.header_navegacion ul{
-    display: inline-block;
+.navbar-nav {
+    display: inline-block; 
     margin-right: 10px; /* Agrega un margen derecho para separar los elementos */
 }
 
@@ -15,4 +15,4 @@
     -webkit-line-clamp: 2;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
+}
