@@ -1,0 +1,32 @@
+.estrellitas input[type="radio"] {
+    display: none;
+  }
+  
+  .estrellitas label:before {
+    content: "★";
+    margin: 2px;
+    font-size: 25px;
+    color: #bbb;
+  }
+  
+  .estrellitas input[type="radio"]:checked + label:before {
+    color: #f2b01e;
+  }
+
+  .btn-rosado {
+    background-color: rgb(247, 139, 207);
+    font-weight: bold;
+    }
+  
+  .btn-rosado:hover{
+  color: white;
+  transition: .5s;
+  background-color:  rgb(240, 62, 175);
+  }
+  
+  a.btn-rosado {
+    color: black;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    }
