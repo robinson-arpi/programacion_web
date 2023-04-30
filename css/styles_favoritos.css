@@ -4,7 +4,7 @@ body{
 .btn-rosado {
 	background-color: rgb(247, 139, 207);
 	font-weight: bold;
-  }
+}
 
 .btn-rosado:hover{
 color: var(--color-fondo);

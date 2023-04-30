@@ -1,0 +1,58 @@
+
+/* Estilos generales */
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+}
+body {
+    font-size: var(--tamano-texto);
+    header {
+        background-color: var(--color-fuerte);
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+        h1 {
+            font-size: 2em;
+        }
+    }
+}
+
+h2 {
+	font-size: 1.5em;
+	margin-bottom: 20px;
+}
+main {
+    padding-left: 5%;
+}
+section {
+    margin: 2em 0;
+    padding: 1em;
+}
+
+.navegacion_preguntas{
+    ul {
+        padding-top: .5%;
+        display: flex;
+        flex-wrap: wrap;
+        .pregunta {
+            flex-basis: 25%;
+            text-align: center;
+        }
+    }
+}  
+  
+@media (max-width: 768px) {
+    .navegacion_preguntas{
+        ul {
+            display: flex;
+            flex-wrap: wrap;
+            .pregunta {
+                flex-basis: 50%;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    } 
+}

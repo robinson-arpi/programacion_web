@@ -1,0 +1,81 @@
+@charset "UTF-8";
+/* Estilos generales */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+header {
+  background-color: var(--color-fuerte);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2em;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+main {
+  margin: 20px;
+}
+
+section {
+  margin-bottom: 40px;
+}
+
+ul {
+  list-style: none;
+  margin-left: 20px;
+}
+
+/* Estilos para la sección de perfil */
+.perfil {
+  display: flex;
+  flex-wrap: wrap;
+}
+.perfil .perfil_imagen {
+  flex: 0 0 150px;
+  margin-right: 20px;
+}
+.perfil .perfil_imagen img {
+  display: block;
+  width: 100%;
+}
+.perfil .perfil_informacion {
+  flex: 1 1 250px;
+}
+
+.servicios ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.servicios li {
+  flex-basis: 30%;
+  margin-bottom: 20px;
+}
+.servicios servicio {
+  box-shadow: 0 0 10px var(--color-fuerte);
+  padding: 2%;
+}
+
+@media (max-width: 768px) {
+  .servicios li {
+    flex-basis: 100%;
+  }
+}
+
+/*# sourceMappingURL=estilo_perfil.css.map */

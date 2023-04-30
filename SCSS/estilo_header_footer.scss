@@ -1,0 +1,47 @@
+
+
+/* ---------------------------------------
+pie de página
+*/
+footer {
+    display: flex;
+    align-items: center;
+    margin: none;
+    width: 100%;
+    background-color: var(--color-resaltado);
+    .footer_contenedor {
+        padding-top: .5%;
+        padding-bottom: 1%;
+        margin: 0 auto;
+        .footer_enlaces {
+            display: flex;
+            justify-content: center;
+            font-family: Arial, Helvetica, sans-serif;
+            color: black !important;
+            font-size: var(--tamano-pequeno);
+            a {
+                margin: 0 10px;
+                color: #333;
+                text-decoration: none;
+
+                &:hover {
+                    font-weight: bold;
+                }
+            }
+          }
+    }
+  }
+
+  
+  @media screen and (max-width: 768px) {
+    .footer_enlaces {
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      padding-bottom: 10px;
+      a {
+        margin: 5px;
+      }
+    }
+  
+  }
+  

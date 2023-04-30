@@ -17,7 +17,7 @@ CABECERA
   box-sizing: border-box; /* asegura que el ancho del div incluya el borde y el padding */
   display: grid;
   grid-template-areas:
-  "header_logo header_buscador header_usuario"
+  "header_logo header_buscador header_nada"
   "header_logo header_navegacion header_usuario";
 
   grid-template-columns: 1fr 2fr 1fr;
@@ -48,10 +48,21 @@ Primer container-logo
   grid-area: header_logo;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content:center;
   font-size: 20px;
-  /*border: 1px solid black;*/
   padding: 1%;
+}
+
+.header_logo .icono{
+  padding-right: 1.5%;
+}
+.header_logo .nombre_pagina{
+  padding-left: 1.5%;
+}
+
+.header_menu {
+  display: none; /* Oculta el menú de hamburguesa por defecto en pantallas grandes */
+  cursor: pointer;
 }
 
 .header_busqueda {
@@ -106,15 +117,13 @@ Barra de navegacion
   grid-area: header_navegacion;
   display: flex;
   align-items: center;
-  /*border: 1px solid black;*/
 }
 
 nav ul {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  list-style: none;
-  
+  list-style: none;  
 }
 
 nav li {
@@ -142,9 +151,7 @@ USUARIO
 .header_usuario {
   grid-area: header_usuario;
   display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  /*border: 1px solid black;*/
+  align-items: center;
 }
 
 .lista_desplegable {
@@ -153,13 +160,47 @@ USUARIO
   align-items: center;
 }
 
-.lista_desplegable li:hover {
+
+
+.item_usuario a {
+  padding: 10px;
+  color: #333;
+  text-decoration: none;
+}
+
+.item_usuario li a {
+  width: 100%;
+}
+
+.item_usuario:hover ul {
+  background-color: rgba(255, 255, 255, 0.8); /* Color blanco con una opacidad de 0.5 */
+  border-radius: 10px;
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.item_usuario:hover i{
+  color:white;
+}
+
+.item_notificacion:hover i{
   color: white;
 }
 
-.lista_desplegable li:hover a i {
-  color: white;
+.item_usuario:hover .sub_menu {
+  display: block;
 }
+
+.sub_menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  padding: 10px;
+  margin-top: 5px;
+}
+
 
 /*Barra desplegable*/
 nav ul {
@@ -205,26 +246,74 @@ body {
 /*---------------------------------------
  Estilos del pie de página
  ----------------------------------------*/
-/* Establece la posición del pie de página */
-footer {
-  /*position: fixed;*/
-  bottom: 0;
-  padding: none;
-  margin: none;
-  width: 100%;
-  background-color: var(--color-resaltado);
-}
 
-footer .nav-link {
-  font-family: Arial, Helvetica, sans-serif;
-  color: black !important;
-  font-size: var(--tamano-pequeno);
-}
 
-footer .nav-link:hover {
-  font-weight: bold;
-}
 
-#footer_p {
-  font-size: var(--tamano-pequeno);
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 750px) {
+  /* Cambiar la estructura de la cuadrícula a una sola fila de 3 columnas */
+  .cabecera {
+    display: grid;
+    grid-template-areas:
+      "header_logo header_buscador header_menu"
+      "header_usuario header_usuario header_usuario"
+      "header_navegacion header_navegacion header_navegacion";
+    grid-template-columns: 10% 80% 10%;
+    grid-template-rows: auto auto auto;
+    height: auto;
+  }
+  .header_logo, .header_usuario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /*Oculta el nombre d el a pagina*/
+  .nombre_pagina {
+    display: none;
+  }
+
+  .header_busqueda {
+    grid-area: header_buscador;
+    display: flex;
+    align-items: stretch; /* Ajusta la altura de los elementos al contenedor */
+    width: 100%;
+    padding-top: 1%;
+    /*border: 1px solid black;*/
+  }
+
+  .portada {
+    display: none;
+  }
+
+  .header_menu {
+    grid-area: header_menu;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .header_navegacion nav ul{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header_usuario .navbar-nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .header_usuario .navbar-nav li {
+    display: block;
+  }
+
+    /* Mostrar la navegación y el usuario al activar el botón hamburguesa */
+    .header_usuario.active {
+      display: block;
+    }
+
 }
