@@ -11,7 +11,7 @@ footer {
 }
 footer .footer_contenedor {
   padding-top: 0.5%;
-  padding-bottom: 0.5%;
+  padding-bottom: 1%;
   margin: 0 auto;
 }
 footer .footer_contenedor .footer_enlaces {
@@ -25,6 +25,9 @@ footer .footer_contenedor .footer_enlaces a {
   margin: 0 10px;
   color: #333;
   text-decoration: none;
+}
+footer .footer_contenedor .footer_enlaces a:hover {
+  font-weight: bold;
 }
 
 @media screen and (max-width: 768px) {
