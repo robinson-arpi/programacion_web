@@ -19,31 +19,31 @@
         <div class="section2 border">
             <p id="nom-servicio">Nombre del servicio</p>
             <p id="nom-operador">Nombre del operador</p>
-            <a href="" id="descripcion" class="btn-rosado">Descripción del Servicio ...</a>
         </div>
         <form method = "post" class="border">
             <div class = "entrada">
-                <input type = "date" name = "fecha" id="fecha" required>
+                <input type = "date" class="fecha" name = "fecha" id="fecha" required>
                 <label>Fecha</label>
             </div>
             <div class = "entrada">
-                <input type = "time" name = "hora" id="hora" required>
+                <input type = "time" class="hora" name = "hora" id="hora" required>
                 <label>Hora</label>
             </div>
             <div class = "entrada">
-                <input type = "text" required>
+                <input type = "text" class="direccion" required>
                 <label>Dirección</label>
             </div>
         </form>
         <footer class="fila-botones border">
             <div class="boton1">
-                <input type = "submit" value = "Cancelar">
+                <input class="boton-cancelar" type = "submit"  value = "Cancelar" >
             </div>
             <div class="boton2">
-                <input type = "submit" value = "Agendar">
+                <input class="boton-agendar" type ="submit" value = "Agendar">
             </div>
         </footer>
         
     </div>
 </body>
+<script src="../JS/script-agendar.js"></script>
 </html>
