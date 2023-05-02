@@ -145,6 +145,7 @@ nav a:hover {
 }
 
 
+
 /*-------------------
 USUARIO
 -----------------*/
@@ -172,11 +173,36 @@ USUARIO
   width: 100%;
 }
 
-.item_usuario:hover ul {
+
+.sub_menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding: 10px;
   background-color: rgba(255, 255, 255, 0.8); /* Color blanco con una opacidad de 0.5 */
-  border-radius: 10px;
-  display: block;
-  font-family: Arial, Helvetica, sans-serif;
+  opacity: 0;
+  pointer-events: none;
+  border-radius: 0 0 10px 10px;
+  transition: opacity 5s ease-out;
+}
+
+
+.item_usuario li {
+  width: 10vw;
+}
+
+.item_usuario ul {
+  width: 12vw;
+}
+
+
+.item_usuario:hover .sub_menu {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sub_menu:hover {
+  opacity: 1;
 }
 
 .item_usuario:hover i{
@@ -186,21 +212,6 @@ USUARIO
 .item_notificacion:hover i{
   color: white;
 }
-
-.item_usuario:hover .sub_menu {
-  display: block;
-}
-
-.sub_menu {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fff;
-  padding: 10px;
-  margin-top: 5px;
-}
-
 
 /*Barra desplegable*/
 nav ul {
@@ -315,5 +326,28 @@ body {
     .header_usuario.active {
       display: block;
     }
+
+    .item_usuario li {
+      width: 90vw;
+    }
+    .header_navegacion nav{
+      width: 100vw;
+    }
+    .menu_navegacion {
+      width: 100vw;
+    }
+    .item_responsive {
+      width: 98vw;
+    }
+    .sub_menu {
+      display:none;
+      position: absolute;
+    }
+    
+    .sub_menu.show {
+      display: block;
+    }
+
+
 
 }

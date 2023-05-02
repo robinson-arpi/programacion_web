@@ -1,0 +1,59 @@
+
+/* Definiendo el color de la cabecera */
+.navbar {
+  background-color: #c53678;
+}
+
+/* Definiendo el color de la letra del título */
+h1 {
+  color: white;
+}
+
+/* Estilo de la primera columna del historial */
+
+.list-group-link.active,
+.list-group-link:hover {
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.list-group-item {
+  border: none;
+  color: #c53678;
+}
+
+/* Estilo para la segunda columna del historial */
+
+#historial-hoy, #historial-ayer, #historial-antiguos {
+  border: 1px solid #ddd;
+  background-color: #f5f5f5;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* para cada una de las búsquedas*/
+
+.search-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #c53678;
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.search-icons {
+  display: flex;
+}
+
+.search-icons i {
+  font-size: 17px;
+  margin-left: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.search-text {
+  font-size: 16px;
+}

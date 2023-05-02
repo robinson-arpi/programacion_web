@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial</title>
+    <!-- Enlace al archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+    <!-- Para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <!-- Librería jQuery para agregar interacción-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Mi css -->
+    <link rel="stylesheet" href="../css/styles_historial.css">
+
+
+</head>
+<body>
+
+    <!-- head -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <h1><i class="fas fa-history"></i> Historial</h1>
+        </div>
+    </nav>
+
+    <!-- contenido -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-3 border" style="border-color: #c53678; height: 100vh;">
+          <ul class="list-group">
+            <li class="list-group-item"><a href="#" class="list-group-link active" id="hoy">Hoy</a></li>
+            <li class="list-group-item"><a href="#" class="list-group-link" id="ayer">Ayer</a></li>
+            <li class="list-group-item"><a href="#" class="list-group-link" id="antiguos">Más antiguos</a></li>
+          </ul>
+        </div>
+        <div class="col-9" style="height: 100%; overflow-y: auto;">
+          <br>
+          <div id="historial-hoy">
+            <h6> Hoy - lunes, 1 de mayo de 2023</h6>
+            <!-- historial de hoy -->
+            
+              <div class="search-box">
+                <span class="search-text">Clases de word</span>
+                <span class="search-icons">
+                  <i class="fas fa-search"></i>
+                  <i class="fas fa-times"></i>
+                </span>
+              </div>
+              <div class="search-box">
+                <span class="search-text">Clases de excel</span>
+                <span class="search-icons">
+                  <i class="fas fa-search"></i>
+                  <i class="fas fa-times"></i>
+                </span>
+              </div>
+              <div class="search-box">
+                <span class="search-text">Electricista</span>
+                <span class="search-icons">
+                  <i class="fas fa-search"></i>
+                  <i class="fas fa-times"></i>
+                </span>
+              </div>
+              <div class="search-box">
+                <span class="search-text">Jardinería</span>
+                <span class="search-icons">
+                  <i class="fas fa-search"></i>
+                  <i class="fas fa-times"></i>
+                </span>
+              
+            
+            
+
+          </div>
+          <div id="historial-ayer">
+            <h6> Ayer - domingo, 30 de abril de 2023</h6>
+            <!-- historial de ayer -->
+          </div>
+          <div id="historial-antiguos">
+            <h6> sábado, 29 de abril de 2023</h6>
+            <!-- historial del sabado -->
+            
+            
+            <h6> viernes, 28 de abril de 2023</h6>
+            <!-- historial del viernes -->
+            
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+
+      $(document).ready(function() {
+        $('.list-group-link').click(function() {
+          // Elimina la clase "active" de todos los enlaces de la lista
+          $('.list-group-link').removeClass('active');
+          
+          // Agrega la clase "active" solo al enlace que se hizo clic
+          $(this).addClass('active');
+        });
+      });
+        
+    </script>
+       
+    
+</body>
+</html>
+
