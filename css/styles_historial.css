@@ -19,7 +19,10 @@ h1 {
 
 .list-group-item {
   border: none;
-  color: #c53678;
+}
+
+.list-group-item a {  
+  color: var(--color-fuerte);
 }
 
 /* Estilo para la segunda columna del historial */
