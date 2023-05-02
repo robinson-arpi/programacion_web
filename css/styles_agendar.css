@@ -9,20 +9,49 @@
     "form"
     "footer";
   
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(auto, 1fr));
     grid-template-rows: auto;
-  }
 
-  .contenedor-total {
     margin: 0 auto;
     transform: translate(0%,2%);
-    width: auto;
     background: var(--color-fondo);
     border-radius: 10px;
     box-shadow: 0 0 10px var(--color-fuerte);
   }
 
-  form{
+  .fila-botones {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+
+/* Páginas con pantallas grandes*/
+@media screen and (min-width: 601px) {
+  .grid{
+    display: grid;
+    grid-template-areas:
+    "header header"
+    "imagenServicio form"
+    "descrip form"
+    "footer footer";
+  
+    grid-template-columns: auto auto;
+    grid-template-rows: 80px 1frpx 1fr 75px;
+
+    margin: 0 auto;
+    transform: translate(0%,2%);
+    background: var(--color-fondo);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--color-fuerte);
+    max-width: 800px;
+  }
+
+}
+
+form{
     grid-area: form;
     
   }
@@ -80,106 +109,16 @@
   .fila-botones {
     display:flex;
     flex-direction: row;
-  }
-  
-  .boton1 {
-    flex-basis: 48%;
-    padding: 3%;
-  }
-  
-  .boton2{
-    flex-basis: 48%;
-    padding: 3%;
-  }
-  
-  
-}
-
-/* Páginas con pantallas grandes*/
-@media screen and (min-width: 601px) {
-  .grid{
-    display: grid;
-    grid-template-areas:
-    "header header"
-    "imagenServicio form"
-    "descrip form"
-    "footer footer";
-  
-    grid-template-columns: auto auto;
-    grid-template-rows: 80px 1frpx 1fr 75px;
-  }
-
-  .contenedor-total {
-    margin: 0 auto;
-    transform: translate(0%,2%);
-    width: 600px;
-    background: var(--color-fondo);
-    border-radius: 10px;
-    box-shadow: 0 0 10px var(--color-fuerte);
-  }
-
-  .section1{
-    grid-area: imagenServicio;
-  }
-
-  .section2{
-    grid-area: descrip;
-  }
-
-  footer{
-    grid-area: footer;
-  }
-
-  form{
-    padding-top: 30px;
-    grid-area: form;
-  }
-
-  header{
-    grid-area: header;
-  }
-
-  .border{
-    /* border: 1px solid black; */
-    padding: 0px 15px;
-  }
-    
-  #nom-servicio {
-    font-size: 18;
-    font-weight: bolder;
-    text-align: center;
-  }
-
-  #descripcion {
-    font-size: small;
-    padding: 10px;
-  }
-
-  #nom-operador {
-    text-align: center;
-    font-size: medium;
-  }
-
-  h1 {
-    text-align: center;
-    padding: 0, 0, 10px, 0;
-    border-bottom: 1px solid var(--color-fuerte);
-  }
-
-  .fila-botones {
-    display:flex;
-    flex-direction: row;
     padding-left: 50%;
   }
-
+  
   .boton1 {
     flex-basis: 48%;
     padding: 3%;
   }
-
+  
   .boton2{
     flex-basis: 48%;
     padding: 3%;
   }
-
-}
+  
