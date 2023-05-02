@@ -24,8 +24,10 @@ buttonAgendar.addEventListener("click", function(event) {
 
 buttonCancelar.addEventListener("click",function(event){
   event.preventDefault(); // detener el envío del formulario
-  alert("Está seguro de querer cancelar el agendamiento.");
-  window.location.href = '../index.html';
+  const confirmacion = confirm("Está seguro de querer cancelar el agendamiento?");
+  if (confirmacion) {
+    window.location.href = '../index.html';
+  }
 });
 
 
