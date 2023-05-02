@@ -1,11 +1,34 @@
-//Local storage para agendar
-
+/*------------------------------------------------------------------------
+HTML de agendar-servicio
+*/
 // Obtener referencias a los campos de texto
 var inputFecha = document.querySelector('.fecha');
 var inputHora = document.querySelector('.hora');
 var inputDireccion = document.querySelector('.direccion');
-var buttonCancelar = document.querySelector('.boton-cancelar');
-var buttonAgendar = document.querySelector('.boton-agendar');
+const buttonCancelar = document.querySelector('.boton-cancelar');
+const buttonAgendar = document.querySelector('.boton-agendar');
+
+
+//Verificar campos llenos
+buttonAgendar.addEventListener("click", function(event) {
+    if (inputFecha.value.trim() === "" || inputHora.value.trim() === "" || inputDireccion.value.trim() === "") {
+        event.preventDefault(); // detener el envío del formulario
+        alert("Por favor, complete todos los campos requeridos.");
+    }
+    else {
+      //Proceso de guardar en la base de datos
+      event.preventDefault(); // Evita el envío del formulario por defecto
+      window.location.href = '../index.html';
+    }
+});
+
+buttonCancelar.addEventListener("click",function(event){
+  event.preventDefault(); // detener el envío del formulario
+  alert("Está seguro de querer cancelar el agendamiento.");
+  window.location.href = '../index.html';
+});
+
+
 
 // Obtener el contenido guardado del almacenamiento local
 var fechaGuardado = localStorage.getItem('fecha_agendar');

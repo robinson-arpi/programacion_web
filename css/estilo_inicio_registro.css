@@ -148,10 +148,10 @@ form input:focus ~ span::before,
 form input:valid ~ span::before {
   width: 100%;
 }
-form .f_nacimiento, form .hora, form .correo {
+form .f_nacimiento, form .fecha, form .hora, form .correo {
   color: white;
 }
-form .f_nacimiento:focus, form .f_nacimiento:valid, form .hora:focus, form .hora:valid, form .correo:focus, form .correo:valid {
+form .f_nacimiento:focus, form .f_nacimiento:valid, form .fecha:focus, form .fecha:valid, form .hora:focus, form .hora:valid, form .correo:focus, form .correo:valid {
   color: var(--color-texto);
   font-family: Arial, Helvetica, sans-serif;
 }
