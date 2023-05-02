@@ -5,9 +5,7 @@
     <meta name = "viewport" content = "width-device-width, inital-scale=1.0">
     <title>Agregar un servicio</title>
     <link rel = "stylesheet" href = "/css/styles_inicio.css">
-    <link rel = "stylesheet" href = "/css/styles_registro.css">
     <link rel = "stylesheet" href = "/css/styles_agregarServicio.css">
-    <link rel="stylesheet" href="/css/styles_favoritos.css">
 </head>
 <body>
     <form>
@@ -15,30 +13,30 @@
         <header class="header border" >
           <h1>Agregar Servicio</h1>
         </header>
-        <section class="section1 border subir-imagen">
-          <p>Subir imagen</p>
-        </section>
+        <section class="section1 border ">
+          <div id="preview-container" class="preview-container" style="margin: 10px;">
+            <img id="imagen-preview" src="" alt="" style="display:none;">
+            <button id="eliminar-imagen" class="eliminar-imagen" style="display:none;">X</button>
+          </div>
+          <div class="subir-imagen">            
+            <p>Subir una imagen</p>
+            <input type="file" id="input-imagen" accept="image/*" style="display:none;">
+          </div>
+          
+        </section>        
         <section class="section2 border">
           <div class = "entrada">
             <input type = "text" required>
             <label>Título</label>
           </div>
         </section>
-        <section class="section3 border">
-          <div class = "entrada">
-            <input type = "text" required>
-            <label>Descipción</label>
-          </div>
-        </section>
-        <section class="section4 border">
-          <div class = "entrada">
-            <input type = "text" required>
-            <label>Duración</label>
-          </div>
-        </section>
+        <section class="section3 border">          
+          <label for="">Descripción: </label> <br>
+          <textarea name="" id=""  placeholder="Descripción del servicio..." required class="textarea"></textarea>
+        </section>        
         <section class="section5 border">
-          <label for="categoria">Categoría:</label>
-          <select id="categoria" name="categoria">
+          <label for="categoria">Categoría:</label> <br>
+          <select id="categoria" name="categoria" class="select">
             <option value="" selected disabled>Selecione ...</option>
             <option value="Cuidado personal">Cuidado personal</option>
             <option value="Computación">Cuidado personal</option>
@@ -47,17 +45,22 @@
             <option value="Otro">Otro</option>
           </select><br><br>
         </section>
+        
         <section class="section6 border">
           <div class = "entrada">            
             <input type = "text" required>
-            <label>Ubicación</label>
+            <label>Ciudad</label>
           </div>
         </section>
         <section class="section7 border">
-          <div class = "entrada">            
-            <input type = "text" required>
-            <label>Disponibilidad</label>
-          </div>
+          <label for="disponibilidad">Disponibilidad:</label> <br>
+          <select id="disponibilidad" name="disponibilidad" class="select">
+            <option value="" selected disabled>Selecione ...</option>
+            <option value="En la mañana">En la mañana</option>
+            <option value="En la tarde">En la tarde</option>
+            <option value="Todo el día">Todo el día</option>
+            <option value="Virtual">Virtual</option>
+          </select><br><br>
         </section>
         <section class="section8 border">
           <label for="requisitos">Requisitos: &nbsp;</label>
@@ -70,7 +73,7 @@
         </section>
         <section class="section9 border">
           <div class="boton1">
-            <input type = "submit" value = "Cancelar">
+            <input type = "submit" id="btnCancelar" value = "Cancelar">
           </div>
           <div class="boton2">
             <input type = "submit" value = "Aceptar">
@@ -80,25 +83,6 @@
     </form>      
 </body>
 
-  <script>
-    function agregarRequisito() {
-      var requisito = document.getElementById("requisito").value;
-      if (requisito != "") {
-        var listaRequisitos = document.getElementById("lista-requisitos");
-        var nuevoRequisito = document.createElement("li");
-        nuevoRequisito.innerHTML = requisito;
-        listaRequisitos.appendChild(nuevoRequisito);
-        document.getElementById("requisito").value = "";
-      }
-    }
-    
-    function cancelar() {
-      document.getElementById("titulo").value = "";
-      document.getElementById("descripcion").value = "";
-      document.getElementById("categoria").selectedIndex = 0;
-      document.getElementById("disponibilidad").checked = false;
-      document.getElementById("lista-requisitos").innerHTML = "";
-    }
-  </script>
+<script src="../JS/agregar_servicio.js"></script>
 
 </html>
