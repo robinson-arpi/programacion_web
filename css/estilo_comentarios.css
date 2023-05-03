@@ -1,0 +1,39 @@
+form .inputBox {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+form .inputBox label {
+  color: #c53678;
+  font-weight: 700;
+}
+form .inputBox input[type=text], form .inputBox select, form .inputBox textarea {
+  appearance: none;
+  border-color: black;
+  background: white;
+  padding: 8px;
+  border-radius: 15px;
+  color: black;
+  resize: none;
+}
+form .inputBox input[type=text]:hover, form .inputBox select:hover, form .inputBox textarea:hover {
+  outline: 1px solid black;
+  box-shadow: 0 0 10px var(--color-fuerte);
+}
+
+button.btn-rosado {
+  color: black;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: rgb(247, 139, 207);
+  font-weight: bold;
+}
+
+button.btn-rosado:hover {
+  background-color: #c53678;
+  color: var(--color-fondo);
+  transition: 0.5s;
+}
+
+/*# sourceMappingURL=estilo_comentarios.css.map */
