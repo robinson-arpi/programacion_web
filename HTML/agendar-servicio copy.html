@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang = "es">
+<head>
+    <meta cahrset = "UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale=1.0">
+    <title>Agendar un servicio</title>
+    <link rel="stylesheet" href="../css/estilo_inicio_registro.css">
+</head>
+<body>
+    <section class="lateral_izquierdo imagen_registro">
+        <img src="../Images/agendar.svg" alt="">
+    </section>
+    <main>
+        <div class="contenedor_login">
+            <p class="titulo">Agendar Servicio</p>
+            <div class="separador"></div>
+            <p class="mensaje_bienvenida">Por favor, ingrese los campos requeridos </p>
+            <div class="section2 border">
+                <p id="nom-servicio">Nombre del servicio</p>
+                <p id="nom-operador">Nombre del operador</p>
+            </div>
+            <form class="form_registro" method = "post">
+                <div class = "entrada">
+                    <input type = "date" class="fecha" name = "fecha" id="fecha" required>
+                    <label>Fecha</label>
+                </div>
+                <div class = "entrada">
+                    <input type = "time" class="hora" name = "hora" id="hora" required>
+                    <label>Hora</label>
+                </div>
+                <div class = "entrada">
+                    <input type = "text" class="direccion" required>
+                    <label>Dirección</label>
+                </div>
+                <div class = "botones-2">
+                    <button class="boton boton-cancelar">Cancelar</button>
+                    <button class="boton boton-agendar">Agregar</button>
+                </div>
+                
+            </form>
+        </div>
+    </main>
+</body>
+<script src="../JS/script-agendar.js"></script>
+</html>
