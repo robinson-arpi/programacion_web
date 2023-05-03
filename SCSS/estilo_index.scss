@@ -1,3 +1,13 @@
+
+
+body {
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
 main {
 	margin: 2%;
 }
@@ -9,12 +19,13 @@ section {
 h2 {
 	font-size: 1.5em;
 	margin-bottom: 20px;
+  font-family:Arial, Helvetica, sans-serif; 
 }
 
 /* --------------------------------
     sección portada
 */
-.portada{
+.portada {
   max-width: 100%;
   overflow: hidden;
   img {
@@ -42,6 +53,7 @@ h2 {
   }
   .testimonio {
     display: flex;
+    min-width: 200px;
     align-items: center;
     flex-direction: column;
     border: 1px solid #ccc;
@@ -76,6 +88,7 @@ h2 {
     }
     .categoria {
       display: flex;
+      min-width: 200px;
       align-items: center;
       flex-direction: column;
       border: 1px solid #ccc;

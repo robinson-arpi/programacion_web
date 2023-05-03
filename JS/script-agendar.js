@@ -5,11 +5,14 @@ HTML de agendar-servicio
 var inputFecha = document.querySelector('.fecha');
 var inputHora = document.querySelector('.hora');
 var inputDireccion = document.querySelector('.direccion');
+<<<<<<< HEAD
 const buttonCancelar = document.querySelector('.boton-cancelar');
 var buttonAgendar = document.querySelector('agendarB');
+=======
+var buttonCancelar = document.querySelector('.boton-cancelar');
+var buttonAgendar = document.querySelector(".boton-agendar");
+>>>>>>> 8c153434ed55313834ab880f0df958f7f0bd9068
 
-
-//Verificar campos llenos
 buttonAgendar.addEventListener("click", function(event) {
   // Verifica si los campos required están llenos
   var inputs = document.querySelectorAll('input[required]');
@@ -21,13 +24,18 @@ buttonAgendar.addEventListener("click", function(event) {
       break;
     }
   }
+<<<<<<< HEAD
    
+=======
+    
+>>>>>>> 8c153434ed55313834ab880f0df958f7f0bd9068
   if (formValid) {
     event.preventDefault(); // Evita el envío del formulario por defecto
     window.location.href = '../index.html';
   }
 });
 
+<<<<<<< HEAD
 // buttonAgendar.addEventListener("click", function(event) {
 //      if (inputFecha.value.trim() === "" || inputHora.value.trim() === "" || inputDireccion.value.trim() === "") {
 //          //event.preventDefault(); // detener el envío del formulario
@@ -39,6 +47,9 @@ buttonAgendar.addEventListener("click", function(event) {
 //        window.location.href = '../index.html';
 //      }
 // });
+=======
+
+>>>>>>> 8c153434ed55313834ab880f0df958f7f0bd9068
 
 buttonCancelar.addEventListener("click",function(event){
   event.preventDefault(); // detener el envío del formulario

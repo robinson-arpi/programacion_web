@@ -151,7 +151,7 @@ USUARIO
 -----------------*/
 .header_usuario {
   grid-area: header_usuario;
-  display: inline-block;
+  display: flex;
   align-items: center;
 }
 
@@ -189,7 +189,6 @@ USUARIO
 
 .item_usuario li {
   width: 10vw;
-  
 }
 
 .item_usuario ul {
@@ -261,94 +260,3 @@ body {
 
 
 
-/* Estilos para dispositivos móviles */
-@media screen and (max-width: 750px) {
-  /* Cambiar la estructura de la cuadrícula a una sola fila de 3 columnas */
-  .cabecera {
-    display: grid;
-    grid-template-areas:
-      "header_logo header_buscador header_menu"
-      "header_usuario header_usuario header_usuario"
-      "header_navegacion header_navegacion header_navegacion";
-    grid-template-columns: 10% 80% 10%;
-    grid-template-rows: auto auto auto;
-    height: auto;
-  }
-  .header_logo, .header_usuario{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /*Oculta el nombre d el a pagina*/
-  .nombre_pagina {
-    display: none;
-  }
-
-  .header_busqueda {
-    grid-area: header_buscador;
-    display: flex;
-    align-items: stretch; /* Ajusta la altura de los elementos al contenedor */
-    width: 100%;
-    padding-top: 1%;
-    /*border: 1px solid black;*/
-  }
-
-  .portada {
-    display: none;
-  }
-
-  .header_menu {
-    grid-area: header_menu;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .header_navegacion nav ul{
-    display:flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .header_usuario .navbar-nav {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  
-  .header_usuario .navbar-nav li {
-    display: block;
-  }
-
-    /* Mostrar la navegación y el usuario al activar el botón hamburguesa */
-    .header_usuario.active {
-      display: block;
-    }
-
-    .item_usuario li {
-      width: 90vw;
-    }
-    .header_navegacion nav{
-      width: 100vw;
-    }
-    .menu_navegacion {
-      width: 100vw;
-    }
-    .item_responsive {
-      width: 98vw;
-    }
-    .sub_menu {
-      display:none;
-      position: absolute;
-    }
-    
-    .sub_menu.show {
-      display: block;
-    }
-
-
-
-}

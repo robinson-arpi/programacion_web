@@ -1,8 +1,248 @@
+:root {
+  --color-fuerte: #c53678;
+  --color-fuerte2: #ff5841;
+  --color-before: #737373;
+  --color-fondo: white;
+  --color-texto: black;
+  --color-resaltado: #bfbfbf;
+  --tamano-texto: 16px;
+  --tamano-pequeno: 12px;
+  --tamano-h2: 20px;
+}
 
 
-/* ---------------------------------------
-pie de página
-*/
+/*---------------------------------------
+Navegacion
+---------------------------------------*/
+nav {
+  ul{
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  list-style: none; 
+  margin: 0;
+  padding: 0; 
+  }
+
+  li {
+    display: inline-block;
+  }
+
+  a {
+    display: flex;
+    justify-content: flex-start;
+    padding: 0.5em;
+    text-decoration: none; /*quita los subrayados*/
+    color: var(--color-texto);
+
+    &:hover {
+      background-color: var(--color-fuerte);
+      color:var(--color-fondo);
+      border-radius: 10px;
+    }
+  }
+}
+
+nav {
+  > ul {
+    > li {
+      display: inline-block;
+      position: relative;
+      > ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        z-index: 1;
+        padding: 0;
+      }
+      &:hover {
+        > ul {
+          display: block;
+        }
+      }
+    }
+  }
+}
+/*---------------------------------------
+CABECERA
+---------------------------------------*/
+.cabecera {
+  box-sizing: border-box; /* asegura que el ancho del div incluya el borde y el padding */
+  display: grid;
+  grid-template-areas:
+  "header_logo header_buscador header_nada"
+  "header_logo header_navegacion header_usuario";
+
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: auto auto;
+  height: 15vh;
+  grid-column-gap: .5%;
+  grid-row-gap: .5%;
+  margin: none;
+  padding: none;
+  border-bottom: 2px solid #c53678;
+  font-family: Arial, Helvetica, sans-serif;
+
+  /*-----------------------------
+  Container logo
+  -----------------------------*/
+  .header_logo {
+    grid-area: header_logo;
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    font-size: 20px;
+    padding: 1%;
+
+    .fa-user, .fa-bell, .fa-search{
+      font-size: var(--tamanio-texto); /* Cambiar el tamaño de fuente según sea necesario */
+      color: var(--color-texto);
+      margin: none;
+      padding: none;
+    }
+
+    .icono{
+      padding-right: 1.5%;
+    }
+    .nombre_pagina{
+      padding-left: 1.5%;
+    }
+    .i {
+      color: var(--color-texto) !important;
+      font-size: 30px;
+      margin: none;
+      padding: none;
+    }  
+  }
+  /*-----------------------------
+  Container menu
+  -----------------------------*/
+  .header_menu {
+    display: none; /* Oculta el menú de hamburguesa por defecto en pantallas grandes */
+    cursor: pointer;
+  }
+  /*-----------------------------
+  Container Busqueda
+  -----------------------------*/
+  .header_busqueda {
+    grid-area: header_buscador;
+    display: flex;
+    align-items: stretch; /* Ajusta la altura de los elementos al contenedor */
+    width: 75%;
+    padding-top: 1%;
+    
+    //Campo busqueda
+    .c_busqueda_entrada {
+      flex-grow: 1; /* Permite que el campo de búsqueda ocupe todo el ancho restante */
+      width: 75%;
+      border-radius: 5px 0 0 5px;
+      border: 1px solid var(--color-fuerte);
+      padding-left: 10px;
+      font-size: 16px;
+      outline: none;
+      display: flex;
+      align-items: center;
+      
+      &:hover{
+        box-shadow: 0 0 10px var(--color-fuerte);
+      }
+    }
+    //Boton busqueda
+    .c_busqueda_boton {
+      background-color: var(--color-fuerte);
+      border: 1px solid var(--color-fuerte);
+      color: var(--color-fondo);
+      cursor: pointer;
+      border-radius: 0 5px 5px 0;
+
+      &:hover {
+        box-shadow: 0 0 10px var(--color-fuerte);
+        color: var(--color-fondo)
+      }
+    }
+  }
+  .header_opciones_usuario {
+    display: none;
+    grid-area: header_opciones_usuario;
+  }
+  /*-----------------------------
+  Container navegacion
+  -----------------------------*/
+  .header_navegacion {
+    grid-area: header_navegacion;
+    display: flex;
+    align-items: center;
+  }
+
+  /*-----------------------------
+  Container usuario
+  -----------------------------*/
+  .header_usuario {
+    grid-area: header_usuario;
+    display: flex;
+    align-items: center;
+    .lista_desplegable {
+      display: flex;
+      flex-basis: 30%;
+      align-items: center;
+
+      .item_usuario {
+        a {
+        padding: 10px;
+        color: black;
+        text-decoration: none;
+        }
+        ul {
+          width: 12vw;
+          li{
+            width: 10vw;
+            a {
+              width: 100%;
+            }
+          }
+        }
+
+        .sub_menu {
+          position: absolute;
+          top: 100%;
+          left: 0;
+          padding: 10px;
+          background-color: rgba(255, 255, 255, 0.8); /* Color blanco con una opacidad de 0.5 */
+          opacity: 0;
+          pointer-events: none;
+          border-radius: 0 0 10px 10px;
+        }
+
+        &:hover {
+          i{
+            color:white;
+          }
+          .sub_menu {
+            opacity: 1;
+            pointer-events: auto;
+            &:hover {
+              opacity: 1;
+            }
+          }
+        }
+        
+      }
+
+      .item_notificacion:hover i{
+        color: white;
+      }
+    }
+    
+  }
+  
+}
+
+
+
+/* -----------------------------------------------------------
+Footer
+-------------------------------------------------------------*/
 footer {
     display: flex;
     align-items: center;
@@ -33,7 +273,90 @@ footer {
   }
 
   
-  @media screen and (max-width: 768px) {
+  
+@media screen and (max-width: 750px) {
+  /* Cambiar la estructura de la cuadrícula a una sola fila de 3 columnas */
+  .cabecera {
+    display: grid;
+    grid-template-areas:
+      "header_logo header_buscador header_menu"
+      "header_usuario header_usuario header_usuario"
+      "sub_menu sub_menu sub_menu"
+      "header_navegacion header_navegacion header_navegacion";
+    grid-template-columns: 10% 78% 12%;
+    grid-template-rows: 6vh auto auto auto;
+    height: auto;
+    
+    .header_logo{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      /*Oculta el nombre d el a pagina*/
+      .nombre_pagina {
+        display: none;
+      }
+    }
+
+    .header_busqueda {
+      grid-area: header_buscador;
+      display: flex;
+      align-items: stretch; /* Ajusta la altura de los elementos al contenedor */
+      width: 100%;
+      padding-top: 1%;
+      /*border: 1px solid black;*/
+    }
+
+    //MBOton hamburguesa
+    .header_menu {
+      grid-area: header_menu;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .header_usuario{
+      display: flex;
+      .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    .header_navegacion {
+      nav {
+        ul{
+          display:flex;
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+    }
+
+    
+  }
+
+  .portada {
+    display: none;
+  }
+  
+    .item_usuario li {
+      width: 90vw;
+    }
+    
+    .header_navegacion nav{
+      width: 100vw;
+      .menu_navegacion {
+        width: 100vw;
+      }
+    }
+    
+    .item_responsive {
+      width: 98vw;
+    }
+
     .footer_enlaces {
       flex-wrap: wrap;
       justify-content: flex-start;
@@ -42,6 +365,4 @@ footer {
         margin: 5px;
       }
     }
-  
-  }
-  
+} 
