@@ -1,30 +1,3 @@
-// const formComentario = document.getElementById('form-comentario');
-// const listaComentarios = document.getElementById('lista-comentarios');
-
-// formComentario.addEventListener('submit', function(event) {
-//   event.preventDefault();
-//   const comentario = document.getElementById('input-comentario').value;
-//   const calificacion = document.querySelector('input[name="rating"]:checked').value;
-//   const nuevoComentario = document.createElement('li');
-//   nuevoComentario.className = 'list-group-item';
-//   nuevoComentario.innerHTML = `
-//     <div class="row">
-//       <div class="col-12">
-//         <p>${comentario}</p>
-//       </div>
-//       <div class="col-12">
-//         <span>Calificación:</span>
-//         <div class="estrellitas">
-//           ${'★'.repeat(calificacion)}
-//         </div>
-//       </div>
-//     </div>
-//   `;
-//   listaComentarios.appendChild(nuevoComentario);
-//   formComentario.reset();
-// });
-
-
 const form = document.querySelector('form'); // Selecciona el formulario
 const accordion = document.querySelector('.accordion'); // Selecciona el elemento que contiene los acordeones
 
@@ -33,6 +6,7 @@ form.addEventListener('submit', (e) => { // Agrega un evento al formulario para 
 
   const nombre = document.querySelector('#nombre').value; // Obtiene el valor del campo de nombre
   const calificacion = document.querySelector('#calificacion').value; // Obtiene el valor del campo de calificación
+  const categoria = document.querySelector('#categoria').value; // Obtiene el valor del campo de categoria
   const comentario = document.querySelector('#comentario').value; // Obtiene el valor del campo de comentario
 
   // Crea un nuevo acordeón
@@ -50,12 +24,9 @@ form.addEventListener('submit', (e) => { // Agrega un evento al formulario para 
   accordionButton.setAttribute('data-bs-target', `#comentario-${Date.now()}`); // Usa la marca de tiempo actual como identificador único
   accordionButton.setAttribute('aria-expanded', 'true');
   accordionButton.setAttribute('aria-controls', `comentario-${Date.now()}`);
-  //accordionButton.innerHTML = `${nombre} - ${calificacion} estrellas`;
-   accordionButton.innerHTML = `${nombre} - 
-         <span> Calificación:</span>
-           <div class="estrellitas">
-           ${'★'.repeat(calificacion)}
-          </div>`;
+
+   accordionButton.innerHTML = `${nombre} > ${categoria} > 
+           ${'★'.repeat(calificacion)}`;
 
   accordionHeader.appendChild(accordionButton);
 
@@ -81,5 +52,6 @@ form.addEventListener('submit', (e) => { // Agrega un evento al formulario para 
   // Limpia los campos del formulario
   document.querySelector('#nombre').value = '';
   document.querySelector('#calificacion').value = '1';
+  document.querySelector('#calificacion').value = 'Computacion';
   document.querySelector('#comentario').value = '';
 });
