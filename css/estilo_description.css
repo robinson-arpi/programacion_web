@@ -44,6 +44,9 @@ section {
     margin-bottom: 15px;
 }
 
+.imagen_descripcion2{
+    display: none;
+}
 /* Imagen */
 .imagen_descripcion img {
     width: 100%;
@@ -167,3 +170,29 @@ main {
     transition: 0.5s;
     box-shadow: 0 0 10px var(--color-fuerte2);
 }
+
+@media (max-width: 800px) {
+    .imagen_descripcion2{
+        
+        display: block;
+    }
+    .imagen_descripcion2 img{
+        width: 100%;
+
+    }
+    
+    .contenedor_servicio{
+        width: 90vw;
+    }
+    
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .lateral_izquierdo {
+      display: none;
+    }
+  }
+
+
