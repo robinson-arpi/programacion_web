@@ -1,0 +1,62 @@
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+.grid{
+    display: grid;
+    grid-template-areas:
+    "header "
+    "parrafos";
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: auto;
+
+    margin: 0 auto;
+    transform: translate(0%, 0%);
+    margin: 3%;
+    width: auto;
+    background: var(--color-fondo);
+    border-radius: 10px;
+    box-shadow: 0 0 10px var(--color-fuerte);
+
+    header{
+        grid-area: header;
+    }
+
+    h1 {
+        text-align: center;
+        padding: 0, 0, 20px, 0;
+        border-bottom: 1px solid var(--color-fuerte);
+      }
+    
+    .parrafos{
+    grid-area: parrafos;
+    padding: 3%;
+    text-align: justify;
+    }
+
+    a.btn-rosado {
+        color: black;
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background-color: rgb(247, 139, 207);
+        font-weight: bold;
+        &:hover{
+            color: var(--color-fondo);
+            transition: .5s;
+            }
+    }
+}
+
+//Para uso en otras páginas del sitio
+a.btn-rosado {
+    color: black;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: rgb(247, 139, 207);
+    font-weight: bold;
+    &:hover{
+        color: var(--color-fondo);
+        transition: .5s;
+        }
+}
