@@ -151,7 +151,7 @@ USUARIO
 -----------------*/
 .header_usuario {
   grid-area: header_usuario;
-  display: flex;
+  display: inline-block;
   align-items: center;
 }
 
@@ -189,6 +189,7 @@ USUARIO
 
 .item_usuario li {
   width: 10vw;
+  
 }
 
 .item_usuario ul {
