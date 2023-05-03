@@ -74,5 +74,5 @@ const username = document.querySelector('.item_usuario');
 username.addEventListener('mouseleave', function() {
   setTimeout(function() {
     username.classList.remove('sub_menu');
-  }, 500); // Retardo de 500ms antes de ocultar el submenú
+  }, 50); // Retardo de 500ms antes de ocultar el submenú
 });
