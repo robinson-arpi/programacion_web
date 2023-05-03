@@ -5,90 +5,195 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog</title>
-    <link rel="stylesheet" href="../css/styles_blog.css">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel = "stylesheet" href = "/css/styles.css">
+    <link rel = "stylesheet" href = "/css/styles_index.css">
+    <link rel = "stylesheet" href="/css/blog.css">
+    <link rel = "stylesheet" href = "/CSS/estilo_header_footer.css">
+    
+    <!-- Agregar los iconos de fonstawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+      $('#menu-toggle').click(function() {
+        $('.header_navegacion, .header_usuario').toggleClass('active');
+      });
+      });
+    </script>
 </head>
 <body>
-    <section id="blog">
-        <div class="blog-heading">
-            <span>Sabiduría en Linea</span>
-            <h3>El rincón de los mayores</h3>
+    <header class = cabecera>
+        <div class="header_logo">
+          <div class = "icono"><i class="fas fa-book"></i></div>
+          <div class = "nombre_pagina"><span class="mensaje">Sabiduría <br>en línea</span></div>        
         </div>
-        <div class="blog-container">
-            <div class="blog-box">
-                <div class="blog-img">
-                    <img src="../Images/habitos_saludables.jpg" alt="Blog">
-                </div>
-                <div class="blog-text">
-                    <span>10 Abril 2023 / Hábitos</span>
-                    <a href="#" class="blog-title">Hábitos en los adultos mayores</a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
-                    <a href="#">Ver mas</a>
-                </div>
-            </div>
-            <div class="blog-box">
-                <div class="blog-img">
-                    <img src="../Images/felicidad.jpg" alt="Blog">
-                </div>
-                <div class="blog-text">
-                    <span>10 Abril 2023 / Felicidad</span>
-                    <a href="#" class="blog-title">Felicidad en los adultos mayores</a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
-                    <a href="#">Ver mas</a>
-                </div>
-            </div>
-            <div class="blog-box">
-                <div class="blog-img">
-                    <img src="../Images/deporte.jpg" alt="Blog">
-                </div>
-                <div class="blog-text">
-                    <span>10 Abril 2023 / Deporte</span>
-                    <a href="#" class="blog-title">Deporte en los adultos mayores</a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
-                    <a href="#">Ver mas</a>
-                </div>
-            </div>
-            <div class="blog-box">
-                <div class="blog-img">
-                    <img src="../Images/cocina.jpg" alt="Blog">
-                </div>
-                <div class="blog-text">
-                    <span>10 Abril 2023 / Cocina</span>
-                    <a href="#" class="blog-title">Cocina de los adultos mayores</a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
-                    <a href="#">Ver mas</a>
-                </div>
-            </div>
-            <div class="blog-box">
-                <div class="blog-img">
-                    <img src="../Images/cariño.jpg" alt="Blog">
-                </div>
-                <div class="blog-text">
-                    <span>10 Abril 2023 / Cariño</span>
-                    <a href="#" class="blog-title">Cariño en los adultos mayores</a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
-                    <a href="#">Ver mas</a>
-                </div>
-            </div>
-            <div class="blog-box">
-                <div class="blog-img">
-                    <img src="../Images/alimentación.jpg" alt="Blog">
-                </div>
-                <div class="blog-text">
-                    <span>10 Abril 2023 / Alimentación</span>
-                    <a href="#" class="blog-title">Alimentación en los adultos mayores</a>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
-                    <a href="#">Ver mas</a>
-                </div>
-            </div>
+  
+        <div class="header_busqueda">
+          <input class = "c_busqueda_entrada" type="text" id="busqueda" name="busqueda" placeholder="Buscar información ..."></input>
+          <button class="c_busqueda_boton" type = "submit"><i class="fas fa-search"></i></button>
         </div>
+  
+        <div class = "header_menu">
+          <button id="menu-button" class="hamburguesa-button"><i class="fas fa-bars"></i></button>
+        </div>
+  
+        <div class="header_navegacion">
+          <nav>
+            <ul>
+              <li><a href="../index.html">Inicio</a></li>
+              <li><a href="../HTML/servicios.html">Servicios</a></li>
+              <li><a href="../HTML/blog.html">Blog</a></li>
+              <li><a href="../HTML/ayuda.html">Ayuda</a></li>
+            </ul>
+          </nav>
+        </div>
+  
+        <div class="header_usuario">
+          <nav class="lista_desplegable">
+              <ul class = "navbar-nav">
+                <li class = "item_usuario"><a href="#"><i class="fas fa-user"></i>Usuario</a>
+                  <ul class = "sub_menu">
+                    <li><a href="/HTML/perfil-usuario.html">Perfil</a></li>
+                    <li><a href="/HTML/registro_servicios.html">Dar servicio</a></li>
+                    <li><a href="/HTML/agregar-servicio.html">Agregar servicios</a></li>
+                    <li><a href="/HTML/historial.html">Cronograma</a></li>
+                    <li><a href="/HTML/favoritos.html">Favoritos</a></li>
+                  </ul>
+                </li>
+                <li class = "item_notificacion" ><a href="HTML/notificaciones.html"><i class="fas fa-bell"></i>Notificaciones</a></li>
+              </ul>
+          </nav>
+        </div>
+    </header>
+    <main>
+        <section class="categorias_populares">
+            <div class="container">
+                <div class="row card-deck">
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-3">
+                        <div class="card clickable">
+                            <img src="/Images/habitos_saludables.jpg" class="card-img-top " alt="...">
+                            <div class="card-body">
+                                <span>10 Abril 2023 / Hábitos</span>
+                                <h5 class="card-body">Hábitos en los adultos mayores</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
+                                <a href="#">Ver mas</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-3">
+                        <div class="card clickable">
+                            <img src="/Images/felicidad.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <span>10 Abril 2023 / Felicidad</span>
+                                <h5 class="card-body">Felicidad en los adultos mayores</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
+                                <a href="#">Ver mas</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-3">
+                        <div class="card clickable">
+                            <img src="/Images/deporte.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <span>10 Abril 2023 / Deporte</span>
+                                <h5 class="card-body">Deporte en los adultos mayores</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
+                                <a href="#">Ver mas</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-3">
+                        <div class="card clickable">
+                            <img src="/Images/cocina.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <span>10 Abril 2023 / Cocina</span>
+                                <h5 class="card-body">Cocina de los adultos mayores</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
+                                <a href="#">Ver mas</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-3">
+                        <div class="card clickable">
+                            <img src="/Images/cariño.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <span clas>10 Abril 2023 / Cariño</span>
+                                <h5 class="card-body">Cariño en los adultos mayores</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
+                                <a href="#">Ver mas</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-3">
+                        <div class="card clickable">
+                            <img src="/Images/alimentación.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <span>10 Abril 2023 / Alimentación</span>
+                                <h5 class="card-body">Alimentación en los adultos mayores</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
+                                <a href="#">Ver mas</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-3">
+                        <div class="card clickable">
+                            <img src="/Images/salud.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <span>10 Abril 2023 / Salud</span>
+                                <h5 class="card-body">Salud en los adultos mayores</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
+                                <a href="#">Ver mas</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-3">
+                        <div class="card clickable">
+                            <img src="/Images/confianza.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <span>10 Abril 2023 / Confianza</span>
+                                <h5 class="card-body">Confianza en los adultos mayores</h5>
+                                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto laudantium quia incidunt vel, sequi hic accusantium quas expedita aliquid, corporis consequuntur facilis amet autem officia assumenda. Quasi placeat harum quod.</p>
+                                <a href="#">Ver mas</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    <footer>
         <div class="rrss">
             <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
             <a href="#"><ion-icon name="logo-instagram"></ion-icon></ion-icon></a>
             <a href="#"><ion-icon name="logo-twitter"></ion-icon></ion-icon></a>
          </div>
-        
-    </section>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <div class="footer_contenedor">
+          <div class="footer_enlaces">
+            <a class="nav-link" href="/HTML/acerca-de-nosotros.html">Acerca de nosotros</a>
+            <a class="nav-link" href="/HTML/terminos-condiciones.html">Términos y condiciones</a>
+            <a class="nav-link" href="/HTML/ayuda.html">Ayuda</a>
+            <a class="nav-link" href="/HTML/contacto.html">Contáctenos</a>
+          </div>
+        </div>
+      </footer>
+  
+      <!-- Agregar los enlaces a los archivos JavaScript de Bootstrap -->
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script src="js/menu_hamburguesa.js"></script>
+      <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+      <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
