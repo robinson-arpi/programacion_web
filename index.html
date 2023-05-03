@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv = "X-UA-Compatible" content="IE=edge">
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+    
     <link rel = "stylesheet" href = "CSS/estilo_header_footer.css">
     <link rel = "stylesheet" href = "CSS/estilo_index.css">
+    
     
     <!-- Agregar los iconos de fonstawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
@@ -20,8 +22,8 @@
       </div>
 
       <div class="header_busqueda">
-        <input class = "c_busqueda_entrada" type="text" id="busqueda" name="busqueda" placeholder="Escriba su consulta aquí"></input>
-        <button class="c_busqueda_boton" type = "submit"><i class="fas fa-search"></i></button>
+        <input class = "c_busqueda_entrada entrada_busqueda" type="text" id="busqueda" name="busqueda" placeholder="Escriba su consulta aquí"></input>
+        <button class="c_busqueda_boton boton_busqueda" type = "submit"><i class="fas fa-search"></i></button>
       </div>
 
       <div class = "header_menu">
@@ -31,23 +33,23 @@
       <div class="header_navegacion">
         <nav>
           <ul class = "menu_navegacion">
-            <li class = "item_responsive"><a href="index.html">Inicio</a></li>
-            <li class = "item_responsive"><a href="HTML/servicios.html">Servicios</a></li>
-            <li class = "item_responsive"><a href="HTML/blog.html">Blog</a></li>
-            <li class = "item_responsive"><a href="HTML/ayuda.html">Ayuda</a></li>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="HTML/servicios.html">Servicios</a></li>
+            <li><a href="HTML/blog.html">Blog</a></li>
+            <li><a href="HTML/ayuda.html">Ayuda</a></li>
+            <li><a href="HTML/comentarios.html">Comentarios</a></li>
           </ul>
         </nav>
       </div>
       <div class="header_usuario">
         <nav class="lista_desplegable">
             <ul class = "navbar-nav">
-              <li class = "item_usuario"><a><i class="fas fa-user"></i>Usuario</a>
+              <li class = "item_usuario"><a href="HTML/perfil-usuario.html"><i class="fas fa-user"></i>Usuario</a>
                 <ul class = "sub_menu">
-                  <li><a href="HTML/perfil-usuario.html">Perfil</a></li>
-                  <li><a href="HTML/registro_servicios.html">Dar servicio</a></li>
-                  <li><a href="HTML/agregar-servicio.html">Agregar servicios</a></li>
+                  <li><a href="HTML/agregar-servicio.html">Agregar servicio</a></li>
                   <li><a href="HTML/cronograma.html">Cronograma</a></li>
                   <li><a href="HTML/favoritos.html">Favoritos</a></li>
+                  <li><a href="HTML/historial.html">Historial</a></li>
                 </ul>
               </li>
               <li class = "item_notificacion"><a href="HTML/notificaciones.html"><i class="fas fa-bell"></i>Notificaciones</a></li>
@@ -55,13 +57,12 @@
         </nav>
       </div>
       <div class = "menu_usuario">
-        <nav class="lista_desplegable">
-          <ul class = "navbar-nav">
-            <li><a href="HTML/perfil-usuario.html">Perfil</a></li>
-            <li><a href="HTML/registro_servicios.html">Dar servicio</a></li>
-            <li><a href="HTML/agregar-servicio.html">Agregar servicios</a></li>
+        <nav class="nav_menu_usuario">
+          <ul class = "menu_opciones_usuario">
+            <li><a href="HTML/agregar-servicio.html">Agregar servicio</a></li>
             <li><a href="HTML/cronograma.html">Cronograma</a></li>
             <li><a href="/HTML/favoritos.html">Favoritos</a></li>
+            <li><a href="HTML/historial.html">Historial</a></li>
           </ul>
         </nav>    
       </div>
@@ -71,6 +72,7 @@
     <div class = "portada">
       <img src="Images/portada.jpg" alt="Portada" style="max-width: 100%;">
     </div>
+    
     <main>
       <!-- Categorias populares -->
       <section class="categorias_populares">

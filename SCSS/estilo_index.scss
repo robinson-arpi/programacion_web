@@ -1,15 +1,11 @@
-
-
-body {
-  margin: 0;
-  padding: 0;
-  flex-wrap: wrap;
-  display: flex;
-    justify-content: center;
-    align-items: center;
+*{
+  box-sizing: border-box;
+  margin:none;
 }
+
 main {
-	margin: 2%;
+  max-width: 100vw;
+	margin: none !important;
 }
 
 section {
@@ -26,12 +22,12 @@ h2 {
     sección portada
 */
 .portada {
-  max-width: 100%;
-  overflow: hidden;
+  max-width: 100vw;
+  overflow: hidden !important;
   img {
-    max-width: 100%;
     height: auto;
   }
+  
 }
 
 /* --------------------------------
@@ -113,4 +109,9 @@ h2 {
       */
       
     }    
+}
+@media screen and (max-width: 750px) {
+  .portada {
+    display: none;
+  }
 }

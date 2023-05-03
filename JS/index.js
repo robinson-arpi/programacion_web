@@ -1,11 +1,24 @@
 /*-------------------------------------------------------
 Control de opciones 
 */
+
+const botonBuscar = document.querySelector(".boton_busqueda");
+
+botonBuscar.addEventListener("click", function(event) {
+  // Verifica si los campos required están llenos
+  var inputs = document.querySelectorAll('.entrada_busqueda');
+  event.preventDefault(); // Evita el envío del formulario por defecto
+  window.location.href = '../HTML/servicios.html';
+  
+});
+
+let bandera = localStorage.getItem('sesion_iniciada') === 'true'
+
 document.addEventListener("DOMContentLoaded", function() {
     var referrer = document.referrer;
 
     // Verificar si la página de referencia es "inicio.html" o "registro.html"
-    if (referrer.includes("inicio.html") || referrer.includes("registro.html")) {
+    if (bandera) {
       // El contenido se mantiene igual
       // No se realizan modificaciones en item_usuario y item_notificacion
     } else {

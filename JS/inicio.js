@@ -60,3 +60,17 @@ function onSignIn(googleUser) {
     console.log('Email: ' + profile.getEmail());
   }
   */
+
+
+//Comprobacion de haber iniciado sesion
+let botonPresionado = localStorage.getItem('sesion_iniciada') === 'true';
+
+function botonPresionadoHandler() {
+  botonPresionado = true;
+  // Guarda el valor en el localStorage
+  localStorage.setItem('sesion_iniciada', true); 
+}
+
+// Agrega un event listener al botón para detectar el clic
+const boton = document.querySelector(".boton_iniciar");
+boton.addEventListener("click", botonPresionadoHandler);
