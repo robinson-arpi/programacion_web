@@ -5,22 +5,28 @@ HTML de agendar-servicio
 var inputFecha = document.querySelector('.fecha');
 var inputHora = document.querySelector('.hora');
 var inputDireccion = document.querySelector('.direccion');
-const buttonCancelar = document.querySelector('.boton-cancelar');
-const buttonAgendar = document.querySelector('.boton-agendar');
+var buttonCancelar = document.querySelector('.boton-cancelar');
+var buttonAgendar = document.querySelector(".boton-agendar");
 
-
-//Verificar campos llenos
 buttonAgendar.addEventListener("click", function(event) {
-    if (inputFecha.value.trim() === "" || inputHora.value.trim() === "" || inputDireccion.value.trim() === "") {
-        event.preventDefault(); // detener el envío del formulario
-        alert("Por favor, complete todos los campos requeridos.");
+  // Verifica si los campos required están llenos
+  var inputs = document.querySelectorAll('input[required]');
+  var formValid = true;
+  
+  for (var i = 0; i < inputs.length; i++){
+    if (inputs[i].value.trim() === ''){
+      formValid = false;
+      break;
     }
-    else {
-      //Proceso de guardar en la base de datos
-      event.preventDefault(); // Evita el envío del formulario por defecto
-      window.location.href = '../index.html';
-    }
+  }
+    
+  if (formValid) {
+    event.preventDefault(); // Evita el envío del formulario por defecto
+    window.location.href = '../index.html';
+  }
 });
+
+
 
 buttonCancelar.addEventListener("click",function(event){
   event.preventDefault(); // detener el envío del formulario

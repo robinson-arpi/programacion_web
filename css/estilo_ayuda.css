@@ -1,3 +1,15 @@
+:root {
+  --color-fuerte: #c53678;
+  --color-fuerte2: #ff5841;
+  --color-before: #737373;
+  --color-fondo: white;
+  --color-texto: black;
+  --color-resaltado: #bfbfbf;
+  --tamano-texto: 16px;
+  --tamano-pequeno: 12px;
+  --tamano-h2: 20px;
+}
+
 /* Estilos generales */
 * {
   box-sizing: border-box;

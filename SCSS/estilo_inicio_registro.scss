@@ -45,6 +45,11 @@
     width: 80%;
     max-width: 80%;
   }
+
+  .botones-2 {
+    display: flex;
+    justify-content: space-between;
+  }
   
   .contenedor_login {
     max-width: 450px;
@@ -158,7 +163,7 @@
     }
 
     //Cambios para fecha y hora
-    .f_nacimiento, .hora, .correo {
+    .f_nacimiento,.fecha, .hora, .correo {
       color: white;
       &:focus, &:valid{
         color: var(--color-texto);
@@ -173,6 +178,24 @@
   Botones
   ---------------------------------------*/
   .iniciar {
+    width: 100%;
+    height: 50px;
+    font-size: var(--tamano-texto);
+    font-weight: bold;
+    background: var(--color-fuerte);
+    border:none;
+    border-radius: 25px;
+    color: var(--color-texto);
+    cursor: pointer;
+    
+    &:hover{
+    color: var(--color-fondo);
+    transition: .5s;
+    box-shadow: 0 0 10px var(--color-fuerte2);
+    }
+  }
+
+  .boton {
     width: 100%;
     height: 50px;
     font-size: var(--tamano-texto);

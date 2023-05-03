@@ -2,6 +2,7 @@
 const menuButton = document.getElementById('menu-button');
 const headerNavegacion = document.querySelector('.header_navegacion');
 const headerUsuario = document.querySelector('.header_usuario');
+const headerOpciones= document.querySelector('.header_opciones_usuario');
 
 // Variable para controlar el estado del menú
 let menuVisible = false;
@@ -12,11 +13,13 @@ function toggleMenu() {
     // Si el menú está visible, ocultar las secciones
     headerNavegacion.style.display = 'none';
     headerUsuario.style.display = 'none';
+    headerOpciones.style.display = "none";
     menuVisible = false;
   } else {
     // Si el menú está oculto, mostrar las secciones
     headerNavegacion.style.display = 'block';
     headerUsuario.style.display = 'block';
+    headerOpciones.style.display = "block";
     menuVisible = true;
   }
 }

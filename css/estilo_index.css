@@ -1,4 +1,13 @@
 @charset "UTF-8";
+body {
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 main {
   margin: 2%;
 }
@@ -10,6 +19,7 @@ section {
 h2 {
   font-size: 1.5em;
   margin-bottom: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* --------------------------------
@@ -42,6 +52,7 @@ h2 {
 }
 .testimonios .testimonio {
   display: flex;
+  min-width: 200px;
   align-items: center;
   flex-direction: column;
   border: 1px solid #ccc;
@@ -73,6 +84,7 @@ h2 {
 }
 .categorias_populares .categoria {
   display: flex;
+  min-width: 200px;
   align-items: center;
   flex-direction: column;
   border: 1px solid #ccc;
