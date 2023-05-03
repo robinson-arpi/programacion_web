@@ -4,7 +4,7 @@
     <meta cahrset = "UTF-8">
     <meta name = "viewport" content = "width-device-width, inital-scale=1.0">
     <title>Agregar un servicio</title>
-    <link rel = "stylesheet" href = "/css/styles_inicio.css">
+    <link rel="stylesheet" href="../css/estilo_inicio_registro.css">    
     <link rel = "stylesheet" href = "/css/styles_agregarServicio.css">
 </head>
 <body>
@@ -13,27 +13,35 @@
         <header class="header border" >
           <h1>Agregar Servicio</h1>
         </header>
+
+        <!-- IMAGEN -->
         <section class="section1 border ">
           <div id="preview-container" class="preview-container" style="margin: 10px;">
             <img id="imagen-preview" src="" alt="" style="display:none;">
             <button id="eliminar-imagen" class="eliminar-imagen" style="display:none;">X</button>
           </div>
-          <div class="subir-imagen">            
+          <div class="subir-imagen">
             <p>Subir una imagen</p>
             <input type="file" id="input-imagen" accept="image/*" style="display:none;">
           </div>
           
-        </section>        
+        </section> 
+        
+        <!-- TÍTULO -->
         <section class="section2 border">
           <div class = "entrada">
             <input type = "text" required>
             <label>Título</label>
           </div>
         </section>
+
+        <!-- DESCRIPCIÓN -->
         <section class="section3 border">          
           <label for="">Descripción: </label> <br>
           <textarea name="" id=""  placeholder="Descripción del servicio..." required class="textarea"></textarea>
-        </section>        
+        </section>  
+        
+        <!-- CATEGORIA -->
         <section class="section5 border">
           <label for="categoria">Categoría:</label> <br>
           <select id="categoria" name="categoria" class="select">
@@ -44,14 +52,17 @@
             <option value="Tutorías y asesoramiento">Tutorías y asesoramiento</option>
             <option value="Otro">Otro</option>
           </select><br><br>
-        </section>
+        </section>        
         
+        <!-- CIUDAD -->
         <section class="section6 border">
           <div class = "entrada">            
             <input type = "text" required>
             <label>Ciudad</label>
           </div>
         </section>
+
+        <!-- DISPONIBILIDAD -->
         <section class="section7 border">
           <label for="disponibilidad">Disponibilidad:</label> <br>
           <select id="disponibilidad" name="disponibilidad" class="select">
@@ -62,6 +73,8 @@
             <option value="Virtual">Virtual</option>
           </select><br><br>
         </section>
+
+        <!-- REQUISITOS -->
         <section class="section8 border">
           <label for="requisitos">Requisitos: &nbsp;</label>
           <div style="display:flex">
@@ -71,18 +84,21 @@
           <ul id="lista-requisitos"></ul>
           <br>
         </section>
+
+        <!-- BOTONES -->
         <section class="section9 border">
-          <div class="boton1">
-            <input type = "submit" id="btnCancelar" value = "Cancelar">
+          <div>
+              <button class="boton" onclick="cancelar(event)">Cancelar</button>
           </div>
-          <div class="boton2">
-            <input type = "submit" value = "Aceptar">
+          <div>
+              <button class="boton" onclick="agregarServicio(event)">Agregar</button>
           </div>
-        </section>       
+        </section>             
       </div>        
     </form>      
 </body>
 
 <script src="../JS/agregar_servicio.js"></script>
+
 
 </html>

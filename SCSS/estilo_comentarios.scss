@@ -1,0 +1,42 @@
+form{
+    .inputBox{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px;
+
+        label{
+            color: #c53678;
+            font-weight: 700;
+        }
+
+        input[type="text"], select, textarea{
+            appearance: none;
+            border-color: black;
+            background: white;
+            padding: 8px;
+            border-radius: 15px;
+            color: black;
+            resize: none;
+
+            &:hover{
+                outline: 1px solid black;
+                box-shadow: 0 0 10px var(--color-fuerte);
+            }
+        }
+    }
+}
+
+//Botón
+button.btn-rosado {
+    color: black;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: rgb(247, 139, 207);
+    font-weight: bold;
+  }
+  button.btn-rosado:hover {
+    background-color: #c53678;;
+    color: var(--color-fondo);
+    transition: 0.5s;
+  }
