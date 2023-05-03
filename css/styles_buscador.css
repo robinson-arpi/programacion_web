@@ -1,3 +1,8 @@
+
+.container{
+    padding-top: 20px;
+}
+
 .navbar-nav {
     display: inline-block; 
     margin-right: 10px; /* Agrega un margen derecho para separar los elementos */
@@ -16,3 +21,5 @@
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
+
