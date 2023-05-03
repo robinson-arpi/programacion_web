@@ -16,18 +16,19 @@
   <header>
     <h1>Comentarios sobre nuestro sitio web</h1>
   </header>
+  
 	<div class="container">
 		<hr>
 		<div class="row">
       <div class="col-md-3 col-sm-12">
         <form>
-          <div class="form-group">
+          <div class="inputBox">
             <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre">
+            <input type="text"  id="nombre" placeholder="Ingrese su nombre">
           </div>
-          <div class="form-group">
+          <div class="inputBox">
             <label for="calificacion">Calificación</label>
-            <select class="form-control" id="calificacion">
+            <select id="calificacion">
               <option value="1">1 estrella</option>
               <option value="2">2 estrellas</option>
               <option value="3">3 estrellas</option>
@@ -35,19 +36,19 @@
               <option value="5">5 estrellas</option>
             </select>
           </div>
-          <div class="form-group">
+          <div class="inputBox">
             <label for="categoria">Categoría de Servicio</label>
-            <select class="form-control" id="categoria">
-              <option value="Computación">Computación</option>
-              <option value="Historia">Historia</option>
-              <option value="Electricidad">Electricidad</option>
-              <option value="Construcción">Construcción</option>
-              <option value="Jardinería">Jardinería</option>
+            <select id="categoria">
+              <option id="op" value="Computación">Computación</option>
+              <option id="op" value="Historia">Historia</option>
+              <option id="op" value="Electricidad">Electricidad</option>
+              <option id="op" value="Construcción">Construcción</option>
+              <option id="op" value="Jardinería">Jardinería</option>
             </select>
           </div>
-          <div class="form-group">
+          <div class="inputBox">
             <label for="comentario">Comentario</label>
-            <textarea class="form-control" id="comentario" rows="3"></textarea>
+            <textarea id="comentario" rows="3"></textarea>
           </div>
           <button type="submit" class="btn btn-rosado">Enviar comentario</button>
         </form>
