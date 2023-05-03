@@ -170,7 +170,6 @@ CABECERA
   grid-area: header_usuario;
   display: flex;
   align-items: center;
-  width: 100vw;
 }
 .cabecera .header_usuario .lista_desplegable {
   display: flex;
