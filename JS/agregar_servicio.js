@@ -61,24 +61,27 @@ function agregarRequisito() {
     nodo.parentNode.removeChild(nodo);
   }
 
-// boton cancelar
-const btnCancelar = document.getElementById("btnCancelar")
-btnCancelar.addEventListener("click", cancelar());
+// botones de agregar y cancelar
 
-function cancelar() {
-    if(document.getElementById("titulo").value != "" ||
-        document.getElementById("descripcion").value != "" ||
-        document.getElementById("ciudad").value != "" ||
-        document.getElementById("categoria").selectedIndex != 0 ||
-        document.getElementById("disponibilidad").selectedIndex != 0 ||
-        document.getElementById("lista-requisitos").innerHTML != ""
-    ){
-        // Si hay cambios, muestra ventana de confirmación
-        if(confirm("¿Está seguro que desea descartar los cambios?")){
-            window.location.href = "../index.html";
-        }        
-    }else{
-        window.location.href = "../index.html";
-    }
- 
+// para el botón agregar servicio
+function agregarServicio(event){
+  if(document.getElementById("titulo").value.trim() === "" ||
+      document.getElementById("descripcion").value.trim() === "" ||
+      document.getElementById("ciudad").value.trim() === "" ||
+      document.getElementById("categoria").selectedIndex === 0 ||
+      document.getElementById("disponibilidad").selectedIndex === 0
+  ){
+      // Si hay cambios, muestra ventana de confirmación
+      if(confirm("¿Está seguro que desea descartar los cambios?")){
+          window.location.href = "../index.html";
+      }        
+  }else{    
+      window.location.href = "../index.html";
+  }
 }
+
+// para el botón cancelar y regresar a inicio
+function cancelar(event) {
+  window.location.href = "../index.html";
+}
+
