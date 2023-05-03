@@ -2,47 +2,44 @@
 <html lang = "es">
 <head>
     <meta cahrset = "UTF-8">
-    <meta name = "viewport" content = "width-device-width, inital-scale=1.0">
+    <meta name = "viewport" content = "width = device-width, initial-scale=1.0">
     <title>Agendar un servicio</title>
     <link rel="stylesheet" href="../css/estilo_inicio_registro.css">
-    <link rel = "stylesheet" href = "../css/styles_agendar.css">
 </head>
-<body style="font-family: Arial, Helvetica, sans-serif;">
-    <div class = "grid">
-        <header class="border">
-            <h1>Agendar Servicio</h1>
-        </header>
-        <div class="section1 border">
-            <img src="../images/service.png" alt="Imagen Servicio">
+<body>
+    <section class="lateral_izquierdo imagen_registro">
+        <img src="../Images/agendar.svg" alt="">
+    </section>
+    <main>
+        <div class="contenedor_login">
+            <p class="titulo">Agendar Servicio</p>
+            <div class="separador"></div>
+            <p class="mensaje_bienvenida">Por favor, ingrese los campos requeridos </p>
+            <div class="section2 border">
+                <p id="nom-servicio">Nombre del servicio</p>
+                <p id="nom-operador">Nombre del operador</p>
+            </div>
+            <form class="form_registro" method = "post">
+                <div class = "entrada">
+                    <input type = "date" class="fecha" name = "fecha" id="fecha" required>
+                    <label>Fecha</label>
+                </div>
+                <div class = "entrada">
+                    <input type = "time" class="hora" name = "hora" id="hora" required>
+                    <label>Hora</label>
+                </div>
+                <div class = "entrada">
+                    <input type = "text" class="direccion" required>
+                    <label>Dirección</label>
+                </div>
+                <div class = "botones-2">
+                    <button class="boton boton-cancelar">Cancelar</button>
+                    <button class="boton boton-agendar">Agregar</button>
+                </div>
+                
+            </form>
         </div>
-        <div class="section2 border">
-            <p id="nom-servicio">Nombre del servicio</p>
-            <p id="nom-operador">Nombre del operador</p>
-        </div>
-        <form method = "post" class="border">
-            <div class = "entrada">
-                <input type = "date" class="fecha" name = "fecha" id="fecha" required>
-                <label>Fecha</label>
-            </div>
-            <div class = "entrada">
-                <input type = "time" class="hora" name = "hora" id="hora" required>
-                <label>Hora</label>
-            </div>
-            <div class = "entrada">
-                <input type = "text" class="direccion" required>
-                <label>Dirección</label>
-            </div>
-        </form>
-        <footer class=" border">
-            <div class="boton1">
-                <input class="iniciar boton-cancelar" type ="submit"  value = "Cancelar" >
-            </div>
-            <div class="boton2">
-                <input class="iniciar boton-agendar" type ="submit" value = "Agendar">
-            </div>
-        </footer>
-        
-    </div>
+    </main>
 </body>
 <script src="../JS/script-agendar.js"></script>
 </html>
