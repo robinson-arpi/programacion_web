@@ -1,0 +1,50 @@
+.navbar-nav {
+  display: inline-block;
+  margin-right: 10px;
+  /* Agrega un margen derecho para separar los elementos */
+}
+
+.card {
+  max-width: 100%;
+  box-shadow: 0 0 10px var(--color-fuerte);
+}
+.card .card-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.container {
+  padding-top: 30px;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+.container .card-body:hover h5 {
+  color: #c53678;
+  transition: all ease 0.3s;
+}
+.container .card-body span {
+  color: #c53678;
+  font-size: 0.9rem;
+}
+
+.rrss {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.rrss a {
+  text-align: center;
+  font-size: 1.5em;
+  color: black;
+  transition: 0.3s;
+  left: 2px;
+  margin-right: 40px;
+}
+.rrss a:hover {
+  color: #c53678;
+}
+
+/*# sourceMappingURL=estilo_blogs.css.map */
