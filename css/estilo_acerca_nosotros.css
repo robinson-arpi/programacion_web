@@ -8,7 +8,7 @@
   flex-direction: column;
   margin: 0 auto;
   width: 90%; /* Usa porcentaje para establecer la anchura */
-  max-width: 1000px; /* Establece un ancho máximo para evitar que se haga demasiado grande */
+  max-width: 2000px; /* Establece un ancho máximo para evitar que se haga demasiado grande */
   background: var(--color-fondo);
   border-radius: 10px;
   box-shadow: 0 0 10px var(--color-fuerte);

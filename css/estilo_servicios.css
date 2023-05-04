@@ -1,0 +1,30 @@
+@charset "UTF-8";
+.container {
+  padding-top: 20px;
+}
+
+.navbar-nav {
+  display: inline-block;
+  margin-right: 10px; /* Agrega un margen derecho para separar los elementos */
+}
+
+.card {
+  max-width: 100%;
+  box-shadow: 0 0 10px var(--color-fuerte);
+}
+.card .card-text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%; /* Opcional: para establecer el ancho del footer al 100% de la pantalla */
+  /* Aquí puedes agregar estilos adicionales para el footer */
+}
+
+/*# sourceMappingURL=estilo_servicios.css.map */
