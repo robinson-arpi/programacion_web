@@ -5,7 +5,7 @@
     <meta name = "viewport" content = "width-device-width, inital-scale=1.0">
     <title>Agregar un servicio</title>
     <link rel="stylesheet" href="../css/estilo_inicio_registro.css">    
-    <link rel = "stylesheet" href = "/css/styles_agregarServicio.css">
+    <link rel = "stylesheet" href = "/css/estilo_agregar.css">
 </head>
 <body>
     <form>
@@ -23,8 +23,7 @@
           <div class="subir-imagen">
             <p>Subir una imagen</p>
             <input type="file" id="input-imagen" accept="image/*" style="display:none;">
-          </div>
-          
+          </div>          
         </section> 
         
         <!-- TÍTULO -->
@@ -38,13 +37,13 @@
         <!-- DESCRIPCIÓN -->
         <section class="section3 border">          
           <label for="">Descripción: </label> <br>
-          <textarea name="" id=""  placeholder="Descripción del servicio..." required class="textarea"></textarea>
+          <textarea name="" id=""  placeholder="Descripción del servicio..." required ></textarea>
         </section>  
         
         <!-- CATEGORIA -->
         <section class="section5 border">
           <label for="categoria">Categoría:</label> <br>
-          <select id="categoria" name="categoria" class="select">
+          <select id="categoria" name="categoria">
             <option value="" selected disabled>Selecione ...</option>
             <option value="Cuidado personal">Cuidado personal</option>
             <option value="Computación">Cuidado personal</option>
@@ -65,7 +64,7 @@
         <!-- DISPONIBILIDAD -->
         <section class="section7 border">
           <label for="disponibilidad">Disponibilidad:</label> <br>
-          <select id="disponibilidad" name="disponibilidad" class="select">
+          <select id="disponibilidad" name="disponibilidad">
             <option value="" selected disabled>Selecione ...</option>
             <option value="En la mañana">En la mañana</option>
             <option value="En la tarde">En la tarde</option>

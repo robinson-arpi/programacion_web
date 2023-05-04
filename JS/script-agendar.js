@@ -5,8 +5,8 @@ HTML de agendar-servicio
 var inputFecha = document.querySelector('.fecha');
 var inputHora = document.querySelector('.hora');
 var inputDireccion = document.querySelector('.direccion');
-var buttonCancelar = document.querySelector('.boton-cancelar');
-var buttonAgendar = document.querySelector(".boton-agendar");
+const buttonCancelar = document.querySelector('.boton-cancelar');
+var buttonAgendar = document.querySelector('.boton-agendar');
 
 buttonAgendar.addEventListener("click", function(event) {
   // Verifica si los campos required están llenos
@@ -19,25 +19,20 @@ buttonAgendar.addEventListener("click", function(event) {
       break;
     }
   }
- 
+   
   if (formValid) {
     event.preventDefault(); // Evita el envío del formulario por defecto
     window.location.href = '../index.html';
   }
 });
 
-
 buttonCancelar.addEventListener("click",function(event){
   event.preventDefault(); // detener el envío del formulario
-  const confirmacion = confirm("Está seguro de querer cancelar el agendamiento?");
+  const confirmacion = confirm("¿Está seguro de querer cancelar el agendamiento?");
   if (confirmacion) {
     window.location.href = '../index.html';
   }
 });
-
-
-
-
 
 // Obtener el contenido guardado del almacenamiento local
 var fechaGuardado = localStorage.getItem('fecha_agendar');
@@ -67,8 +62,8 @@ inputDireccion.addEventListener('input', function() {
     localStorage.setItem('direccion_agendar', inputDireccion.value);
   });
 
-buttonCancelar.addEventListener('input',borrarCampos());
-buttonAgendar.addEventListener('input',borrarCampos())
+buttonCancelar.addEventListener('click',borrarCampos());
+buttonAgendar.addEventListener('click',borrarCampos())
 
 
 //Función que limpia campos al pulsar un botón u otro
