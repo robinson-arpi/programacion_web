@@ -20,11 +20,24 @@
   color: #303433;
 }
 
+.body2 {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .contenedor {
   min-height: 100vh;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.tamanio {
+  min-height: 60vh;
 }
 
 /*-----------------------------------------------------
