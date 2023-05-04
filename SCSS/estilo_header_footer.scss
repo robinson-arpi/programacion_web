@@ -10,6 +10,10 @@
   --tamano-h2: 20px;
 }
 
+body {
+  box-sizing: border-box;
+  max-width: 100vw !important;
+}
 
 /*---------------------------------------
 Navegacion
@@ -77,6 +81,7 @@ CABECERA
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto auto;
   height: 15vh;
+  max-width: 100vw !important;
   grid-column-gap: .5%;
   grid-row-gap: .5%;
   margin: none;
@@ -162,9 +167,14 @@ CABECERA
       }
     }
   }
+
   .header_opciones_usuario {
     display: none;
     grid-area: header_opciones_usuario;
+  }
+
+  .menu_usuario{
+    display: none;
   }
   /*-----------------------------
   Container navegacion
@@ -182,11 +192,12 @@ CABECERA
     grid-area: header_usuario;
     display: flex;
     align-items: center;
+    width: 100;
     .lista_desplegable {
       display: flex;
       flex-basis: 30%;
       align-items: center;
-
+      
       .item_usuario {
         a {
         padding: 10px;
@@ -195,6 +206,8 @@ CABECERA
         }
         ul {
           width: 12vw;
+          display: flex;
+          flex-direction: column;
           li{
             width: 10vw;
             a {
@@ -204,13 +217,13 @@ CABECERA
         }
 
         .sub_menu {
-          position: absolute;
+          display: flex;
+          align-items: center;
           top: 100%;
           left: 0;
           padding: 10px;
           background-color: rgba(255, 255, 255, 0.8); /* Color blanco con una opacidad de 0.5 */
           opacity: 0;
-          pointer-events: none;
           border-radius: 0 0 10px 10px;
         }
 
@@ -244,10 +257,13 @@ CABECERA
 Footer
 -------------------------------------------------------------*/
 footer {
-    display: flex;
+  
+  bottom: 0;  
+  display: flex;
+  max-width: 100vw;
+  position: sticky;
     align-items: center;
     margin: none;
-    width: 100%;
     background-color: var(--color-resaltado);
     .footer_contenedor {
         padding-top: .5%;
@@ -281,9 +297,9 @@ footer {
     grid-template-areas:
       "header_logo header_buscador header_menu"
       "header_usuario header_usuario header_usuario"
-      "sub_menu sub_menu sub_menu"
+      "menu_usuario menu_usuario menu_usuario"
       "header_navegacion header_navegacion header_navegacion";
-    grid-template-columns: 10% 78% 12%;
+    grid-template-columns: 10vw 78vw 12vw;
     grid-template-rows: 6vh auto auto auto;
     height: auto;
     
@@ -318,45 +334,83 @@ footer {
   
     .header_usuario{
       display: flex;
-      .navbar-nav {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+      padding-top: 1%;
+      justify-content: center;
+      align-items: center;
+      .lista_desplegable{
+        width: 100vw;
+        .navbar-nav {
+          width: 100vw;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+
+          .sub_menu{
+            display: none;
+          }
+          border-bottom: 1px solid var(--color-fuerte);
+
+        }
+      }
+
+      .item_usuario li {
+        width: 100;
       }
     }
 
     .header_navegacion {
       nav {
+        width: 100vw;
         ul{
+          width: 100vw;
           display:flex;
           flex-direction: column;
-          align-items: flex-start;
+          align-items: center;
+          flex-wrap: wrap;
+          li{
+            
+            a{
+              display: flex;
+              justify-content: center;
+              width: 90vw;
+              &:hover {
+                background-color: rgba(197, 54, 120, 0.5);
+                color: white;
+              }
+            }
+            &:hover{
+              background-color: rgba(197, 54, 120, 0.5);
+              a{
+                color: white;
+                
+              }
+              
+            }
+          }
+        }
+        .menu_navegacion {
+          width: 98vw;
         }
       }
     }
 
-    
-  }
-
-  .portada {
-    display: none;
-  }
-  
-    .item_usuario li {
-      width: 90vw;
-    }
-    
-    .header_navegacion nav{
+    .menu_usuario {
+      grid-area: menu_usuario;
       width: 100vw;
-      .menu_navegacion {
-        width: 100vw;
+      nav{
+        width: 95vw;
+        ul{
+          flex-wrap: wrap;
+          align-items: flex-start;
+          li{
+            flex-basis: 48%;
+            justify-content: center;
+          }
+        }
       }
+      border-bottom: 1px solid var(--color-fuerte) !important;
     }
-    
-    .item_responsive {
-      width: 98vw;
-    }
-
+  } 
     .footer_enlaces {
       flex-wrap: wrap;
       justify-content: flex-start;

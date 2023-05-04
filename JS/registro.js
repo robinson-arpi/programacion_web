@@ -80,3 +80,16 @@ function verificarCampos() {
   var valorPass2 = document.querySelector('.password2').value
   return valorPass1 === valorPass2;
 }
+
+//Comprobacion de haber iniciado sesion
+let botonPresionado = localStorage.getItem('sesion_iniciada') === 'true';
+
+function botonPresionadoHandler() {
+  botonPresionado = true;
+  // Guarda el valor en el localStorage
+  localStorage.setItem('sesion_iniciada', true); 
+}
+
+// Agrega un event listener al botón para detectar el clic
+const boton = document.querySelector('.boton_registrar');
+boton.addEventListener("click", botonPresionadoHandler);

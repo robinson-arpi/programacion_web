@@ -150,7 +150,7 @@ main {
 }
 
 .agendar-servicio,
-.Regresar {
+.Cancelar {
     width: 45%;
     height: 50px;
     font-size: var(--tamano-texto);

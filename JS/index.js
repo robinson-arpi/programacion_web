@@ -1,11 +1,23 @@
-/*-------------------------------------------------------
-Control de opciones 
-*/
+//Control de opciones 
+const botonBuscar = document.querySelector(".boton_busqueda");
+
+botonBuscar.addEventListener("click", function(event) {
+  // Verifica si los campos required están llenos
+  var inputs = document.querySelectorAll('.entrada_busqueda');
+  event.preventDefault(); // Evita el envío del formulario por defecto
+  window.location.href = '../HTML/servicios.html';
+  
+});
+
+let bandera = localStorage.getItem('sesion_iniciada') === 'true'
+const sub_menu_usuario= document.querySelector('.sub_menu');
+const menu_opciones_usuario= document.querySelector('.nav_menu_usuario');
+
 document.addEventListener("DOMContentLoaded", function() {
     var referrer = document.referrer;
 
     // Verificar si la página de referencia es "inicio.html" o "registro.html"
-    if (referrer.includes("inicio.html") || referrer.includes("registro.html")) {
+    if (bandera) {
       // El contenido se mantiene igual
       // No se realizan modificaciones en item_usuario y item_notificacion
     } else {
@@ -22,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
       var enlaceNotificacion = itemNotificacion.querySelector("a");
       enlaceNotificacion.href = "HTML/registro.html";
       enlaceNotificacion.innerHTML = '<i class="fas fa-user-plus"></i>Registrarse';
+      sub_menu_usuario.style.display = "none";
+      menu_opciones_usuario.style.display = "none";
     }
   });
 
@@ -74,5 +88,5 @@ const username = document.querySelector('.item_usuario');
 username.addEventListener('mouseleave', function() {
   setTimeout(function() {
     username.classList.remove('sub_menu');
-  }, 500); // Retardo de 500ms antes de ocultar el submenú
+  }, 50); // Retardo de 500ms antes de ocultar el submenú
 });

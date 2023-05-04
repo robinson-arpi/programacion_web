@@ -11,6 +11,11 @@
   --tamano-h2: 20px;
 }
 
+body {
+  box-sizing: border-box;
+  max-width: 100vw !important;
+}
+
 /*---------------------------------------
 Navegacion
 ---------------------------------------*/
@@ -64,6 +69,7 @@ CABECERA
   grid-template-columns: 1fr 2fr 1fr;
   grid-template-rows: auto auto;
   height: 15vh;
+  max-width: 100vw !important;
   grid-column-gap: 0.5%;
   grid-row-gap: 0.5%;
   margin: none;
@@ -150,6 +156,10 @@ CABECERA
 }
 .cabecera .header_opciones_usuario {
   display: none;
+  grid-area: header_opciones_usuario;
+}
+.cabecera .menu_usuario {
+  display: none;
 }
 .cabecera .header_navegacion {
   grid-area: header_navegacion;
@@ -160,6 +170,7 @@ CABECERA
   grid-area: header_usuario;
   display: flex;
   align-items: center;
+  width: 100;
 }
 .cabecera .header_usuario .lista_desplegable {
   display: flex;
@@ -173,6 +184,8 @@ CABECERA
 }
 .cabecera .header_usuario .lista_desplegable .item_usuario ul {
   width: 12vw;
+  display: flex;
+  flex-direction: column;
 }
 .cabecera .header_usuario .lista_desplegable .item_usuario ul li {
   width: 10vw;
@@ -181,13 +194,13 @@ CABECERA
   width: 100%;
 }
 .cabecera .header_usuario .lista_desplegable .item_usuario .sub_menu {
-  position: absolute;
+  display: flex;
+  align-items: center;
   top: 100%;
   left: 0;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.8); /* Color blanco con una opacidad de 0.5 */
   opacity: 0;
-  pointer-events: none;
   border-radius: 0 0 10px 10px;
 }
 .cabecera .header_usuario .lista_desplegable .item_usuario:hover i {
@@ -208,11 +221,12 @@ CABECERA
 Footer
 -------------------------------------------------------------*/
 footer {
+  bottom: 0;
   display: flex;
+  max-width: 100vw;
+  position: sticky;
   align-items: center;
-  flex-direction: column;
   margin: none;
-  width: 100%;
   background-color: var(--color-resaltado);
 }
 footer .footer_contenedor {
@@ -240,8 +254,8 @@ footer .footer_contenedor .footer_enlaces a:hover {
   /* Cambiar la estructura de la cuadrícula a una sola fila de 3 columnas */
   .cabecera {
     display: grid;
-    grid-template-areas: "header_logo header_buscador header_menu" "header_usuario header_usuario header_usuario" "sub_menu sub_menu sub_menu" "header_navegacion header_navegacion header_navegacion";
-    grid-template-columns: 10% 78% 12%;
+    grid-template-areas: "header_logo header_buscador header_menu" "header_usuario header_usuario header_usuario" "menu_usuario menu_usuario menu_usuario" "header_navegacion header_navegacion header_navegacion";
+    grid-template-columns: 10vw 78vw 12vw;
     grid-template-rows: 6vh auto auto auto;
     height: auto;
   }
@@ -272,31 +286,69 @@ footer .footer_contenedor .footer_enlaces a:hover {
   }
   .cabecera .header_usuario {
     display: flex;
+    padding-top: 1%;
+    justify-content: center;
+    align-items: center;
   }
-  .cabecera .header_usuario .navbar-nav {
+  .cabecera .header_usuario .lista_desplegable {
+    width: 100vw;
+  }
+  .cabecera .header_usuario .lista_desplegable .navbar-nav {
+    width: 100vw;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: flex-start;
+    border-bottom: 1px solid var(--color-fuerte);
   }
-  .cabecera .header_navegacion nav ul {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .portada {
+  .cabecera .header_usuario .lista_desplegable .navbar-nav .sub_menu {
     display: none;
   }
-  .item_usuario li {
+  .cabecera .header_usuario .item_usuario li {
+    width: 100;
+  }
+  .cabecera .header_navegacion nav {
+    width: 100vw;
+  }
+  .cabecera .header_navegacion nav ul {
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .cabecera .header_navegacion nav ul li a {
+    display: flex;
+    justify-content: center;
     width: 90vw;
   }
-  .header_navegacion nav {
-    width: 100vw;
+  .cabecera .header_navegacion nav ul li a:hover {
+    background-color: rgba(197, 54, 120, 0.5);
+    color: white;
   }
-  .header_navegacion nav .menu_navegacion {
-    width: 100vw;
+  .cabecera .header_navegacion nav ul li:hover {
+    background-color: rgba(197, 54, 120, 0.5);
   }
-  .item_responsive {
+  .cabecera .header_navegacion nav ul li:hover a {
+    color: white;
+  }
+  .cabecera .header_navegacion nav .menu_navegacion {
     width: 98vw;
+  }
+  .cabecera .menu_usuario {
+    grid-area: menu_usuario;
+    width: 100vw;
+    border-bottom: 1px solid var(--color-fuerte) !important;
+  }
+  .cabecera .menu_usuario nav {
+    width: 95vw;
+  }
+  .cabecera .menu_usuario nav ul {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+  .cabecera .menu_usuario nav ul li {
+    flex-basis: 48%;
+    justify-content: center;
   }
   .footer_enlaces {
     flex-wrap: wrap;
