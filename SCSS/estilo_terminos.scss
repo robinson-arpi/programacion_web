@@ -11,11 +11,12 @@
 
     margin: 0 auto;
     transform: translate(0%, 0%);
-    margin: 3%;
+    margin-top: 10px;
     width: auto;
     background: var(--color-fondo);
     border-radius: 10px;
-    box-shadow: 0 0 10px var(--color-fuerte);
+    box-shadow: 0 0 10px white;
+    margin-bottom: 20px;
 
     header{
         grid-area: header;
@@ -31,19 +32,6 @@
     grid-area: parrafos;
     padding: 3%;
     text-align: justify;
-    }
-
-    a.btn-rosado {
-        color: black;
-        text-decoration: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        background-color: rgb(247, 139, 207);
-        font-weight: bold;
-        &:hover{
-            color: var(--color-fondo);
-            transition: .5s;
-            }
     }
 }
 
