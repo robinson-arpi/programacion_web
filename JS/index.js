@@ -1,7 +1,4 @@
-/*-------------------------------------------------------
-Control de opciones 
-*/
-
+//Control de opciones 
 const botonBuscar = document.querySelector(".boton_busqueda");
 
 botonBuscar.addEventListener("click", function(event) {
@@ -13,6 +10,8 @@ botonBuscar.addEventListener("click", function(event) {
 });
 
 let bandera = localStorage.getItem('sesion_iniciada') === 'true'
+const sub_menu_usuario= document.querySelector('.sub_menu');
+const menu_opciones_usuario= document.querySelector('.nav_menu_usuario');
 
 document.addEventListener("DOMContentLoaded", function() {
     var referrer = document.referrer;
@@ -35,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function() {
       var enlaceNotificacion = itemNotificacion.querySelector("a");
       enlaceNotificacion.href = "HTML/registro.html";
       enlaceNotificacion.innerHTML = '<i class="fas fa-user-plus"></i>Registrarse';
+      sub_menu_usuario.style.display = "none";
+      menu_opciones_usuario.style.display = "none";
     }
   });
 
