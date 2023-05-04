@@ -43,6 +43,10 @@ section {
     padding: 1em;
 }
 
+.botones {
+    max-width: 10vw;
+}
+
 .navegacion_preguntas {
     ul {
         display: flex;
@@ -72,5 +76,8 @@ section {
                 align-items: center;
             }
         }
-    } 
+    }
+    .botones {
+        max-width: 90vw;
+    }
 }

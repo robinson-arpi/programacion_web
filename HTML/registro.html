@@ -5,54 +5,67 @@
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <title>Registro</title>
     <link rel = "stylesheet" href = "../css/estilo_inicio_registro.css">
+    <link rel="stylesheet" href="../css/estilo_header_footer.css">
 </head>
 <body>
-    <section class="lateral_izquierdo imagen_registro">
-        <img src="../Images/welcome.svg" alt="">
-    </section>
- 
-    <main>
-        <div class = "contenedor_registro">
-            <p class="titulo">Bienvenido</p>
-            <div class="separador"></div>
-            <p class="mensaje_bienvenida">Por favor, ingrese los campos requeridos para acceder a todos nuestro servicios</p>
-            <form class = "form_registro" method = "post">
-                <div class = "nombre_completo">
-                    <div class = "entrada">
-                        <input class = "nombre" type = "text" required>
-                        <label>Nombre</label>
-                    </div>
-                    <div class = "entrada">
-                        <input class = "apellido" type = "text" required>
-                        <label>Apellido</label>
-                    </div>
-                </div>    
-                <div class = "entrada">
-                    <input class = "correo" type ="email" required >
-                    <label>Correo</label>
-                </div>
-                <div class = "passwords">
-                    <div class = "entrada">
-                        <input class = "password1" type = "password" required>
-                        <label>Contraseña</label>
-                    </div>
-                    <div class = "entrada">
-                        <input class = "password2" type = "password" required> 
-                        <label>Confirmar contraseña</label>
-                    </div>
-                </div>    
-                <div class = "entrada">
-                    <input class = "f_nacimiento" type = "date" name = "fecha" id="fecha" required>
-                    <label>Fecha de nacimiento</label>
-                </div>
-                    <button class = "iniciar boton_registrar">Registrarme</button>
-                <div class = "registrarse">
-                    <a href = "inicio.html">¿Ya tiene una cuenta?</a>
-                </div>
-            </form>
-        </div>    
-    </main>
+    <div class = contenedor>
+        <section class="lateral_izquierdo imagen_registro">
+            <img src="../Images/welcome.svg" alt="">
+        </section>
 
+        <main>
+            <div class = "contenedor_registro">
+                <p class="titulo">Bienvenido</p>
+                <div class="separador"></div>
+                <p class="mensaje_bienvenida">Por favor, ingrese los campos requeridos para acceder a todos nuestro servicios</p>
+                <form class = "form_registro" method = "post">
+                    <div class = "nombre_completo">
+                        <div class = "entrada">
+                            <input class = "nombre" type = "text" required>
+                            <label>Nombre</label>
+                        </div>
+                        <div class = "entrada">
+                            <input class = "apellido" type = "text" required>
+                            <label>Apellido</label>
+                        </div>
+                    </div>    
+                    <div class = "entrada">
+                        <input class = "correo" type ="email" required >
+                        <label>Correo</label>
+                    </div>
+                    <div class = "passwords">
+                        <div class = "entrada">
+                            <input class = "password1" type = "password" required>
+                            <label>Contraseña</label>
+                        </div>
+                        <div class = "entrada">
+                            <input class = "password2" type = "password" required> 
+                            <label>Confirmar contraseña</label>
+                        </div>
+                    </div>    
+                    <div class = "entrada">
+                        <input class = "f_nacimiento" type = "date" name = "fecha" id="fecha" required>
+                        <label>Fecha de nacimiento</label>
+                    </div>
+                        <button class = "iniciar boton_registrar">Registrarme</button>
+                    <div class = "registrarse">
+                        <a href = "inicio.html">¿Ya tiene una cuenta?</a>
+                    </div>
+                </form>
+            </div>    
+        </main>
+    </div>    
+    <footer>
+        <div class="footer_contenedor">
+          <div class="footer_enlaces">
+            <a href="acerca-de-nosotros.html">Acerca de nosotros</a>
+            <a href="terminos-condiciones.html">Términos y condiciones</a>
+            <a href="ayuda.html">Ayuda</a>
+            <a href="contacto.html">Contáctenos</a>
+            <a href="#">ROBINSON ARPI</a>
+          </div>
+        </div>
+      </footer>
     <script src="../JS/registro.js"></script>
 </body>
 </html>

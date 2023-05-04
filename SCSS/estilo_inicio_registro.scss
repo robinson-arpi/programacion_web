@@ -19,11 +19,10 @@
     color: #303433;
 }
   
-  body {
+  .contenedor {
     min-height: 100vh;
     width: 100%;
     display: grid;
-    
     grid-template-columns: 1fr 1fr;
   }
   
@@ -261,7 +260,7 @@
   /* ----  Responsive oculta imagen  ----  */
   @media (max-width: 780px) {
   
-    body {
+    .contenedor {
         display: flex;
         justify-content: center;
         align-items: center;

@@ -15,6 +15,10 @@ botonIniciar.addEventListener("click", function(event) {
     }
   }
 
+  if (!verificarCampos()){
+    formValid = false;
+  }
+
   if (formValid) {
     event.preventDefault(); // Evita el envío del formulario por defecto
     window.location.href = '../index.html';

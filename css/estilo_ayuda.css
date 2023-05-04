@@ -47,6 +47,10 @@ section {
   padding: 1em;
 }
 
+.botones {
+  max-width: 10vw;
+}
+
 .navegacion_preguntas ul {
   display: flex;
   flex-wrap: wrap;
@@ -71,6 +75,9 @@ section {
     flex-basis: 50%;
     justify-content: center;
     align-items: center;
+  }
+  .botones {
+    max-width: 90vw;
   }
 }
 
