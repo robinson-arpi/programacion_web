@@ -204,6 +204,10 @@ form {
   box-shadow: 0 0 10px var(--color-fuerte2);
 }
 
+footer {
+  font-size: 8px;
+}
+
 @media screen and (max-width: 600px) {
   .contenedor-agregar-servicio {
     grid-template-areas: "header" "imagen" "titulo" "descripcion" "duracion" "ubicacion" "categoria" "disponibilidad" "requisitos" "botones";
