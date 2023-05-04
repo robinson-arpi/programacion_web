@@ -7,10 +7,8 @@ const sub_menu= document.querySelector('.menu_usuario');
 // Variable para controlar el estado del menú
 let menuVisible = false;
 
-
-
 function realizarTareaSiPantallaPequena() {
-  if (window.matchMedia("(max-width: 764px)").matches) {
+  if (window.matchMedia("(max-width: 750px)").matches) {
     if (menuVisible) {
       // Si el menú está visible, ocultar las secciones
       headerNavegacion.style.display = 'none';

@@ -20,20 +20,22 @@
 
 body {
   font-size: var(--tamano-texto);
+  max-width: 100vw;
 }
-body header {
+body .header_ayuda {
   background-color: var(--color-fuerte);
   color: #fff;
   padding: 20px;
   text-align: center;
 }
-body header h1 {
+body .header_ayuda h1 {
   font-size: 2em;
 }
 
 h2 {
   font-size: 1.5em;
   margin-bottom: 20px;
+  color: var(--color-fuerte);
 }
 
 main {
@@ -46,16 +48,21 @@ section {
 }
 
 .navegacion_preguntas ul {
-  padding-top: 0.5%;
   display: flex;
   flex-wrap: wrap;
+  align-items: stretch;
 }
 .navegacion_preguntas ul .pregunta {
   flex-basis: 25%;
   text-align: center;
+  min-height: 100%;
+  box-shadow: 0 0 10px var(--color-fuerte);
+}
+.navegacion_preguntas ul .pregunta:hover {
+  background-color: var(--color-fuerte);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 750px) {
   .navegacion_preguntas ul {
     display: flex;
     flex-wrap: wrap;

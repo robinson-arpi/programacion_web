@@ -18,7 +18,8 @@
 }
 body {
     font-size: var(--tamano-texto);
-    header {
+    max-width: 100vw;
+    .header_ayuda {
         background-color: var(--color-fuerte);
         color: #fff;
         padding: 20px;
@@ -32,6 +33,7 @@ body {
 h2 {
 	font-size: 1.5em;
 	margin-bottom: 20px;
+    color: var(--color-fuerte);
 }
 main {
     padding-left: 5%;
@@ -41,21 +43,27 @@ section {
     padding: 1em;
 }
 
-.navegacion_preguntas{
+.navegacion_preguntas {
     ul {
-        padding-top: .5%;
         display: flex;
         flex-wrap: wrap;
+        align-items: stretch;
         .pregunta {
             flex-basis: 25%;
             text-align: center;
+            min-height: 100%;
+            box-shadow: 0 0 10px var(--color-fuerte);
+            &:hover{
+                background-color: var(--color-fuerte);
+            }
         }
     }
 }  
   
-@media (max-width: 768px) {
+@media (max-width: 750px) {
     .navegacion_preguntas{
         ul {
+            
             display: flex;
             flex-wrap: wrap;
             .pregunta {

@@ -140,7 +140,7 @@ CABECERA
     //Campo busqueda
     .c_busqueda_entrada {
       flex-grow: 1; /* Permite que el campo de búsqueda ocupe todo el ancho restante */
-      width: 75%;
+      width: 90%;
       border-radius: 5px 0 0 5px;
       border: 1px solid var(--color-fuerte);
       padding-left: 10px;
@@ -160,7 +160,7 @@ CABECERA
       color: var(--color-fondo);
       cursor: pointer;
       border-radius: 0 5px 5px 0;
-
+      width: 10%;
       &:hover {
         box-shadow: 0 0 10px var(--color-fuerte);
         color: var(--color-fondo)
@@ -292,14 +292,18 @@ footer {
   
 @media screen and (max-width: 750px) {
   /* Cambiar la estructura de la cuadrícula a una sola fila de 3 columnas */
+  body{
+    max-width: 100vw;
+  }
   .cabecera {
+    max-width: 100vw;
     display: grid;
     grid-template-areas:
       "header_logo header_buscador header_menu"
       "header_usuario header_usuario header_usuario"
       "menu_usuario menu_usuario menu_usuario"
       "header_navegacion header_navegacion header_navegacion";
-    grid-template-columns: 10vw 78vw 12vw;
+    grid-template-columns: 11vw 71vw 14vw;
     grid-template-rows: 6vh auto auto auto;
     height: auto;
     
@@ -338,9 +342,9 @@ footer {
       justify-content: center;
       align-items: center;
       .lista_desplegable{
-        width: 100vw;
-        .navbar-nav {
-          width: 100vw;
+        width: 96vw;
+        .navbar-usuario {
+          width: 96vw;
           display: flex;
           justify-content: center;
           align-items: flex-start;
@@ -359,27 +363,28 @@ footer {
     }
 
     .header_navegacion {
+      max-width: 96vw;
       nav {
-        width: 100vw;
+        width: 100;
         ul{
-          width: 100vw;
+          width: 100;
           display:flex;
           flex-direction: column;
           align-items: center;
           flex-wrap: wrap;
           li{
-            
+            width: 100;
             a{
               display: flex;
               justify-content: center;
-              width: 90vw;
+              width: 100;
               &:hover {
-                background-color: rgba(197, 54, 120, 0.5);
+                background-color: var(--color-fuerte);
                 color: white;
               }
             }
             &:hover{
-              background-color: rgba(197, 54, 120, 0.5);
+              background-color: var(--color-fuerte);
               a{
                 color: white;
                 
@@ -389,16 +394,17 @@ footer {
           }
         }
         .menu_navegacion {
-          width: 98vw;
+          width: 96vw;
+          padding-bottom: 1vh;
         }
       }
     }
 
     .menu_usuario {
       grid-area: menu_usuario;
-      width: 100vw;
+      width: 96vw;
       nav{
-        width: 95vw;
+        width: 100;
         ul{
           flex-wrap: wrap;
           align-items: flex-start;
