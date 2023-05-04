@@ -40,3 +40,12 @@ button.btn-rosado {
     color: var(--color-fondo);
     transition: 0.5s;
   }
+
+footer{
+    .footer_nombre{
+        background-color: #bfbfbf;
+        p{
+            color: red;
+        };
+    }
+}

@@ -5,13 +5,8 @@ HTML de agendar-servicio
 var inputFecha = document.querySelector('.fecha');
 var inputHora = document.querySelector('.hora');
 var inputDireccion = document.querySelector('.direccion');
-<<<<<<< HEAD
 const buttonCancelar = document.querySelector('.boton-cancelar');
-var buttonAgendar = document.querySelector('agendarB');
-=======
-var buttonCancelar = document.querySelector('.boton-cancelar');
-var buttonAgendar = document.querySelector(".boton-agendar");
->>>>>>> 8c153434ed55313834ab880f0df958f7f0bd9068
+var buttonAgendar = document.querySelector('.boton-agendar');
 
 buttonAgendar.addEventListener("click", function(event) {
   // Verifica si los campos required están llenos
@@ -24,44 +19,20 @@ buttonAgendar.addEventListener("click", function(event) {
       break;
     }
   }
-<<<<<<< HEAD
    
-=======
-    
->>>>>>> 8c153434ed55313834ab880f0df958f7f0bd9068
   if (formValid) {
     event.preventDefault(); // Evita el envío del formulario por defecto
     window.location.href = '../index.html';
   }
 });
 
-<<<<<<< HEAD
-// buttonAgendar.addEventListener("click", function(event) {
-//      if (inputFecha.value.trim() === "" || inputHora.value.trim() === "" || inputDireccion.value.trim() === "") {
-//          //event.preventDefault(); // detener el envío del formulario
-//          alert("Por favor, complete todos los campos requeridos.");
-//      }
-//      else {
-//        //Proceso de guardar en la base de datos
-//        event.preventDefault(); // Evita el envío del formulario por defecto
-//        window.location.href = '../index.html';
-//      }
-// });
-=======
-
->>>>>>> 8c153434ed55313834ab880f0df958f7f0bd9068
-
 buttonCancelar.addEventListener("click",function(event){
   event.preventDefault(); // detener el envío del formulario
-  const confirmacion = confirm("Está seguro de querer cancelar el agendamiento?");
+  const confirmacion = confirm("¿Está seguro de querer cancelar el agendamiento?");
   if (confirmacion) {
     window.location.href = '../index.html';
   }
 });
-
-
-
-
 
 // Obtener el contenido guardado del almacenamiento local
 var fechaGuardado = localStorage.getItem('fecha_agendar');
@@ -91,8 +62,8 @@ inputDireccion.addEventListener('input', function() {
     localStorage.setItem('direccion_agendar', inputDireccion.value);
   });
 
-buttonCancelar.addEventListener('input',borrarCampos());
-buttonAgendar.addEventListener('input',borrarCampos())
+buttonCancelar.addEventListener('click',borrarCampos());
+buttonAgendar.addEventListener('click',borrarCampos())
 
 
 //Función que limpia campos al pulsar un botón u otro
