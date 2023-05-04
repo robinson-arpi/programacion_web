@@ -390,4 +390,61 @@
   }
 }
 
+@media screen and (max-width: 1000px) {
+  body {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .contenedor {
+    min-height: 100vh;
+    flex-direction: column;
+    border-radius: 0;
+  }
+  .contenedor .izquierda {
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+  }
+  .contenedor .derecha {
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+  }
+  .calendario::before,
+  .calendario::after {
+    top: 100%;
+    left: 50%;
+    width: 97%;
+    height: 12px;
+    border-radius: 0 0 5px 5px;
+    transform: translateX(-50%);
+  }
+  .calendario::before {
+    width: 94%;
+    top: calc(100% + 12px);
+  }
+  .eventos {
+    padding-bottom: 340px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .calendario .mes {
+    height: 75px;
+  }
+  .calendario .diasLaborables {
+    height: 50px;
+  }
+  .calendario .dias .dia {
+    height: 40px;
+    font-size: 0.8rem;
+  }
+  .calendario .dias .dias.activar,
+  .calendario .dias .dia.hoy {
+    font-size: 1rem;
+  }
+  .derecha .hoy-fecha {
+    padding: 20px;
+  }
+}
+
 /*# sourceMappingURL=estilos.cronograma.css.map */
