@@ -12,8 +12,9 @@
 
 h1 {
   padding-top: 0.5%;
+  padding-bottom: none;
+  margin-bottom: none;
   font-size: 2em;
-  margin-bottom: 20px;
   color: var(--color-fuerte);
   font-weight: bold;
 }
