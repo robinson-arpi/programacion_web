@@ -9,11 +9,12 @@
   grid-template-rows: auto;
   margin: 0 auto;
   transform: translate(0%, 0%);
-  margin: 3%;
+  margin-top: 10px;
   width: auto;
   background: var(--color-fondo);
   border-radius: 10px;
-  box-shadow: 0 0 10px var(--color-fuerte);
+  box-shadow: 0 0 10px white;
+  margin-bottom: 20px;
 }
 .grid header {
   grid-area: header;
@@ -28,20 +29,6 @@
   padding: 3%;
   text-align: justify;
 }
-.grid a.btn-rosado {
-  color: black;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  background-color: rgb(247, 139, 207);
-  font-weight: bold;
-}
-.grid a.btn-rosado:hover {
-  color: var(--color-fondo);
-  transition: 0.5s;
-}
-
-/*Para uso en otras páginas del sitio*/
 
 a.btn-rosado {
   color: black;
