@@ -36,4 +36,8 @@ button.btn-rosado:hover {
   transition: 0.5s;
 }
 
+.header_titulo h1 {
+  color: var(--color-fuerte);
+}
+
 /*# sourceMappingURL=estilo_comentarios.css.map */

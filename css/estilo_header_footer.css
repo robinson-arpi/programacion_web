@@ -34,7 +34,7 @@ nav a {
   display: flex;
   justify-content: flex-start;
   padding: 0.5em;
-  text-decoration: none; /*quita los subrayados*/
+  text-decoration: none !important; /*quita los subrayados*/
   color: var(--color-texto);
 }
 nav a:hover {
