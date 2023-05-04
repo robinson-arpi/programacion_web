@@ -149,8 +149,7 @@ main {
     justify-content: space-between;
 }
 
-.agendar-servicio,
-.Cancelar {
+.agendar-servicio, .Cancelar {
     width: 45%;
     height: 50px;
     font-size: var(--tamano-texto);
@@ -165,7 +164,7 @@ main {
 }
 
 .agendar-servicio:hover,
-.Regresar:hover {
+.Cancelar:hover {
     color: var(--color-fondo);
     transition: 0.5s;
     box-shadow: 0 0 10px var(--color-fuerte2);

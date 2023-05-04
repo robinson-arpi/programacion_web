@@ -1,130 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/css/style_cronograma.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Cronograma</title>
-  </head>
-  
-  <body>
 
-    <div class="contenedor">
-      <div class="izquierda">
-        <div class="calendario">
-          <div class="mes">
-            <i class="fa fa-angle-left prev"></i>
-            <div class="fecha"></div>
-            <i class="fa fa-angle-right next"></i>
-          </div>
-          <div class="diasLaborables">
-            <div>Dom</div>
-            <div>Lun</div>
-            <div>Ma</div>
-            <div>Mie</div>
-            <div>Jue</div>
-            <div>Vie</div>
-            <div>Sab</div>
-          </div>
-          <div class="dias">
-          <!--
-            Aqui van todoos los dias se desarrolla con Js
-          -->
-<!--             <div class="dia anterior-fecha">26</div>
-            <div class="dia anterior-fecha">27</div>
-            <div class="dia anterior-fecha">28</div>
-            <div class="dia anterior-fecha">29</div>
-            <div class="dia anterior-fecha">30</div>
-            <div class="dia anterior-fecha">31</div>
-            <div class="dia">1</div>
-            <div class="dia">2</div>
-            <div class="dia">3</div>
-            <div class="dia">4</div>
-            <div class="dia evento">5</div>
-            <div class="dia">6</div>
-            <div class="dia">7</div>
-            <div class="dia">8</div>
-            <div class="dia">9</div>
-            <div class="dia">10</div>
-            <div class="dia">11</div>
-            <div class="dia">12</div>
-            <div class="dia">13</div>
-            <div class="dia evento activar">14</div>
-            <div class="dia hoy">15</div>
-            <div class="dia">16</div>
-            <div class="dia">17</div>
-            <div class="dia">18</div>
-            <div class="dia evento ">19</div>
-            <div class="dia">20</div>
-            <div class="dia">21</div>
-            <div class="dia">22</div>
-            <div class="dia">23</div>
-            <div class="dia">24</div>
-            <div class="dia">25</div>
-            <div class="dia">26</div>
-            <div class="dia">27</div>
-            <div class="dia">28</div>
-            <div class="dia">29</div>
-            <div class="dia">30</div>
-            <div class="dia proximo-fecha">1</div>
-            <div class="dia proximo-fecha">2</div>
-            <div class="dia proximo-fecha">3</div>
-            <div class="dia proximo-fecha">4</div>
-            <div class="dia proximo-fecha">5</div>
-            <div class="dia proximo-fecha">6</div> -->
-          </div>
-          <div class="ir-a-hoy">
-            <div class="ir">
-              <input type="text" placeholder="mm/yyyy" class="date-input">
-              <button class="ir-boton">ir</button>
-            </div>
-            <button class="hoy-boton">hoy</button>
-          </div>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cronograma</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/styles_index.css">
+  <link rel="stylesheet" href="/css/estilo_cronograma.css">
+  <link rel="stylesheet" href="/CSS/estilo_header_footer.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Agregar los iconos de fonstawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('#menu-toggle').click(function () {
+        $('.header_navegacion, .header_usuario').toggleClass('active');
+      });
+    });
+  </script>
+</head>
 
-        </div>
-      </div>
-      <div class="derecha">
-        <div class="hoy-fecha">
-          <div class="evento-dia">Jueves</div>
-          <div class="evento-fecha">30 Abril 2023</div>
-        </div>
-        <div class="eventos">
-          <!--Los Servicios se agregaran con Js-->
-          <div class="evento">
-            <div class="titulo">
-              <i class="fas fa-circle"></i>
-              <h3 class="evento-titulo">Servicio 1</h3>
-            </div>
-            <div class="evento-tiempo">10:00AM - 12:00PM</div>
-          </div>
-          <div class="evento">
-            <div class="titulo">
-              <i class="fas fa-circle"></i>
-              <h3 class="evento-titulo">Servicio 1</h3>
-            </div>
-            <div class="evento-tiempo">10:00AM - 12:00PM</div>
-          </div>
-          <div class="evento">
-            <div class="titulo">
-              <i class="fas fa-circle"></i>
-              <h3 class="evento-titulo">Servicio 1</h3>
-            </div>
-            <div class="evento-tiempo">10:00AM - 12:00PM</div>
-          </div>
-
-          </div>
-        </div>
-      </div> 
+<body>
+  <header class=cabecera>
+    <div class="header_logo">
+      <div class="icono"><i class="fas fa-book"></i></div>
+      <div class="nombre_pagina"><span class="mensaje">Sabiduría <br>en línea</span></div>
     </div>
 
-    <script src="/JS/cronograma.js"></script>
-  </body>
+    <div class="header_busqueda">
+      <input class="c_busqueda_entrada" type="text" id="busqueda" name="busqueda"
+        placeholder="Buscar información ..."></input>
+      <button class="c_busqueda_boton" type="submit"><i class="fas fa-search"></i></button>
+    </div>
+
+    <div class="header_menu">
+      <button id="menu-button" class="hamburguesa-button"><i class="fas fa-bars"></i></button>
+    </div>
+
+    <div class="header_navegacion">
+      <nav>
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="../HTML/servicios.html">Servicios</a></li>
+          <li><a href="../HTML/blog.html">Blog</a></li>
+          <li><a href="../HTML/ayuda.html">Ayuda</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="header_usuario">
+      <nav class="lista_desplegable">
+        <ul class="navbar-nav">
+          <li class="item_usuario"><a href="#"><i class="fas fa-user"></i>Usuario</a>
+            <ul class="sub_menu">
+              <li><a href="/HTML/perfil-usuario.html">Perfil</a></li>
+              <li><a href="/HTML/registro_servicios.html">Dar servicio</a></li>
+              <li><a href="/HTML/agregar-servicio.html">Agregar servicios</a></li>
+              <li><a href="/HTML/historial.html">Cronograma</a></li>
+              <li><a href="/HTML/favoritos.html">Favoritos</a></li>
+            </ul>
+          </li>
+          <li class="item_notificacion"><a href="HTML/notificaciones.html"><i class="fas fa-bell"></i>Notificaciones</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Parte del contenedor -->
+
+  <div class="contenedor">
+    <div class="izquierda">
+      <div class="calendario">
+
+        <div class="mes">
+          <i class="fa fa-angle-left prev"></i>
+          <div class="fecha"></div>
+          <i class="fa fa-angle-right next"></i>
+        </div>
+
+        <div class="diasLaborables">
+          <div>Dom</div>
+          <div>Lun</div>
+          <div>Ma</div>
+          <div>Mie</div>
+          <div>Jue</div>
+          <div>Vie</div>
+          <div>Sab</div>
+        </div>
+
+        <div class="dias">
+          <!--
+
+            Aqui van todoos los dias se desarrolla con Js
+          
+
+          <div class="dia anterior-fecha">26</div>
+          <div class="dia anterior-fecha">27</div>
+          <div class="dia anterior-fecha">28</div>
+          <div class="dia anterior-fecha">29</div>
+          <div class="dia anterior-fecha">30</div>
+          <div class="dia anterior-fecha">31</div>
+          <div class="dia">1</div>
+          <div class="dia">2</div>
+          <div class="dia">3</div>
+          <div class="dia">4</div>
+          <div class="dia evento">5</div>
+          <div class="dia">6</div>
+          <div class="dia">7</div>
+          <div class="dia">8</div>
+          <div class="dia">9</div>
+          <div class="dia">10</div>
+          <div class="dia">11</div>
+          <div class="dia">12</div>
+          <div class="dia">13</div>
+          <div class="dia evento activar">14</div>
+          <div class="dia hoy">15</div>
+          <div class="dia">16</div>
+          <div class="dia">17</div>
+          <div class="dia">18</div>
+          <div class="dia evento ">19</div>
+          <div class="dia">20</div>
+          <div class="dia">21</div>
+          <div class="dia">22</div>
+          <div class="dia">23</div>
+          <div class="dia">24</div>
+          <div class="dia">25</div>
+          <div class="dia">26</div>
+          <div class="dia">27</div>
+          <div class="dia">28</div>
+          <div class="dia">29</div>
+          <div class="dia">30</div>
+          <div class="dia proximo-fecha">1</div>
+          <div class="dia proximo-fecha">2</div>
+          <div class="dia proximo-fecha">3</div>
+          <div class="dia proximo-fecha">4</div>
+          <div class="dia proximo-fecha">5</div>
+          <div class="dia proximo-fecha">6</div>
+          -->
+
+        </div>
+        <div class="ir-a-hoy">
+          <div class="ir">
+            <input type="text" placeholder="mm/yyyy" class="date-input">
+            <button class="ir-boton">ir</button>
+          </div>
+          <button class="hoy-boton">hoy</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="derecha">
+
+      <div class="hoy-fecha">
+        <div class="evento-dia">Jueves</div>
+        <div class="evento-fecha">30 Abril 2023</div>
+      </div>
+
+      <div class="eventos">
+
+        <div class="evento">
+          <div class="titulo">
+            <i class="fas fa-circle"></i>
+            <h3 class="evento-titulo">Servicio1</h3>
+          </div>
+          <div class="evento-tiempo">10:00AM - 12:00PM</div>
+        </div>
+
+        <div class="evento">
+          <div class="titulo">
+            <i class="fas fa-circle"></i>
+            <h3 class="evento-titulo">Servicio1</h3>
+          </div>
+          <div class="evento-tiempo">10:00AM - 12:00PM</div>
+        </div>
+
+        <div class="evento">
+          <div class="titulo">
+            <i class="fas fa-circle"></i>
+            <h3 class="evento-titulo">Servicio1</h3>
+          </div>
+          <div class="evento-tiempo">10:00AM - 12:00PM</div>
+        </div>
+
+        <div class="botones">
+          <button class="salir" onclick="salir(event)">Salir</button>
+        </div>
+
+      </div>
+      
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer_contenedor">
+      <div class="footer_enlaces">
+        <a class="nav-link" href="/HTML/acerca-de-nosotros.html">Acerca de nosotros</a>
+        <a class="nav-link" href="/HTML/terminos-condiciones.html">Términos y condiciones</a>
+        <a class="nav-link" href="/HTML/ayuda.html">Ayuda</a>
+        <a class="nav-link" href="/HTML/contacto.html">Contáctenos</a>
+        <a class="nav-link" href="/HTML/contacto.html">MAURO MIZHQUIRI</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Agregar los enlaces a los archivos JavaScript de Bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="js/menu_hamburguesa.js"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <script src="/JS/cronograma.js"></script>
+</body>
+
 </html>
