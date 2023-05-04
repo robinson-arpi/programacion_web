@@ -93,3 +93,9 @@ window.addEventListener("load", realizarTareaSiPantallaPequena);
 window.addEventListener("resize", realizarTareaSiPantallaPequena);
 // Agregar evento click al botón hamburguesa
 menuButton.addEventListener('click', realizarTareaSiPantallaPequena);
+
+
+const salirElemento = document.getElementById('salir');
+salirElemento.addEventListener('click', function() {
+  localStorage.removeItem("sesion_iniciada");
+});

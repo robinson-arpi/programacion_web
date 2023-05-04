@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv = "X-UA-Compatible" content="IE=edge">
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-    
+
     <link rel = "stylesheet" href = "../CSS/estilo_header_footer.css">
-    
-    <!-- Agregar los iconos de fonstawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <title>Ayuda</title>
   </head>
@@ -47,7 +45,7 @@
                   <li><a href="agregar-servicio.html">Agregar servicio</a></li>
                   <li><a href="cronograma.html">Cronograma</a></li>
                   <li><a href="historial.html">Historial</a></li>
-                  <li><a href="#">Salir</a></li>
+                  <li  id = "salir" ><a href="#">Salir</a></li>
                 </ul>
               </li>
               <li class = "item_notificacion"><a href="notificaciones.html"><i class="fas fa-bell"></i>Notificaciones</a></li>
@@ -72,11 +70,11 @@
   <footer>
     <div class="footer_contenedor">
       <div class="footer_enlaces">
-        <a class="nav-link" href="HTML/acerca-de-nosotros.html">Acerca de nosotros</a>
-        <a class="nav-link" href="HTML/terminos-condiciones.html">Términos y condiciones</a>
-        <a class="nav-link" href="HTML/ayuda.html">Ayuda</a>
-        <a class="nav-link" href="HTML/contacto.html">Contáctenos</a>
-        <a class="nav-link" href="#">ROBINSON ARPI</a>
+        <a href="acerca-de-nosotros.html">Acerca de nosotros</a>
+        <a href="terminos-condiciones.html">Términos y condiciones</a>
+        <a href="ayuda.html">Ayuda</a>
+        <a href="contacto.html">Contáctenos</a>
+        <a href="#">ROBINSON ARPI</a>
       </div>
     </div>
   </footer>
@@ -104,8 +102,6 @@
       // Cargar la página del contenido en el elemento correspondiente
       cargarPagina(urlContenido, contenido);
     </script>
-    <!-- Agregar los enlaces a los archivos JavaScript de Bootstrap -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="../JS/header_footer.js"></script>
     
   </body>

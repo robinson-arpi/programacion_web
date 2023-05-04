@@ -93,3 +93,8 @@ username.addEventListener('mouseleave', function() {
     username.classList.remove('sub_menu');
   }, 50); // Retardo de 500ms antes de ocultar el submenú
 });
+
+const salirElemento = document.getElementById('salir');
+salirElemento.addEventListener('click', function() {
+  localStorage.removeItem("sesion_iniciada");
+});
