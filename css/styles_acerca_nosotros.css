@@ -21,7 +21,6 @@
   .contenedor-acerca-nosotros {
     transform: none; /* Elimina la transformación para que el contenedor no se desplace hacia abajo */
     width: 100%; /* Usa el 100% de la anchura en pantallas pequeñas */
-    /*border-radius: 0;  Elimina el borde redondeado */
   }
 }
   

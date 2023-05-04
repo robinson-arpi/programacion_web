@@ -1,24 +1,22 @@
-body{
+@charset "UTF-8";
+body {
   font-family: Arial, Helvetica, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-section{
-  display: block;  
+.border {
+  margin: 10px;
 }
 
-.contenedor-agregar-servicio{
+section {
+  display: block;
+}
+
+.contenedor-agregar-servicio {
   display: grid;
-  grid-template-areas: 
-  "header header"
-  "imagen descripcion"
-  "imagen descripcion"
-  "titulo ubicacion"
-  "categoria disponibilidad"
-  "requisitos requisitos"
-  "botones botones";
+  grid-template-areas: "header header" "imagen descripcion" "imagen descripcion" "titulo ubicacion" "categoria disponibilidad" "requisitos requisitos" "botones botones";
   grid-template-columns: 50% 50%;
   grid-template-rows: auto auto auto auto auto auto;
   margin: 0 auto;
@@ -27,41 +25,34 @@ section{
   border-radius: 10px;
   box-shadow: 0 0 10px var(--color-fuerte);
   align-items: center;
-  margin: 0 auto;  
+  margin: 0 auto;
 }
-
-header{
+.contenedor-agregar-servicio header {
   grid-area: header;
   text-align: center;
 }
-
-header h1 {
+.contenedor-agregar-servicio header h1 {
   text-align: center;
   padding: 0, 0, 20px, 0;
   border-bottom: 1px solid var(--color-fuerte);
-  font-family:Arial, Helvetica, sans-serif !important; 
-  font-size: 30px !important;
+  font-size: 30px;
 }
-
-.section1{
+.contenedor-agregar-servicio section.section1 {
   grid-area: imagen;
   min-height: 100px;
   align-items: center;
   padding: 10px;
 }
-
-.preview-container {
+.contenedor-agregar-servicio section.section1 div.preview-container {
   position: relative;
   display: inline-block;
 }
-
-#imagen-preview {
+.contenedor-agregar-servicio section.section1 div.preview-container img#imagen-preview {
   display: block;
   max-width: 100%;
   max-height: 100%;
 }
-
-.eliminar-imagen {
+.contenedor-agregar-servicio section.section1 div.preview-container .eliminar-imagen {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -75,23 +66,33 @@ header h1 {
   font-weight: bold;
   cursor: pointer;
 }
-
-.section2{
+.contenedor-agregar-servicio section.section1 .subir-imagen {
+  width: auto;
+  height: 4px;
+  border: 1px solid rgb(110, 110, 110);
+  color: rgb(110, 110, 110);
+  font-size: small;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
+}
+.contenedor-agregar-servicio .section2 {
   grid-area: titulo;
   width: 90%;
   margin: 0 auto; /* Centrar la sección horizontalmente */
   padding: 10px;
 }
-
-.section3{
+.contenedor-agregar-servicio .section3 {
   grid-area: descripcion;
   height: 100%;
   width: 90%;
   margin: 0 auto; /* Centrar la sección horizontalmente */
   padding: 10px;
 }
-
-textarea {
+.contenedor-agregar-servicio .section3 textarea {
   width: 100%; /* Establecer el ancho del textarea al 100% del contenedor */
   height: 90%;
   box-sizing: border-box; /* Incluir el padding y el borde en el ancho total del textarea */
@@ -99,67 +100,67 @@ textarea {
   border: 1px solid #ccc; /* Añadir un borde para que el textarea se vea más definido */
   resize: none;
 }
-
-.inputBox label{
-  align-items: center;
-}
-
-.section5{
+.contenedor-agregar-servicio .section5 {
   grid-area: categoria;
   width: 90%; /* Establecer el ancho de la sección al 80% del ancho del contenedor */
   margin: 0 auto; /* Centrar la sección horizontalmente */
   padding: 10px;
 }
-
-select {
+.contenedor-agregar-servicio .section5 select {
   width: 100%; /* Establecer el ancho del select al 100% de su contenedor */
   box-sizing: border-box; /* Incluir el padding y el borde en el ancho total del select */
   padding: 10px; /* Añadir un padding para que el texto no esté demasiado pegado a los bordes del select */
   border: 1px solid #ccc; /* Añadir un borde para que el select se vea más definido */
   border-radius: 5px; /* Añadir bordes redondeados para que se vea más atractivo */
 }
-
-/* Define el color de fondo color fuerte para cuando el cursor esté sobre un ítem */
-option:hover {
-  background-color: pink !important;
-}
-
-/* Define el color de fondo fuerte para el ítem seleccionado */
-option:checked {
+.contenedor-agregar-servicio .section5 select option:checked {
   background-color: var(--color-fuerte);
   color: #ffffff;
 }
-
-.section6{
+.contenedor-agregar-servicio .section6 {
   grid-area: ubicacion;
   width: 90%;
   margin: 0 auto; /* Centrar la sección horizontalmente */
   padding: 10px;
 }
-
-.section7{
+.contenedor-agregar-servicio .section7 {
   grid-area: disponibilidad;
   width: 90%;
   margin: 0 auto; /* Centrar la sección horizontalmente */
   padding: 10px;
 }
-
-
-.section8{
+.contenedor-agregar-servicio .section7 select {
+  width: 100%; /* Establecer el ancho del select al 100% de su contenedor */
+  box-sizing: border-box; /* Incluir el padding y el borde en el ancho total del select */
+  padding: 10px; /* Añadir un padding para que el texto no esté demasiado pegado a los bordes del select */
+  border: 1px solid #ccc; /* Añadir un borde para que el select se vea más definido */
+  border-radius: 5px; /* Añadir bordes redondeados para que se vea más atractivo */
+}
+.contenedor-agregar-servicio .section7 select option:checked {
+  background-color: var(--color-fuerte);
+  color: #ffffff;
+}
+.contenedor-agregar-servicio .section8 {
   grid-area: requisitos;
   align-self: center;
   width: 90%;
   margin: 0 auto; /* Centrar la sección horizontalmente */
   padding: 10px;
 }
-
-li{
+.contenedor-agregar-servicio .section8 button {
+  background-color: rgb(245, 176, 188);
+  border: 1px solid black;
+}
+.contenedor-agregar-servicio .section8 button:hover {
+  color: white;
+  border: 1px solid black;
+}
+.contenedor-agregar-servicio .section8 ul li {
   color: black;
   padding: 1%;
   list-style: none;
 }
-
-li button{
+.contenedor-agregar-servicio .section8 ul li button {
   border-radius: 50%;
   border: none;
   background-color: var(--color-fuerte);
@@ -170,19 +171,15 @@ li button{
   font-weight: bold;
   cursor: pointer;
 }
-
-.section9{
+.contenedor-agregar-servicio .section9 {
   grid-area: botones;
-  display:flex;
+  display: flex;
   flex-direction: row;
-  padding-left: 50%; 
+  padding-left: 50%;
   padding: 10px;
-  justify-self: right; 
+  justify-self: right;
 }
-
-/*forma botones*/
-
-.boton {
+.contenedor-agregar-servicio .section9 button.boton {
   width: 10rem;
   height: 50px;
   font-size: var(--tamano-texto);
@@ -197,73 +194,21 @@ li button{
   margin-right: 1rem; /* Añade un margen derecho de 10px */
   margin-top: 1rem;
 }
-
-.boton:hover {
+.contenedor-agregar-servicio .section9 button.boton:hover {
   color: var(--color-fondo);
   transition: 0.5s;
   box-shadow: 0 0 10px var(--color-fuerte2);
 }
 
-.titulo {
-  font-size: 1.0rem;
-}
-
-.titulo h1 {
-  text-align: center;
-  align-items: center;
-  padding: 0, 0, 20px, 0;
-  border-bottom: 1px solid var(--color-fuerte);
-  
-}
-
-.subir-imagen{
-  width: auto;
-  height: 4px;
-  border: 1px solid rgb(110, 110, 110);
-  color: rgb(110, 110, 110);
-  font-size: small;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  padding: 10px;
-  margin: 10px;
-}
-
-
-label{
-  font-weight: bold;
-}
-
-select:focus {
-  font-weight: bold;
-}
-
-
-.campo {
-  padding: 45px 0px 0px 0px;
-}
-
 @media screen and (max-width: 600px) {
-  .contenedor-agregar-servicio{    
-    grid-template-areas: 
-    "header"
-    "imagen"
-    "titulo"
-    "descripcion"
-    "duracion"
-    "ubicacion"
-    "categoria"
-    "disponibilidad"
-    "requisitos"
-    "botones";
+  .contenedor-agregar-servicio {
+    grid-template-areas: "header" "imagen" "titulo" "descripcion" "duracion" "ubicacion" "categoria" "disponibilidad" "requisitos" "botones";
     grid-template-columns: 100%;
-    margin: 10px;   
+    margin: 10px;
   }
-
-  .section9{
+  .section9 {
     grid-area: botones;
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     padding-left: 0%;
@@ -271,3 +216,4 @@ select:focus {
   }
 }
 
+/*# sourceMappingURL=estilo_agregar.css.map */
