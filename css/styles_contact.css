@@ -7,90 +7,92 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
 /*Body*/
-body {
-    background: #bfbfbf;
-    background: linear-gradient(to top right, #bfbfbf , #bfbfbf);
-}
 
 /*Section*/
-section{
+section {
     position: relative;
     width: 100%;
-    height: 100vh;
+    height: 650px;
     display: grid;
     place-items: center;
 }
+
+
 /*Contenedor Formulario de contacto (Contact Form)*/
-section .contactForm{
+.contactForm {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(500px,1fr));
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
     gap: 20px;
     padding: 40px;
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 100%;
     background: white;
-    box-shadow: 0 0 10px rgba(197, 54, 120, 1);
-    border-radius: 30px;
-
 }
-section .contactForm .form{
+
+.form {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 85%;
+    width: 100%;
     margin-left: 30px;
 }
-section .contactForm .form form{
+
+form {
     width: 100%;
 }
 
 /*Título y descripción*/
-section .contactForm .form .texto h2{
+h2 {
     color: #c53678;
     font-size: 2em;
     margin-bottom: 10px;
 }
-section .contactForm .form .texto p{
+
+p {
     color: black;
     line-height: 1.5;
     margin-bottom: 20px;
 }
 
 /*Cajas de texto*/
-section .contactForm .form form .inputBox{
+.inputBox {
     display: flex;
     flex-direction: column;
     margin-bottom: 15px;
 }
 
 /*Etiquetas e imput*/
-section .contactForm .form form .inputBox label{
+.inputBox label {
     color: #c53678;
     font-weight: 700;
 }
-section .contactForm .form form .inputBox input[type="text"],
-section .contactForm .form form .inputBox input[type="email"],
-section .contactForm .form form .inputBox textarea{
- 
+
+.inputBox input[type="text"],
+.inputBox input[type="email"],
+.inputBox textarea {
+
     border-color: black;
     background: white;
     padding: 10px;
     border-radius: 15px;
     color: black;
     resize: none;
-    
+
 }
-section .contactForm .form form .inputBox input[type="text"]:focus,
-section .contactForm .form form .inputBox input[type="email"]:focus,
-section .contactForm .form form .inputBox textarea:focus{
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+.inputBox textarea:focus {
     outline: 1px solid black;
 }
+
 /*Button*/
-section .contactForm .form form input[type="submit"]{
+input[type="submit"] {
     background-color: #c53678;
     display: inline-block;
     text-align: center;
@@ -105,25 +107,28 @@ section .contactForm .form form input[type="submit"]{
     transition: 0.3s;
 
 }
-section .contactForm .form form input[type="submit"]:hover{
+
+input[type="submit"]:hover {
     color: white;
     transition: .5s;
-  }
+}
 
 /*Contenedor Información*/
-section .contactForm .info{
+.info {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
+
 /*Imagen*/
-section .contactForm .info .imgBox{
+.imgBox {
     position: relative;
     width: 350px;
     height: 350px;
 }
-section .contactForm .info .imgBox img{
+
+.imgBox img {
     position: relative;
     top: 0;
     left: 0;
@@ -134,36 +139,52 @@ section .contactForm .info .imgBox img{
 
 
 /*Información de contacto*/
-section .contactForm .info .textBox{
+.textBox {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
 }
-section .contactForm .info .textBox .infoContact{
+
+.infoContact {
     display: flex;
     justify-content: center;
     align-items: flex-start;
     margin-bottom: 10px;
 }
-section .contactForm .info .textBox .infoContact ion-icon{
+
+.infoContact ion-icon {
     font-size: 2em;
     margin-right: 10px;
     color: black;
 }
-section .contactForm .info .textBox .infoContact p{
+
+.infoContact p {
     color: black;
 }
 
 /*Redes sociales*/
-section .contactForm .info .rrss a{
+.rrss a {
     padding: 20px;
     font-size: 2em;
     color: black;
     transition: 0.3s;
 }
-section .contactForm .info .rrss a:hover{
+
+.rrss a:hover {
     color: #c53678;
 }
+
 /*Breakpoints*/
 
+@media (max-width: 780px) {
+    .form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info {
+        display: none;
+    }
+}
