@@ -205,7 +205,34 @@ form {
 }
 
 footer {
-  font-size: 8px;
+  bottom: 0;
+  display: flex;
+  width: 100vw;
+  position: fixed;
+  align-items: center;
+  margin: none;
+  background-color: var(--color-resaltado);
+}
+footer .footer_contenedor1 {
+  padding-top: 0.5%;
+  padding-bottom: 1%;
+  margin: 0 auto;
+}
+footer .footer_contenedor1 .footer_enlaces1 {
+  display: flex;
+  justify-content: center;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black !important;
+  font-size: var(--tamano-pequeno);
+}
+footer .footer_contenedor1 .footer_enlaces1 a {
+  margin: 0 10px;
+  font-size: var(--tamano-pequeno);
+  color: #333;
+  text-decoration: none;
+}
+footer .footer_contenedor1 .footer_enlaces1 a:hover {
+  font-weight: bold;
 }
 
 @media screen and (max-width: 600px) {

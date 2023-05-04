@@ -1,8 +1,14 @@
 .navbar {
-  background-color: #c53678;
+  background-color: #ffffff;
 }
 .navbar h1 {
-  color: white;
+  color: var(--color-fuerte);
+}
+.navbar div {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
 }
 
 .list-group-link.active,
@@ -47,6 +53,13 @@
 
 .search-text {
   font-size: 16px;
+}
+
+.header_titulo {
+  text-align: center;
+}
+.header_titulo h1 {
+  color: var(--color-fuerte);
 }
 
 /*# sourceMappingURL=estilo_historial.css.map */
