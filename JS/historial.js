@@ -35,6 +35,7 @@ const searchBoxes = document.querySelectorAll('.search-box');
         const confirmed = confirm(`¿Desea buscar "${searchBoxText}" en los servicios?`);
         if (confirmed) {
           // Agregar lógica de búsqueda aquí
+          window.location.href = '../HTML/servicios.html';
         }
       });
 });
