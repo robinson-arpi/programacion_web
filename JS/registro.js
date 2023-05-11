@@ -16,12 +16,15 @@ botonIniciar.addEventListener("click", function(event) {
   }
 
   if (!verificarCampos()){
+    alert("Las contraseñas no coinciden");
     formValid = false;
   }
 
   if (formValid) {
     event.preventDefault(); // Evita el envío del formulario por defecto
     window.location.href = '../index.html';
+  }else {
+    event.preventDefault(); // Evita el envío del formulario por defecto
   }
 });
 

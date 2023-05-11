@@ -5,8 +5,11 @@
 	<title>Perfil de Usuario</title>
 	<link rel="stylesheet" type="text/css" href="../css/estilos_generales.css">
 	<link rel="stylesheet" type="text/css" href="../css/estilo_perfil.css">
+  <link rel="stylesheet" href="../css/styles_buscador.css">
     <link rel = "stylesheet" href = "../CSS/estilo_header_footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <!-- Enlace al archivo CSS de Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  <link rel="stylesheet" href="../css/styles_favoritos.css">
 </head>
 <body>
     <header class = cabecera>
@@ -76,57 +79,120 @@
                 </div>
             </section>
             <section class="servicios">
-                <h2>Servicios</h2>
-                <ul>
-                    <li>
-                        <div class="servicio">
-                            <h3>Servicio 1</h3>
-                            <p><strong>Proveedor:</strong> Nombre del Proveedor</p>
-                            <p>Descripción corta del servicio ofrecido.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="servicio">
-                            <h3>Servicio 2</h3>
-                            <p><strong>Proveedor:</strong> Nombre del Proveedor</p>
-                            <p>Descripción corta del servicio ofrecido.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="servicio">
-                            <h3>Servicio 3</h3>
-                            <p><strong>Proveedor:</strong> Nombre del Proveedor</p>
-                            <p>Descripción corta del servicio ofrecido.</p>
-                        </div>
-                    </li>
-                </ul>
+                <h2>Mis Servicios</h2>
+                <div class="row mt-4">
+                  <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card service-box">
+                      <div class="card-header">
+                        <button type="button" class="btn btn-danger btn-sm float-right">
+                          <!-- icono de basurero -->
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                          </svg>
+                        </button>
+                      </div>
+                      <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Servicio 1">
+                      <div class="card-body">
+                        <h5 class="card-title">Servicio 1</h5>
+                        <p class="card-text">Descripción del servicio 1.</p>
+                        <a href="../HTML/descripcion_servicios.html" class="btn btn-rosado">Más información</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 mb-4" id = "servicio2">
+                    <div class="card service-box">
+                      <div class="card-header">
+                        <button type="button" class="btn btn-danger btn-sm float-right" id = "eliminar_servicio2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                          </svg>
+                        </button>
+                      </div>
+                      <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Servicio 2">
+                      <div class="card-body ">
+                        <h5 class="card-title">Servicio 2</h5>
+                        <p class="card-text">Descripción del servicio 2.</p>
+                        <a href="../HTML/descripcion_servicios.html" class="btn btn-rosado">Más información</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 mb-4" id = "servicio3">
+                    <div class="card service-box">
+                      <div class="card-header">
+                        <button type="button" class="btn btn-danger btn-sm float-right" id = "eliminar_servicio3">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                          </svg>
+                        </button>
+                      </div>
+                      <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Servicio 2">
+                      <div class="card-body ">
+                        <h5 class="card-title">Servicio 3</h5>
+                        <p class="card-text">Descripción del servicio 2.</p>
+                        <a href="../HTML/descripcion_servicios.html" class="btn btn-rosado">Más información</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
             </section>
             
             <section class="servicios">
                 <h2>Historial</h2>
-                <ul>
-                    <li>
-                        <div class="servicio">
-                            <h3>Servicio 1</h3>
-                            <p><strong>Proveedor:</strong> Nombre del Proveedor</p>
-                            <p>Descripción corta del servicio ofrecido.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="servicio">
-                            <h3>Servicio 2</h3>
-                            <p><strong>Proveedor:</strong> Nombre del Proveedor</p>
-                            <p>Descripción corta del servicio ofrecido.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="servicio">
-                            <h3>Servicio 3</h3>
-                            <p><strong>Proveedor:</strong> Nombre del Proveedor</p>
-                            <p>Descripción corta del servicio ofrecido.</p>
-                        </div>
-                    </li>
-                </ul>
+                <div class="row mt-4">
+                  <div class="col-md-3 col-sm-6 mb-4">
+                    <div class="card service-box">
+                      <div class="card-header">
+                        <button type="button" class="btn btn-danger btn-sm float-right">
+                          <!-- icono de basurero -->
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                          </svg>
+                        </button>
+                      </div>
+                      <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Servicio 1">
+                      <div class="card-body">
+                        <h5 class="card-title">Servicio 1</h5>
+                        <p class="card-text">Descripción del servicio 1.</p>
+                        <a href="../HTML/descripcion_servicios.html" class="btn btn-rosado">Más información</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 mb-4" id = "servicio_h2">
+                    <div class="card service-box">
+                      <div class="card-header">
+                        <button type="button" class="btn btn-danger btn-sm float-right" id = "eliminar_servicio_h2">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                          </svg>
+                        </button>
+                      </div>
+                      <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Servicio 2">
+                      <div class="card-body ">
+                        <h5 class="card-title">Servicio 2</h5>
+                        <p class="card-text">Descripción del servicio 2.</p>
+                        <a href="../HTML/descripcion_servicios.html" class="btn btn-rosado">Más información</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3 col-sm-6 mb-4" id = "servicio_h3">
+                    <div class="card service-box">
+                      <div class="card-header">
+                        <button type="button" class="btn btn-danger btn-sm float-right" id = "eliminar_servicio_h3">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                          </svg>
+                        </button>
+                      </div>
+                      <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Servicio 2">
+                      <div class="card-body ">
+                        <h5 class="card-title">Servicio 3</h5>
+                        <p class="card-text">Descripción del servicio 2.</p>
+                        <a href="../HTML/descripcion_servicios.html" class="btn btn-rosado">Más información</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
             </section>
 
         </main>
@@ -134,15 +200,18 @@
     <footer>
         <div class="footer_contenedor">
           <div class="footer_enlaces">
-            <a class="nav-link" href="acerca-de-nosotros.html">Acerca de nosotros</a>
-            <a class="nav-link" href="terminos-condiciones.html">Términos y condiciones</a>
-            <a class="nav-link" href="ayuda.html">Ayuda</a>
-            <a class="nav-link" href="contacto.html">Contáctenos</a>
-            <a class="nav-link" href="#">ROBINSON ARPI</a>
+            <a href="acerca-de-nosotros.html">Acerca de nosotros</a>
+            <a href="terminos-condiciones.html">Términos y condiciones</a>
+            <a href="ayuda.html">Ayuda</a>
+            <a href="contacto.html">Contáctenos</a>
+            <a href="#">ROBINSON ARPI</a>
           </div>
         </div>
       </footer>
-    <script src="../JS/header_footer.js"></script>
+      
+      <script src="../JS/header_footer.js"></script>
     <script src="../JS/funciones.js"></script>
+    <script src="../JS/perfil_usuario.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
