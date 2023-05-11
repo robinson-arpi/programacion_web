@@ -20,30 +20,21 @@
   color: #303433;
 }
 
-.navbar-nav {
-  display: inline-block;
-  margin-right: 10px;
-  /* Agrega un margen derecho para separar los elementos */
-}
-
 .container {
-  min-height: 100vh;
   min-height: 80vh;
   width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-bottom: 50px;
   /* Parte de la sección */
 }
 .container section {
-  margin-top: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 15px;
 }
 .container section img {
   width: 100%;
-  max-width: 100%;
 }
 .container main {
   display: flex;
@@ -51,7 +42,7 @@
   align-items: center;
 }
 .container .contenedor_servicio {
-  max-width: 450px;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,9 +59,8 @@
   text-align: center;
   letter-spacing: 1px;
   padding: none;
-  display: block;
 }
-.container .contenedor_servicio .titulo_curso span:hover span {
+.container .contenedor_servicio .titulo_curso span:hover {
   color: #c53678;
 }
 .container .contenedor_servicio .separador {
@@ -79,33 +69,28 @@
   background-color: var(--color-fuerte);
   padding: none;
   border: none;
-  display: block;
 }
 .container .contenedor_servicio .duracion-servicio {
   padding-top: 5px;
   font-size: 20px;
   opacity: 0.9;
-  font-weight: 500;
 }
 .container .contenedor_servicio .calificacion-servicio {
   display: flex;
   align-items: center;
 }
 .container .contenedor_servicio .calificacion-servicio span {
-  margin-right: 1px;
+  margin-right: 2px;
 }
 .container .contenedor_servicio .descripcion-servicio {
   font-weight: 10px;
   line-height: 1;
-  font-weight: 300;
-  opacity: 0.9;
-  margin-top: 0;
 }
 .container .contenedor_servicio .informacion {
   width: 100%;
 }
 .container .contenedor_servicio .informacion p {
-  padding-left: 2%;
+  padding-left: 5%;
   margin: 1%;
 }
 .container .contenedor_servicio .requisitos-servicio {

@@ -7,170 +7,203 @@
     font-family: 'Poppins', sans-serif;
 }
 
-section {
-    position: relative;
-    width: 100%;
-    height: 650px;
-    display: grid;
-    place-items: center;
+section, .contenedor_informacion {
+    display: flex;
+    align-items: center;
+
 }
 
-.contactForm {
-    position: relative;
+.contenedor_contacto,
+.info {
+    max-width: 90%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+
+.contenedor {
     display: grid;
     grid-template-areas:
-    "formulario imagen";
+        "formulario imagen";
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 40px;
-    width: 100vw;
-    height: 100%;
-    background: white;
+    width: 100%;
+    margin-bottom: 30px;
+    justify-content: center;
 
-    /* Para el contenido Form */
-    .form {
-        grid-area: formulario;
-        position: relative;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .titulo {
+        text-transform: uppercase;
+        font-size: 2em;
+        font-weight: bold;
+        text-align: center;
+        letter-spacing: 2px;
+        padding: none;
+        margin: none;
+    }
+
+    .mensaje_bienvenida {
+        text-align: center;
+        font-size: 1.1em;
+        line-height: 28px;
+        margin-bottom: 30px;
+        color: #696969;
+    }
+
+    .separador {
+        width: 550px;
+        height: 4px;
+        background-color: var(--color-fuerte);
+        padding: none;
+        margin: none;
+        border: none;
+    }
+}
+
+form {
+
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    /*  .nombre_completo,
+    .correo, .caja_texto {
         display: flex;
-        justify-content: center;
         align-items: center;
-        flex-direction: column;
-        margin-left: 30px;
+        justify-content: space-between;
+    }  */
 
 
-        form {
+    .entrada {
+        position: relative;
+        border-bottom: 2px solid silver;
+        margin: 20px 0;
+
+        input {
             width: 100%;
+            padding: 0 5px;
+            height: 40px;
+            font-size: var(--tamano-texto);
+            border: none;
+            background: none;
+            outline: none;
         }
 
-        h2 {
-            color: #c53678;
+        .mensaje {
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 70px;
+            font-size: var(--tamano-texto);
+            box-sizing: border-box;
+            text-align: left;
+        }
+
+        label {
+            position: absolute;
+            top: 50%;
+            left: 5px;
+            color: var(--color-before);
+            transform: translateY(-50%);
+            font-size: var(--tamano-texto);
+            pointer-events: none;
+            transition: .5s;
+        }
+
+
+    }
+
+    input:focus~label,
+    input:valid~label {
+        top: -5px;
+        color: var(--color-texto);
+        font-weight: bold;
+    }
+}
+
+.iniciar {
+    width: 100%;
+    height: 50px;
+    font-size: var(--tamano-texto);
+    font-weight: bold;
+    background: var(--color-fuerte);
+    border: none;
+    border-radius: 25px;
+    color: var(--color-texto);
+    cursor: pointer;
+
+    &:hover {
+        color: var(--color-fondo);
+        transition: .5s;
+        box-shadow: 0 0 10px var(--color-fuerte2);
+    }
+}
+
+
+.imgBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+    img {
+        width: 65%;
+  
+    }
+}
+
+.textBox {
+    display: flex;
+
+    align-items: flex-start;
+    flex-direction: column;
+
+    .infoContact {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        margin-bottom: 10px;
+
+        ion-icon {
             font-size: 2em;
-            margin-bottom: 10px;
+            margin-right: 10px;
+            color: black;
         }
 
         p {
             color: black;
-            line-height: 1.5;
-            margin-bottom: 20px;
         }
 
-        .inputBox {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 15px;
 
-            label {
-                color: #c53678;
-                font-weight: 700;
-            }
-
-            input[type="text"],
-            input[type="email"],
-            textarea {
-
-                border-color: black;
-                background: white;
-                padding: 10px;
-                border-radius: 15px;
-                color: black;
-                
-            }
-
-            input[type="text"]:focus,
-            input[type="email"]:focus,
-            .inputBox textarea:focus {
-                outline: 1px solid black;
-            }
-
-        }
-        input[type="submit"] {
-            background-color: #c53678;
-            display: inline-block;
-            text-align: center;
-            width: 150px;
-            padding: 10px;
-            border-radius: 15px;
-            color: black;
-            letter-spacing: 1px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 1px 9px 20px -5px rgba(197, 54, 120, 0.5);
-            transition: 0.3s;
-            &:hover {
-                color: white;
-                transition: .5s;
-            }
-        
-        }
     }
+}
 
-    /* Para el contenedor info */
-    .info {
-        grid-area: imagen;
-        justify-content: center;
-        align-items: center;
-        .imgBox {
-            display:flex;
-            justify-content: center;
-            align-items: center;
+.rrss a {
+    padding: 20px;
+    font-size: 2em;
+    color: black;
+    transition: 0.3s;
 
-
-            img {
-                display:flex;
-            justify-content: center;
-            align-items: center;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
-        .textBox {
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            flex-direction: column;
-
-            .infoContact {
-                display: flex;
-                justify-content: center;
-                align-items: flex-start;
-                margin-bottom: 10px;
-
-                ion-icon {
-                    font-size: 2em;
-                    margin-right: 10px;
-                    color: black;
-                }
-                p {
-                    color: black;
-                }
-
-
-            }
-        }
-
-        .rrss a {
-            padding: 20px;
-            font-size: 2em;
-            color: black;
-            transition: 0.3s;
-            &:hover {
-                color: #c53678;
-            }
-        }
-        
+    &:hover {
+        color: #c53678;
     }
 }
 
 @media (max-width: 768px) {
-    .contactForm {
-        padding:none !important;
-        grid-template-areas: 
-        "formulario"
-        "imagen";
+    .contenedor {
+        padding: none !important;
+        grid-template-areas:
+            "formulario"
+            "imagen";
         grid-template-columns: 90vw;
+
 
     }
 }
