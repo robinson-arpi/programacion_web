@@ -7,141 +7,177 @@
 }
 
 section {
-  position: relative;
-  width: 100%;
-  height: 650px;
-  display: grid;
-  place-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.contactForm {
-  position: relative;
+.contenedor_contacto,
+.info {
+  max-width: 80%;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contenedor_informacion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor {
   display: grid;
   grid-template-areas: "formulario imagen";
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  padding: 40px;
-  width: 100vw;
-  height: 100%;
-  background: white;
-  /* Para el contenido Form */
-  /* Para el contenedor info */
+  width: 100%;
+  margin-bottom: 30px;
 }
-.contactForm .form {
-  grid-area: formulario;
-  position: relative;
+
+main {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  margin-left: 30px;
 }
-.contactForm .form form {
-  width: 100%;
-}
-.contactForm .form h2 {
-  color: #c53678;
+main .titulo {
+  text-transform: uppercase;
   font-size: 2em;
-  margin-bottom: 10px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 1px;
+  padding: none;
+  margin: none;
 }
-.contactForm .form p {
-  color: black;
-  line-height: 1.5;
-  margin-bottom: 20px;
+main .mensaje_bienvenida {
+  text-align: center;
+  font-size: 1.1em;
+  line-height: 28px;
+  margin-bottom: 30px;
+  color: #696969;
 }
-.contactForm .form .inputBox {
+main .separador {
+  width: 350px;
+  height: 4px;
+  background-color: var(--color-fuerte);
+  padding: none;
+  margin: none;
+  border: none;
+}
+
+form {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  /*  .nombre_completo,
+   .correo, .caja_texto {
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+   } */
 }
-.contactForm .form .inputBox label {
-  color: #c53678;
-  font-weight: 700;
+form .entrada {
+  position: relative;
+  border-bottom: 2px solid silver;
+  margin: 20px 0;
 }
-.contactForm .form .inputBox input[type=text],
-.contactForm .form .inputBox input[type=email],
-.contactForm .form .inputBox textarea {
-  border-color: black;
-  background: white;
-  padding: 10px;
-  border-radius: 15px;
-  color: black;
-}
-.contactForm .form .inputBox input[type=text]:focus,
-.contactForm .form .inputBox input[type=email]:focus,
-.contactForm .form .inputBox .inputBox textarea:focus {
-  outline: 1px solid black;
-}
-.contactForm .form input[type=submit] {
-  background-color: #c53678;
-  display: inline-block;
-  text-align: center;
-  width: 150px;
-  padding: 10px;
-  border-radius: 15px;
-  color: black;
-  letter-spacing: 1px;
+form .entrada input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: var(--tamano-texto);
   border: none;
-  cursor: pointer;
-  box-shadow: 1px 9px 20px -5px rgba(197, 54, 120, 0.5);
-  transition: 0.3s;
+  background: none;
+  outline: none;
 }
-.contactForm .form input[type=submit]:hover {
-  color: white;
+form .entrada .mensaje {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 70px;
+  font-size: var(--tamano-texto);
+  box-sizing: border-box;
+  text-align: left;
+}
+form .entrada label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: var(--color-before);
+  transform: translateY(-50%);
+  font-size: var(--tamano-texto);
+  pointer-events: none;
   transition: 0.5s;
 }
-.contactForm .info {
-  grid-area: imagen;
-  justify-content: center;
-  align-items: center;
+form input:focus ~ label,
+form input:valid ~ label {
+  top: -5px;
+  color: var(--color-texto);
+  font-weight: bold;
 }
-.contactForm .info .imgBox {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.contactForm .info .imgBox img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  top: 0;
-  left: 0;
+form input:focus ~ span::before,
+form input:valid ~ span::before {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
-.contactForm .info .textBox {
+
+.iniciar {
+  width: 100%;
+  height: 50px;
+  font-size: var(--tamano-texto);
+  font-weight: bold;
+  background: var(--color-fuerte);
+  border: none;
+  border-radius: 25px;
+  color: var(--color-texto);
+  cursor: pointer;
+}
+.iniciar:hover {
+  color: var(--color-fondo);
+  transition: 0.5s;
+  box-shadow: 0 0 10px var(--color-fuerte2);
+}
+
+.imgBox {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+.imgBox img {
+  width: 80%;
+  max-width: 80%;
+}
+
+.textBox {
+  display: flex;
   align-items: flex-start;
   flex-direction: column;
 }
-.contactForm .info .textBox .infoContact {
+.textBox .infoContact {
   display: flex;
   justify-content: center;
   align-items: flex-start;
   margin-bottom: 10px;
 }
-.contactForm .info .textBox .infoContact ion-icon {
+.textBox .infoContact ion-icon {
   font-size: 2em;
   margin-right: 10px;
   color: black;
 }
-.contactForm .info .textBox .infoContact p {
+.textBox .infoContact p {
   color: black;
 }
-.contactForm .info .rrss a {
+
+.rrss a {
   padding: 20px;
   font-size: 2em;
   color: black;
   transition: 0.3s;
 }
-.contactForm .info .rrss a:hover {
+.rrss a:hover {
   color: #c53678;
 }
 
 @media (max-width: 768px) {
-  .contactForm {
+  .contenedor {
     padding: none !important;
     grid-template-areas: "formulario" "imagen";
     grid-template-columns: 90vw;
