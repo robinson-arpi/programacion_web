@@ -362,6 +362,7 @@
     display: grid;
     grid-template-areas: "izquierdo" "derecho";
     grid-template-rows: auto auto;
+    height: 1300px;
   }
   .calendario .derecha {
     grid-area: derecho;
