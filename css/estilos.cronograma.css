@@ -12,6 +12,7 @@
 
 .contenedor {
   width: 100%;
+  height: 650px;
   color: #fff;
   display: flex;
   /*#373c4f*/
@@ -20,6 +21,7 @@
 .contenedor .izquierda {
   width: 60%;
   padding-top: 50px;
+  padding-left: 20px;
 }
 .contenedor .izquierda .calendario {
   background-color: #fff;
