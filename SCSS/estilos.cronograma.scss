@@ -23,19 +23,18 @@
 
     .izquierda {
         width: 60%;
-        padding: 20px;
-
+        padding-top: 50px;
         .calendario {
             background-color: #fff;
             position: relative;
-            width: 100%;
-            height: 100%;
+            width: 90%;
             display: flex;
             flex-direction: column;
-            flex-wrap: wrap;
-            justify-content: space-between;
+            flex-wrap: wrap; // se envuelven en varias lineas si no cabe solo en una 
+            justify-content: space-between; //distribuye el espacio disponible de manera uniforme
             color: #878895;
             border-radius: 5px;
+            margin-right: 50px;
 
             &::before {
                 content: "";
@@ -73,9 +72,6 @@
                 justify-content: space-between;
                 padding: 0 50px;
                 font-size: 1.2rem;
-                font-weight: 500;
-                text-transform: capitalize;
-
                 .prev,
                 .next {
                     cursor: pointer;
@@ -85,18 +81,16 @@
 
             .diasLaborables {
                 width: 100%;
-                height: 60px;
+                height: 50px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 0 20px;
+                padding: 10px 20px;
                 font-size: 1.2rem;
-                font-weight: 500;
-                text-transform: capitalize;
+                margin-bottom: 20px;
 
                 div {
                     width: 14.28%;
-                    height: 100%;
                     display: flex;
                     align-items: center;
                     justify-content: center;
@@ -110,8 +104,7 @@
                 justify-content: space-between;
                 padding: 0 20px;
                 font-size: 1rem;
-                font-weight: 500;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
 
                 .dia {
                     color: var(--primary-clr);
@@ -127,9 +120,6 @@
                         color: #fff;
                         background-color: var(--primary-clr);
                     }
-
-
-
                 }
 
                 .anterior-fecha,
@@ -143,7 +133,7 @@
                     color: #fff;
                     background-color: var(--primary-clr);
 
-                    &::before {
+                    /* &::before {
                         content: "";
                         position: absolute;
                         top: 0;
@@ -151,14 +141,14 @@
                         width: 100%;
                         height: 100%;
                         box-shadow: 0 0 10px 2px var(--primary-clr);
-                    }
-                }
+                    }*/
+                } 
 
                 .hoy {
                     font-size: 1.9rem;
                 }
 
-                .evento {
+                /* .evento {
                     position: relative;
 
                     &::after {
@@ -176,16 +166,16 @@
                     &:hover::after {
                         background-color: #fff;
                     }
-                }
+                } */
 
-                .activar.evento::after {
+                /* .activar.evento::after {
                     background-color: #fff;
                     bottom: 20%;
                 }
 
                 .activar.evento {
                     padding-bottom: 10px;
-                }
+                } */
 
             }
 
@@ -196,7 +186,8 @@
                 height: 90px;
                 display: flex;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: space-between;//distribuye el espacio de una menera uniforme 
+                //dejando el mismo espacio en blanco entre elementos
                 padding: 0 30px;
                 margin-bottom: 20px;
                 color: var(--primary-clr);
@@ -205,7 +196,7 @@
                     display: flex;
                     align-items: center;
                     border-radius: 5px;
-                    overflow: hidden;
+                    overflow: hidden;//el contenido que se desborda del contenedor se recorta y no muestra en la pagina
                     border: 1px solid var(--primary-clr);
 
                     input {
@@ -248,38 +239,32 @@
     .derecha {
         position: relative;
         width: 40%;
-        min-height: 100%;
         padding: 20px 0;
 
         .hoy-fecha {
             width: 100%;
-            height: 50px;
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
             align-items: center;
             justify-content: space-between;
             padding: 0 40px;
-            padding-left: 70px;
-            margin-top: 50px;
-            margin-bottom: 20px;
-            text-transform: capitalize;
+
+            margin-top: 30px;
+            margin-bottom: 30px;
 
             .evento-dia {
                 font-size: 2rem;
-                font-weight: 500;
+                color: white;
             }
 
             .evento-fecha {
                 font-size: 1rem;
-                font-weight: 400;
                 color: white;
             }
         }
 
         .eventos {
             width: 100%;
-            height: 100%;
             max-height: 600px;
             overflow-x: hidden;
             overflow-y: auto;
@@ -289,13 +274,11 @@
 
             .evento {
                 position: relative;
-                width: 95%;
+                width: 100%;
                 min-height: 70px;
                 display: flex;
                 justify-content: center;
                 flex-direction: column;
-                gap: 5px;
-                padding: 0 20px;
                 padding-left: 50px;
                 color: #fff;
                 background: linear-gradient(90deg, #3f4458, transparent);
@@ -316,7 +299,7 @@
 
                     .evento-titulo {
                         font-size: 1rem;
-                        font-weight: 400;
+                       
                         margin-left: 20px;
                     }
 
@@ -332,15 +315,13 @@
 
                 .titulo .evento-tiempo {
                     font-size: 0.8rem;
-                    font-weight: 400;
+                    
                     color: #878895;
                     margin-left: 15px;
                     pointer-events: none;
                 }
 
-                &:hover .evento-tiempo {
-                    color: #fff;
-                }
+                
 
                 &::after {
                     content: "✓";
@@ -388,76 +369,8 @@
 
     }
 
-    @media screen and (max-width: 1000px) {
-        body {
-            align-items: flex-start;
-            justify-content: flex-start;
-        }
-
-        .contenedor {
-            min-height: 100vh;
-            flex-direction: column;
-            border-radius: 0;
-        }
-
-        .contenedor .izquierda {
-            width: 100%;
-            height: 100%;
-            padding: 20px 0;
-        }
-
-        .contenedor .derecha {
-            width: 100%;
-            height: 100%;
-            padding: 20px 0;
-        }
-
-        .calendario::before,
-        .calendario::after {
-            top: 100%;
-            left: 50%;
-            width: 97%;
-            height: 12px;
-            border-radius: 0 0 5px 5px;
-            transform: translateX(-50%);
-        }
-
-        .calendario::before {
-            width: 94%;
-            top: calc(100% + 12px);
-        }
-
-        .eventos {
-            padding-bottom: 340px;
-        }
-
-
-    }
-
-    @media screen and (max-width: 500px) {
-        .calendario .mes {
-            height: 75px;
-        }
-
-        .calendario .diasLaborables {
-            height: 50px;
-        }
-
-        .calendario .dias .dia {
-            height: 40px;
-            font-size: 0.8rem;
-        }
-
-        .calendario .dias .dias.activar,
-        .calendario .dias .dia.hoy {
-            font-size: 1rem;
-        }
-
-        .derecha .hoy-fecha {
-            padding: 20px;
-        }
-    }
 }
+
 @media screen and (max-width: 1000px) {
     body {
         align-items: flex-start;
@@ -504,7 +417,7 @@
     
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 750px) {
     .calendario .mes {
         height: 75px;
     }
