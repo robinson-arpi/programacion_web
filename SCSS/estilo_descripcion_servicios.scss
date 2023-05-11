@@ -21,30 +21,21 @@
     color: #303433;
 }
 
-.navbar-nav {
-    display: inline-block;
-    margin-right: 10px;
-    /* Agrega un margen derecho para separar los elementos */
-}
-
 .container {
-    min-height: 100vh;
     min-height: 80vh;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-bottom: 50px;
 
     /* Parte de la sección */
     section {
-        margin-top: 15px;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 15px;
 
         img {
             width: 100%;
-            max-width: 100%;
         }
     }
 
@@ -54,7 +45,7 @@
         align-items: center;}
 
         .contenedor_servicio {
-            max-width: 450px;
+            width: 70%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -72,9 +63,8 @@
                 text-align: center;
                 letter-spacing: 1px;
                 padding: none;
-                display: block;
 
-                &:hover span {
+                &:hover{
                     color: #c53678;
                 }
 
@@ -86,14 +76,13 @@
                 background-color: var(--color-fuerte);
                 padding: none;
                 border: none;
-                display: block;
+
             }
 
             .duracion-servicio {
                 padding-top: 5px;
                 font-size: 20px;
                 opacity: 0.9;
-                font-weight: 500;
             }
 
             .calificacion-servicio {
@@ -101,7 +90,7 @@
                 align-items: center;
 
                 span {
-                    margin-right: 1px;
+                    margin-right: 2px;
 
                 }
             }
@@ -109,16 +98,13 @@
             .descripcion-servicio {
                 font-weight: 10px;
                 line-height: 1;
-                font-weight: 300;
-                opacity: 0.9;
-                margin-top: 0;
+                
             }
 
             .informacion {
                 width: 100%;
-
                 p {
-                    padding-left: 2%;
+                    padding-left: 5%;
                     margin: 1%;
                 }
             }

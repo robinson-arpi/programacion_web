@@ -16,12 +16,31 @@ botonIniciar.addEventListener("click", function(event) {
   }
 
   if (!verificarCampos()){
+    alert("Las contraseñas no coinciden");
     formValid = false;
   }
+
+  if (!validarContraseña()){
+    alert("Las contraseña debe tener al menos 8 caracteres y combinar numeros y letras");
+    formValid = false;
+  }
+
+  if (!validarCorreo()){
+    alert("El formato del correo es incorrecto");
+    formValid = false;
+  }
+
+  if (!verificarEdad()){
+    alert("La fecha de nacimiento es de alguien menor de edad");
+    formValid = false;
+  }
+
 
   if (formValid) {
     event.preventDefault(); // Evita el envío del formulario por defecto
     window.location.href = '../index.html';
+  }else {
+    event.preventDefault(); // Evita el envío del formulario por defecto
   }
 });
 
@@ -97,3 +116,56 @@ function botonPresionadoHandler() {
 // Agrega un event listener al botón para detectar el clic
 const boton = document.querySelector('.boton_registrar');
 boton.addEventListener("click", botonPresionadoHandler);
+
+
+function validarContraseña() {
+  var contraseña = document.querySelector('.password1').value
+  // Verificar la longitud
+  if (contraseña.length < 8 ) {
+    return false;
+  }
+
+  // Verificar que contenga al menos un número y una letra
+  var tieneNumero = false;
+  var tieneLetra = false;
+  
+  for (var i = 0; i < contraseña.length; i++) {
+    var caracter = contraseña.charAt(i);
+
+    if (!isNaN(caracter)) {
+      tieneNumero = true;
+    } else if (caracter.match(/[a-zA-Z]/)) {
+      tieneLetra = true;
+    }
+  }
+
+  return tieneNumero && tieneLetra;
+}
+
+function verificarEdad() {
+  // Obtener la fecha actual
+  var fechaActual = new Date();
+
+  // Obtener la fecha ingresada desde el input (asumiendo que el input tiene el id "fechaNacimiento")
+  var fechaIngresada = new Date(document.getElementById("fecha").value);
+
+  // Calcular la fecha hace 18 años
+  var fechaHace18Anios = new Date();
+  fechaHace18Anios.setFullYear(fechaActual.getFullYear() - 18);
+
+  // Comparar la fecha ingresada con la fecha hace 18 años
+  if (fechaIngresada <= fechaHace18Anios) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function validarCorreo() {
+  var correo = document.querySelector('.correo').value
+  // Expresión regular para validar el formato del correo electrónico
+  var regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Validar el formato del correo utilizando la expresión regular
+  return regexCorreo.test(correo);
+}
