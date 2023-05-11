@@ -14,6 +14,11 @@ botonIniciar.addEventListener("click", function(event) {
       break;
     }
   }
+
+  if (!validarCorreo()){
+    alert("El formato del correo es incorrecto");
+    formValid = false;
+  }
     
   if (formValid) {
     event.preventDefault(); // Evita el envío del formulario por defecto
@@ -74,3 +79,13 @@ function botonPresionadoHandler() {
 // Agrega un event listener al botón para detectar el clic
 const boton = document.querySelector(".boton_iniciar");
 boton.addEventListener("click", botonPresionadoHandler);
+
+
+function validarCorreo() {
+  var correo = document.querySelector('.correo').value
+  // Expresión regular para validar el formato del correo electrónico
+  var regexCorreo = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Validar el formato del correo utilizando la expresión regular
+  return regexCorreo.test(correo);
+}
