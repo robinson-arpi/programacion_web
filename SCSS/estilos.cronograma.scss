@@ -10,16 +10,15 @@
 }
 
 .contenedor {
-    position: relative;
+    //position: relative;
     width: 100%;
-    height: 650px;
-    padding: 15px 15px;
+    //height: 650px;
 
     color: #fff;
     display: flex;
     /*#373c4f*/
     background-color: #373c4f;
-    overflow: hidden;
+    //overflow: hidden;
 
     .izquierda {
         width: 60%;
@@ -239,7 +238,6 @@
     .derecha {
         position: relative;
         width: 40%;
-        padding: 20px 0;
 
         .hoy-fecha {
             width: 100%;
@@ -381,18 +379,23 @@
         min-height: 100vh;
         flex-direction: column;
         border-radius: 0;
+        display: grid;
+        grid-template-areas: "izquierdo derecho";
+        grid-template-columns: 1fr; 
     }
 
     .contenedor .izquierda {
         width: 100%;
         height: 100%;
         padding: 20px 0;
+        grid-area: izquierdo;
     }
 
     .contenedor .derecha {
         width: 100%;
         height: 100%;
         padding: 20px 0;
+        grid-area: derecho;
     }
 
     .calendario::before,
@@ -418,6 +421,20 @@
 }
 
 @media screen and (max-width: 750px) {
+
+    .contenedor{
+        display: grid;
+        grid-template-areas: "izquierdo" 
+        "derecho";
+        grid-template-rows: auto auto;
+    }
+
+    .calendario .derecha{
+        grid-area: derecho;
+    }
+    .calendario .izquierda{
+        grid-area: izquierdo;
+    }
     .calendario .mes {
         height: 75px;
     }
