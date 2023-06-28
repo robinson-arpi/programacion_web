@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html lang = "es">
-<head>
-    <meta cahrset = "UTF-8">
-    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-    <link rel = "stylesheet" href = "../css/estilo_inicio_registro.css">
-    <link rel="stylesheet" href="../css/estilo_header_footer.css">
-</head>
-<body>
+{% extends '/base.html' %}
+{% block titulo %}Registro{% endblock %}
+{% block autor_pagina %}Robinson Arpi{% endblock %}
+
+{% block customCSS %}
+<link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/estilo_inicio_registro.css')}}"> 
+{% endblock %}
+
+{% block cuerpo %}
     <div class = contenedor>
         <section class="lateral_izquierdo imagen_registro">
             <img src="../Images/welcome.svg" alt="">
@@ -19,20 +18,32 @@
                 <div class="separador"></div>
                 <p class="mensaje_bienvenida">Por favor, ingrese los campos requeridos para acceder a todos nuestro servicios</p>
                 
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-primary alert-dismissible" role="alert">
+                            <strong>{{ message }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
                 <form class = "form_registro">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <div class = "nombre_completo">
                         <div class = "entrada">
-                            <input class = "nombre" type = "text" required>
+                            <input class = "nombre" name = "nombre "type = "text" required>
                             <label>Nombre</label>
                         </div>
                         <div class = "entrada">
-                            <input class = "apellido" type = "text" required>
+                            <input class = "apellido" name = "apellido" type = "text" required>
                             <label>Apellido</label>
                         </div>
                     </div>  
                       
                     <div class = "entrada">
-                        <input class = "correo" type ="email" required >
+                        <input class = "correo" name = "correo" type ="email" required >
                         <label>Correo</label>
                     </div>
                     <div class = "passwords">
@@ -57,17 +68,9 @@
             </div>    
         </main>
     </div>    
-    <footer>
-        <div class="footer_contenedor">
-          <div class="footer_enlaces">
-            <a href="acerca-de-nosotros.html">Acerca de nosotros</a>
-            <a href="terminos-condiciones.html">Términos y condiciones</a>
-            <a href="ayuda.html">Ayuda</a>
-            <a href="contacto.html">Contáctenos</a>
-            <a href="#">ROBINSON ARPI</a>
-          </div>
-        </div>
-      </footer>
-    <script src="../JS/registro.js"></script>
-</body>
-</html>
+{% endblock %}
+
+{% block customJS %}
+<script src="../JS/registro.js"></script>
+{% endblock %}
+

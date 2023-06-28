@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv = "X-UA-Compatible" content="IE=edge">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">    
+    
+    
+     <!--Font awesome-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!--CSS header_footer-->
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/estilo_header_footer.css')}}">
+    <!--Custom css-->
+    {% block customCSS %}
+    {% endblock %}
+      <title>{% block titulo %}{% endblock %}</title>
+    
+  </head>
+  
+  <body> 
+    <header class = cabecera>
+      <div class="header_logo">
+        <div class = "icono"><i class="fas fa-book"></i></div>
+        <div class = "nombre_pagina"><span class="mensaje">Sabiduría <br>en línea</span></div>        
+      </div>
+
+      <div class="header_busqueda">
+        <input class = "c_busqueda_entrada entrada_busqueda" type="text" id="busqueda" name="busqueda" placeholder="Busque un servicio aquí"></input>
+        <button class="c_busqueda_boton boton_busqueda" type = "submit"><i class="fas fa-search"></i></button>
+      </div>
+
+      <div class = "header_menu">
+        <button id="menu-button" class="hamburguesa-button"><i class="fas fa-bars"></i></button>
+      </div>
+
+      <div class="header_navegacion">
+        <nav>
+          <ul class = "menu_navegacion">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="ayuda.html">Ayuda</a></li>
+            <li><a href="comentarios.html">Comentarios</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="header_usuario">
+        <nav class="lista_desplegable">
+            <ul class = "navbar-usuario">
+              <li class = "item_usuario"><a href="perfil-usuario.html"><i class="fas fa-user"></i>Usuario</a>
+                <ul class = "sub_menu">
+                  <li><a href="agregar-servicio.html">Agregar servicio</a></li>
+                  <li><a href="cronograma.html">Cronograma</a></li>
+                  <li><a href="historial.html">Historial</a></li>
+                  <li  id = "salir" ><a href="#">Salir</a></li>
+                </ul>
+              </li>
+              <li class = "item_notificacion"><a href=""><i class="fas fa-bell"></i>Notificaciones</a></li>
+              <li class = "item_favoritos"><a href="favoritos.html"><i class="fas fa-heart"></i>Favoritos</a></li>
+            </ul>
+        </nav>
+      </div>
+      <div class = "menu_usuario">
+        <nav class="nav_menu_usuario">
+          <ul class = "menu_opciones_usuario">
+            <li><a href="agregar-servicio.html">Agregar servicio</a></li>
+            <li><a href="cronograma.html">Cronograma</a></li>
+            <li><a href="favoritos.html">Favoritos</a></li>
+            <li><a href="historial.html">Historial</a></li>
+          </ul>
+        </nav>    
+      </div>
+      
+    </header>
+
+     <div id="contenido">
+      {% block cuerpo %}
+      {% endblock %}
+
+    </div>
+ 
+  <footer>
+    <div class="footer_contenedor">
+      <div class="footer_enlaces">
+        <a href="acerca-de-nosotros.html">Acerca de nosotros</a>
+        <a href="terminos-condiciones.html">Términos y condiciones</a>
+        <a href="ayuda.html">Ayuda</a>
+        <a href="contacto.html">Contáctenos</a>
+        <a href="#">{% block autor_pagina %}{% endblock %}</a>
+      </div>
+    </div>
+  </footer>
+
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
+  crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename = 'js/header_footer.js')}}"></script>
+  {% block customJS %}
+  {% endblock %}
+
+  </body>
+</html>

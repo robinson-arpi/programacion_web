@@ -1,0 +1,11 @@
+{% extends '/base.html' %}
+{% block titulo %}Home{% endblock %}
+{% block autor_pagina %}Robinson Arpi{% endblock %}
+
+{% block customCSS %}
+<link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/estilo_inicio_registro.css')}}"> 
+{% endblock %}
+
+{% block cuerpo %}
+<h1>Home</h1>
+{%endblock%}

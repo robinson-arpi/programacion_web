@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang = "es">
+<head>
+    <meta cahrset = "UTF-8">
+    <meta name = "viewport" content = "width = device-width, initial-scale=1.0">
+    <title>Agendar un servicio</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel = "stylesheet" href="../css/estilo_inicio_registro.css">
+    <link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="../css/estilo_agregar.css">
+    <link rel = "stylesheet" href = "../css/estilo_header_footer.css">
+    <!-- Librería jQuery para agregar interacción-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header class = cabecera>
+        <div class="header_logo">
+          <div class = "icono"><i class="fas fa-book"></i></div>
+          <div class = "nombre_pagina"><span class="mensaje">Sabiduría <br>en línea</span></div>        
+        </div>
+    
+        <div class="header_busqueda">
+          <input class = "c_busqueda_entrada entrada_busqueda" type="text" id="busqueda" name="busqueda" placeholder="Escriba su consulta aquí"></input>
+          <button class="c_busqueda_boton boton_busqueda" type = "submit"><i class="fas fa-search"></i></button>
+        </div>
+    
+        <div class = "header_menu">
+          <button id="menu-button" class="hamburguesa-button"><i class="fas fa-bars"></i></button>
+        </div>
+    
+        <div class="header_navegacion">
+          <nav>
+            <ul class = "menu_navegacion">
+              <li><a href="../index.html">Inicio</a></li>
+              <li><a href="servicios.html">Servicios</a></li>
+              <li><a href="blog.html">Blog</a></li>
+              <li><a href="ayuda.html">Ayuda</a></li>
+              <li><a href="comentarios.html">Comentarios</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="header_usuario">
+          <nav class="lista_desplegable">
+              <ul class = "navbar-usuario">
+                <li class = "item_usuario"><a href="perfil-usuario.html"><i class="fas fa-user"></i>Usuario</a>
+                  <ul class = "sub_menu">
+                    <li><a href="agregar-servicio.html">Agregar servicio</a></li>
+                    <li><a href="cronograma.html">Cronograma</a></li>
+                    <li><a href="historial.html">Historial</a></li>
+                    <li  id = "salir" ><a href="#">Salir</a></li>
+                  </ul>
+                </li>
+                <li class = "item_notificacion"><a href=""><i class="fas fa-bell"></i>Notificaciones</a></li>
+                <li class = "item_favoritos"><a href="favoritos.html"><i class="fas fa-heart"></i>Favoritos</a></li>
+              </ul>
+          </nav>
+        </div>
+        <div class = "menu_usuario">
+          <nav class="nav_menu_usuario">
+            <ul class = "menu_opciones_usuario">
+              <li><a href="agregar-servicio.html">Agregar servicio</a></li>
+              <li><a href="cronograma.html">Cronograma</a></li>
+              <li><a href="favoritos.html">Favoritos</a></li>
+              <li><a href="historial.html">Historial</a></li>
+            </ul>
+          </nav>    
+        </div>        
+    </header>
+
+    <div class="container">
+      <h1 class="text-center pt-4 pb-4">Agregar servicio</h1>
+      <div class="row">
+        <div class="col-lg-4">          
+          <label for="titulo">Imagen del servicio</label>
+          <div id="preview-container" class="preview-container" >
+            <img id="imagen-preview" src="" alt="" style="display:none;">
+            <button id="eliminar-imagen" class="eliminar-imagen" style="display:none;">X</button>
+          </div>
+          <div class="subir-imagen">
+            <p>Subir una imagen</p>
+            <input type="file" id="input-imagen" accept="image/*" style="display:none;">
+          </div>                                                                                           
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="titulo">Título</label>
+            <input type="text" class="form-control" id="titulo">
+          </div>
+          
+          <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <textarea class="form-control" id="descripcion" rows="5"></textarea>
+          </div>
+          <div class="form-group">
+            <label for="ciudad">Ciudad</label>
+            <input type="text" class="form-control" id="ciudad">
+          </div>                   
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <select class="form-control" id="categoria">
+              <option value="opcion1">Computación</option>
+              <option value="opcion2">Historia</option>
+              <option value="opcion3">Electricidad</option>
+              <option value="opcion1">Construcción</option>
+              <option value="opcion2">Jardinería</option>
+              <option value="opcion3">Literatura</option>
+            </select>
+          </div> 
+          <div class="form-group">
+            <label for="disponibilidad">Disponibilidad</label>
+            <select class="form-control" id="disponibilidad">
+              <option value="opcTDia">Todo el día</option>
+              <option value="opcPMañana">Por la mañana</option>
+              <option value="opcPTarde">Por la tarde</option>
+              <option value="opcVirtual">Virtual</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="requisitos">Requisitos</label>
+            <div class="input-group mt-2">
+              <input type="text" class="form-control" id="nuevo-requisito" placeholder="Escriba un requisito">
+              <button class="btn btn-primary" id="agregar-requisito">Agregar</button>
+            </div>
+            <ul class="list-group" id="requisitos">
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    <footer>
+        <div class="footer_contenedor">
+          <div class="footer_enlaces">
+            <a href="acerca-de-nosotros.html">Acerca de nosotros</a>
+            <a href="terminos-condiciones.html">Términos y condiciones</a>
+            <a href="ayuda.html">Ayuda</a>
+            <a href="contacto.html">Contáctenos</a>
+            <a href="#">HERNÁN CORONEL</a>
+          </div>
+        </div>
+    </footer>
+</body>
+<script src="../JS/agregar_servicio.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="../JS/header_footer.js"></script>
+</html>
