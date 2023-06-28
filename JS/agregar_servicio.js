@@ -2,9 +2,10 @@
 var inputImagen = document.getElementById("input-imagen");
 var imagenPreview = document.getElementById("imagen-preview");
 var eliminarImagen = document.getElementById("eliminar-imagen");
+var subirImagen = document.querySelector('.subir-imagen');
 
 // Mostrar el input de imagen al hacer clic en la sección de subir imagen
-document.querySelector('.subir-imagen').addEventListener('click', function() {
+subirImagen.addEventListener('click', function() {
   inputImagen.click();
 });
 
@@ -15,6 +16,7 @@ inputImagen.addEventListener('change', function() {
     imagenPreview.src = e.target.result;
     imagenPreview.style.display = "block";
     eliminarImagen.style.display = "block";
+    subirImagen.style.display = "none"; // Ocultar la sección de subir imagen
   };
   reader.readAsDataURL(inputImagen.files[0]);
 });
@@ -25,63 +27,30 @@ eliminarImagen.addEventListener('click', function() {
   imagenPreview.style.display = "none";
   eliminarImagen.style.display = "none";
   inputImagen.value = null;
+  subirImagen.style.display = "flex"; // Mostrar la sección de subir imagen
 });
 
-// Obtener el ancho de la sección de subir imagen
-var width = document.querySelector('.subir-imagen').clientWidth;
+// agregar eliminar requisitos
+// Obtener elementos necesarios
+var listaRequisitos = document.getElementById("requisitos");
+var inputRequisito = document.getElementById("nuevo-requisito");
+var botonAgregar = document.getElementById("agregar-requisito");
 
-// Establecer el ancho máximo de la imagen preview al ancho de la sección de subir imagen
-imagenPreview.style.maxWidth = width + "px";
-
-// Obtener la sección de subir imagen
-var subirImagen = document.querySelector('.subir-imagen');
-
-// Agregar un eventListener para el evento resize de la ventana
-window.addEventListener('resize', function() {
-  // Obtener el ancho de la sección de subir imagen
-  var width = subirImagen.clientWidth;
-
-  // Establecer el ancho máximo de la imagen preview al ancho de la sección de subir imagen
-  imagenPreview.style.maxWidth = width + "px";
+// Agregar requisito al hacer clic en el botón
+botonAgregar.addEventListener("click", function() {
+  var requisito = inputRequisito.value;
+  if (requisito.trim() !== "") {
+    var li = document.createElement("li");
+    li.classList.add("list-group-item");
+    li.textContent = requisito;
+    var botonEliminar = document.createElement("button");
+    botonEliminar.classList.add("btn", "btn-danger", "btn-sm", "float-end");
+    botonEliminar.textContent = "X";
+    botonEliminar.addEventListener("click", function() {
+      li.remove();
+    });
+    li.appendChild(botonEliminar);
+    listaRequisitos.appendChild(li);
+    inputRequisito.value = "";
+  }
 });
-
-// para agregar requisitos
-function agregarRequisito() {
-    var requisito = document.getElementById("requisito").value;
-    if (requisito != "") {
-      var listaRequisitos = document.getElementById("lista-requisitos");
-      var nuevoRequisito = document.createElement("li");
-      nuevoRequisito.innerHTML = requisito + " <button onclick='eliminarRequisito(this.parentNode)'>X</button>";
-      listaRequisitos.appendChild(nuevoRequisito);
-      document.getElementById("requisito").value = "";
-    }
-  }
-
-  function eliminarRequisito(nodo) {
-    nodo.parentNode.removeChild(nodo);
-  }
-
-// botones de agregar y cancelar
-
-// para el botón agregar servicio
-function agregarServicio(event){
-  if(document.getElementById("titulo").value.trim() === "" ||
-      document.getElementById("descripcion").value.trim() === "" ||
-      document.getElementById("ciudad").value.trim() === "" ||
-      document.getElementById("categoria").selectedIndex === 0 ||
-      document.getElementById("disponibilidad").selectedIndex === 0
-  ){
-      // Si hay cambios, muestra ventana de confirmación
-      if(confirm("¿Está seguro que desea descartar los cambios?")){
-          window.location.href = "../index.html";
-      }        
-  }else{    
-      window.location.href = "../index.html";
-  }
-}
-
-// para el botón cancelar y regresar a inicio
-function cancelar(event) {
-  window.location.href = "../index.html";
-}
-

@@ -2,17 +2,21 @@
 <html lang = "es">
 <head>
     <meta cahrset = "UTF-8">
-    <meta name = "viewport" content = "width-device-width, inital-scale=1.0">
-    <title>Agregar un servicio</title>
-    
+    <meta name = "viewport" content = "width = device-width, initial-scale=1.0">
+    <title>Agendar un servicio</title>
 
-    <link rel="stylesheet" href="../css/estilo_inicio_registro.css">    
-    <link rel = "stylesheet" href = "/css/estilo_agregar.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel = "stylesheet" href = "../CSS/estilo_header_footer.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel = "stylesheet" href="../css/estilo_inicio_registro.css">
+    <link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="../css/estilo_agregar.css">
+    <link rel = "stylesheet" href = "../css/estilo_header_footer.css">
+    <!-- Librería jQuery para agregar interacción-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-  <header class = cabecera>
+    <header class = cabecera>
         <div class="header_logo">
           <div class = "icono"><i class="fas fa-book"></i></div>
           <div class = "nombre_pagina"><span class="mensaje">Sabiduría <br>en línea</span></div>        
@@ -26,7 +30,6 @@
         <div class = "header_menu">
           <button id="menu-button" class="hamburguesa-button"><i class="fas fa-bars"></i></button>
         </div>
-    
     
         <div class="header_navegacion">
           <nav>
@@ -66,110 +69,84 @@
           </nav>    
         </div>        
     </header>
-    <form>
-      <div class = "contenedor-agregar-servicio">
-        <header class="header border" >
-          <h1>Agregar Servicio</h1>
-        </header>
 
-        <!-- IMAGEN -->
-        <section class="section1 border ">
-          <div id="preview-container" class="preview-container" style="margin: 10px;">
+    <div class="container">
+      <h1 class="text-center pt-4 pb-4">Agregar servicio</h1>
+      <div class="row">
+        <div class="col-lg-4">          
+          <label for="titulo">Imagen del servicio</label>
+          <div id="preview-container" class="preview-container" >
             <img id="imagen-preview" src="" alt="" style="display:none;">
             <button id="eliminar-imagen" class="eliminar-imagen" style="display:none;">X</button>
           </div>
           <div class="subir-imagen">
             <p>Subir una imagen</p>
             <input type="file" id="input-imagen" accept="image/*" style="display:none;">
-          </div>          
-        </section> 
-        
-        <!-- TÍTULO -->
-        <section class="section2 border">
-          <div class = "entrada">
-            <input type = "text" required>
-            <label>Título</label>
+          </div>                                                                                           
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="titulo">Título</label>
+            <input type="text" class="form-control" id="titulo">
           </div>
-        </section>
-
-        <!-- DESCRIPCIÓN -->
-        <section class="section3 border">          
-          <label for="">Descripción: </label> <br>
-          <textarea name="" id=""  placeholder="Descripción del servicio..." required ></textarea>
-        </section>  
-        
-        <!-- CATEGORIA -->
-        <section class="section5 border">
-          <label for="categoria">Categoría:</label> <br>
-          <select id="categoria" name="categoria">
-            <option value="" selected disabled>Selecione ...</option>
-            <option value="Cuidado personal">Cuidado personal</option>
-            <option value="Computación">Cuidado personal</option>
-            <option value="Jardinería y mantenimiento">Jardinería y mantenimiento</option>
-            <option value="Tutorías y asesoramiento">Tutorías y asesoramiento</option>
-            <option value="Otro">Otro</option>
-          </select><br><br>
-        </section>        
-        
-        <!-- CIUDAD -->
-        <section class="section6 border">
-          <div class = "entrada">            
-            <input type = "text" required>
-            <label>Ciudad</label>
+          
+          <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <textarea class="form-control" id="descripcion" rows="5"></textarea>
           </div>
-        </section>
-
-        <!-- DISPONIBILIDAD -->
-        <section class="section7 border">
-          <label for="disponibilidad">Disponibilidad:</label> <br>
-          <select id="disponibilidad" name="disponibilidad">
-            <option value="" selected disabled>Selecione ...</option>
-            <option value="En la mañana">En la mañana</option>
-            <option value="En la tarde">En la tarde</option>
-            <option value="Todo el día">Todo el día</option>
-            <option value="Virtual">Virtual</option>
-          </select><br><br>
-        </section>
-
-        <!-- REQUISITOS -->
-        <section class="section8 border">
-          <label for="requisitos">Requisitos: &nbsp;</label>
-          <div style="display:flex">
-            <input type="text" id="requisito" name="requisito" placeholder="Agregar requisito...">
-            <button type="button" onclick="agregarRequisito()">Agregar</button>
+          <div class="form-group">
+            <label for="ciudad">Ciudad</label>
+            <input type="text" class="form-control" id="ciudad">
+          </div>                   
+        </div>
+        <div class="col-lg-4">
+          <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <select class="form-control" id="categoria">
+              <option value="opcion1">Computación</option>
+              <option value="opcion2">Historia</option>
+              <option value="opcion3">Electricidad</option>
+              <option value="opcion1">Construcción</option>
+              <option value="opcion2">Jardinería</option>
+              <option value="opcion3">Literatura</option>
+            </select>
+          </div> 
+          <div class="form-group">
+            <label for="disponibilidad">Disponibilidad</label>
+            <select class="form-control" id="disponibilidad">
+              <option value="opcTDia">Todo el día</option>
+              <option value="opcPMañana">Por la mañana</option>
+              <option value="opcPTarde">Por la tarde</option>
+              <option value="opcVirtual">Virtual</option>
+            </select>
           </div>
-          <ul id="lista-requisitos"></ul>
-          <br>
-        </section>
-
-        <!-- BOTONES -->
-        <section class="section9 border">
-          <div>
-              <button class="boton" onclick="cancelar(event)">Cancelar</button>
+          <div class="form-group">
+            <label for="requisitos">Requisitos</label>
+            <div class="input-group mt-2">
+              <input type="text" class="form-control" id="nuevo-requisito" placeholder="Escriba un requisito">
+              <button class="btn btn-primary" id="agregar-requisito">Agregar</button>
+            </div>
+            <ul class="list-group" id="requisitos">
+            </ul>
           </div>
-          <div>
-              <button class="boton" onclick="agregarServicio(event)">Agregar</button>
-          </div>
-        </section>             
-      </div>        
-    </form> 
-    
-    <footer>
-      <div class="footer_contenedor1">
-        <div class="footer_enlaces1" >
-          <a class="nav-link" href="acerca-de-nosotros.html">Acerca de nosotros</a>
-          <a class="nav-link" href="terminos-condiciones.html">Términos y condiciones</a>
-          <a class="nav-link" href="ayuda.html">Ayuda</a>
-          <a class="nav-link" href="contacto.html">Contáctenos</a>
-          <a class="nav-link" href="#">HERNÁN CORONEL</a>
         </div>
       </div>
-    </footer>
+    </div>
     
+
+    <footer>
+        <div class="footer_contenedor">
+          <div class="footer_enlaces">
+            <a href="acerca-de-nosotros.html">Acerca de nosotros</a>
+            <a href="terminos-condiciones.html">Términos y condiciones</a>
+            <a href="ayuda.html">Ayuda</a>
+            <a href="contacto.html">Contáctenos</a>
+            <a href="#">HERNÁN CORONEL</a>
+          </div>
+        </div>
+    </footer>
 </body>
-
 <script src="../JS/agregar_servicio.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="../JS/header_footer.js"></script>
-
-
 </html>

@@ -1,62 +1,13 @@
-@charset "UTF-8";
-body .contenedor-agregar-servicio {
-  font-family: Arial, Helvetica, sans-serif;
-  justify-content: center;
-  align-items: center;
-}
-
-.border {
-  margin: 10px;
-}
-
-section {
-  display: block;
-}
-
-form {
-  padding-top: 20px;
-  padding-bottom: 50px;
-}
-
-.contenedor-agregar-servicio {
-  display: grid;
-  grid-template-areas: "header header" "imagen descripcion" "imagen descripcion" "titulo ubicacion" "categoria disponibilidad" "requisitos requisitos" "botones botones";
-  grid-template-columns: 50% 50%;
-  grid-template-rows: auto auto auto auto auto auto;
-  margin: 0 auto;
-  max-width: 800px;
-  background: var(--color-fondo);
-  border-radius: 10px;
-  box-shadow: 0 0 10px var(--color-fuerte);
-  align-items: center;
-  margin: 0 auto;
-}
-.contenedor-agregar-servicio header {
-  grid-area: header;
-  text-align: center;
-}
-.contenedor-agregar-servicio header h1 {
-  text-align: center;
-  padding: 0, 0, 20px, 0;
-  border-bottom: 1px solid var(--color-fuerte);
-  font-size: 30px;
-}
-.contenedor-agregar-servicio section.section1 {
-  grid-area: imagen;
-  min-height: 100px;
-  align-items: center;
-  padding: 10px;
-}
-.contenedor-agregar-servicio section.section1 div.preview-container {
+div.preview-container {
   position: relative;
   display: inline-block;
 }
-.contenedor-agregar-servicio section.section1 div.preview-container img#imagen-preview {
-  display: block;
+div.preview-container img#imagen-preview {
+  display: inline-block;
   max-width: 100%;
   max-height: 100%;
 }
-.contenedor-agregar-servicio section.section1 div.preview-container .eliminar-imagen {
+div.preview-container .eliminar-imagen {
   position: absolute;
   top: -10px;
   right: -10px;
@@ -70,9 +21,10 @@ form {
   font-weight: bold;
   cursor: pointer;
 }
-.contenedor-agregar-servicio section.section1 .subir-imagen {
+
+.subir-imagen {
   width: auto;
-  height: 4px;
+  height: 6px;
   border: 1px solid rgb(110, 110, 110);
   color: rgb(110, 110, 110);
   font-size: small;
@@ -80,175 +32,36 @@ form {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  padding: 10px;
+  padding: 20px;
   margin: 10px;
 }
-.contenedor-agregar-servicio .section2 {
-  grid-area: titulo;
-  width: 90%;
-  margin: 0 auto; /* Centrar la sección horizontalmente */
-  padding: 10px;
+
+div.form-group {
+  position: relative;
 }
-.contenedor-agregar-servicio .section3 {
-  grid-area: descripcion;
-  height: 100%;
-  width: 90%;
-  margin: 0 auto; /* Centrar la sección horizontalmente */
-  padding: 10px;
+div.form-group ul#requisitos {
+  /* ... */
 }
-.contenedor-agregar-servicio .section3 textarea {
-  width: 100%; /* Establecer el ancho del textarea al 100% del contenedor */
-  height: 90%;
-  box-sizing: border-box; /* Incluir el padding y el borde en el ancho total del textarea */
-  padding: 10px; /* Añadir un padding para que el texto no esté demasiado pegado a los bordes del textarea */
-  border: 1px solid #ccc; /* Añadir un borde para que el textarea se vea más definido */
-  resize: none;
+div.form-group ul#requisitos li {
+  /* ... */
 }
-.contenedor-agregar-servicio .section5 {
-  grid-area: categoria;
-  width: 90%; /* Establecer el ancho de la sección al 80% del ancho del contenedor */
-  margin: 0 auto; /* Centrar la sección horizontalmente */
-  padding: 10px;
-}
-.contenedor-agregar-servicio .section5 select {
-  width: 100%; /* Establecer el ancho del select al 100% de su contenedor */
-  box-sizing: border-box; /* Incluir el padding y el borde en el ancho total del select */
-  padding: 10px; /* Añadir un padding para que el texto no esté demasiado pegado a los bordes del select */
-  border: 1px solid #ccc; /* Añadir un borde para que el select se vea más definido */
-  border-radius: 5px; /* Añadir bordes redondeados para que se vea más atractivo */
-}
-.contenedor-agregar-servicio .section5 select option:checked {
-  background-color: var(--color-fuerte);
-  color: #ffffff;
-}
-.contenedor-agregar-servicio .section6 {
-  grid-area: ubicacion;
-  width: 90%;
-  margin: 0 auto; /* Centrar la sección horizontalmente */
-  padding: 10px;
-}
-.contenedor-agregar-servicio .section7 {
-  grid-area: disponibilidad;
-  width: 90%;
-  margin: 0 auto; /* Centrar la sección horizontalmente */
-  padding: 10px;
-}
-.contenedor-agregar-servicio .section7 select {
-  width: 100%; /* Establecer el ancho del select al 100% de su contenedor */
-  box-sizing: border-box; /* Incluir el padding y el borde en el ancho total del select */
-  padding: 10px; /* Añadir un padding para que el texto no esté demasiado pegado a los bordes del select */
-  border: 1px solid #ccc; /* Añadir un borde para que el select se vea más definido */
-  border-radius: 5px; /* Añadir bordes redondeados para que se vea más atractivo */
-}
-.contenedor-agregar-servicio .section7 select option:checked {
-  background-color: var(--color-fuerte);
-  color: #ffffff;
-}
-.contenedor-agregar-servicio .section8 {
-  grid-area: requisitos;
-  align-self: center;
-  width: 90%;
-  margin: 0 auto; /* Centrar la sección horizontalmente */
-  padding: 10px;
-}
-.contenedor-agregar-servicio .section8 button {
-  background-color: rgb(245, 176, 188);
-  border: 1px solid black;
-}
-.contenedor-agregar-servicio .section8 button:hover {
-  color: white;
-  border: 1px solid black;
-}
-.contenedor-agregar-servicio .section8 ul li {
-  color: black;
-  padding: 1%;
-  list-style: none;
-}
-.contenedor-agregar-servicio .section8 ul li button {
+div.form-group ul#requisitos li button.eliminar-requisito {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
   border-radius: 50%;
   border: none;
-  background-color: var(--color-fuerte);
+  background-color: red;
   color: white;
-  width: 17px;
-  height: 17px;
-  font-size: 8px;
+  width: 25px;
+  height: 25px;
+  font-size: 18px;
   font-weight: bold;
   cursor: pointer;
-}
-.contenedor-agregar-servicio .section9 {
-  grid-area: botones;
-  display: flex;
-  flex-direction: row;
-  padding-left: 50%;
-  padding: 10px;
-  justify-self: right;
-}
-.contenedor-agregar-servicio .section9 button.boton {
-  width: 10rem;
-  height: 50px;
-  font-size: var(--tamano-texto);
-  font-weight: bold;
-  background: var(--color-fuerte);
-  border: none;
-  border-radius: 25px;
-  color: var(--color-texto);
-  cursor: pointer;
-  padding: 10%;
-  flex-basis: 60%;
-  margin-right: 1rem; /* Añade un margen derecho de 10px */
-  margin-top: 1rem;
-}
-.contenedor-agregar-servicio .section9 button.boton:hover {
-  color: var(--color-fondo);
-  transition: 0.5s;
-  box-shadow: 0 0 10px var(--color-fuerte2);
-}
-
-footer {
-  bottom: 0;
-  display: flex;
-  width: 100vw;
-  position: fixed;
-  align-items: center;
-  margin: none;
-  background-color: var(--color-resaltado);
-}
-footer .footer_contenedor1 {
-  padding-top: 0.5%;
-  padding-bottom: 1%;
-  margin: 0 auto;
-}
-footer .footer_contenedor1 .footer_enlaces1 {
   display: flex;
   justify-content: center;
-  font-family: Arial, Helvetica, sans-serif;
-  color: black !important;
-  font-size: var(--tamano-pequeno);
-}
-footer .footer_contenedor1 .footer_enlaces1 a {
-  margin: 0 10px;
-  font-size: var(--tamano-pequeno);
-  color: #333;
-  text-decoration: none;
-}
-footer .footer_contenedor1 .footer_enlaces1 a:hover {
-  font-weight: bold;
-}
-
-@media screen and (max-width: 600px) {
-  .contenedor-agregar-servicio {
-    grid-template-areas: "header" "imagen" "titulo" "descripcion" "duracion" "ubicacion" "categoria" "disponibilidad" "requisitos" "botones";
-    grid-template-columns: 100%;
-    margin: 10px;
-  }
-  .section9 {
-    grid-area: botones;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    padding-left: 0%;
-    justify-content: center;
-  }
+  align-items: center;
 }
 
 /*# sourceMappingURL=estilo_agregar.css.map */
