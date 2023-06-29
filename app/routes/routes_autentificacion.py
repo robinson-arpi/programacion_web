@@ -16,8 +16,8 @@ app = create_app('development')
 login_manager_app = LoginManager(app)
 
 @login_manager_app.user_loader
-def load_user(email):
-    return ModeloUsuario.get_by_email(email)
+def cargar_usuario(id):
+    return Usuario.query.get(id == id)
 
 @app.route('/')
 def index():
@@ -46,6 +46,7 @@ def login():
     else:
         return render_template('auth/login.html')
 
+
 @app.route('/logout')
 def logout():
     logout_user()
@@ -55,7 +56,7 @@ def logout():
 @app.route('/home')
 @login_required
 def home():
-    return render_template('index.html')
+    return render_template('index.html',usuario = current_user)
 
 
 @app.route('/protected')
@@ -102,4 +103,3 @@ def perfil():
 
 app.register_error_handler(401, status_401)
 app.register_error_handler(404, status_404)
-

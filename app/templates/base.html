@@ -20,7 +20,7 @@
     
   </head>
   
-  <body> 
+  <body>
     <header class = cabecera>
       <div class="header_logo">
         <div class = "icono"><i class="fas fa-book"></i></div>
@@ -47,6 +47,7 @@
           </ul>
         </nav>
       </div>
+      {% if usuario %}
       <div class="header_usuario">
         <nav class="lista_desplegable">
             <ul class = "navbar-usuario">
@@ -73,7 +74,16 @@
           </ul>
         </nav>    
       </div>
-      
+      {% else %}
+      <div class="header_usuario">
+        <nav class="lista_desplegable">
+            <ul class = "navbar-usuario">
+              <li class = "item_usuario"><a href="/login"><i class="fas fa-sign-in-alt"></i>Iniciar_sesión</a></li>
+              <li class = "item_notificacion"><a href="/favoritos"><i class="fas fa-user-plus"></i>Registrarse</a></li>
+            </ul>
+        </nav>
+      </div>
+      {% endif %}
     </header>
 
     <div id="contenido">

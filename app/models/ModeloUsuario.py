@@ -23,9 +23,9 @@ class ModeloUsuario():
             raise Exception(ex)
 
     @classmethod
-    def get_by_id(self, id):
+    def get_by_id(self, u):
         try:
-            return Usuario.query.filter_by(id = id).first()
+            return Usuario.query.filter_by(id =u).first()
         except Exception as ex:
             raise Exception(ex)
         

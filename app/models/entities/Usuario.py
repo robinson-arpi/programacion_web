@@ -3,6 +3,7 @@ from flask_login import UserMixin
 from sqlalchemy import Column, Integer, String, Boolean, Date
 from app import db
 
+
 class Usuario(db.Model, UserMixin):
     __tablename__ = 'usuarios'
     id = Column(Integer, primary_key=True)
