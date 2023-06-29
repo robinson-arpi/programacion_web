@@ -231,8 +231,7 @@ footer {
   background-color: var(--color-resaltado);
 }
 footer .footer_contenedor {
-  padding-top: 0.5%;
-  padding-bottom: 1%;
+  padding: none;
   margin: 0 auto;
 }
 footer .footer_contenedor .footer_enlaces {

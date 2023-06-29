@@ -9,12 +9,12 @@
 {% block cuerpo %}
     <div class = contenedor>
         <section class="lateral_izquierdo imagen_registro">
-            <img src="../Images/welcome.svg" alt="">
+            <img src="../../static/Images/welcome.svg" alt="Persona registrandose">
         </section>
 
         <main>
             <div class = "contenedor_registro">
-                <p class="titulo">Bienvenido</p>
+                <p class="parrafo titulo">Bienvenido</p>
                 <div class="separador"></div>
                 <p class="mensaje_bienvenida">Por favor, ingrese los campos requeridos para acceder a todos nuestro servicios</p>
                 
@@ -29,11 +29,11 @@
                     {% endif %}
                 {% endwith %}
 
-                <form class = "form_registro">
+                <form class = "form_registro" method= "POST">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <div class = "nombre_completo">
                         <div class = "entrada">
-                            <input class = "nombre" name = "nombre "type = "text" required>
+                            <input class = "nombre" name = "nombre" type = "text" required>
                             <label>Nombre</label>
                         </div>
                         <div class = "entrada">
@@ -43,26 +43,32 @@
                     </div>  
                       
                     <div class = "entrada">
-                        <input class = "correo" name = "correo" type ="email" required >
+                        <input class = "correo" name = "email" type ="email" required >
                         <label>Correo</label>
                     </div>
                     <div class = "passwords">
                         <div class = "entrada">
-                            <input class = "password1" type = "password" required>
+                            <input class = "password1" name = "password1" type = "password" required>
                             <label>Contraseña</label>
                         </div>
                         <div class = "entrada">
-                            <input class = "password2" type = "password" required> 
+                            <input class = "password2" name = "password2" type = "password" required> 
                             <label>Confirmar contraseña</label>
                         </div>
-                    </div>    
-                    <div class = "entrada">
-                        <input class = "f_nacimiento" type = "date" name = "fecha" id="fecha" required>
-                        <label>Fecha de nacimiento</label>
+                    </div>
+                    <div class = "passwords">
+                        <div class = "entrada">
+                            <input class = "nombre" name = "username" type = "text" required>
+                            <label>Nickname</label>
+                        </div>
+                        <div class = "entrada">
+                            <input class = "f_nacimiento" type = "date" name = "fecha" id="fecha" required>
+                            <label>F. nacimiento</label>
+                        </div>
                     </div>
                         <button class = "iniciar boton_registrar">Registrarme</button>
                     <div class = "registrarse">
-                        <a href = "inicio.html">¿Ya tiene una cuenta?</a>
+                        <a href = "/registro">¿Ya tiene una cuenta?</a>
                     </div>
                 </form>
             </div>    
@@ -71,6 +77,6 @@
 {% endblock %}
 
 {% block customJS %}
-<script src="../JS/registro.js"></script>
+<script src="{{url_for('static', filename = 'js/registro.js')}}"></script>
 {% endblock %}
 

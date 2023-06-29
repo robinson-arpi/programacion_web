@@ -7,16 +7,17 @@ class ModeloUsuario():
             entrada_usuario = credenciales[0]
             passw = credenciales[1]
             # Verifica si entro un correo
-            if "@" in entrada_usuario:
-                u = Usuario.query.filter_by(emaiL = entrada_usuario).first()
-            else:
-                u = Usuario.query.filter_by(nombre_usuario = entrada_usuario).first()
+            u = Usuario.query.filter_by(email = entrada_usuario).first()
+            # if "@" in entrada_usuario:
+            #     u = Usuario.query.filter_by(email = entrada_usuario).first()
+            # else:
+            #     u = Usuario.query.filter_by(username = entrada_usuario).first()
             
             # Verifica existencia de usuario
             if u == None:
                 return None
             else:
-                return Usuario(u.id, u.email, Usuario.check_password(u.password, passw), u.nombre, u.apellido, u.username)
+                return Usuario(u.id, u.email, u.check_password(passw), u.nombre, u.apellido, u.username, u.fecha_nacimiento)
 
         except Exception as ex:
             raise Exception(ex)

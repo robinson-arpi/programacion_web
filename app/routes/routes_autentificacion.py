@@ -1,16 +1,15 @@
 from .. import create_app
-
 from .. import db
+
 from ..models.ModeloUsuario import ModeloUsuario
-# Entities:
 from ..models.entities.Usuario import Usuario
 
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
-
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
 from config import config
+from datetime import datetime
 
 # Creacion de aplicacion
 app = create_app('development')
@@ -36,7 +35,7 @@ def login():
         if usuario_logueado != None:
             # pass = 1 entonces tiene credenciales correctas 
             if usuario_logueado.password:
-                login_user(usuario_logueado)
+                login_user(usuario_logueado, remember=True)
                 return redirect(url_for('home'))
             else:
                 flash("Contraseña incorrecta")
@@ -54,9 +53,9 @@ def logout():
 
 
 @app.route('/home')
+@login_required
 def home():
-    return render_template('home.html')
-
+    return render_template('index.html')
 
 
 @app.route('/protected')
@@ -74,18 +73,32 @@ def status_404(error):
 @app.route('/registro', methods=['POST', 'GET'])
 def agregar_usuario():
     if request.method == 'POST':
-        usuario = Usuario(  0, 
+        usuario = Usuario(0, 
                         request.form['email'],
-                        request.form['password'],
+                        Usuario.generar(request.form['password1']),
                         request.form['nombre'],
                         request.form['apellido'],
-                        request.form['username'])
+                        request.form['username'],
+                        datetime.strptime(request.form['fecha'],"%Y-%m-%d").date()
+                        )
 
         db.session.add(usuario)
         db.session.commit()
-        flash('Cliente creado correctamente')
+        flash('Usuario creado')
+
+        credenciales_usuario = [request.form['email'],request.form['password1']]
+        
+        usuario_logueado = ModeloUsuario.login(credenciales_usuario)
+        login_user(usuario_logueado, remember=True)
+        return redirect(url_for('perfil'))
     else:
+        flash('Usuario no creado')
         return render_template('auth/registro.html')
+
+@app.route('/perfil')
+@login_required
+def perfil():
+    return render_template('usuario/perfil-usuario.html', usuario = current_user)
 
 app.register_error_handler(401, status_401)
 app.register_error_handler(404, status_404)

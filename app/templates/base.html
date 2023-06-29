@@ -16,7 +16,7 @@
     <!--Custom css-->
     {% block customCSS %}
     {% endblock %}
-      <title>{% block titulo %}{% endblock %}</title>
+    <title>{% block titulo %}{% endblock %}</title>
     
   </head>
   
@@ -50,33 +50,33 @@
       <div class="header_usuario">
         <nav class="lista_desplegable">
             <ul class = "navbar-usuario">
-              <li class = "item_usuario"><a href="perfil-usuario.html"><i class="fas fa-user"></i>Usuario</a>
+              <li class = "item_usuario"><a href="/perfil"><i class="fas fa-user"></i>Usuario</a>
                 <ul class = "sub_menu">
-                  <li><a href="agregar-servicio.html">Agregar servicio</a></li>
-                  <li><a href="cronograma.html">Cronograma</a></li>
-                  <li><a href="historial.html">Historial</a></li>
-                  <li  id = "salir" ><a href="#">Salir</a></li>
+                  <li><a href="/agregar_servicio">Agregar servicio</a></li>
+                  <li><a href="/cronograma">Cronograma</a></li>
+                  <li><a href="/historial">Historial</a></li>
+                  <li  id = "salir" ><a href="/logout">Salir</a></li>
                 </ul>
               </li>
               <li class = "item_notificacion"><a href=""><i class="fas fa-bell"></i>Notificaciones</a></li>
-              <li class = "item_favoritos"><a href="favoritos.html"><i class="fas fa-heart"></i>Favoritos</a></li>
+              <li class = "item_favoritos"><a href="/favoritos"><i class="fas fa-heart"></i>Favoritos</a></li>
             </ul>
         </nav>
       </div>
       <div class = "menu_usuario">
         <nav class="nav_menu_usuario">
           <ul class = "menu_opciones_usuario">
-            <li><a href="agregar-servicio.html">Agregar servicio</a></li>
-            <li><a href="cronograma.html">Cronograma</a></li>
-            <li><a href="favoritos.html">Favoritos</a></li>
-            <li><a href="historial.html">Historial</a></li>
+            <li><a href="/agregar_servicio">Agregar servicio</a></li>
+            <li><a href="/cronograma">Cronograma</a></li>
+            <li><a href="/favoritos">Favoritos</a></li>
+            <li><a href="/historial">Historial</a></li>
           </ul>
         </nav>    
       </div>
       
     </header>
 
-     <div id="contenido">
+    <div id="contenido">
       {% block cuerpo %}
       {% endblock %}
 
@@ -85,10 +85,10 @@
   <footer>
     <div class="footer_contenedor">
       <div class="footer_enlaces">
-        <a href="acerca-de-nosotros.html">Acerca de nosotros</a>
-        <a href="terminos-condiciones.html">Términos y condiciones</a>
-        <a href="ayuda.html">Ayuda</a>
-        <a href="contacto.html">Contáctenos</a>
+        <a href="/acerca_de_nosotros">Acerca de nosotros</a>
+        <a href="/terminos_y_condiciones">Términos y condiciones</a>
+        <a href="/ayuda">Ayuda</a>
+        <a href="/contactenos">Contáctenos</a>
         <a href="#">{% block autor_pagina %}{% endblock %}</a>
       </div>
     </div>

@@ -1,9 +1,4 @@
-/*------------------------------------------------------------------------
-Direccion a index
-*/
-var botonIniciar = document.querySelector(".iniciar");
-
-botonIniciar.addEventListener("click", function(event) {
+form.addEventListener("submit", function(event) {
   // Verifica si los campos required están llenos
   var inputs = document.querySelectorAll('input[required]');
   var formValid = true;
@@ -38,7 +33,7 @@ botonIniciar.addEventListener("click", function(event) {
 
   if (formValid) {
     event.preventDefault(); // Evita el envío del formulario por defecto
-    window.location.href = '../index.html';
+    form.submit(); // Si los campos son válidos, envía el formulari
   }else {
     event.preventDefault(); // Evita el envío del formulario por defecto
   }
