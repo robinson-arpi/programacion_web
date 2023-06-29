@@ -1,7 +1,8 @@
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, Date
 from app import db
+
 
 class Usuario(db.Model, UserMixin):
     __tablename__ = 'usuarios'
@@ -11,21 +12,26 @@ class Usuario(db.Model, UserMixin):
     nombre = Column(String(150), nullable=False)
     apellido = Column(String(150), nullable=False)
     password = Column(String(200), nullable=False)
-    esAdmin = Column(Boolean, nullable=False)
+    fecha_nacimiento = Column(Date, nullable = False)
+    es_admin = Column(Boolean, nullable=False)
 
-    def __init__(self, id, email, password, nombre, apellido, username, es_admin = False):
+    def __init__(self, id, email, password, nombre, apellido, username, fecha_nacimiento, es_admin = False):
         self.id = id
         self.email = email
-        self.password = generate_password_hash(password)
+        self.password = password
         self.nombre = nombre
         self.apellido = apellido
         self.username = username
+        self.fecha_nacimiento = fecha_nacimiento
         self.es_admin = es_admin
     
+    @classmethod
+    def generar(self, password):
+        return generate_password_hash(password)
+
     def set_password(self, password):
         self.password = generate_password_hash(password)
 
-    
     def check_password(self, password):
         return check_password_hash(self.password, password)
     
