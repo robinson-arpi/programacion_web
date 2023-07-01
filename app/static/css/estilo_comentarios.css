@@ -40,6 +40,10 @@ button.btn-rosado:hover {
   transition: 0.5s;
 }
 
+.header_titulo {
+  justify-content: center;
+  text-align: center;
+}
 .header_titulo h1 {
   color: var(--color-fuerte);
 }
