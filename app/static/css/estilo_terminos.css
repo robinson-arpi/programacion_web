@@ -43,4 +43,12 @@ a.btn-rosado:hover {
   transition: 0.5s;
 }
 
+.border h1 {
+  font-size: 35px;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px;
+  border-bottom: 1px solid var(--color-fuerte);
+}
+
 /*# sourceMappingURL=estilo_terminos.css.map */
