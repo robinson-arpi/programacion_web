@@ -2,3 +2,6 @@ flask
 flask-login
 flask-mysqldb
 flask-WTF
+flask_sqlalchemy
+cryptography
+pymysql
