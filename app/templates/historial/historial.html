@@ -1,0 +1,108 @@
+{% extends '/base.html' %}
+{% block titulo %}Historial{% endblock %}
+{% block autor_pagina %}Hernán Coronel{% endblock %}
+
+{% block customCSS %}
+    <!-- Enlace al archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
+    <!-- Para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <!-- estilos principal -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/estilo_historial.css')}}">
+{% endblock %}
+
+{% block cuerpo %}
+<!-- head -->
+<div class = "header_titulo">
+    <h1>HISTORIAL</h1>
+</div>
+
+<!-- contenido -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 border" style="border-color: #c53678; height: 100vh;">
+            <ul class="list-group">
+                <li class="list-group-item"><a href="#historial-hoy" class="list-group-link active" id="hoy">Hoy</a></li>
+                <li class="list-group-item"><a href="#historial-ayer" class="list-group-link" id="ayer">Ayer</a></li>
+                <li class="list-group-item"><a href="#historial-antiguos" class="list-group-link" id="antiguos">Más antiguos</a></li>
+            </ul>
+        </div>
+        <div id="historial-container" class="col-9" style="height: 100%; overflow-y: auto;">
+            <br>
+            <div id="historial-hoy">
+                <h6> Hoy - <span id="fecha-hoy"></span></h6>
+                <!-- historial de hoy -->
+                
+                <div class="search-box" id="h1">
+                    <span class="search-text">Clases de word</span>
+                    <span class="search-icons">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-times"></i>
+                    </span>
+                </div>
+                <div class="search-box" id="h2">
+                    <span class="search-text">Clases de excel</span>
+                    <span class="search-icons">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-times"></i>
+                    </span>
+                </div>              
+            </div>
+
+
+            <div id="historial-ayer">
+                <h6> Ayer - <span id="fecha-ayer"></span></h6>
+                
+                <!-- historial de ayer -->            
+                <div class="search-box" id="h3">
+                <span class="search-text">Jardinería</span>
+                <span class="search-icons">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-times"></i>
+                </span>  
+                </div>
+            </div>
+
+
+            <div id="historial-antiguos">
+                <h6> sábado, 29 de abril de 2023</h6>
+
+                <!-- historial del sabado -->
+                <div class="search-box" id="h4">
+                    <span class="search-text">Clases</span>
+                    <span class="search-icons">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-times"></i>
+                    </span>  
+                </div>
+                <div class="search-box" id="h5">
+                    <span class="search-text">carpintero</span>
+                    <span class="search-icons">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-times"></i>
+                    </span>  
+                </div>
+                
+                
+                <h6> viernes, 28 de abril de 2023</h6>
+                <!-- historial del viernes --> 
+                <div class="search-box" id="h6">
+                <span class="search-text">clases de inglés</span>
+                <span class="search-icons">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-times"></i>
+                </span>  
+                </div>            
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block customJS %}    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>    
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{url_for('static', filename = 'js/historial.js')}}"></script>
+{% endblock %}

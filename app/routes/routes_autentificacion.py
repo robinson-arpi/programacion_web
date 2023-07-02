@@ -3,34 +3,37 @@ from .. import db
 from flask import Flask
 from ..models.ModeloUsuario import ModeloUsuario
 from ..models.entities.Usuario import Usuario
+from ..models.entities.Categoria import Categoria
 
 from flask import render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from .routes_servicios import servicios_blueprint
+from .routes_historial import historial_blueprint
 
 
 from config import config
 from datetime import datetime
 
-#-------------------------------------------------------------------
-#para probarr flash
-from flask import Flask, render_template, flash, redirect, url_for
-app = Flask(__name__)
-app.secret_key = 'clave_secreta'
-#-------------------------------------------------------------------
-
 # Creacion de aplicacion
 app = create_app('development')
 login_manager_app = LoginManager(app)
 
+# Registra el blueprints
+app.register_blueprint(servicios_blueprint)
+app.register_blueprint(historial_blueprint)
+
+# Manejo de logueo
 @login_manager_app.user_loader
 def cargar_usuario(id):
     return Usuario.query.get(id == id)
 
+# Incio de app para amndar a login
 @app.route('/')
 def index():
     return redirect(url_for('login'))
 
+# Ruta loguin para ingreso de credenciales
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -55,29 +58,20 @@ def login():
         return render_template('auth/login.html')
 
 
+# Ruta la cerrar sesión
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('login'))
 
-
+# Ruta para vista home
 @app.route('/home')
-@login_required
 def home():
-    return render_template('index.html',usuario = current_user)
+    cat = Categoria.query.all()
+    return render_template('index.html', categorias = cat , usuario = current_user)
 
-
-@app.route('/ayuda')
-def protected():
-    return render_template('estaticas/ayuda.html')
-
-def status_401(error):
-    return redirect(url_for('login'))
-
-
-def status_404(error):
-    return render_template('HTML/not-found.html'), 404
-
+# Registro y logeo de usuarios
 @app.route('/registro', methods=['POST', 'GET'])
 def agregar_usuario():
     if request.method == 'POST':
@@ -102,25 +96,6 @@ def agregar_usuario():
     else:
         flash('Usuario no creado')
         return render_template('auth/registro.html')
-    
-@app.route('/contactenos', methods=['GET', 'POST'])
-def contacto():
-    if request.method == 'POST':
-        Contactenos = Contactenos(0, 
-                                  request.form[''])
-        nombre = request.form['nombre']
-        email = request.form['email']
-        mensaje = request.form['mensaje']
-
-        nuevo_contacto = contactenos(0, nombre=nombre, email=email, mensaje=mensaje)
-        db.session.add(nuevo_contacto)
-        db.session.commit()
-
-        flash('Mensaje enviado correctamente')
-        return redirect(url_for('footer/contacto.html'))
-    else:
-        flash('Mensaje no enviado')
-        return render_template('footer/contacto.html')
 
 @app.route('/actualizar_usuario/<int:id>', methods=['PUT', 'GET'])
 def actualizar_usuario(id):
@@ -146,9 +121,6 @@ def actualizar_usuario(id):
         print("como verga no va a ser metodo put")
         flash('Usuario no actualizado')
     return redirect(url_for('perfil'))
-
-
-
 
 @app.route('/perfil')
 @login_required
@@ -197,5 +169,9 @@ def agendar():
     return render_template('services/agendar-servicio.html')
 
 
-app.register_error_handler(401, status_401)
-app.register_error_handler(404, status_404)
+
+# ------------------------------------------------------
+# Sección de acerca de nosotros
+@app.route('/acerca_de_nosotros')
+def acerca_de_nosotros():
+    return render_template('page_statics/acerca-de-nosotros.html')

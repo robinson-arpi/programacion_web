@@ -13,45 +13,25 @@
   
   <main>
     <!-- Categorias populares -->
-    <section class="categorias_populares">
-      <h2>Categorías populares</h2>
-      <ul id = "contenedor_categorias">
-          <li>
-              <div class="categoria">
-                <a href = "HTML/servicios.html">
-                <i class="fas fa-desktop"></i></a>
-                <span>Computación</span>
+    <section class="categorias_populares container pt-1">
+      <h2>Categorías</h2>
+      <div class="container">
+        <div class="row card-deck">
+          {% for categoria in categorias %}
+          <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-1">
+            <div class="card clickable card-body" id = "card">
+              <div class="card-block text-center">
+                <h2><i class="{{ categoria.icono }} fa-3x"></i></h2>
               </div>
-          </li>
-          <li>
-            <div class="categoria">
-              <a href = "HTML/servicios.html">
-              <i class="fas fa-history"></i></a>
-              <span>Historia</span>
-            </div>
-          </li>
-          <li>
-            <div class="categoria">
-              <a href = "HTML/servicios.html">
-              <i class="fas fa-bolt"></i></a>
-              <span>Electricidad</span>
-            </div>      
-          </li>
-          <li>
-            <div class="categoria">
-              <a href = "HTML/servicios.html">
-              <i class="fas fa-hard-hat"></i></a>
-              <span>Construcción</span>
-            </div>
-          </li>
-          <li>
-            <div class="categoria">
-              <i class="fas fa-leaf"></i>
-              <span>Jardinería</span>
-            </div>      
-          </li>
-      </ul>
-  </section>
+              <h5 class="card-title text-center">{{ categoria.nombre }}</h5>
+              <p class="card-text">{{ categoria.descripcion }}</p>          
+            </div>  
+          </div>
+        {% endfor %}
+        </div>  
+      </div>  
+      
+    </section>
 
 
   <!-- Testimonios -->
