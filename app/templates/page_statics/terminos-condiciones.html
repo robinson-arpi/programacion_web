@@ -1,0 +1,55 @@
+{% extends '/base.html' %}
+{% block titulo %}Términos y condiciones{% endblock %}
+{% block autor_pagina %}Kevin Juela{% endblock %}
+
+{% block customCSS %}
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/estilo_terminos.css')}}"> 
+{% endblock %}
+
+
+{% block cuerpo %}
+<div class = "grid">
+    <header class="border">
+        <h1>Términos y Condiciones</h1>
+    </header>
+    <div class="parrafos border">
+        <h2>Servicios sin fines de lucro</h2>
+        <p>
+            Es importante dejar claro que este sitio web y sus servicios están destinados a ayudar 
+            a adultos mayores y que no tienen fines de lucro.
+        </p>
+        <h2>Responsabilidad</h2>
+        <p>
+            Nuestro sitio web no es responsable de ninguna pérdida o daño que pueda 
+            surgir del uso de sus servicios. También para los servicios de cuidado de adultos mayores, 
+            no somos responsable de ningún daño o lesión que pueda ocurrir durante la prestación de dichos servicios.
+        </p>
+        <h2>Privacidad</h2>
+        <p>
+            Todos los datos de usuarios son encriptados y seguros durante la interación con lapágina web de servicios,
+        </p>
+        <h2>Propiedad intelectual</h2>
+        <p>
+            Todo el contenido y la propiedad intelectual en este sitio web 
+            pertenece a usted nuestra empresa y no se puede usar sin su permiso de la misma. Derechos de Copy-right.
+        </p>
+        <h2>Cancelación</h2>
+        <p>
+            Para cancelar la suscripción de este sitio web, usted debe contactarse con los adminitradores de la página web 
+            para dar de baja su cuenta.
+        </p>
+        <h2>Términos de uso</h2>
+        <p>
+            Este sitio web tiene como propósito crear servicios que beneficie a los adultos mayores, sin recibir una remuneración
+            a cambio. No se puede utilizar para verder productos o cosas por el estilo solo servicios. Tambien se puede reservar un servicio ofertado 
+            por el sitio web.
+        </p>
+        <h2>Ley aplicable</h2>
+        <p>
+            Al usar cualquier Servicio de nuestro sitio, usted acepta que la ley federal aplicable y las leyes del estado 
+            ecuatoriano, independientemente de los principios de conflicto de leyes, regirán estas Condiciones de Uso y cualquier 
+            disputa de cualquier clase que pudiera derivar entre usted y el sitio web.
+        </p>            
+    </div>
+</div>
+{% endblock %}

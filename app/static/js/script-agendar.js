@@ -5,7 +5,7 @@ HTML de agendar-servicio
 var inputFecha = document.querySelector('.fecha');
 var inputHora = document.querySelector('.hora');
 var inputDireccion = document.querySelector('.direccion');
-const buttonCancelar = document.querySelector('.boton-cancelar');
+var buttonCancelar = document.querySelector('.boton-cancelar');
 var buttonAgendar = document.querySelector('.boton-agendar');
 
 buttonAgendar.addEventListener("click", function(event) {
@@ -27,7 +27,6 @@ buttonAgendar.addEventListener("click", function(event) {
 });
 
 buttonCancelar.addEventListener("click",function(event){
-  event.preventDefault(); // detener el envío del formulario
   const confirmacion = confirm("¿Está seguro de querer cancelar el agendamiento?");
   if (confirmacion) {
     window.location.href = '../index.html';
