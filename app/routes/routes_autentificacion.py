@@ -7,13 +7,20 @@ from ..models.entities.Usuario import Usuario
 from flask import render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from .routes_servicios import servicios_blueprint
+from .routes_historial import historial_blueprint
 
 from config import config
 from datetime import datetime
 
+
 # Creacion de aplicacion
 app = create_app('development')
 login_manager_app = LoginManager(app)
+
+# Registra el blueprints
+app.register_blueprint(servicios_blueprint)
+app.register_blueprint(historial_blueprint)
 
 @login_manager_app.user_loader
 def cargar_usuario(id):
@@ -128,3 +135,9 @@ def favoritos():
 @app.route('/agendar')
 def agendar():
     return render_template('services/agendar-servicio.html')
+
+# ------------------------------------------------------
+# Sección de acerca de nosotros
+@app.route('/acerca_de_nosotros')
+def acerca_de_nosotros():
+    return render_template('page_statics/acerca-de-nosotros.html')

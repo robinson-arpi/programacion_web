@@ -1,0 +1,91 @@
+{% extends '/base.html' %}
+{% block titulo %}Acerca de nosotros{% endblock %}
+{% block autor_pagina %}Hernán Coronel{% endblock %}
+
+{% block customCSS %}
+    <!-- Enlace al archivo CSS de Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/estilo_acerca_nosotros.css')}}"> 
+{% endblock %}
+
+{% block cuerpo %}
+<div class = "contenedor-acerca-nosotros">
+    <div class="fila-titulo">
+        <h1>Acerca de nosotros</h1>
+    </div>
+    <div id="parrafos">
+        <p>
+            Bienvenidos a nuestro sitio web, donde adultos mayores ofrecen sus servicios para otros adultos mayores. Somos un grupo de estudiantes universitarios
+            de la Carrera de Ciencias de la Computación, apasionados por la tecnología y comprometidos con nuestra comunidad.
+        </p>
+        <p>
+            Nos hemos dado cuenta de que existen muchos adultos mayores con habilidades y conocimientos valiosos que a menudo son subestimados y pasan
+            desapercibidos. Por eso, decidimos crear esta plataforma para conectarse entre personas mayores para dar y recibir servicios, ya sea para
+            aprender algo nuevo, recibir asesoramiento o simplemente disfrutar de una buena compañía.
+        </p>
+        <p>
+            Nos enorgullece ser parte de un proyecto que promueve la inclusión social y la valoración de nuestros mayores. Queremos fomentar una cultura de
+            respeto y admiración hacia las personas mayores y demostrar que siempre hay algo que aprender de ellas.
+        </p>
+        <p>
+            En este sitio web encontrarás una amplia variedad de servicios ofrecidos por nuestros usuarios, desde clases de idiomas hasta consejos para cultivar un
+            huerto. Todos ellos están respaldados por la experiencia y el conocimiento de nuestros adultos mayores, quienes se han esforzado por compartir sus
+            habilidades con la comunidad.
+        </p>
+        <p>
+            Nos esforzamos por brindar una plataforma segura y confiable, donde los usuarios puedan sentirse cómodos y confiados al solicitar o ofrecer servicios.
+            Además, nuestro equipo de desarrolladores está comprometido en mejorar constantemente la experiencia del usuario y agregar nuevas funcionalidades.
+        </p>
+        <p>
+            ¡Gracias por ser parte de nuestra comunidad y por apoyar a nuestros adultos mayores!
+        </p>
+    </div>
+
+    <h6>Desarrolladores</h6>
+
+    <div class="desarrolladores">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12  mb-3">
+          <div class="card" >
+            <img src="../Images/miembro.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+              <p class="card-text">Estudiante: <br> Robinson Arpi</p>
+              <p class="card-text">Correo: <br><span>robinson.arpi@ucuenca.edu.ec</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-12  mb-3">
+            <div class="card" >
+              <img src="../Images/miembro.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text">Estudiante: <br> Hernán Coronel</p>
+                <p class="card-text">Correo: <br> <span>hernan.coronelr@ucuenca.edu.ec</span></p>
+              </div>
+            </div>
+          </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-12  mb-3">
+            <div class="card" >
+              <img src="../Images/miembro.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text">Estudiante: <br> Kevin Juela</p>
+                <p class="card-text">Correo: <br><span>kevin.juelac@ucuenca.edu.ec</span></p>
+              </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-12  mb-3">
+            <div class="card" >
+              <img src="../Images/miembro.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                <p class="card-text">Estudiante: <br> Mauro Mizhquiri</p>
+                <p class="card-text">Correo: <br> <span>rolando.mizhquiri@ucuenca.edu.ec</span></p>
+              </div>
+            </div>
+        </div>
+
+    </div>       
+</div>
+{% endblock %}
+
+{% block customJS %}
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}
