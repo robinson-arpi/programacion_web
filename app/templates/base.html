@@ -39,11 +39,11 @@
       <div class="header_navegacion">
         <nav>
           <ul class = "menu_navegacion">
-            <li><a href="../index.html">Inicio</a></li>
-            <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="ayuda.html">Ayuda</a></li>
-            <li><a href="comentarios.html">Comentarios</a></li>
+            <li><a href="/home">Inicio</a></li>
+            <li><a href="/servicios">Servicios</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/ayuda">Ayuda</a></li>
+            <li><a href="/comentarios">Comentarios</a></li>
           </ul>
         </nav>
       </div>
@@ -79,18 +79,18 @@
         <nav class="lista_desplegable">
             <ul class = "navbar-usuario">
               <li class = "item_usuario"><a href="/login"><i class="fas fa-sign-in-alt"></i>Iniciar_sesión</a></li>
-              <li class = "item_notificacion"><a href="/favoritos"><i class="fas fa-user-plus"></i>Registrarse</a></li>
+              <li class = "item_notificacion"><a href="/registro"><i class="fas fa-user-plus"></i>Registrarse</a></li>
             </ul>
         </nav>
       </div>
       {% endif %}
     </header>
 
-    <div id="contenido">
-      {% block cuerpo %}
-      {% endblock %}
+    
+    {% block cuerpo %}
+    {% endblock %}
 
-    </div>
+    
  
   <footer>
     <div class="footer_contenedor">
