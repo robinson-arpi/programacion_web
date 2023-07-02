@@ -66,17 +66,16 @@ def home():
     return render_template('index.html',usuario = current_user)
 
 
-@app.route('/protected')
-@login_required
+@app.route('/ayuda')
 def protected():
-    return "<h1>Esta es una vista protegida, solo para usuarios autenticados.</h1>"
+    return render_template('estaticas/ayuda.html')
 
 def status_401(error):
     return redirect(url_for('login'))
 
 
 def status_404(error):
-    return "<h1>Página no encontrada</h1>", 404
+    return render_template('HTML/not-found.html'), 404
 
 @app.route('/registro', methods=['POST', 'GET'])
 def agregar_usuario():
@@ -103,14 +102,49 @@ def agregar_usuario():
         flash('Usuario no creado')
         return render_template('auth/registro.html')
 
+@app.route('/actualizar_usuario/<int:id>', methods=['PUT', 'GET'])
+def actualizar_usuario(id):
+    print("viene post")
+    if request.method == 'PUT':
+        # Accede a los datos enviados en el cuerpo de la solicitud
+        usuario = Usuario.query.get(id)
+        
+        usuario.email = request.form['email']
+        usuario.password = Usuario.generar(request.form['password1'])
+        usuario.nombre = request.form['nombre']
+        usuario.apellido = request.form['apellido']
+        usuario.username = request.form['username']
+        usuario.fecha_nacimiento = datetime.strptime(request.form['fecha'],"%Y-%m-%d").date()
+        db.session.add(usuario)
+        db.session.commit()
+        flash('Usuario actualizado')
+
+        credenciales_usuario = [request.form['email'], request.form['password1']]
+        usuario_logueado = ModeloUsuario.login(credenciales_usuario)
+        login_user(usuario_logueado, remember=True)
+    else:
+        print("como verga no va a ser metodo put")
+        flash('Usuario no actualizado')
+    return redirect(url_for('perfil'))
+
 @app.route('/perfil')
 @login_required
 def perfil():
     return render_template('usuario/perfil-usuario.html', usuario = current_user)
 
-app.register_error_handler(401, status_401)
-app.register_error_handler(404, status_404)
+#------------------------------------------------------------------
+# Sección de blog
+@app.route('/blog.html')
+@login_required
+def blog():
+    return render_template('page_statics/blog.html', usuario = current_user)
 
+#-----------------------------------------------------------------
+# Sección de contactenos
+@app.route('/contactenos')
+@login_required
+def contactenos():
+    return render_template('footer/contacto.html', usuario = current_user)
 
 # ------------------------------------------------------
 # Sección de Términos y condiciones
@@ -135,6 +169,10 @@ def favoritos():
 @app.route('/agendar')
 def agendar():
     return render_template('services/agendar-servicio.html')
+
+
+app.register_error_handler(401, status_401)
+app.register_error_handler(404, status_404)
 
 # ------------------------------------------------------
 # Sección de acerca de nosotros

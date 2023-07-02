@@ -5,9 +5,10 @@
 .card .card-text {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 5;
   overflow: hidden;
   text-overflow: ellipsis;
+
 }
 
 .container {
@@ -22,5 +23,9 @@
   color: #c53678;
   font-size: 0.9rem;
 }
+.ver-mas:hover {
+  cursor: pointer;
+}
+
 
 /*# sourceMappingURL=estilo_blogs.css.map */
