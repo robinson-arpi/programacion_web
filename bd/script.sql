@@ -1,6 +1,6 @@
-USE DATABASE sabiduria_en_linea
+USE sabiduria_en_linea;
 
-INSERT INTO categoria (id, nombre, descripcion, icono)
+INSERT INTO categorias (id, nombre, descripcion, icono)
 VALUES
   (1, 'Computación', 'Servicios relacionados con la tecnología y la informática', 'fas fa-laptop'),
   (2, 'Educación', 'Servicios de tutoría y enseñanza en diferentes áreas', 'fas fa-graduation-cap'),
