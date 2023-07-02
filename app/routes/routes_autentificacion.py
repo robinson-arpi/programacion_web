@@ -3,6 +3,7 @@ from .. import db
 
 from ..models.ModeloUsuario import ModeloUsuario
 from ..models.entities.Usuario import Usuario
+from ..models.entities.Categoria import Categoria
 
 from flask import render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
@@ -22,14 +23,17 @@ login_manager_app = LoginManager(app)
 app.register_blueprint(servicios_blueprint)
 app.register_blueprint(historial_blueprint)
 
+# Manejo de logueo
 @login_manager_app.user_loader
 def cargar_usuario(id):
     return Usuario.query.get(id == id)
 
+# Incio de app para amndar a login
 @app.route('/')
 def index():
     return redirect(url_for('login'))
 
+# Ruta loguin para ingreso de credenciales
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -54,29 +58,20 @@ def login():
         return render_template('auth/login.html')
 
 
+# Ruta la cerrar sesión
 @app.route('/logout')
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('login'))
 
-
+# Ruta para vista home
 @app.route('/home')
-@login_required
 def home():
-    return render_template('index.html',usuario = current_user)
+    cat = Categoria.query.all()
+    return render_template('index.html', categorias = cat , usuario = current_user)
 
-
-@app.route('/ayuda')
-def protected():
-    return render_template('estaticas/ayuda.html')
-
-def status_401(error):
-    return redirect(url_for('login'))
-
-
-def status_404(error):
-    return render_template('HTML/not-found.html'), 404
-
+# Registro y logeo de usuarios
 @app.route('/registro', methods=['POST', 'GET'])
 def agregar_usuario():
     if request.method == 'POST':
@@ -101,6 +96,23 @@ def agregar_usuario():
     else:
         flash('Usuario no creado')
         return render_template('auth/registro.html')
+    
+# Ruta para perfil tras registro o logueo
+# Sin logueo no hay acceso    
+@app.route('/perfil')
+@login_required
+def perfil():
+    return render_template('usuario/perfil-usuario.html', usuario = current_user)    
+
+@app.route('/ayuda')
+def protected():
+    return render_template('estaticas/ayuda.html')
+
+def status_401(error):
+    return redirect(url_for('login'))
+
+def status_404(error):
+    return render_template('HTML/not-found.html'), 404
 
 @app.route('/actualizar_usuario/<int:id>', methods=['PUT', 'GET'])
 def actualizar_usuario(id):
@@ -126,11 +138,6 @@ def actualizar_usuario(id):
         print("como verga no va a ser metodo put")
         flash('Usuario no actualizado')
     return redirect(url_for('perfil'))
-
-@app.route('/perfil')
-@login_required
-def perfil():
-    return render_template('usuario/perfil-usuario.html', usuario = current_user)
 
 #------------------------------------------------------------------
 # Sección de blog

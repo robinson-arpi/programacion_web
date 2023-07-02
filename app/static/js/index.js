@@ -77,16 +77,6 @@ function crearListItem(nombreIcono, descripcion) {
 }
 
 
-var listItem = crearListItem("fas fa-book-reader", "Literatura");
-var contenedor = document.getElementById('contenedor_categorias');
-
-if (contenedor) {
-  contenedor.appendChild(listItem);
-} else {
-  console.error("El elemento contenedor no fue encontrado.");
-}
-
-
 const username = document.querySelector('.item_usuario');
 username.addEventListener('mouseleave', function() {
   setTimeout(function() {
