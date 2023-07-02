@@ -101,5 +101,11 @@ def agregar_usuario():
 def perfil():
     return render_template('usuario/perfil-usuario.html', usuario = current_user)
 
+
+@app.route('/blog.html')
+@login_required
+def blog():
+    return render_template('navegacion/blog.html', usuario = current_user)
+
 app.register_error_handler(401, status_401)
 app.register_error_handler(404, status_404)
