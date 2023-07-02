@@ -1,6 +1,6 @@
 from .. import create_app
 from .. import db
-
+from flask import Flask
 from ..models.ModeloUsuario import ModeloUsuario
 from ..models.entities.Usuario import Usuario
 
@@ -8,8 +8,16 @@ from flask import render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
+
 from config import config
 from datetime import datetime
+
+#-------------------------------------------------------------------
+#para probarr flash
+from flask import Flask, render_template, flash, redirect, url_for
+app = Flask(__name__)
+app.secret_key = 'clave_secreta'
+#-------------------------------------------------------------------
 
 # Creacion de aplicacion
 app = create_app('development')
@@ -94,6 +102,25 @@ def agregar_usuario():
     else:
         flash('Usuario no creado')
         return render_template('auth/registro.html')
+    
+@app.route('/contactenos', methods=['GET', 'POST'])
+def contacto():
+    if request.method == 'POST':
+        Contactenos = Contactenos(0, 
+                                  request.form[''])
+        nombre = request.form['nombre']
+        email = request.form['email']
+        mensaje = request.form['mensaje']
+
+        nuevo_contacto = contactenos(0, nombre=nombre, email=email, mensaje=mensaje)
+        db.session.add(nuevo_contacto)
+        db.session.commit()
+
+        flash('Mensaje enviado correctamente')
+        return redirect(url_for('footer/contacto.html'))
+    else:
+        flash('Mensaje no enviado')
+        return render_template('footer/contacto.html')
 
 @app.route('/actualizar_usuario/<int:id>', methods=['PUT', 'GET'])
 def actualizar_usuario(id):
@@ -120,6 +147,9 @@ def actualizar_usuario(id):
         flash('Usuario no actualizado')
     return redirect(url_for('perfil'))
 
+
+
+
 @app.route('/perfil')
 @login_required
 def perfil():
@@ -127,7 +157,7 @@ def perfil():
 
 #------------------------------------------------------------------
 # Sección de blog
-@app.route('/blog.html')
+@app.route('/blog')
 @login_required
 def blog():
     return render_template('page_statics/blog.html', usuario = current_user)
@@ -138,6 +168,9 @@ def blog():
 @login_required
 def contactenos():
     return render_template('footer/contacto.html', usuario = current_user)
+
+
+
 
 # ------------------------------------------------------
 # Sección de Términos y condiciones
