@@ -3,7 +3,6 @@
 {% block autor_pagina %}Robinson Arpi{% endblock %}
 
 {% block customCSS %}
-<link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/estilo_inicio_registro.css')}}"> 
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/estilos_generales.css')}}">
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/estilo_perfil.css')}}">
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/styles_buscador.css')}}">
@@ -12,15 +11,118 @@
 {% block cuerpo %}
     <div class = contenedor>
         <main>
-            <section class="perfil">
-                <div class="perfil_imagen">
-                    <img src="https://via.placeholder.com/150" alt="Foto de perfil">
+          <h2>Información personal</h2>
+            <section class="perfil col-12 mb-3 justify-content-around">
+              <div class="card col-md-2 mb-3">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+                    <div class="mt-3">
+                      <h4>{{ usuario.username }}</h4>
+                    </div>
+                  </div>
                 </div>
-                <div class="perfil_informacion">
-                    <h2>Nombre: {{ usuario.nombre }}</h2>
-                    <p>Correo: {{ usuario.email}}</p>
-                    <p>Fecha de Nacimiento: {{usuario.fecha_nacimiento}}</p>
+              </div>
+
+              <div class="col-md-8">
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Nombre</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{ usuario.nombre }} {{ usuario.apellido }}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Email</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{ usuario.email }}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-3">
+                        <h6 class="mb-0">Fecha de nacimiento</h6>
+                      </div>
+                      <div class="col-sm-9 text-secondary">
+                        {{ usuario.fecha_nacimiento }}
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <button class="btn btn-primary btn-sm modificar-btn" data-id="{{usuario.id}}" data-toggle="modal" data-target="#modalEditar">Modificar</button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+              </div>  
+
+              <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="modalEditarLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEditarLabel">Editar información</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Campos de edición del cliente -->
+                            <form action="/actualizar_usuario/{{usuario.id}}" id="formularioEditar" method= "POST">
+                              <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                              <input class = "id" type="hidden" name="id" value="{{ usuario.id }}">
+                              <div class = "nombre_completo">
+                                  <div class = "entrada">
+                                      <input class = "nombre" name = "nombre" type = "text" value="{{usuario.nombre}}" required>
+                                      <label>Nombre</label>
+                                  </div>
+                                  <div class = "entrada">
+                                      <input class = "apellido" name = "apellido" type = "text" value="{{usuario.apellido}}" required>
+                                      <label>Apellido</label>
+                                  </div>
+                              </div>  
+                                
+                              <div class = "entrada">
+                                  <input class = "correo" name = "email" type ="email" value="{{usuario.email}}" required >
+                                  <label>Correo</label>
+                              </div>
+                              <div class = "passwords">
+                                  <div class = "entrada">
+                                      <input class = "password1" name = "password1" type = "password" required>
+                                      <label>Contraseña</label>
+                                  </div>
+                                  <div class = "entrada">
+                                      <input class = "password2" name = "password2" type = "password" required> 
+                                      <label>Confirmar contraseña</label>
+                                  </div>
+                              </div>
+                              <div class = "passwords">
+                                  <div class = "entrada">
+                                      <input class = "nombre" name = "username" type = "text" value="{{usuario.username}}" required>
+                                      <label>Nickname</label>
+                                  </div>
+                                  <div class = "entrada">
+                                      <input class = "f_nacimiento" type = "date" name = "fecha" id="fecha" required>
+                                      <label>F. nacimiento</label>
+                                  </div>
+                              </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-primary" id="btn-guardar-cambios">Actualizar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+              
+                
             </section>
             <section class="servicios">
                 <h2>Mis Servicios</h2>
