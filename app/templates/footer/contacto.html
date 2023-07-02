@@ -1,0 +1,91 @@
+{% extends '/base.html' %}
+{% block titulo %}Contactenos{% endblock %}
+{% block autor_pagina %}Mauro Mizhquiri{% endblock %}
+
+{% block customCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename = 'css/estilo_contacto.css')}}">
+{% endblock %}
+
+{% block cuerpo %}
+<section>
+
+  <div class="contenedor">
+    <main>
+      <div class="contenedor_contacto">
+        <p class="titulo">¿Cómo podemos ayudarte?</p>
+        <div class="separador"></div>
+        <p class="mensaje_bienvenida">Por favor, ingrese los campos requeridos para comunicarte con nosotros
+        </p>
+        <form class="form_registro">
+
+          <div class="nombre_completo">
+            <div class="entrada">
+              <input class="nombre" type="text" required>
+              <label>Nombre</label>
+            </div>
+          </div>
+          <div class="correo">
+            <div class="entrada">
+              <input class="correo" type="email" required>
+              <label>Correo</label>
+            </div>
+          </div>
+
+
+          <div class="caja_texto">
+            <div class="entrada">
+              <input class="mensaje" type="text" required>
+              <label>Mensaje</label>
+            </div>
+          </div>
+
+          <button class="iniciar boton_enviar">Enviar</button>
+
+        </form>
+
+      </div>
+    </main>
+
+    <div class="contenedor_informacion">
+      <div class="info">
+
+        <div class="imgBox">
+          <img src="static/Images/email.png" alt="">
+        </div>
+
+        <div class="textBox">
+
+          <div class="infoContact">
+            <ion-icon name="map"></ion-icon>
+            <p>Av. Diego de Almagro N31-95 entre Whymper y Alpallana</p>
+          </div>
+
+          <div class="infoContact">
+            <ion-icon name="call"></ion-icon>
+            <p>+593 747 646 0987</p>
+          </div>
+
+          <div class="infoContact">
+            <ion-icon name="mail"></ion-icon>
+            <p>info@sabiduriaenlinea.com</p>
+          </div>
+
+        </div>
+
+
+        <div class="rrss">
+          <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+          <a href="#"><ion-icon name="logo-instagram"></ion-icon></ion-icon></a>
+          <a href="#"><ion-icon name="logo-twitter"></ion-icon></ion-icon></a>
+        </div>
+
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+{% endblock %}

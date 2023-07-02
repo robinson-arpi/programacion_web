@@ -101,15 +101,19 @@ def agregar_usuario():
 def perfil():
     return render_template('usuario/perfil-usuario.html', usuario = current_user)
 
-
+#------------------------------------------------------------------
+# Sección de blog
 @app.route('/blog.html')
 @login_required
 def blog():
-    return render_template('navegacion/blog.html', usuario = current_user)
+    return render_template('page_statics/blog.html', usuario = current_user)
 
-app.register_error_handler(401, status_401)
-app.register_error_handler(404, status_404)
-
+#-----------------------------------------------------------------
+# Sección de contactenos
+@app.route('/contactenos')
+@login_required
+def contactenos():
+    return render_template('footer/contacto.html', usuario = current_user)
 
 # ------------------------------------------------------
 # Sección de Términos y condiciones
@@ -134,3 +138,7 @@ def favoritos():
 @app.route('/agendar')
 def agendar():
     return render_template('services/agendar-servicio.html')
+
+
+app.register_error_handler(401, status_401)
+app.register_error_handler(404, status_404)
