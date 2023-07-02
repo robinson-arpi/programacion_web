@@ -14,7 +14,7 @@ class DevelopmentConfig(Config):
     # Depuracion
     DEBUG = True
     # Enlace a la base de datos
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:@localhost:3306/sabiduria_en_linea'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:uc2018kfjc10.@localhost:3306/sabiduria_en_linea'
 
 config = {
     "development": DevelopmentConfig,

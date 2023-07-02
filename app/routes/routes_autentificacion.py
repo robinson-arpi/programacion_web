@@ -109,3 +109,28 @@ def blog():
 
 app.register_error_handler(401, status_401)
 app.register_error_handler(404, status_404)
+
+
+# ------------------------------------------------------
+# Sección de Términos y condiciones
+@app.route('/terminos_condiciones')
+def terminos():
+    return render_template('page_statics/terminos-condiciones.html')
+
+# ------------------------------------------------------
+# Sección de Comentarios
+@app.route('/comentarios')
+def comentarios():
+    return render_template('comments/comentarios.html')
+
+# ------------------------------------------------------
+# Sección de Favoritos
+@app.route('/favoritos')
+def favoritos():
+    return render_template('favorites/favoritos.html')
+
+# ------------------------------------------------------
+# Sección de Agendar
+@app.route('/agendar')
+def agendar():
+    return render_template('services/agendar-servicio.html')

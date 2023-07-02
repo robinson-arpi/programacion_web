@@ -175,7 +175,7 @@
     }
 
     //Cambios para fecha y hora
-    .f_nacimiento, .correo {
+    .f_nacimiento, .correo, .fecha, .hora {
       color: white;
       &:focus, &:valid{
         color: var(--color-texto);
