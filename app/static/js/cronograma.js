@@ -182,5 +182,5 @@ function addListener() {
 
 
 function salir(event) {
-    window.location.href = "../index.html";
+    window.location.href = "home";
 }

@@ -160,9 +160,9 @@ def contacto():
         flash('Mensaje enviado correctamente')
         correo = Correo()
         correo.enviar_correo("rolando.mizhquiri@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje))
-        """ correo.enviar_correo("rolando.mizhquiri@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje))
-        correo.enviar_correo("rolando.mizhquiri@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje))
-        correo.enviar_correo("rolando.mizhquiri@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje)) """
+        correo.enviar_correo("robinson.arpi@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje))
+        correo.enviar_correo("kevin.juelac@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje))
+        correo.enviar_correo("hernan.coronelr@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje))
         correo.enviar_correo(email,'Respuesta a solicitud',correo.getMessageUsers(nombre,'Respuesta a solicitud', mensaje))
         return redirect(url_for('contactenos'))
     else:
@@ -170,12 +170,22 @@ def contacto():
         return render_template('footer/contacto.html')
 
 
+#----------------------------------------------------------------------------------------------
+#Sección de descripción de servicios
+
+@app.route('/descripcion_servicios')
+@login_required
+def descripcion_servicios():
+    return render_template('services/descripcion_servicios.html', usuario = current_user)
 
 
-    
 
-
-
+#----------------------------------------------------------------------------------------------------------
+#seccion de cronograma
+@app.route('/cronograma')
+@login_required
+def cronograma():
+    return render_template('services/cronograma.html', usuario = current_user)
 
 
 
