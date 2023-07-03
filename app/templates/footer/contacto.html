@@ -16,17 +16,29 @@
         <div class="separador"></div>
         <p class="mensaje_bienvenida">Por favor, ingrese los campos requeridos para comunicarte con nosotros
         </p>
-        <form class="form_registro">
+        {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-primary alert-dismissible" role="alert">
+                            <strong>{{ message }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
 
+        <form class="form_registro" method= "POST">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
           <div class="nombre_completo">
             <div class="entrada">
-              <input class="nombre" type="text" required>
+              <input class="nombre" name = "nombre" type="text" required>
               <label>Nombre</label>
             </div>
           </div>
+
           <div class="correo">
             <div class="entrada">
-              <input class="correo" type="email" required>
+              <input class="correo" name="correo" type="email" required>
               <label>Correo</label>
             </div>
           </div>
@@ -34,11 +46,11 @@
 
           <div class="caja_texto">
             <div class="entrada">
-              <input class="mensaje" type="text" required>
+              <input class="mensaje" name="mensaje" type="text" required>
               <label>Mensaje</label>
             </div>
           </div>
-
+          
           <button class="iniciar boton_enviar">Enviar</button>
 
         </form>
@@ -49,8 +61,9 @@
     <div class="contenedor_informacion">
       <div class="info">
 
-        <div class="imgBox">
-          <img src="static/Images/email.png" alt="">
+        <div id = "mapa" class="imgBox">
+          <!-- <img src="static/Images/email.png" alt="">
+          <div id="mapa"></div> -->
         </div>
 
         <div class="textBox">
@@ -88,4 +101,6 @@
 </section>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEJ8utUL4QY5Y6m9k8ALvk6vqL_VoNrP4&callback=inicializarMapa" async defer></script>
+<script src="{{url_for('static', filename = 'js/mapa.js')}}"></script>
 {% endblock %}

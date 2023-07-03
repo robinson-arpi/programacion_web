@@ -3,13 +3,17 @@ from .. import db
 from flask import Flask
 from ..models.ModeloUsuario import ModeloUsuario
 from ..models.entities.Usuario import Usuario
+from ..models.entities.Contactenos import Contactenos
 from ..models.entities.Categoria import Categoria
+from ..models.entities.Correo import Correo
 
 from flask import render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from .routes_servicios import servicios_blueprint
 from .routes_historial import historial_blueprint
+
+
 
 
 from config import config
@@ -140,6 +144,39 @@ def blog():
 @login_required
 def contactenos():
     return render_template('footer/contacto.html', usuario = current_user)
+
+# para el método de contactenos
+
+@app.route('/contactenos', methods=['GET', 'POST'])
+def contacto():
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        email = request.form['correo']
+        mensaje = request.form['mensaje']
+
+        contactenos = Contactenos(0, nombre, email, mensaje)
+        db.session.add(contactenos)
+        db.session.commit()
+        flash('Mensaje enviado correctamente')
+        correo = Correo()
+        correo.enviar_correo("rolando.mizhquiri@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje))
+        """ correo.enviar_correo("rolando.mizhquiri@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje))
+        correo.enviar_correo("rolando.mizhquiri@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje))
+        correo.enviar_correo("rolando.mizhquiri@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje)) """
+        correo.enviar_correo(email,'Respuesta a solicitud',correo.getMessageUsers(nombre,'Respuesta a solicitud', mensaje))
+        return redirect(url_for('contactenos'))
+    else:
+        flash('Mensaje no enviado')
+        return render_template('footer/contacto.html')
+
+
+
+
+    
+
+
+
+
 
 
 
