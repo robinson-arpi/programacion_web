@@ -22,14 +22,14 @@ buttonAgendar.addEventListener("click", function(event) {
    
   if (formValid) {
     event.preventDefault(); // Evita el envío del formulario por defecto
-    window.location.href = '../index.html';
+    window.location.href = "/home";
   }
 });
 
 buttonCancelar.addEventListener("click",function(event){
   const confirmacion = confirm("¿Está seguro de querer cancelar el agendamiento?");
   if (confirmacion) {
-    window.location.href = '../index.html';
+    window.location.href = "/home";
   }
 });
 
