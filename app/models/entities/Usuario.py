@@ -1,6 +1,7 @@
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 from sqlalchemy import Column, Integer, String, Boolean, Date
+from sqlalchemy.orm import relationship
 from app import db
 
 
@@ -14,6 +15,9 @@ class Usuario(db.Model, UserMixin):
     password = Column(String(200), nullable=False)
     fecha_nacimiento = Column(Date, nullable = False)
     es_admin = Column(Boolean, nullable=False)
+
+    # Relación con los servicios del usuario
+    servicios = relationship("Servicio", back_populates="usuario")
 
     def __init__(self, id, email, password, nombre, apellido, username, fecha_nacimiento, es_admin = False):
         self.id = id
