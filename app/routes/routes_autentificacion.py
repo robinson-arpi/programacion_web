@@ -1,9 +1,11 @@
 from .. import create_app
 from .. import db
-
+from flask import Flask
 from ..models.ModeloUsuario import ModeloUsuario
 from ..models.entities.Usuario import Usuario
+from ..models.entities.Contactenos import Contactenos
 from ..models.entities.Categoria import Categoria
+from ..models.entities.Correo import Correo
 
 from flask import render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
@@ -11,9 +13,11 @@ from flask_login import LoginManager, login_user, logout_user, login_required, c
 from .routes_servicios import servicios_blueprint
 from .routes_historial import historial_blueprint
 
+
+
+
 from config import config
 from datetime import datetime
-
 
 # Creacion de aplicacion
 app = create_app('development')
@@ -96,23 +100,6 @@ def agregar_usuario():
     else:
         flash('Usuario no creado')
         return render_template('auth/registro.html')
-    
-# Ruta para perfil tras registro o logueo
-# Sin logueo no hay acceso    
-@app.route('/perfil')
-@login_required
-def perfil():
-    return render_template('usuario/perfil-usuario.html', usuario = current_user)    
-
-@app.route('/ayuda')
-def protected():
-    return render_template('estaticas/ayuda.html')
-
-def status_401(error):
-    return redirect(url_for('login'))
-
-def status_404(error):
-    return render_template('HTML/not-found.html'), 404
 
 @app.route('/actualizar_usuario/<int:id>', methods=['PUT', 'GET'])
 def actualizar_usuario(id):
@@ -139,9 +126,14 @@ def actualizar_usuario(id):
         flash('Usuario no actualizado')
     return redirect(url_for('perfil'))
 
+@app.route('/perfil')
+@login_required
+def perfil():
+    return render_template('usuario/perfil-usuario.html', usuario = current_user)
+
 #------------------------------------------------------------------
 # Sección de blog
-@app.route('/blog.html')
+@app.route('/blog')
 @login_required
 def blog():
     return render_template('page_statics/blog.html', usuario = current_user)
@@ -152,6 +144,52 @@ def blog():
 @login_required
 def contactenos():
     return render_template('footer/contacto.html', usuario = current_user)
+
+# para el método de contactenos
+
+@app.route('/contactenos', methods=['GET', 'POST'])
+def contacto():
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        email = request.form['correo']
+        mensaje = request.form['mensaje']
+
+        contactenos = Contactenos(0, nombre, email, mensaje)
+        db.session.add(contactenos)
+        db.session.commit()
+        flash('Mensaje enviado correctamente')
+        correo = Correo()
+        correo.enviar_correo("rolando.mizhquiri@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje))
+        correo.enviar_correo("robinson.arpi@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje))
+        correo.enviar_correo("kevin.juelac@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje))
+        correo.enviar_correo("hernan.coronelr@ucuenca.edu.ec","Consulta de servicios de la página",correo.getMessageAdmins(nombre,email,mensaje))
+        correo.enviar_correo(email,'Respuesta a solicitud',correo.getMessageUsers(nombre,'Respuesta a solicitud', mensaje))
+        return redirect(url_for('contactenos'))
+    else:
+        flash('Mensaje no enviado')
+        return render_template('footer/contacto.html')
+
+
+#----------------------------------------------------------------------------------------------
+#Sección de descripción de servicios
+
+@app.route('/descripcion_servicios')
+@login_required
+def descripcion_servicios():
+    return render_template('services/descripcion_servicios.html', usuario = current_user)
+
+
+
+#----------------------------------------------------------------------------------------------------------
+#seccion de cronograma
+@app.route('/cronograma')
+@login_required
+def cronograma():
+    return render_template('services/cronograma.html', usuario = current_user)
+
+
+
+
 
 # ------------------------------------------------------
 # Sección de Términos y condiciones
@@ -178,8 +216,6 @@ def agendar():
     return render_template('services/agendar-servicio.html')
 
 
-app.register_error_handler(401, status_401)
-app.register_error_handler(404, status_404)
 
 # ------------------------------------------------------
 # Sección de acerca de nosotros

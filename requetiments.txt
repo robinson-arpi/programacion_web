@@ -5,3 +5,4 @@ flask-WTF
 flask_sqlalchemy
 cryptography
 pymysql
+Flask-Mail
