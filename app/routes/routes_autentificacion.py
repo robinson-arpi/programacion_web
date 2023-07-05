@@ -12,7 +12,10 @@ from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from .routes_servicios import servicios_blueprint
 from .routes_historial import historial_blueprint
-
+from .routes_agendar import agendar_blueprint
+from .routes_favoritos import favoritos_blueprint
+from .routes_comentarios import comentarios_blueprint
+from .routes_terminos import terminos_blueprint
 
 
 
@@ -26,6 +29,10 @@ login_manager_app = LoginManager(app)
 # Registra el blueprints
 app.register_blueprint(servicios_blueprint)
 app.register_blueprint(historial_blueprint)
+app.register_blueprint(agendar_blueprint)
+app.register_blueprint(favoritos_blueprint)
+app.register_blueprint(comentarios_blueprint)
+app.register_blueprint(terminos_blueprint)
 
 # Manejo de logueo
 @login_manager_app.user_loader
@@ -141,9 +148,8 @@ def blog():
 #-----------------------------------------------------------------
 # Sección de contactenos
 @app.route('/contactenos')
-@login_required
 def contactenos():
-    return render_template('footer/contacto.html', usuario = current_user)
+    return render_template('footer/contacto.html')
 
 # para el método de contactenos
 
@@ -186,36 +192,6 @@ def descripcion_servicios():
 @login_required
 def cronograma():
     return render_template('services/cronograma.html', usuario = current_user)
-
-
-
-
-
-# ------------------------------------------------------
-# Sección de Términos y condiciones
-@app.route('/terminos_condiciones')
-def terminos():
-    return render_template('page_statics/terminos-condiciones.html')
-
-# ------------------------------------------------------
-# Sección de Comentarios
-@app.route('/comentarios')
-def comentarios():
-    return render_template('comments/comentarios.html')
-
-# ------------------------------------------------------
-# Sección de Favoritos
-@app.route('/favoritos')
-def favoritos():
-    return render_template('favorites/favoritos.html')
-
-# ------------------------------------------------------
-# Sección de Agendar
-@app.route('/agendar')
-def agendar():
-    return render_template('services/agendar-servicio.html')
-
-
 
 # ------------------------------------------------------
 # Sección de acerca de nosotros

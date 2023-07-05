@@ -1,7 +1,7 @@
 // para el botón cancelar y regresar a inicio
 function cancelar(event) {
-    window.location.href = "servicios";
+    window.location.href = "/servicios";
 }
 function agendarServicio(event) {
-    //window.location.href = "agregar_servicio";
+    window.location.href = "/agendar";
 }
