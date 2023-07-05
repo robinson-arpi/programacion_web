@@ -148,9 +148,8 @@ def blog():
 #-----------------------------------------------------------------
 # Sección de contactenos
 @app.route('/contactenos')
-@login_required
 def contactenos():
-    return render_template('footer/contacto.html', usuario = current_user)
+    return render_template('footer/contacto.html')
 
 # para el método de contactenos
 
