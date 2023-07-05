@@ -54,3 +54,6 @@ botonAgregar.addEventListener("click", function() {
     inputRequisito.value = "";
   }
 });
+
+// submit
+
