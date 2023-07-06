@@ -45,4 +45,8 @@ button.btn-rosado:hover {
   text-align: center;
 }
 
+.accordion .accordion-header {
+  --bs-accordion-active-bg: #ffcff1;
+}
+
 /*# sourceMappingURL=estilo_comentarios.css.map */
