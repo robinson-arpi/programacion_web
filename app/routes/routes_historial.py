@@ -6,6 +6,7 @@ historial_blueprint = Blueprint('historial', __name__)
 
 # Ruta de historial
 @historial_blueprint.route('/historial')
+@login_required
 def historial_route():
     return render_template('historial/historial.html')
 

@@ -9,48 +9,72 @@
 
 {% block cuerpo %}
 <div class = "header_titulo">
-<h1>COMENTARIOS</h1>
+    <h1>COMENTARIOS</h1>
 </div>
 <div class="container">
     <div class="row">
     <div class="col-md-3 col-sm-12">
-    <form>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-primary alert-dismissible" role="alert">
+                    <strong>{{ message }}</strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    <form method= "POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
         <div class="inputBox">
         <label for="nombre">Nombre</label>
-        <input type="text"  id="nombre" placeholder="Ingrese su nombre" required>
+        <input type="text" name="nombre" id="nombre" placeholder="Ingrese su nombre" required title="Por favor, su nombre.">
         </div>
         <div class="inputBox">
-        <label for="calificacion">Calificación</label>
-        <select id="calificacion">
-            <option value="" selected disabled>Seleccione una opción</option>
-            <option value="1">1 estrella</option>
-            <option value="2">2 estrellas</option>
-            <option value="3">3 estrellas</option>
-            <option value="4">4 estrellas</option>
-            <option value="5">5 estrellas</option>
-        </select>
+            <label for="calificacion">Calificación</label>
+            <select id="calificacion" name="calificacion" required title="Por favor, seleccione una calificación.">
+                <option value="" selected disabled>Seleccione una opción</option>
+                <option value="★">1 estrella</option>
+                <option value="★★">2 estrellas</option>
+                <option value="★★★">3 estrellas</option>
+                <option value="★★★★">4 estrellas</option>
+                <option value="★★★★★">5 estrellas</option>
+            </select>
         </div>
         <div class="inputBox">
-        <label for="categoria">Categoría de Servicio</label>
-        <select id="categoria">
-            <option value="" selected disabled>Seleccione una opción</option>
-            <option value="Computación">Computación</option>
-            <option value="Historia">Historia</option>
-            <option value="Electricidad">Electricidad</option>
-            <option value="Construcción">Construcción</option>
-            <option value="Jardinería">Jardinería</option>
-        </select>
+            <label for="categoria">Categoría de Servicio</label>
+            <select id="categoria" name="categoria" required title="Por favor, seleccione una categoria.">
+                <option value="" selected disabled>Seleccione una opción</option>
+                {% for categoria in categorias %}
+                    <option value={{categoria.nombre}}>{{categoria.nombre}}</option>
+                {% endfor %}
+            </select>
         </div>
         <div class="inputBox">
         <label for="comentario">Comentario</label>
-        <textarea id="comentario" rows="3" required></textarea>
+        <textarea id="comentario" name="comentario" rows="3" required title="Por favor, ingrese su comentario"></textarea>
         </div>
-        <button type="submit" id="btn-enviar" class="btn btn-rosado">Enviar comentario</button>
+        <button id="btn-enviar" class="btn btn-rosado">Enviar comentario</button>
     </form>
     </div>
     <div class="col-md-9 col-sm-12" style="padding-top: 2%;">
     <!-- Sección para mostrar comentarios -->
-    <div class="accordion" id="accordionExample"></div>
+    <div class="accordion" id="accordionExample">
+        {% for comentario in comentarios %}
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                {{comentario.nombre}} > {{comentario.categoria}} > {{comentario.calificacion}}
+                </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <strong>⫸</strong> {{comentario.mensaje}}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
     </div>
 </div>
 </div>

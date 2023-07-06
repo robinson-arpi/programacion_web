@@ -6,16 +6,18 @@ from ..models.entities.Usuario import Usuario
 from ..models.entities.Contactenos import Contactenos
 from ..models.entities.Categoria import Categoria
 from ..models.entities.Correo import Correo
+from ..models.entities.Comentarios import Comentario
+
 
 from flask import render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from .routes_servicios import servicios_blueprint
 from .routes_historial import historial_blueprint
-
-
-
-
+from .routes_agendar import agendar_blueprint
+from .routes_favoritos import favoritos_blueprint
+from .routes_comentarios import comentarios_blueprint
+from .routes_terminos import terminos_blueprint
 from config import config
 from datetime import datetime
 
@@ -26,6 +28,10 @@ login_manager_app = LoginManager(app)
 # Registra el blueprints
 app.register_blueprint(servicios_blueprint)
 app.register_blueprint(historial_blueprint)
+app.register_blueprint(agendar_blueprint)
+app.register_blueprint(favoritos_blueprint)
+app.register_blueprint(comentarios_blueprint)
+app.register_blueprint(terminos_blueprint)
 
 # Manejo de logueo
 @login_manager_app.user_loader
@@ -54,12 +60,12 @@ def login():
                 return redirect(url_for('home'))
             else:
                 flash("Contraseña incorrecta")
-                return render_template('auth/login.html')
+                return render_template('auth/login.html', usuario = current_user)
         else:
             flash("Usuario no encontrado")
-            return render_template('auth/login.html')
+            return render_template('auth/login.html', usuario = current_user)
     else:
-        return render_template('auth/login.html')
+        return render_template('auth/login.html', usuario = current_user)
 
 
 # Ruta la cerrar sesión
@@ -73,7 +79,8 @@ def logout():
 @app.route('/home')
 def home():
     cat = Categoria.query.all()
-    return render_template('index.html', categorias = cat , usuario = current_user)
+    com = Comentario.query.order_by(Comentario.id.desc()).limit(4).all()
+    return render_template('index.html', categorias = cat , usuario = current_user, comentarios = com)
 
 # Registro y logeo de usuarios
 @app.route('/registro', methods=['POST', 'GET'])
@@ -87,19 +94,14 @@ def agregar_usuario():
                         request.form['username'],
                         datetime.strptime(request.form['fecha'],"%Y-%m-%d").date()
                         )
-
         db.session.add(usuario)
         db.session.commit()
-        flash('Usuario creado')
-
         credenciales_usuario = [request.form['email'],request.form['password1']]
-        
         usuario_logueado = ModeloUsuario.login(credenciales_usuario)
         login_user(usuario_logueado, remember=True)
         return redirect(url_for('perfil'))
     else:
-        flash('Usuario no creado')
-        return render_template('auth/registro.html')
+        return render_template('auth/registro.html', usuario = current_user)
 
 @app.route('/actualizar_usuario/<int:id>', methods=['PUT', 'GET'])
 def actualizar_usuario(id):
@@ -131,6 +133,10 @@ def actualizar_usuario(id):
 def perfil():
     return render_template('usuario/perfil-usuario.html', usuario = current_user)
 
+@app.route('/ayuda')
+def ayuda():
+    return render_template('page_statics/ayuda.html', usuario = current_user)    
+
 #------------------------------------------------------------------
 # Sección de blog
 @app.route('/blog')
@@ -141,7 +147,6 @@ def blog():
 #-----------------------------------------------------------------
 # Sección de contactenos
 @app.route('/contactenos')
-@login_required
 def contactenos():
     return render_template('footer/contacto.html', usuario = current_user)
 
@@ -167,7 +172,7 @@ def contacto():
         return redirect(url_for('contactenos'))
     else:
         flash('Mensaje no enviado')
-        return render_template('footer/contacto.html')
+        return render_template('footer/contacto.html', usuario = current_user)
 
 
 #----------------------------------------------------------------------------------------------
@@ -186,36 +191,6 @@ def descripcion_servicios():
 @login_required
 def cronograma():
     return render_template('services/cronograma.html', usuario = current_user)
-
-
-
-
-
-# ------------------------------------------------------
-# Sección de Términos y condiciones
-@app.route('/terminos_condiciones')
-def terminos():
-    return render_template('page_statics/terminos-condiciones.html')
-
-# ------------------------------------------------------
-# Sección de Comentarios
-@app.route('/comentarios')
-def comentarios():
-    return render_template('comments/comentarios.html')
-
-# ------------------------------------------------------
-# Sección de Favoritos
-@app.route('/favoritos')
-def favoritos():
-    return render_template('favorites/favoritos.html')
-
-# ------------------------------------------------------
-# Sección de Agendar
-@app.route('/agendar')
-def agendar():
-    return render_template('services/agendar-servicio.html')
-
-
 
 # ------------------------------------------------------
 # Sección de acerca de nosotros

@@ -1,1 +1,4 @@
 __pycache__/
+programacion_web\app\models\entities\__pycache__
+programacion_web\app\routes\__pycache__
+programacion_web\config.py
