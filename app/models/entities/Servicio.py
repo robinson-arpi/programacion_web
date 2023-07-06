@@ -16,6 +16,8 @@ class Servicio(db.Model):
 
     # Relación con el usuario propietario
     usuario = relationship("Usuario", back_populates="servicios")
+    favoritos = relationship("Favorito", back_populates="servicios")
+    agendamiento = relationship("Agendamiento", back_populates="servicios")
 
     def __init__(self, usuario_id, titulo, descripcion, ciudad, categoria, disponibilidad, requisitos, imagen_datos):
         self.usuario_id = usuario_id

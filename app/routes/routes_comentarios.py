@@ -19,7 +19,7 @@ def comentarios_route():
             request.form['categoria'],
             request.form['comentario']
         )
-        if (resultado != None):
+        if (resultado):
             flash("Comentario Agregado")
             cat = Categoria.query.all()
             com = ModeloComentario.get_all()
