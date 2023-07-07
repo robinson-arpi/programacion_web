@@ -52,3 +52,9 @@ button.btn-rosado {
         text-align: center;
     }
   }
+
+  .accordion {
+    .accordion-header{
+        --bs-accordion-active-bg: #ffcff1;
+    }
+  }

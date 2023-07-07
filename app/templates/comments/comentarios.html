@@ -63,13 +63,14 @@
         {% for comentario in comentarios %}
         <div class="accordion-item">
             <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                {{comentario.nombre}} > {{comentario.categoria}} > {{comentario.calificacion}}
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{loop.index}}" aria-expanded="true" aria-controls="collapse{{loop.index}}">
+                <span style="font-weight: bold;">{{comentario.nombre}}</span> > {{comentario.categoria}} > <span style="color: rgb(255, 115, 0);">{{comentario.calificacion}}</span>
+            </button>
                 </button>
             </h2>
-            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+            <div id="collapse{{loop.index}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                <strong>⫸</strong> {{comentario.mensaje}}
+                    <strong style="color: rgb(255, 115, 0);">⫸</strong> {{comentario.mensaje}}
                 </div>
             </div>
         </div>
