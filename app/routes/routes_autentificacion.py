@@ -18,7 +18,6 @@ from .routes_comentarios import comentarios_blueprint
 from .routes_terminos import terminos_blueprint
 
 
-
 from config import config
 from datetime import datetime
 
