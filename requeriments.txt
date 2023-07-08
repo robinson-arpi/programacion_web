@@ -6,3 +6,6 @@ flask_sqlalchemy
 cryptography
 pymysql
 Flask-Mail
+flask_cors
+Flask-Uploads
+Werkzeug==2.3.3

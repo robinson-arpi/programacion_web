@@ -17,126 +17,20 @@
       <div class="container">
         <div class="row card-deck">
 
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-3">
-            <div class="card clickable" data-href="descripcion_servicios">
-              <img src="static/Images/aerobicos.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Aeróbicos</h5>
-                <p class="card-text">Ofrezco clases de aeróbicos para adultos mayores y así mejorar su movilidad</p>
+          {% for servicio in servicios %}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-3">
+              <!-- Aquí poner la ruta con el id -->
+              <div class="card clickable" data-href="descripcion_servicios">
+                  <img src="static/img/uploads/{{ servicio.imagen }}" class="card-img-top" alt="...">
+                  <div class="card-body">
+                      <label hidden id="{{ servicio.id }}"></label>
+                      <h5 class="card-title">{{ servicio.titulo }}</h5>
+                      <p class="card-text">{{ servicio.descripcion }}</p>
+                  </div>
               </div>
             </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
-            <div class="card clickable" data-href="/HTML/descripcion_servicios.html">
-              <img src="../Images/delivery.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Delivery</h5>
-                <p class="card-text">Ayudo con entrega de paquetes dentro de la ciudad</p>
-              </div>
-            </div>
-          </div>  
-          
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
-            <div class="card clickable" data-href="/HTML/descripcion_servicios.html">
-              <img src="../Images/jardineria.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Jardinería</h5>
-                <p class="card-text">Le ayudo arreglando y cuidad sus plantas</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
-            <div class="card clickable" data-href="/HTML/descripcion_servicios.html">
-              <img src="../Images/yoga.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Yoga</h5>
-                <p class="card-text">Enseño hacer yoga para relajación</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
-            <div class="card clickable" data-href="/HTML/descripcion_servicios.html">
-              <img src="../Images/supervisor.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Supervisor</h5>
-                <p class="card-text">Ayudo a supervisar obras, soy un arquitecto jubilado</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
-            <div class="card clickable" data-href="/HTML/descripcion_servicios.html">
-              <img src="../Images/pintor.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Pintor</h5>
-                <p class="card-text">Pinto casas</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
-            <div class="card clickable" data-href="/HTML/descripcion_servicios.html">
-              <img src="../Images/computación.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Computación</h5>
-                <p class="card-text">Enseño computación básica como word, excel, redes sociales, etc</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
-            <div class="card clickable" data-href="/HTML/descripcion_servicios.html">
-              <img src="../Images/musica.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Música</h5>
-                <p class="card-text">Enseño a tocar algunos instrumentos como guitarra, piano, violín, etc</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
-            <div class="card clickable" data-href="/HTML/descripcion_servicios.html">
-              <img src="../Images/yoga.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Yoga</h5>
-                <p class="card-text">Enseño hacer yoga para relajación</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
-            <div class="card clickable" data-href="/HTML/descripcion_servicios.html">
-              <img src="../Images/supervisor.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Supervisor</h5>
-                <p class="card-text">Ayudo a supervisar obras, soy un arquitecto jubilado</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
-            <div class="card clickable" data-href="/HTML/descripcion_servicios.html">
-              <img src="../Images/pintor.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Pintor</h5>
-                <p class="card-text">Pinto casas</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6 mb-3">
-            <div class="card clickable" data-href="/HTML/descripcion_servicios.html">
-              <img src="../Images/yoga.jpg" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">Yoga</h5>
-                <p class="card-text">Enseño hacer yoga para relajación</p>
-              </div>
-            </div>
-          </div>
-          <!-- Se puede agregar más elementos en forma de <div class="col-md-3"> -->    
+          {% endfor %}
+  
         </div>
       </div>
     </section>
