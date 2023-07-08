@@ -4,6 +4,7 @@
 
 {% block customCSS %}
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/estilo_contacto.css')}}">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEJ8utUL4QY5Y6m9k8ALvk6vqL_VoNrP4&callback=inicializarMapa" async defer></script>
 {% endblock %}
 
 {% block cuerpo %}
@@ -101,6 +102,6 @@
 </section>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCEJ8utUL4QY5Y6m9k8ALvk6vqL_VoNrP4&callback=inicializarMapa" async defer></script>
+
 <script src="{{url_for('static', filename = 'js/mapa.js')}}"></script>
 {% endblock %}
