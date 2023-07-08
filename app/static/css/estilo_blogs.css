@@ -1,7 +1,4 @@
-.card {
-  max-width: 100%;
-  box-shadow: 0 0 10px var(--color-fuerte);
-}
+
 .card .card-text {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -11,21 +8,79 @@
 
 }
 
+
 .container {
-  padding-top: 30px;
-  margin-bottom: 50px;
+  padding-top: 10px;
+  width: 100%;
+	display: flex;
+	max-width: 1100px;
+	margin: auto;
 }
-.container .card-body:hover h5 {
+.card{
+	width: 100%;
+	margin: 20px;
+	border-radius: 6px;
+	overflow: hidden;
+	background:#fff;
+	box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+	transition: all 400ms ease-out;
+	cursor: default;
+}
+.card:hover{
+	transform: translateY(-3%);
+  box-shadow: 5px 5px 20px var(--color-fuerte);
+}
+
+.card img{
+	width: 100%;
+	height: 200px;
+}
+
+.card-body:hover h5 {
   color: #c53678;
   transition: all ease 0.3s;
 }
-.container .card-body span {
+.card-body span {
   color: #c53678;
   font-size: 0.9rem;
 }
-.ver-mas:hover {
-  cursor: pointer;
-}
 
+/* Cambios */
+.ver-mas {
+  width: 50%;
+  height: 30px;
+  font-size: var(--tamano-texto);
+  font-weight: bold;
+  background: var(--color-fuerte);
+  border: none;
+  border-radius: 25px;
+  color: var(--color-texto);
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ver-mas:hover {
+  color: var(--color-fondo);
+  transition: 0.5s;
+  box-shadow: 0 0 10px var(--color-fuerte2);
+}
+@media only screen and (min-width:320px) and (max-width:768px){
+	.container{
+		flex-wrap: wrap;
+    margin-bottom: 35px;
+	}
+	.card{
+		margin: 15px;
+	}
+  .ver-mas{
+    width: 100%;
+  }
+  .card img {
+    height: 150px;
+  }
+  .card-body h5{
+    font-size: 1rem;
+  }
+}
 
 /*# sourceMappingURL=estilo_blogs.css.map */
