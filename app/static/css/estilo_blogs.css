@@ -18,7 +18,7 @@
 }
 .card{
 	width: 100%;
-	margin: 20px;
+	margin: 15px;
 	border-radius: 6px;
 	overflow: hidden;
 	background:#fff;
@@ -69,8 +69,11 @@
 		flex-wrap: wrap;
     margin-bottom: 35px;
 	}
+  .row{
+    margin-right: 1px;
+  }
 	.card{
-		margin: 15px;
+		margin: 5px;
 	}
   .ver-mas{
     width: 100%;

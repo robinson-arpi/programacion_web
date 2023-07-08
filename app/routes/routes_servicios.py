@@ -17,9 +17,9 @@ servicios_blueprint = Blueprint('servicios', __name__)
 # Ruta de servicios
 @servicios_blueprint.route('/servicios')
 def servicios_route():
-    #servicios = ModeloServicio.get_all_services()  # Obtener todos los servicios desde la base de datos
-    #return render_template('services/servicios.html', servicios = "")
-    return render_template('services/descripcion_servicios.html')
+    servicios = ModeloServicio.get_all_services()  # Obtener todos los servicios desde la base de datos
+    return render_template('services/servicios.html', servicios = "")
+    """ return render_template('services/descripcion_servicios.html') """
 
 @servicios_blueprint.route('/agregar_servicio', methods=['POST', 'GET'])
 def agregar_servicio():
