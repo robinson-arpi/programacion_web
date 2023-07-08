@@ -7,6 +7,8 @@
     <link rel = "stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
+    <!-- Estilos generales -->
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/estilos_generales.css')}}">    
     <!-- Mi css -->
     <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/estilo_agregar.css')}}">
     
@@ -21,14 +23,16 @@
       <div class="col-lg-4 col-12">
         <label for="imagen">Imagen del servicio</label>
         <div id="preview-container" class="preview-container">
-          <img id="imagen-preview" src="" alt="" style="display:none;">
-          <button id="eliminar-imagen" class="eliminar-imagen" style="display:none;">X</button>
+          <div class="upload-area" id="upload-area">
+            <span class="upload-text">Cargar imagen</span>
+          </div>
+          <img id="imagen-preview" src="" alt="">
+          <button id="eliminar-imagen" class="eliminar-imagen" type="button">X</button>
         </div>
         <div class="subir-imagen">
-          <!-- <p>Subir una imagen</p> -->
           <input type="file" id="imagen" name="imagen" accept="image/*">
         </div>
-      </div>
+      </div>     
       <div class="col-lg-4 col-12">
         <div class="form-group">
           <label for="titulo">Título</label>

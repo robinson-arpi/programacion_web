@@ -19,7 +19,8 @@ class Usuario(db.Model, UserMixin):
     # Relación con los servicios del usuario
     servicios = relationship("Servicio", back_populates="usuario")
     favoritos = relationship("Favorito", back_populates="usuario")
-    agendamiento = relationship("Agendamiento", back_populates="usuario")
+    #agendamientos = relationship("Agendamiento", back_populates="usuario")
+
 
     def __init__(self, id, email, password, nombre, apellido, username, fecha_nacimiento, es_admin = False):
         self.id = id

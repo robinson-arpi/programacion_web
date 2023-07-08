@@ -1,70 +1,62 @@
-div.preview-container {
-    position: relative;
-    display: inline-block;
-  
-    img#imagen-preview {
-      display: inline-block;
-      max-width: 100%;
-      max-height: 100%;
-    }
-        
-    .eliminar-imagen {
-      position: absolute;
-      top: -10px;
-      right: -10px;
-      border-radius: 50%;
-      border: none;
-      background-color: red;
-      color: white;
-      width: 25px;
-      height: 25px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-  }
-  
-  .subir-imagen {
-    width: auto;
-    height: 6px;
-    border: 1px solid rgb(110, 110, 110);
-    color: rgb(110, 110, 110);
-    font-size: small;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    padding: 20px;
-    margin: 10px;
-  }
-  
-  div.form-group {
-    position: relative;
-    
-    ul#requisitos {
-      /* ... */
-      
-      li {
-        /* ... */
-        
-        button.eliminar-requisito {
-          position: absolute;
-          top: 50%;
-          right: 0;
-          transform: translateY(-50%);
-          border-radius: 50%;
-          border: none;
-          background-color: red;
-          color: white;
-          width: 25px;
-          height: 25px;
-          font-size: 18px;
-          font-weight: bold;
-          cursor: pointer;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      }
-    }
-  }
+.preview-container {
+  position: relative;
+  width: 100%;
+  min-height: 200px;
+  border: solid 1px dashed var(--color-fuerte);
+  overflow: hidden;
+}
+
+.upload-area {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  border: 2px dashed #c53678;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.upload-text {
+  font-size: 16px;
+  color: #888;
+}
+
+#imagen-preview {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+#imagen-preview.vertical {
+  object-fit: contain;
+  height: 100%;
+  width: auto;
+}
+
+
+.eliminar-imagen {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  display: none;
+}
+
+.subir-imagen input[type="file"] {
+  display: none;
+}
+
+// -------------------------------------- borde de un input ------------------------
+input:focus {
+  box-shadow: 2px solid #c53678 !important
+}
+
+// sass --watch app/static/SCSS/estilo_agregar.scss app/static/css/estilo_agregar.css

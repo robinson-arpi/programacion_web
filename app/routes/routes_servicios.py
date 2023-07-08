@@ -2,6 +2,7 @@ from flask import render_template, Blueprint, flash, request
 from flask_login import login_required, current_user
 from ..models.entities.Servicio import Servicio
 from ..models.entities.Categoria import Categoria
+from ..models.ModeloServicios import ModeloServicio
 from .. import db
 from .. import app
 from random import sample
@@ -16,7 +17,8 @@ servicios_blueprint = Blueprint('servicios', __name__)
 # Ruta de servicios
 @servicios_blueprint.route('/servicios')
 def servicios_route():
-    return render_template('services/servicios.html')
+    servicios = ModeloServicio.get_all_services()  # Obtener todos los servicios desde la base de datos
+    return render_template('services/servicios.html', servicios = servicios)
 
 @servicios_blueprint.route('/agregar_servicio', methods=['POST', 'GET'])
 def agregar_servicio():
@@ -48,6 +50,8 @@ def agregar_servicio():
         cat = Categoria.query.all()  
         return render_template('services/agregar-servicio.html', categorias=cat)
 
+
+
 # Ruta protegida de servicios
 @servicios_blueprint.route('/protected_servicios')
 @login_required
@@ -58,7 +62,8 @@ def protected_servicios():
 # Para guardar la foto con un nombre aleatorio para que no haya nombres iguales
 def recibeFoto(file):
     print(file)
-    #basepath = os.path.dirname (__file__) #La ruta donde se encuentra el archivo actual
+    basepath = os.path.dirname (__file__) #La ruta donde se encuentra el archivo actual
+    print(basepath)
     filename = secure_filename(file.filename) #Nombre original del archivo
 
     #capturando extensión del archivo ejemplo: (.png, .jpg, .pdf ...etc)
@@ -66,8 +71,9 @@ def recibeFoto(file):
     nuevoNombreFile     = stringAleatorio() + extension
     #print(nuevoNombreFile)
         
-    upload_path = os.path.join('programacion_web/app/static/img/uploads', nuevoNombreFile)
+    upload_path = os.path.join(basepath, '..', 'static', 'img', 'uploads', nuevoNombreFile)
     file.save(upload_path)
+
 
     return nuevoNombreFile
 

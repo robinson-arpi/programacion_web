@@ -13,8 +13,9 @@ class Agendamiento(db.Model, UserMixin):
     hora = Column(Time, nullable=False)
     direccion = Column(String, nullable=False)
 
-    usuario = relationship("Usuario", back_populates="agendamientos")
-    servicios = relationship("Servicio", back_populates="agendamientos")
+    #usuario = relationship("Usuario", back_populates="agendamientos")
+    #servicio = relationship("Servicio", back_populates="agendamientos")
+
 
     def __init__(self, idUser, idService, date, hour, direction):
         self.idUsuario = idUser

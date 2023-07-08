@@ -1,21 +1,5 @@
-// // Obtiene los elementos del formulario
-// var requisitosInput = document.getElementById("requisitos");
-// var requisitosHiddenInput = document.getElementById("requisitos-hidden");
 
-// // Escucha el evento submit del formulario
-// document.getElementById("form_agregar").addEventListener("submit", function(event) {
-  
-
-
-//   // Obtiene los valores de los requisitos y los guarda en un campo oculto
-//   var requisitos = Array.from(requisitosInput.querySelectorAll("li")).map(function(li) {
-//     return li.textContent.trim();
-//   });
-//   requisitosHiddenInput.value = "Hola";
-
-//   // Continúa con el envío del formulario
-//   return true;
-// });
+// ------------------------------- Enviar formulario -------------------------------------------------------------------------------------------//
 
 // Obtener el formulario y el botón de agregar servicio
 var formAgregar = document.getElementById("form_agregar");
@@ -35,7 +19,8 @@ formAgregar.addEventListener("submit", function(event) {
   var imagen = document.getElementById("imagen").value;
 
   // Validar que todos los campos estén llenos
-  if (titulo.trim() === "" || descripcion.trim() === "" || ciudad.trim() === "" || categoria.trim() === "" || disponibilidad.trim() === "" || requisitosList.length === 0 || imagen.trim() === "") {
+  if (titulo.trim() === "" || descripcion.trim() === "" || ciudad.trim() === "" || categoria.trim() === "" || disponibilidad.trim() === "" 
+    || requisitosList.length === 0 || imagen.trim() === "") {
     alert("Por favor, complete todos los campos y seleccione una imagen.");
     return;
   }
@@ -52,8 +37,8 @@ formAgregar.addEventListener("submit", function(event) {
   formAgregar.submit();
 });
 
+// ------------------------------- Para agregar o quitar requisitos -------------------------------------------------------------------------------------------//
 
-// Para agregar o quitar requisitos
 var listaRequisitos = document.getElementById("requisitos-lista");
 var inputRequisito = document.getElementById("nuevo-requisito");
 var botonAgregar = document.getElementById("agregar-requisito");
@@ -83,4 +68,40 @@ listaRequisitos.addEventListener("click", function(event) {
 });
 
 
+// ------------------------------- Mostrar vista previa de imagen -------------------------------------------------------------------------------------------// 
 
+var inputImagen = document.getElementById("imagen");
+var imagenPreview = document.getElementById("imagen-preview");
+var eliminarImagen = document.getElementById("eliminar-imagen");
+var uploadArea = document.getElementById("upload-area");
+
+uploadArea.addEventListener("click", function() {
+  inputImagen.click();
+});
+
+inputImagen.addEventListener("change", function() {
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    imagenPreview.src = e.target.result;
+    imagenPreview.style.display = "block";
+    eliminarImagen.style.display = "block";
+    uploadArea.style.display = "none";
+
+    // Aplicar clase CSS adicional para imágenes verticales
+    imagenPreview.addEventListener("load", function() {
+      if (imagenPreview.naturalWidth < imagenPreview.naturalHeight) {
+        imagenPreview.classList.add("vertical");
+      } else {
+        imagenPreview.classList.remove("vertical");
+      }
+    });
+  };
+  reader.readAsDataURL(inputImagen.files[0]);
+});
+
+eliminarImagen.addEventListener("click", function() {
+  imagenPreview.style.display = "none";
+  eliminarImagen.style.display = "none";
+  inputImagen.value = null;
+  uploadArea.style.display = "flex";
+});

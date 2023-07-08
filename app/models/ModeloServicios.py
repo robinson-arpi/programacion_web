@@ -8,6 +8,13 @@ class ModeloServicio():
             return Servicio.query.filter_by(id =u).first()
         except Exception as ex:
             raise Exception(ex)
+        
+    @classmethod
+    def get_all_services(self):
+        try:
+            return Servicio.query.all()
+        except Exception as ex:
+            raise Exception(ex)
 
     #Obtener una lista de servicios que son favoritos solo id, title, description
     @classmethod
