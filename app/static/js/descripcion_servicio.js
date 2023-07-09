@@ -8,6 +8,8 @@ function agendarServicio(event) {
 function cambiarColor() {
     var svgElement = document.getElementById("corazon");
     var textoElement = document.getElementById("texto");
+    var valorTexto = textoElement.innerHTML;
+    document.getElementById("texto_valor").value = valorTexto;
     var botonElement = document.querySelector(".fav");
 
     svgElement.classList.toggle("cambiado");
@@ -18,4 +20,5 @@ function cambiarColor() {
     } else {
       textoElement.textContent = "Agregar a favoritos";
     }
+    
   }

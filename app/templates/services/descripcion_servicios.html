@@ -12,19 +12,27 @@
 <div class="container">
 
   <div class="contenedor_derecho">
-    <section class="imagen_descripcion">
-      <img src="static/Images/curso_computación.jpg" alt="">
-    </section>
+    <div class="imagen_descripcion">
+      <img src="{{ url_for('static', filename='img/uploads/' + servicio.imagen) }}" alt="">
+    </div>    
     <div class="favoritos">
-      <form action="">
-        <button type="button" onclick="cambiarColor()" class="fav">
+      <form action="{{ url_for('agregar_a_favoritos') }}" method="POST">
+        <!-- Incluye el token CSRF en tu formulario -->
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="hidden" name="id" value= "{{ servicio.id }}">
+        <button type="submit" class="fav" onclick="cambiarColor()">
           <svg id="corazon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
           </svg>
           <span id="texto">Agregar a favoritos</span>
         </button>
+        <input type="hidden" name="texto_valor" id="texto_valor">
+        
+
       </form>
     </div>
+    
+    
     
   </div>
   
@@ -33,7 +41,7 @@
     <div class="contenedor_servicio">
 
       <div class="titulo_curso">
-        <span>Curso de Computación</span>
+        <span>{{ servicio.titulo }}</span>
       </div>
 
       <section class="imagen_descripcion2">
@@ -42,42 +50,32 @@
 
       <div class="separador"></div>
 
-      <span class="duracion-servicio">Duración: 02:30</span>
+      
 
-      <div class="calificacion-servicio">
-        <span> <i class="fas fa-star"></i></span>
-        <span> <i class="fas fa-star"></i></span>
-        <span> <i class="fas fa-star"></i></span>
-        <span> <i class="fas fa-star"></i></span>
-        <span> <i class="fas fa-star-half-alt"></i></span>
-        <span>(5 calificaciones)</span>
-      </div>
-
-      <p class="descripcion-servicio">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum est non
-        neque dolor
-        cum voluptates corporis provident omnis, tempora illo eos porro asperiores laborum obcaecati labore
-        atque iusto.
-        Mollitia, labore!
-      </p>
+      <p class="descripcion-servicio">{{ servicio.descripcion }}</p>
 
 
       <div class="informacion">
-        <p class="categoria-servicio"><strong>Categoria:</strong> Tecnología</p>
-        <p class="ubicacion-servicio"><b>Ubicación:</b> Av. Los Andes y Fray Estrella</p>
-        <p class="disponibilidad-servicio"><b>Disponibilidad:</b> 5 cupos</p>
+        <p class="categoria-servicio"><strong>Categoria:</strong> {{ servicio.categoria }}</p>
+        <p class="ubicacion-servicio"><b>Ubicación:</b> {{ servicio.ciudad }}</p>
+        <p class="disponibilidad-servicio"><b>Disponibilidad:</b> {{ servicio.disponibilidad }}</p>
       </div>
 
       <div class="requisitos-servicio">
         <b>Requisitos</b>
-
+      
         <div class="requisitos">
-          <span>Requisito1</span>
-          <span>Requisito2</span>
-          <span>Requisito3</span>
-          <span>Requisito4</span>
+          {% set requisitos_lista = servicio.requisitos.split('X') %}
+          {% for requisito in requisitos_lista %}
+            {% if loop.index > 1 %}
+              <span>{{ requisito|trim(';') }}</span>
+            {% else %}
+              <span>{{ requisito }}</span>
+            {% endif %}
+          {% endfor %}
         </div>
-
       </div>
+      
 
       <div class="botones">
         <button class="agendar-servicio" onclick="agendarServicio(event)">Agendar Servicio</button>

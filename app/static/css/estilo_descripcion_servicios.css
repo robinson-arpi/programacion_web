@@ -49,11 +49,23 @@
   padding: none;
   margin: none;
 }
-.imagen_descripcion{
-  width: 100%;
-  max-width: 1000px;
-  margin-top: 70px;
+.imagen_descripcion {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 50vh; /* Ajusta el valor según tus necesidades */
 }
+
+.imagen_descripcion img {
+  max-height: 100%;
+  max-width: 100%; /* Ajusta el valor según tus necesidades */
+  object-fit: contain; /* Opcional: ajusta el ajuste del objeto según tus necesidades */
+  height: 400px;
+  margin-top: 150px;
+}
+
+
+
 .container .contenedor_servicio .imagen_descripcion2 {
   display: none;
 }
@@ -69,25 +81,16 @@
   color: #c53678;
 }
 .container .contenedor_servicio .separador {
+  margin-top: 5px;
   width: 450px;
   height: 4px;
   background-color: var(--color-fuerte);
   padding: none;
   border: none;
 }
-.container .contenedor_servicio .duracion-servicio {
-  padding-top: 5px;
-  font-size: 20px;
-  opacity: 0.9;
-}
-.container .contenedor_servicio .calificacion-servicio {
-  display: flex;
-  align-items: center;
-}
-.container .contenedor_servicio .calificacion-servicio span {
-  margin-right: 2px;
-}
+
 .container .contenedor_servicio .descripcion-servicio {
+  margin-top: 30px;
   font-weight: 10px;
   line-height: 1;
 }
@@ -99,6 +102,7 @@
   margin: 1%;
 }
 .container .contenedor_servicio .requisitos-servicio {
+  margin-top: 15px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -106,6 +110,7 @@
   flex-direction: column;
 }
 .container .contenedor_servicio .requisitos-servicio .requisitos {
+  margin-top: 15px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -138,7 +143,7 @@
   box-shadow: 0 0 10px var(--color-fuerte2);
 }
 .favoritos{
-  margin-top: 30px;
+  margin-top: 150px;
   margin-left: 200px;
   
 }

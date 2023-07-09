@@ -11,7 +11,7 @@ favoritos_blueprint = Blueprint('favoritos', __name__)
 @favoritos_blueprint.route('/favoritos')
 @login_required
 def favoritos_route():
-    lista_ids = ModeloFavorito.favorites_idUser(current_user.id)
+    lista_ids = ModeloFavorito.favorites_idUsers(current_user.id)
     l_service = ModeloServicio.get_by_listFavoritos(lista_ids)
     if len(l_service) == 0:
         flash("Usted no tiene servicios favoritos.")
