@@ -43,6 +43,7 @@ h2 {
   color: var(--color-texto);
   cursor: pointer;
 }
+
 .boton:hover {
   color: var(--color-fondo);
   transition: 0.5s;

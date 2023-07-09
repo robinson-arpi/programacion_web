@@ -1,8 +1,9 @@
+// imagen
 .preview-container {
   position: relative;
   width: 100%;
   min-height: 200px;
-  border: solid 1px dashed var(--color-fuerte);
+  border: var(--color-fuerte);
   overflow: hidden;
 }
 
@@ -29,14 +30,8 @@
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+  border: solid 1px dashed var(--color-fuerte);
 }
-
-#imagen-preview.vertical {
-  object-fit: contain;
-  height: 100%;
-  width: auto;
-}
-
 
 .eliminar-imagen {
   position: absolute;
@@ -55,8 +50,47 @@
 }
 
 // -------------------------------------- borde de un input ------------------------
-input:focus {
-  box-shadow: 2px solid #c53678 !important
+.form-control:focus {
+  border-color: var(--color-fuerte); /* Cambia el color del borde de enfoque a morado */
+  box-shadow: 0 0 5px var(--color-fuerte); /* Cambia el sombreado del enfoque con transparencia */
+}
+
+select option:hover {
+  background-color: var(--color-fuerte) !important; /* Cambia el color de fondo al pasar el cursor */
+  color: white; /* Cambia el color del texto para asegurar la legibilidad */
+}
+
+select option:checked {
+  background-color: var(--color-fuerte); /* Cambia el color de fondo de la opción seleccionada */
+  color: white; /* Cambia el color del texto para asegurar la legibilidad */
+}
+
+// -------------------------------------- Botones ------------------------
+.boton {
+  max-width: 200px;
+  margin-top: 10px;
+  //margin-bottom: 20px;
+}
+
+.boton-agregar{
+  background-color: var(--color-fuerte) !important; 
+  border: none !important;
+  outline: none !important;
+  color: black !important;
+  font-weight: bold;
+  box-shadow: 0px !important;
+}
+
+.boton-agregar:hover{
+  background-color: var(--color-fuerte);
+  color: var(--color-fondo);
+  transition: 0.5s;
+  box-shadow: 0 0 10px var(--color-fuerte);
+  outline: none !important;
+}
+
+.boton-agregar:focus {
+  outline: none !important;
 }
 
 // sass --watch app/static/SCSS/estilo_agregar.scss app/static/css/estilo_agregar.css
