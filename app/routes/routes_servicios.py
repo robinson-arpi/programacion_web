@@ -20,6 +20,18 @@ def servicios_route():
     servicios = ModeloServicio.get_all_services()  # Obtener todos los servicios desde la base de datos
     return render_template('services/servicios.html', servicios = servicios)
 
+@servicios_blueprint.route('/servicios', methods=['GET'])
+def buscar_servicios():
+    # Obtener el término de búsqueda ingresado por el usuario
+    termino_busqueda = request.args.get('busqueda', '')
+
+    # Realizar la búsqueda en la base de datos y obtener los servicios correspondientes
+    servicios = ModeloServicio.buscar_servicios(termino_busqueda)
+
+    # Renderizar el template con los resultados de la búsqueda
+    return render_template('services/servicios.html', servicios=servicios)
+
+
 @servicios_blueprint.route('/agregar_servicio', methods=['POST', 'GET'])
 def agregar_servicio():
 
