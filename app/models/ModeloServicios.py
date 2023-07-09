@@ -1,4 +1,5 @@
 from .entities.Servicio import Servicio
+from sqlalchemy import or_
 
 class ModeloServicio():
 
@@ -26,7 +27,23 @@ class ModeloServicio():
                 lista_servicios.append(respuesta)
             return lista_servicios
         except Exception as ex:
-            raise Exception(ex)   
+            raise Exception(ex)  
+
+    @classmethod
+    def buscar_servicios(cls, termino_busqueda):
+        try:
+            # Realizar la consulta a la base de datos para buscar servicios según el término de búsqueda
+            servicios = Servicio.query.filter(
+                or_(
+                    Servicio.titulo.ilike(f'%{termino_busqueda}%'),
+                    Servicio.descripcion.ilike(f'%{termino_busqueda}%')
+                )
+            ).all()
+
+            return servicios
+        except Exception as ex:
+            raise Exception(ex)
+ 
     
 
     

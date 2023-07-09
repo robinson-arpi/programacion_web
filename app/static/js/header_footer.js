@@ -54,3 +54,15 @@ const salirElemento = document.getElementById('salir');
 salirElemento.addEventListener('click', function() {
   localStorage.removeItem("sesion_iniciada");
 });
+
+/*----------------------------------------
+Búsqueda
+----------------------------------------*/
+
+document.getElementById("btn-busqueda").addEventListener("click", function(event) {
+  var busqueda = document.getElementById("busqueda").value.trim();
+  console.log("Busqueda")
+  if (busqueda === "") {
+    event.preventDefault(); // Evita enviar la solicitud si no hay texto de búsqueda
+  }
+});
