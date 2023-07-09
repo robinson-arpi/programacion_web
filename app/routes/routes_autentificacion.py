@@ -191,19 +191,18 @@ def descripcion_servicios():
         print(index)
     """ servicio = ModeloServicio.get_by_id(servicio_id) """
     
-    return render_template('services/descripcion_servicios.html', servicio = servicio, favorito=favorito)
+    return render_template('services/descripcion_servicios.html', servicio = servicio, favorito=favorito, Usuario = current_user)
 
 @app.route('/agregar_a_favoritos', methods=['POST'])
 def agregar_a_favoritos():
     id = request.form['id']
     texto_valor = request.form.get('texto_valor')
-    print(texto_valor)
+    favorito = ModeloFavorito.favorites_idUser(current_user.id, id)
     if texto_valor == "Agregar a favoritos":
-        #ModeloFavorito.crear_favorito(current_user.id, id)
-        print('voy a agregar a la base de datos porque texto_valor = '+texto_valor)
+        if not favorito:
+            ModeloFavorito.crear_favorito(current_user.id, id)
     else:
-        #ModeloFavorito.eliminar_favorito(current_user.id,id)
-        print('Voy a eliminar de favoritos porque texto_valor = '+texto_valor)
+        ModeloFavorito.eliminar_favorito(current_user.id,id)
     return '', 204  # Código de estado 204 significa "Sin contenido"
 
 #----------------------------------------------------------------------------------------------------------

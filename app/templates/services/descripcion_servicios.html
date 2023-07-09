@@ -14,28 +14,36 @@
   <div class="contenedor_derecho">
     <div class="imagen_descripcion">
       <img src="{{ url_for('static', filename='img/uploads/' + servicio.imagen) }}" alt="">
-    </div>    
+    </div>
     <div class="favoritos">
       <form action="{{ url_for('agregar_a_favoritos') }}" method="POST">
         <!-- Incluye el token CSRF en tu formulario -->
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <input type="hidden" name="id" value= "{{ servicio.id }}">
+        {% if favorito %}
+        <script>
+          window.onload = function () {
+            cambiarColor();
+          };
+        </script>
+        {% endif %}
+        <input type="hidden" name="id" value="{{ servicio.id }}">
         <button type="submit" class="fav" onclick="cambiarColor()">
-          <svg id="corazon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+          <svg id="corazon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-heart-fill" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
           </svg>
           <span id="texto">Agregar a favoritos</span>
         </button>
         <input type="hidden" name="texto_valor" id="texto_valor">
-        
+
 
       </form>
     </div>
-    
-    
-    
+
+
+
   </div>
-  
+
   <main>
 
     <div class="contenedor_servicio">
@@ -50,7 +58,7 @@
 
       <div class="separador"></div>
 
-      
+
 
       <p class="descripcion-servicio">{{ servicio.descripcion }}</p>
 
@@ -63,19 +71,19 @@
 
       <div class="requisitos-servicio">
         <b>Requisitos</b>
-      
+
         <div class="requisitos">
           {% set requisitos_lista = servicio.requisitos.split('X') %}
           {% for requisito in requisitos_lista %}
-            {% if loop.index > 1 %}
-              <span>{{ requisito|trim(';') }}</span>
-            {% else %}
-              <span>{{ requisito }}</span>
-            {% endif %}
+          {% if loop.index > 1 %}
+          <span>{{ requisito|trim(';') }}</span>
+          {% else %}
+          <span>{{ requisito }}</span>
+          {% endif %}
           {% endfor %}
         </div>
       </div>
-      
+
 
       <div class="botones">
         <button class="agendar-servicio" onclick="agendarServicio(event)">Agendar Servicio</button>
