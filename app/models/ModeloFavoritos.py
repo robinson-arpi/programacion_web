@@ -26,16 +26,25 @@ class ModeloFavorito():
             raise Exception(ex)
     
     @classmethod
-    def favorites_idUser(self, user_id):
+    def favorites_idUsers(self, user_id):
         try:
             return Favorito.query.filter_by(idUsuario=user_id).all()
         except Exception as ex:
             raise Exception(ex)
     
     @classmethod
-    def eliminar_favorito(self, user_id, service_id):
+    def favorites_idUser(cls, user_id, serv_id):
         try:
-            favorito = self.query.filter_by(idUsuario=user_id, idServicio=service_id).first()
+            return Favorito.query.filter_by(idUsuario=user_id, idServicio=serv_id).all()
+        except Exception as ex:
+            raise Exception(str(ex))
+
+
+    @classmethod
+    def eliminar_favorito(cls, user_id, serv_id):
+        try:
+
+            favorito = Favorito.query.filter_by(idUsuario = user_id, idServicio = serv_id).first()
             if favorito:
                 db.session.delete(favorito)
                 db.session.commit()
@@ -43,4 +52,4 @@ class ModeloFavorito():
             else:
                 return False
         except Exception as ex:
-            raise Exception(ex)
+            raise Exception(str(ex))

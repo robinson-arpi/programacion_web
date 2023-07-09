@@ -2,7 +2,10 @@ from .. import create_app
 from .. import db
 from flask import Flask
 from ..models.ModeloUsuario import ModeloUsuario
+from ..models.ModeloServicios import ModeloServicio
+from ..models.ModeloFavoritos import ModeloFavorito
 from ..models.entities.Usuario import Usuario
+from ..models.entities.Servicio import Servicio
 from ..models.entities.Contactenos import Contactenos
 from ..models.entities.Categoria import Categoria
 from ..models.entities.Correo import Correo
@@ -148,7 +151,7 @@ def blog():
 # Sección de contactenos
 @app.route('/contactenos')
 def contactenos():
-    return render_template('footer/contacto.html')
+    return render_template('footer/contacto.html', usuario = current_user)
 
 # para el método de contactenos
 
@@ -179,11 +182,28 @@ def contacto():
 #Sección de descripción de servicios
 
 @app.route('/descripcion_servicios')
-@login_required
 def descripcion_servicios():
-    return render_template('services/descripcion_servicios.html', usuario = current_user)
+    servicio_id = request.args.get('id')
+    print('servicio_id = '+servicio_id)
+    servicio = Servicio.query.get(servicio_id)
+    favorito = ModeloFavorito.favorites_idUser(current_user.id, servicio_id)
+    for index in favorito:
+        print(index)
+    """ servicio = ModeloServicio.get_by_id(servicio_id) """
+    
+    return render_template('services/descripcion_servicios.html', servicio = servicio, favorito=favorito, Usuario = current_user)
 
-
+@app.route('/agregar_a_favoritos', methods=['POST'])
+def agregar_a_favoritos():
+    id = request.form['id']
+    texto_valor = request.form.get('texto_valor')
+    favorito = ModeloFavorito.favorites_idUser(current_user.id, id)
+    if texto_valor == "Agregar a favoritos":
+        if not favorito:
+            ModeloFavorito.crear_favorito(current_user.id, id)
+    else:
+        ModeloFavorito.eliminar_favorito(current_user.id,id)
+    return '', 204  # Código de estado 204 significa "Sin contenido"
 
 #----------------------------------------------------------------------------------------------------------
 #seccion de cronograma
