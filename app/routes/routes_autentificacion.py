@@ -185,15 +185,10 @@ def contacto():
 
 @app.route('/descripcion_servicios')
 def descripcion_servicios():
-    servicio_id = request.args.get('id')
-    print('servicio_id = '+servicio_id)
+    servicio_id = request.args.get('id') 
     servicio = Servicio.query.get(servicio_id)
     favorito = ModeloFavorito.favorites_idUser(current_user.id, servicio_id)
-    for index in favorito:
-        print(index)
-    """ servicio = ModeloServicio.get_by_id(servicio_id) """
-    
-    return render_template('services/descripcion_servicios.html', servicio = servicio, favorito=favorito, Usuario = current_user)
+    return render_template('services/descripcion_servicios.html', servicio = servicio, favorito=favorito, usuario = current_user)
 
 @app.route('/agregar_a_favoritos', methods=['POST'])
 def agregar_a_favoritos():
@@ -205,7 +200,7 @@ def agregar_a_favoritos():
             ModeloFavorito.crear_favorito(current_user.id, id)
     else:
         ModeloFavorito.eliminar_favorito(current_user.id,id)
-    return '', 204  # Código de estado 204 significa "Sin contenido"
+    return '', 204  #sin contenido
 
 #----------------------------------------------------------------------------------------------------------
 #seccion de cronograma
