@@ -9,6 +9,8 @@ from ..models.entities.Servicio import Servicio
 from ..models.entities.Contactenos import Contactenos
 from ..models.entities.Categoria import Categoria
 from ..models.entities.Correo import Correo
+from ..models.entities.Busqueda import Busqueda
+
 
 from flask import render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
