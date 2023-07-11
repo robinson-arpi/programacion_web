@@ -23,7 +23,7 @@ class ModeloServicio():
         lista_servicios = []
         try:
             for x in lista:
-                respuesta = Servicio.query(Servicio.id, Servicio.titulo, Servicio.descripcion).filter_by(id = x).first()
+                respuesta = Servicio.query.filter_by(id =x).first()
                 lista_servicios.append(respuesta)
             return lista_servicios
         except Exception as ex:

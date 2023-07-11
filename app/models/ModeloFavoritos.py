@@ -25,13 +25,16 @@ class ModeloFavorito():
         except Exception as ex:
             raise Exception(ex)
     
+    #Obtener solo los favoritos de un determinado usuario
     @classmethod
-    def favorites_idUsers(self, user_id):
+    def get_favorites_idUser(self, user_id):
         try:
-            return Favorito.query.filter_by(idUsuario=user_id).all()
+            servicios_favoritos = Favorito.query.filter_by(idUsuario=user_id).all()
+            return [servicio.idServicio for servicio in servicios_favoritos]
         except Exception as ex:
             raise Exception(ex)
     
+    # Obtener un servicio favorito
     @classmethod
     def favorites_idUser(cls, user_id, serv_id):
         try:
@@ -39,7 +42,7 @@ class ModeloFavorito():
         except Exception as ex:
             raise Exception(str(ex))
 
-
+    #Elimianr un servicio favorito
     @classmethod
     def eliminar_favorito(cls, user_id, serv_id):
         try:
