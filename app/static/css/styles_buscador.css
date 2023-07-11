@@ -8,7 +8,7 @@
     margin-right: 10px; /* Agrega un margen derecho para separar los elementos */
 }
 
-.card{
+.card_fav{
 	width: 100%;
 	margin: 15px;
 	border-radius: 6px;
@@ -19,7 +19,7 @@
 	cursor: default;
     height: 400px;
 }
-.card:hover{
+.card_fav:hover{
 	transform: translateY(-3%);
     box-shadow: 5px 5px 20px var(--color-fuerte);
 }
