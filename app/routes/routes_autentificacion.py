@@ -2,11 +2,15 @@ from .. import create_app
 from .. import db
 from flask import Flask
 from ..models.ModeloUsuario import ModeloUsuario
+from ..models.ModeloServicios import ModeloServicio
+from ..models.ModeloFavoritos import ModeloFavorito
 from ..models.entities.Usuario import Usuario
+from ..models.entities.Servicio import Servicio
 from ..models.entities.Contactenos import Contactenos
 from ..models.entities.Categoria import Categoria
 from ..models.entities.Correo import Correo
 from ..models.entities.Comentarios import Comentario
+from ..models.entities.Busqueda import Busqueda
 
 
 from flask import render_template, request, redirect, url_for, flash
@@ -18,6 +22,8 @@ from .routes_agendar import agendar_blueprint
 from .routes_favoritos import favoritos_blueprint
 from .routes_comentarios import comentarios_blueprint
 from .routes_terminos import terminos_blueprint
+
+
 from config import config
 from datetime import datetime
 
@@ -41,22 +47,26 @@ def cargar_usuario(id):
 # Incio de app para amndar a login
 @app.route('/')
 def index():
-    return redirect(url_for('login'))
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    return render_template('auth/login.html', usuario = current_user)
 
 # Ruta loguin para ingreso de credenciales
 @app.route('/login', methods=['GET', 'POST'])
-def login():
+def login():    
     if request.method == 'POST':
-        if current_user.is_authenticated:
-            return redirect(url_for('home'))
-        
+        #Captura de credenciales
         credenciales_usuario = [request.form['email'],request.form['password']]
         
+        # Captura el valor del campo 'recuerdame'
+        recuerdame = request.form.get('recuerdame')
         usuario_logueado = ModeloUsuario.login(credenciales_usuario)
+
+        # Si usuario existe
         if usuario_logueado != None:
             # pass = 1 entonces tiene credenciales correctas 
-            if usuario_logueado.password:
-                login_user(usuario_logueado, remember=True)
+            if usuario_logueado.password: 
+                login_user(usuario_logueado, remember=recuerdame)
                 return redirect(url_for('home'))
             else:
                 flash("Contraseña incorrecta")
@@ -73,7 +83,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('login'))
+    return render_template('auth/login.html', usuario = current_user)
 
 # Ruta para vista home
 @app.route('/home')
@@ -122,7 +132,7 @@ def actualizar_usuario(id):
 
         credenciales_usuario = [request.form['email'], request.form['password1']]
         usuario_logueado = ModeloUsuario.login(credenciales_usuario)
-        login_user(usuario_logueado, remember=True)
+        login_user(usuario_logueado, remember=False)
     else:
         print("como verga no va a ser metodo put")
         flash('Usuario no actualizado')
@@ -179,11 +189,23 @@ def contacto():
 #Sección de descripción de servicios
 
 @app.route('/descripcion_servicios')
-@login_required
 def descripcion_servicios():
-    return render_template('services/descripcion_servicios.html', usuario = current_user)
+    servicio_id = request.args.get('id') 
+    servicio = Servicio.query.get(servicio_id)
+    favorito = ModeloFavorito.favorites_idUser(current_user.id, servicio_id)
+    return render_template('services/descripcion_servicios.html', servicio = servicio, favorito=favorito, usuario = current_user)
 
-
+@app.route('/agregar_a_favoritos', methods=['POST'])
+def agregar_a_favoritos():
+    id = request.form['id']
+    texto_valor = request.form.get('texto_valor')
+    favorito = ModeloFavorito.favorites_idUser(current_user.id, id)
+    if texto_valor == "Agregar a favoritos":
+        if not favorito:
+            ModeloFavorito.crear_favorito(current_user.id, id)
+    else:
+        ModeloFavorito.eliminar_favorito(current_user.id,id)
+    return '', 204  #sin contenido
 
 #----------------------------------------------------------------------------------------------------------
 #seccion de cronograma

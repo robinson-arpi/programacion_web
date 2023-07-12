@@ -7,80 +7,84 @@
     <link rel = "stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel = "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
+    <!-- Estilos generales -->
+    <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/estilos_generales.css')}}">    
     <!-- Mi css -->
     <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/estilo_agregar.css')}}">
     
 {% endblock %}
 
 {% block cuerpo %}
-<div class="container">
+<form method="post" id="form_agregar" enctype="multipart/form-data">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="container">
     <h1 class="text-center pt-4 pb-4">Agregar servicio</h1>
     <div class="row">
-      <div class="col-lg-4 col-12">          
-        <label for="titulo">Imagen del servicio</label>
-        <div id="preview-container" class="preview-container" >
-          <img id="imagen-preview" src="" alt="" style="display:none;">
-          <button id="eliminar-imagen" class="eliminar-imagen" style="display:none;">X</button>
+      <div class="col-lg-4 col-12">
+        <label for="imagen">Imagen del servicio</label>
+        <div id="preview-container" class="preview-container">
+          <div class="upload-area" id="upload-area">
+            <span class="upload-text">Cargar imagen</span>
+          </div>
+          <img id="imagen-preview" src="" alt="">
+          <button id="eliminar-imagen" class="eliminar-imagen" type="button">X</button>
         </div>
         <div class="subir-imagen">
-          <p>Subir una imagen</p>
-          <input type="file" id="input-imagen" accept="image/*" style="display:none;">
-        </div>                                                                                           
-      </div>
+          <input type="file" id="imagen" name="imagen" accept="image/*">
+        </div>
+      </div>     
       <div class="col-lg-4 col-12">
         <div class="form-group">
           <label for="titulo">Título</label>
-          <input type="text" class="form-control" id="titulo">
+          <input type="text" class="form-control" id="titulo" name="titulo">
         </div>
-        
+
         <div class="form-group">
           <label for="descripcion">Descripción</label>
-          <textarea class="form-control" id="descripcion" rows="5"></textarea>
+          <textarea class="form-control" id="descripcion" name="descripcion" rows="5"></textarea>
         </div>
         <div class="form-group">
           <label for="ciudad">Ciudad</label>
-          <input type="text" class="form-control" id="ciudad">
-        </div>                   
+          <input type="text" class="form-control" id="ciudad" name="ciudad">
+        </div>
       </div>
       <div class="col-lg-4 col-12">
         <div class="form-group">
           <label for="categoria">Categoría</label>
-          <select class="form-control" id="categoria">
-            <option value="opcion1">Computación</option>
-            <option value="opcion2">Historia</option>
-            <option value="opcion3">Electricidad</option>
-            <option value="opcion1">Construcción</option>
-            <option value="opcion2">Jardinería</option>
-            <option value="opcion3">Literatura</option>
-          </select>
-        </div> 
+          <select class="form-control" id="categoria" name="categoria">
+            {% for categoria in categorias %}
+              <option value={{categoria.nombre}}>{{categoria.nombre}}</option>
+            {% endfor %}
+          </select>          
+        </div>
         <div class="form-group">
           <label for="disponibilidad">Disponibilidad</label>
-          <select class="form-control" id="disponibilidad">
-            <option value="opcTDia">Todo el día</option>
-            <option value="opcPMañana">Por la mañana</option>
-            <option value="opcPTarde">Por la tarde</option>
-            <option value="opcVirtual">Virtual</option>
+          <select class="form-control" id="disponibilidad" name="disponibilidad">
+            <option value="Todo el día">Todo el día</option>
+            <option value="Por la mañana">Por la mañana</option>
+            <option value="Por la tarde">Por la tarde</option>
+            <option value="Por la noche">Por la noche</option>
+            <option value="Virual">Virtual</option>
           </select>
         </div>
         <div class="form-group">
           <label for="requisitos">Requisitos</label>
           <div class="input-group mt-2">
             <input type="text" class="form-control" id="nuevo-requisito" placeholder="Escriba un requisito">
-            <button class="btn btn-primary" id="agregar-requisito">Agregar</button>
+            <button class="btn btn-secondary boton-agregar" id="agregar-requisito" type="button">Agregar</button>
           </div>
-          <ul class="list-group" id="requisitos">
+          <ul class="list-group" id="requisitos-lista">
           </ul>
-        </div>         
+          <input type="hidden" id="requisitos" name="requisitos">
+        </div>
       </div>
     </div>
     <div class="text-center mt-4 pb-4">
-      <button class="btn btn-secondary" id="limpiar-campos" style="background-color: #c53678; color: #fff;">Limpiar campos</button>
-      <button class="btn btn-primary" id="agregar-servicio" style="background-color: #c53678; color: #fff;">Agregar servicio</button>
-    </div> 
+      <button class="boton" id="limpiar-campos"  type="button">Limpiar campos</button>
+      <button class="boton" id="agregar-servicio" >Agregar servicio</button>
+    </div>
   </div>
-  
-  
+</form>  
 {% endblock %}
 
 {% block customJS %}

@@ -8,7 +8,7 @@ function mostrarTexto(elemento) {
       textoElement.style.webkitLineClamp = 'initial';
       verMasElement.textContent = 'Ver menos';
     } else {
-      tamanio.style.marginBottom = '40px';
+      tamanio.style.marginBottom = '5px';
       textoElement.style.webkitLineClamp = '5';
       verMasElement.textContent = 'Ver más';
     }

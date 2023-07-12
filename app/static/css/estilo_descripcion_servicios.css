@@ -49,6 +49,23 @@
   padding: none;
   margin: none;
 }
+.imagen_descripcion {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: 50vh; /* Ajusta el valor según tus necesidades */
+}
+
+.imagen_descripcion img {
+  max-height: 100%;
+  max-width: 100%; /* Ajusta el valor según tus necesidades */
+  object-fit: contain; /* Opcional: ajusta el ajuste del objeto según tus necesidades */
+  height: 400px;
+  margin-top: 150px;
+}
+
+
+
 .container .contenedor_servicio .imagen_descripcion2 {
   display: none;
 }
@@ -64,25 +81,16 @@
   color: #c53678;
 }
 .container .contenedor_servicio .separador {
+  margin-top: 5px;
   width: 450px;
   height: 4px;
   background-color: var(--color-fuerte);
   padding: none;
   border: none;
 }
-.container .contenedor_servicio .duracion-servicio {
-  padding-top: 5px;
-  font-size: 20px;
-  opacity: 0.9;
-}
-.container .contenedor_servicio .calificacion-servicio {
-  display: flex;
-  align-items: center;
-}
-.container .contenedor_servicio .calificacion-servicio span {
-  margin-right: 2px;
-}
+
 .container .contenedor_servicio .descripcion-servicio {
+  margin-top: 30px;
   font-weight: 10px;
   line-height: 1;
 }
@@ -94,6 +102,7 @@
   margin: 1%;
 }
 .container .contenedor_servicio .requisitos-servicio {
+  margin-top: 15px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -101,6 +110,7 @@
   flex-direction: column;
 }
 .container .contenedor_servicio .requisitos-servicio .requisitos {
+  margin-top: 15px;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -132,6 +142,39 @@
   transition: 0.5s;
   box-shadow: 0 0 10px var(--color-fuerte2);
 }
+.favoritos{
+  margin-top: 150px;
+  margin-left: 200px;
+  
+}
+
+.fav {
+  width: 250px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 15px 10px 10px;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  color: black;
+  border: 2px solid #c53678; /* Ejemplo: borde de color rojo */
+}
+.fav:hover {
+  color: var(--color-fondo);
+  transition: 0.5s;
+
+}
+
+
+.cambiado {
+  fill: white;
+  background-color: #c53678;
+  transition: 0.5s;
+  box-shadow: 10px 15px 10px var(#c53678);
+}
 
 @media (max-width: 800px) {
   .imagen_descripcion2 {
@@ -152,5 +195,7 @@
     display: none;
   }
 }
+
+
 
 /*# sourceMappingURL=estilo_descripcion_servicios.css.map */

@@ -103,6 +103,20 @@ h2 {
   font-size: 1.1rem;
   font-weight: bold;
 }
+.card{
+	width: 100%;
+	margin: 20px;
+	border-radius: 6px;
+	overflow: hidden;
+	background:#fff;
+	box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
+	transition: all 400ms ease-out;
+	cursor: default;
+}
+.card:hover{
+	transform: translateY(-3%);
+  box-shadow: 5px 5px 20px var(--color-fuerte);
+}
 
 @media screen and (max-width: 750px) {
   .portada {

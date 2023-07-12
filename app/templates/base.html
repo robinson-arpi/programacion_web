@@ -28,8 +28,8 @@
       </div>
 
       <div class="header_busqueda">
-        <input class = "c_busqueda_entrada entrada_busqueda" type="text" id="busqueda" name="busqueda" placeholder="Busque un servicio aquí"></input>
-        <button class="c_busqueda_boton boton_busqueda" type = "submit"><i class="fas fa-search"></i></button>
+        <input class = "c_busqueda_entrada entrada_busqueda" type="text" id="busqueda" name="busqueda" placeholder="Busque un servicio aquí" onkeydown="if(event.keyCode === 13) document.getElementById('btn-busqueda').click()"></input>
+        <button class="c_busqueda_boton boton_busqueda" id="btn-busqueda" type = "submit" href="/servicios"><i class="fas fa-search"></i></button>
       </div>
 
       <div class = "header_menu">
@@ -47,7 +47,7 @@
           </ul>
         </nav>
       </div>
-      {% if usuario %}
+      {% if usuario.is_authenticated %}
       <div class="header_usuario">
         <nav class="lista_desplegable">
             <ul class = "navbar-usuario">
