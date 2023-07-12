@@ -41,8 +41,8 @@ app.register_blueprint(terminos_blueprint)
 
 # Manejo de logueo
 @login_manager_app.user_loader
-def cargar_usuario(id):
-    return Usuario.query.get(id == id)
+def load_user(id):
+    return Usuario.query.get(int(id))
 
 # Incio de app para amndar a login
 @app.route('/')
