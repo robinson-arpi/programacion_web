@@ -21,16 +21,6 @@
                 <p id="nom-servicio"> <span style="font-weight: bold;">Título:</span> {{servicio.titulo}} <br>
                 <span style="font-weight: bold;">Operador:</span> {{operador.nombre}} {{operador.apellido}}  <br><span style="font-weight: bold;">Disponibilidad:</span>{{servicio.disponibilidad}}</p>
             </div>
-            {% with messages = get_flashed_messages() %}
-                {% if messages %}
-                    {% for message in messages %}
-                    <div class="alert alert-primary alert-dismissible" role="alert">
-                        <strong>{{ message }}</strong>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                    {% endfor %}
-                {% endif %}
-            {% endwith %}
             <form class="form_registro" action="{{ url_for('agendar.crear_agendamiento') }}" method = "POST">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="idServicio" value="{{ servicio.id }}">
