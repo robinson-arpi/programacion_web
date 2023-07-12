@@ -3,7 +3,7 @@ from sqlalchemy import Column, Integer, String
 from app import db
 
 
-class Comentario(db.Model, UserMixin):
+class Comentario(db.Model):
     __tablename__ = 'comentarios'
     id = Column(Integer, primary_key=True)
     nombre = Column(String(100), nullable=False)
