@@ -110,7 +110,7 @@ def agregar_usuario():
         db.session.commit()
         credenciales_usuario = [request.form['email'],request.form['password1']]
         usuario_logueado = ModeloUsuario.login(credenciales_usuario)
-        login_user(usuario_logueado, remember=True)
+        login_user(usuario_logueado, remember=False)
         return redirect(url_for('perfil'))
     else:
         return render_template('auth/registro.html', usuario = current_user)
@@ -143,6 +143,7 @@ def actualizar_usuario(id):
 @app.route('/perfil')
 @login_required
 def perfil():
+    
     return render_template('usuario/perfil-usuario.html', usuario = current_user)
 
 @app.route('/ayuda')
