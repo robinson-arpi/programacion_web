@@ -9,6 +9,7 @@ from ..models.entities.Servicio import Servicio
 from ..models.entities.Contactenos import Contactenos
 from ..models.entities.Categoria import Categoria
 from ..models.entities.Correo import Correo
+from ..models.entities.Comentarios import Comentario
 from ..models.entities.Busqueda import Busqueda
 
 
@@ -46,31 +47,37 @@ def cargar_usuario(id):
 # Incio de app para amndar a login
 @app.route('/')
 def index():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
     return redirect(url_for('login'))
 
 # Ruta loguin para ingreso de credenciales
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))    
     if request.method == 'POST':
-        if current_user.is_authenticated:
-            return redirect(url_for('home'))
-        
+        #Captura de credenciales
         credenciales_usuario = [request.form['email'],request.form['password']]
         
+        # Captura el valor del campo 'recuerdame'
+        recuerdame = request.form.get('recuerdame')
         usuario_logueado = ModeloUsuario.login(credenciales_usuario)
+
+        # Si usuario existe
         if usuario_logueado != None:
             # pass = 1 entonces tiene credenciales correctas 
-            if usuario_logueado.password:
-                login_user(usuario_logueado, remember=True)
+            if usuario_logueado.password: 
+                login_user(usuario_logueado, remember=recuerdame)
                 return redirect(url_for('home'))
             else:
                 flash("Contraseña incorrecta")
-                return render_template('auth/login.html')
+                return render_template('auth/login.html', usuario = current_user)
         else:
             flash("Usuario no encontrado")
-            return render_template('auth/login.html')
+            return render_template('auth/login.html', usuario = current_user)
     else:
-        return render_template('auth/login.html')
+        return render_template('auth/login.html', usuario = current_user)
 
 
 # Ruta la cerrar sesión
@@ -84,7 +91,8 @@ def logout():
 @app.route('/home')
 def home():
     cat = Categoria.query.all()
-    return render_template('index.html', categorias = cat , usuario = current_user)
+    com = Comentario.query.order_by(Comentario.id.desc()).limit(4).all()
+    return render_template('index.html', categorias = cat , usuario = current_user, comentarios = com)
 
 # Registro y logeo de usuarios
 @app.route('/registro', methods=['POST', 'GET'])
@@ -98,19 +106,14 @@ def agregar_usuario():
                         request.form['username'],
                         datetime.strptime(request.form['fecha'],"%Y-%m-%d").date()
                         )
-
         db.session.add(usuario)
         db.session.commit()
-        flash('Usuario creado')
-
         credenciales_usuario = [request.form['email'],request.form['password1']]
-        
         usuario_logueado = ModeloUsuario.login(credenciales_usuario)
         login_user(usuario_logueado, remember=True)
         return redirect(url_for('perfil'))
     else:
-        flash('Usuario no creado')
-        return render_template('auth/registro.html')
+        return render_template('auth/registro.html', usuario = current_user)
 
 @app.route('/actualizar_usuario/<int:id>', methods=['PUT', 'GET'])
 def actualizar_usuario(id):
@@ -131,7 +134,7 @@ def actualizar_usuario(id):
 
         credenciales_usuario = [request.form['email'], request.form['password1']]
         usuario_logueado = ModeloUsuario.login(credenciales_usuario)
-        login_user(usuario_logueado, remember=True)
+        login_user(usuario_logueado, remember=False)
     else:
         print("como verga no va a ser metodo put")
         flash('Usuario no actualizado')
@@ -141,6 +144,10 @@ def actualizar_usuario(id):
 @login_required
 def perfil():
     return render_template('usuario/perfil-usuario.html', usuario = current_user)
+
+@app.route('/ayuda')
+def ayuda():
+    return render_template('page_statics/ayuda.html', usuario = current_user)    
 
 #------------------------------------------------------------------
 # Sección de blog
@@ -177,7 +184,7 @@ def contacto():
         return redirect(url_for('contactenos'))
     else:
         flash('Mensaje no enviado')
-        return render_template('footer/contacto.html')
+        return render_template('footer/contacto.html', usuario = current_user)
 
 
 #----------------------------------------------------------------------------------------------

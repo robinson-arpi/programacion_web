@@ -11,13 +11,11 @@ favoritos_blueprint = Blueprint('favoritos', __name__)
 @favoritos_blueprint.route('/favoritos')
 @login_required
 def favoritos_route():
-    lista_ids = ModeloFavorito.favorites_idUsers(current_user.id)
+    lista_ids = ModeloFavorito.get_favorites_idUser(current_user.id)
     l_service = ModeloServicio.get_by_listFavoritos(lista_ids)
     if len(l_service) == 0:
         flash("Usted no tiene servicios favoritos.")
-        return render_template('favorites/favoritos.html', usuario = current_user, lista_servicios = l_service)
-    else:
-        return render_template('favorites/favoritos.html', usuario = current_user, lista_servicios = l_service)
+    return render_template('favorites/favoritos.html', usuario = current_user, lista_servicios = l_service)
     
 #Eliminar un servicio Favorito
 @favoritos_blueprint.route('/eliminar_favorito', methods=['POST'])
@@ -29,7 +27,7 @@ def eliminar_favorito():
         flash("Favorito eliminado exitosamente.")
     else:
         flash("Error al eliminar el favorito.")
-    return redirect(url_for('favoritos'))
+    return redirect(url_for('favoritos.favoritos_route'))
 
 # Ruta protegida de historial
 @favoritos_blueprint.route('/protected_favoritos')
