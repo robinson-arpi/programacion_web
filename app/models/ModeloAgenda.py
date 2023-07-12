@@ -1,7 +1,7 @@
 from .entities.Agendamientos import Agendamiento
 from .. import db
 
-class ModeloComentario():
+class ModeloAgendamiento():
 
     # Obtener todos los agendamientos del usuario logueado
     @classmethod
@@ -28,5 +28,12 @@ class ModeloComentario():
         
     # Consulta para validar si el usuario ya tiene un agendamiento en la misma hora y fecha
     @classmethod
-    def agendamiento_existente(self, idUser):
-        pass
+    def agendamiento_existente(self, idUser, fech, hor):
+        try:
+            aux = Agendamiento.query.filter_by(idUsuario = idUser, fecha = fech, hora = hor).first()
+            if (aux):
+                return True
+            else: return False
+            
+        except Exception as ex:
+            raise Exception(ex)

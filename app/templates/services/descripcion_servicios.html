@@ -13,7 +13,7 @@
 
   <div class="contenedor_derecho">
     <div class="imagen_descripcion">
-      <img src="{{ url_for('static', filename='img/uploads/' + servicio.imagen) }}" alt="">
+      <img src="{{ url_for('static', filename='img/uploads/' + servicio.imagen) }}" alt="" class="card-img-top">
     </div>
     <div class="favoritos">
       <form action="{{ url_for('agregar_a_favoritos') }}" method="POST">
@@ -84,9 +84,24 @@
         </div>
       </div>
 
-
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-primary alert-dismissible" role="alert">
+                        <strong>{{ message }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            
       <div class="botones">
-        <button class="agendar-servicio" onclick="agendarServicio(event)">Agendar Servicio</button>
+        <form action="{{ url_for('agendar.agendar_route') }}" method="POST">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <input type="hidden" name="id" value="{{ servicio.id }}">
+          <input type="hidden" name="idOperador" value="{{ servicio.usuario_id }}">
+          <button type="submit" class="agendar-servicio">Agendar Servicio</button>
+        </form>
         <button class="Cancelar" onclick="cancelar(event)"></i> Cancelar</button>
       </div>
 

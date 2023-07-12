@@ -11,10 +11,10 @@ class Agendamiento(db.Model, UserMixin):
     idServicio = Column(Integer, ForeignKey('servicios.id'))
     fecha = Column(Date, nullable=False)
     hora = Column(Time, nullable=False)
-    direccion = Column(String, nullable=False)
+    direccion = Column(String(200), nullable=False)
 
-    #usuario = relationship("Usuario", back_populates="agendamientos")
-    #servicio = relationship("Servicio", back_populates="agendamientos")
+    usuario = relationship("Usuario", back_populates="agendamientos")
+    servicio = relationship("Servicio", back_populates="agendamientos")
 
 
     def __init__(self, idUser, idService, date, hour, direction):

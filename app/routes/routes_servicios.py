@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, flash, request
+from flask import render_template, Blueprint, flash, request, get_flashed_messages
 from flask_login import login_required, current_user
 from ..models.entities.Servicio import Servicio
 from ..models.entities.Categoria import Categoria
@@ -36,29 +36,52 @@ def buscar_servicios():
 @servicios_blueprint.route('/agregar_servicio', methods=['POST', 'GET'])
 def agregar_servicio():
 
-    if request.method == 'POST':        
-        # Si se envía una foto a guardar
-        if 'imagen' in request.files:
-            file     = request.files['imagen'] #recibiendo el archivo
-            imagen = recibeFoto(file) #Llamado la funcion que procesa la imagen
-        else:
-            imagen = ''
+    if request.method == 'POST':  
 
-        # Get form data
-        usuario_id = current_user.id  # Replace with actual user ID
-        titulo = request.form['titulo']
-        descripcion = request.form['descripcion']
-        ciudad = request.form['ciudad']
-        categoria = request.form['categoria']
-        disponibilidad = request.form['disponibilidad']
-        requisitos = request.form['requisitos']
+        try:
 
+            # Si se envía una foto a guardar
+            if 'imagen' in request.files:
+                file     = request.files['imagen'] #recibiendo el archivo
+                imagen = recibeFoto(file) #Llamado la funcion que procesa la imagen
+            else:
+                imagen = ''
+
+            # Get form data
+            usuario_id = current_user.id  # Replace with actual user ID
+            titulo = request.form['titulo']
+            descripcion = request.form['descripcion']
+            ciudad = request.form['ciudad']
+            categoria = request.form['categoria']
+            disponibilidad = request.form['disponibilidad']
+            requisitos = request.form['requisitos']
+
+            # Create new service
+            servicio = Servicio(usuario_id, titulo, descripcion, ciudad, categoria, disponibilidad, requisitos, imagen)
+            db.session.add(servicio)
+            db.session.commit()
+
+            # Si el servicio se agregó correctamente
+            flash('Se ha agregado un nuevo servicio con éxito!', 'success')
+
+            cat = Categoria.query.all()  
+            return render_template('services/agregar-servicio.html', categorias=cat)    
+            
+        except:
+            # Si hubo un error al agregar el servicio
+            flash('Hubo un error al agregar el servicio', 'error')
+            cat = Categoria.query.all()   
+            return render_template('services/agregar-servicio.html', categorias=cat)
+
+<<<<<<< HEAD
+=======
         # Create new service
         servicio = Servicio(usuario_id, titulo, descripcion, ciudad, categoria, disponibilidad, requisitos, imagen)
         db.session.add(servicio)
         db.session.commit()     
         cat = Categoria.query.all()   
         return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)
+>>>>>>> 372b214d1436c24f3b9198bc8bdc1fd3d9395431
     else:
         cat = Categoria.query.all()  
         return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)
