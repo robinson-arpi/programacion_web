@@ -58,10 +58,10 @@ def agregar_servicio():
         db.session.add(servicio)
         db.session.commit()     
         cat = Categoria.query.all()   
-        return render_template('services/agregar-servicio.html', categorias=cat)
+        return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)
     else:
         cat = Categoria.query.all()  
-        return render_template('services/agregar-servicio.html', categorias=cat)
+        return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)
 
 
 
