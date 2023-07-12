@@ -15,6 +15,29 @@
 {% endblock %}
 
 {% block cuerpo %}
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<!-- {% with messages = mensaje_flash %}
+    {% if messages %}
+      <script>
+        $(document).ready(function() {
+          $('#mensajeModal .modal-body').text('{{ messages[0] }}');
+          $('#mensajeModal').modal('show');
+        });
+      </script>
+    {% endif %}
+  {% endwith %} -->
+
 <form method="post" id="form_agregar" enctype="multipart/form-data">
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
   <div class="container">
@@ -52,6 +75,7 @@
         <div class="form-group">
           <label for="categoria">Categoría</label>
           <select class="form-control" id="categoria" name="categoria">
+            <option selected disabled value="Seleccione ...">Seleccione ...</option>
             {% for categoria in categorias %}
               <option value={{categoria.nombre}}>{{categoria.nombre}}</option>
             {% endfor %}
@@ -60,11 +84,12 @@
         <div class="form-group">
           <label for="disponibilidad">Disponibilidad</label>
           <select class="form-control" id="disponibilidad" name="disponibilidad">
+            <option selected disabled value="Seleccione ...">Seleccione ...</option>
             <option value="Todo el día">Todo el día</option>
             <option value="Por la mañana">Por la mañana</option>
             <option value="Por la tarde">Por la tarde</option>
             <option value="Por la noche">Por la noche</option>
-            <option value="Virual">Virtual</option>
+            <option value="Virtual">Virtual</option>
           </select>
         </div>
         <div class="form-group">
@@ -80,18 +105,61 @@
       </div>
     </div>
     <div class="text-center mt-4 pb-4">
-      <button class="boton" id="limpiar-campos"  type="button">Limpiar campos</button>
+      <button class="boton" id="limpiar-campos"  type="button" onclick="limpiarCampos()">Limpiar campos</button>
       <button class="boton" id="agregar-servicio" >Agregar servicio</button>
     </div>
   </div>
 </form>  
+
+<!-- Modal de MostrarMensaje -->
+<div class="modal fade" id="mensajeModal" tabindex="-1" role="dialog" aria-labelledby="mensajeModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+          <h5 class="modal-title" id="mensajeModalLabel"></h5>
+          <button id="XCerrarModal" type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body"></div>
+      <div class="modal-footer">
+        <button id="btnCerrarModal" type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para realizar una pregunta de si/no -->
+<div class="modal fade" id="preguntaModal" tabindex="-1" role="dialog" aria-labelledby="preguntaModalLabel" aria-hidden="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="preguntaModalLabel">¡Atención!</h5>
+        <button id="btnX" type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Hay un requisito que no ha sido agregado a la lista</p>
+        <p>¿Desea incluirlo ?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="XCerrar" class="btn btn-secondary" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-primary">Sí</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 {% endblock %}
 
 {% block customJS %}
-    <!-- Bootstrap -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- Librería jQuery para agregar interacción-->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <!-- Mi js -->
     <script src="{{url_for('static', filename = 'js/agregar_servicio.js')}}"></script>
 {% endblock %}

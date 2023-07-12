@@ -18,25 +18,28 @@
             <div class="separador"></div>
             <p class="mensaje_bienvenida">Por favor, ingrese los campos requeridos </p>
             <div class="section2">
-                <p id="nom-servicio">Nombre del servicio</p>
-                <p id="nom-operador">Nombre del operador</p>
+                <p id="nom-servicio"> <span style="font-weight: bold;">Título:</span> {{servicio.titulo}} <br>
+                <span style="font-weight: bold;">Operador:</span> {{operador.nombre}} {{operador.apellido}}  <br><span style="font-weight: bold;">Disponibilidad:</span>{{servicio.disponibilidad}}</p>
             </div>
-            <form class="form_registro" method = "POST">
+            <form class="form_registro" action="{{ url_for('agendar.crear_agendamiento') }}" method = "POST">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="idServicio" value="{{ servicio.id }}">
+                <input type="hidden" name="disponibilidad" value="{{servicio.disponibilidad}}">
                 <div class = "entrada">
-                    <input type = "date" class="fecha" name = "fecha" id="fecha" required>
+                    <input type = "date" class="fecha" name = "fecha" id="fecha" required title="Elija una fecha por favor.">
                     <label>Fecha</label>
                 </div>
                 <div class = "entrada">
-                    <input type = "time" class="hora" name = "hora" id="hora" required>
+                    <input type = "time" class="hora" name = "hora" id="hora" required title="Elija una hora de acuerdo a la disponibilidad del servicio.">
                     <label>Hora</label>
                 </div>
                 <div class = "entrada">
-                    <input type = "text" class="direccion" required>
+                    <input type = "text" name="direccion" class="direccion" required title="Ingrese por favor la direccion si es necesario para el servicio.">
                     <label>Dirección</label>
                 </div>
                 <div class = "botones-2">
-                    <button class="boton boton-cancelar">Cancelar</button>
-                    <button class="boton boton-agendar">Agregar</button>
+                    <button class="boton boton-cancelar" onclick="borrarCampos()">Cancelar</button>
+                    <button type="submit" class="boton boton-agendar" onclick="limpiarCampos()">Agregar</button>
                 </div>                    
             </form>
         </div>
