@@ -26,7 +26,7 @@
     <div class="row mt-4">
         {% for serFav in lista_servicios %}
         <div class="col-md-3 col-sm-6 mb-4" id="favorito1">
-            <div class="card service-box">
+            <div class="card_fav service-box">
                 <div class="card-header">
                     <form action="{{ url_for('favoritos.eliminar_favorito') }}" method="POST">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">

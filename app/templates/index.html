@@ -34,27 +34,31 @@
     </section>
 
 
-  <!-- Testimonios -->
-  <section class="testimonios">
-    <h2>Testimonios</h2>
-    <ul>
-        <li>
-            <div class="testimonio">
-              <span>Testimonio 1</span>
+  <!-- Ultimos comentarios -->
+  <section class="categorias_populares container pt-1">
+    <h2>Comentarios recientes</h2>
+    <div class="container">
+      <div class="row card-deck">
+        {% for comentario in comentarios %}
+        <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-1">
+          <div class="card clickable card-body" id = "card">
+            <div class="card-header">
+              {{ comentario.categoria }}
             </div>
-        </li>
-        <li>
-          <div class="testimonio">
-            <span>Testimonio 1</span>
-          </div>
-      </li>
-      <li>
-        <div class="testimonio">
-          <span>Testimonio 1</span>
+            <div class="card-body">
+              <h5 class="card-title">{{ comentario.nombre }}</h5>
+              <p class="card-text">{{ comentario.calificacion }}</p>
+              <p class="card-text">{{ comentario.mensaje }}</p>
+              <a href="#" class="btn btn-primary">Reportar</a>
+            </div>
+          </div> 
         </div>
-      </li>
-    </ul>
+      {% endfor %}
+      </div>  
+    </div>  
+    
   </section>
+
 </main>
 {% endblock %}
 
