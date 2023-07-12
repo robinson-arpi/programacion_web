@@ -2,7 +2,6 @@
 :root {
   --primary-clr: #c53678;
 }
-
 * {
   margin: 0;
   padding: 0;
@@ -10,20 +9,33 @@
   font-family: "Poppins", sans-serif;
 }
 
-.contenedor {
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--primary-clr);
+  border-radius: 50px;
+}
+
+
+.contenedor{
   width: 100%;
-  height: 650px;
+  height: 660px;
   color: #fff;
   display: flex;
-  /*#373c4f*/
   background-color: #373c4f;
 }
-.contenedor .izquierda {
+
+.left {
   width: 60%;
   padding-top: 50px;
   padding-left: 20px;
 }
-.contenedor .izquierda .calendario {
+.calendar {
   background-color: #fff;
   position: relative;
   width: 90%;
@@ -35,7 +47,8 @@
   border-radius: 5px;
   margin-right: 50px;
 }
-.contenedor .izquierda .calendario::before {
+/* set after behind the main element */
+.calendar::before{
   content: "";
   position: absolute;
   top: 50%;
@@ -49,7 +62,7 @@
   left: calc(100% + 12px);
   background-color: rgb(153, 153, 153);
 }
-.contenedor .izquierda .calendario::after {
+.calendar::after{
   content: "";
   position: absolute;
   top: 50%;
@@ -60,7 +73,12 @@
   background-color: rgba(211, 212, 214, 0.8431372549);
   transform: translateY(-50%);
 }
-.contenedor .izquierda .calendario .mes {
+/* .calendar::before {
+  height: 94%;
+  left: calc(100% + 12px);
+  background-color: rgb(153, 153, 153);
+} */
+.calendar .month {
   width: 100%;
   height: 60px;
   display: flex;
@@ -69,12 +87,16 @@
   padding: 0 50px;
   font-size: 1.2rem;
 }
-.contenedor .izquierda .calendario .mes .prev,
-.contenedor .izquierda .calendario .mes .next {
+.calendar .month .prev,
+.calendar .month .next {
   cursor: pointer;
   color: var(--primary-clr);
 }
-.contenedor .izquierda .calendario .diasLaborables {
+.calendar .month .prev:hover,
+.calendar .month .next:hover {
+  color: var(--primary-clr);
+}
+.calendar .weekdays {
   width: 100%;
   height: 50px;
   display: flex;
@@ -82,15 +104,16 @@
   justify-content: space-between;
   padding: 10px 20px;
   font-size: 1.2rem;
+  text-transform: capitalize;
   margin-bottom: 20px;
 }
-.contenedor .izquierda .calendario .diasLaborables div {
+.weekdays div {
   width: 14.28%;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.contenedor .izquierda .calendario .dias {
+.calendar .days {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -98,37 +121,10 @@
   padding: 0 20px;
   font-size: 1rem;
   margin-bottom: 30px;
-  /* .evento {
-      position: relative;
-
-      &::after {
-          content: "";
-          position: absolute;
-          bottom: 9%;
-          left: 50%;
-          width: 75%;
-          height: 6px;
-          border-radius: 30px;
-          transform: translateX(-50%);
-          background-color: var(--primary-clr);
-      }
-
-      &:hover::after {
-          background-color: #fff;
-      }
-  } */
-  /* .activar.evento::after {
-      background-color: #fff;
-      bottom: 20%;
-  }
-
-  .activar.evento {
-      padding-bottom: 10px;
-  } */
 }
-.contenedor .izquierda .calendario .dias .dia {
-  color: var(--primary-clr);
+.calendar .days .day {
   width: 14.28%;
+  color: var(--primary-clr);
   height: 50px;
   display: flex;
   align-items: center;
@@ -136,33 +132,70 @@
   cursor: pointer;
   border: 1px solid #f5f5f5;
 }
-.contenedor .izquierda .calendario .dias .dia:not(.anterior-fecha, .proximo-fecha):hover {
+/* .calendar .days .day:nth-child(7n + 1) {
+  border-left: 2px solid #f5f5f5;
+}
+.calendar .days .day:nth-child(7n) {
+  border-right: 2px solid #f5f5f5;
+}
+.calendar .days .day:nth-child(-n + 7) {
+  border-top: 2px solid #f5f5f5;
+}
+.calendar .days .day:nth-child(n + 29) {
+  border-bottom: 2px solid #f5f5f5;
+} */
+
+.calendar .days .day:not(.prev-date, .next-date):hover {
   color: #fff;
   background-color: var(--primary-clr);
 }
-.contenedor .izquierda .calendario .dias .anterior-fecha,
-.contenedor .izquierda .calendario .dias .proximo-fecha {
+.calendar .days .prev-date,
+.calendar .days .next-date {
   color: #b3b3b3;
 }
-.contenedor .izquierda .calendario .dias .activar {
+.calendar .days .active {
   position: relative;
   font-size: 1.9rem;
   color: #fff;
   background-color: var(--primary-clr);
-  /* &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      box-shadow: 0 0 10px 2px var(--primary-clr);
-  }*/
 }
-.contenedor .izquierda .calendario .dias .hoy {
-  font-size: 1.9rem;
+/* .calendar .days .active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0 0 10px 2px var(--primary-clr);
+} */
+.calendar .days .today {
+  font-size: 2rem;
 }
-.contenedor .izquierda .calendario .ir-a-hoy {
+.calendar .days .event {
+  position: relative;
+}
+.calendar .days .event::after {
+  content: "";
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  width: 75%;
+  height: 6px;
+  border-radius: 30px;
+  transform: translateX(-50%);
+  background-color: var(--primary-clr);
+}
+.calendar .days .day:hover.event::after {
+  background-color: #fff;
+}
+.calendar .days .active.event::after {
+  background-color: #fff;
+  bottom: 20%;
+}
+.calendar .days .active.event {
+  padding-bottom: 10px;
+}
+.calendar .goto-today {
   width: 100%;
   height: 90px;
   display: flex;
@@ -172,14 +205,14 @@
   margin-bottom: 20px;
   color: var(--primary-clr);
 }
-.contenedor .izquierda .calendario .ir-a-hoy .ir {
+.calendar .goto-today .goto {
   display: flex;
   align-items: center;
   border-radius: 5px;
   overflow: hidden;
   border: 1px solid var(--primary-clr);
 }
-.contenedor .izquierda .calendario .ir-a-hoy .ir input {
+.calendar .goto-today .goto input {
   width: 100%;
   height: 30px;
   outline: none;
@@ -189,58 +222,57 @@
   color: var(--primary-clr);
   border-radius: 5px;
 }
-.contenedor .izquierda .calendario .ir-a-hoy .ir button {
-  border: none;
-  border-left: 1px solid var(--primary-clr);
-  border-radius: 0;
-}
-.contenedor .izquierda .calendario .ir-a-hoy button {
+.calendar .goto-today button {
   padding: 7px 10px;
   border: 1px solid var(--primary-clr);
   border-radius: 5px;
   background-color: transparent;
   cursor: pointer;
-  color: va(--primary-clr);
+  color: var(--primary-clr);
 }
-.contenedor .izquierda .calendario .ir-a-hoy button:hover {
+.calendar .goto-today button:hover {
   color: #fff;
   background-color: var(--primary-clr);
 }
-.contenedor .derecha {
-  position: relative;
+.calendar .goto-today .goto button {
+  border: none;
+  border-left: 1px solid var(--primary-clr);
+  border-radius: 0;
+}
+.container .right {
   width: 40%;
 }
-.contenedor .derecha .hoy-fecha {
+
+.right .today-date {
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 40px;
+  padding: 0 90px;
   margin-top: 30px;
   margin-bottom: 30px;
 }
-.contenedor .derecha .hoy-fecha .evento-dia {
+
+
+.right .today-date .event-day {
+  margin-right: 200px;
   font-size: 2rem;
   color: white;
 }
-.contenedor .derecha .hoy-fecha .evento-fecha {
+.right .today-date .event-date {
+  
   font-size: 1rem;
   color: white;
 }
-.contenedor .derecha .eventos {
-  width: 100%;
-  max-height: 600px;
-  overflow-x: hidden;
+.events {
+
+  max-height: 400px;
   overflow-y: auto;
-  display: flex;
-  flex-direction: column;
   padding-left: 4px;
 }
-.contenedor .derecha .eventos .evento {
+.events .event {
   position: relative;
   width: 100%;
-  min-height: 70px;
+  min-height: 100px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -249,35 +281,44 @@
   background: linear-gradient(90deg, #3f4458, transparent);
   cursor: pointer;
 }
-.contenedor .derecha .eventos .evento:nth-child(even) {
+/* even event */
+.events .event:nth-child(even) {
   background: transparent;
 }
-.contenedor .derecha .eventos .evento:hover {
+.events .event:hover {
   background: linear-gradient(90deg, var(--primary-clr), transparent);
 }
-.contenedor .derecha .eventos .evento .titulo {
+.events .event .title {
   display: flex;
   align-items: center;
   pointer-events: none;
 }
-.contenedor .derecha .eventos .evento .titulo .evento-titulo {
+.events .event .title .event-title {
   font-size: 1rem;
   margin-left: 20px;
 }
-.contenedor .derecha .eventos .evento .titulo i {
+.events .event .title .event-title i{
   color: var(--primary-clr);
   font-size: 0.5rem;
 }
-.contenedor .derecha .eventos .evento:hover i {
+.events .event i {
+  color: white;
+  font-size: 0.5rem;
+}
+.events .event:hover i {
   color: #fff;
 }
-.contenedor .derecha .eventos .evento .titulo .evento-tiempo {
+.events .event .event-time {
   font-size: 0.8rem;
   color: #878895;
   margin-left: 15px;
   pointer-events: none;
 }
-.contenedor .derecha .eventos .evento::after {
+.events .event:hover .event-time {
+  color: #fff;
+}
+/* add tick in event after */
+.events .event::after {
   content: "✓";
   position: absolute;
   top: 50%;
@@ -288,15 +329,15 @@
   justify-content: center;
   opacity: 0.3;
   color: white;
-  transform: translate(-50%);
+  transform: translateY(-50%);
 }
-.contenedor .derecha .eventos .evento:hover::after {
+.events .event:hover::after {
   display: flex;
 }
-.contenedor .derecha .eventos .botones {
-  position: relative;
+.botones{
+  width: 100%;
 }
-.contenedor .derecha .eventos .botones .salir {
+.botones .salir {
   border: none;
   width: 45%;
   height: 50px;
@@ -306,16 +347,149 @@
   border-radius: 25px;
   color: var(--color-texto);
   cursor: pointer;
-  margin-top: 150px;
-  margin-left: 200px;
+  margin-top: 70px;
+  margin-left: 250px;
 }
-.contenedor .derecha .eventos .botones .salir:hover {
+.botones .salir:hover {
   color: var(--color-fondo);
   transition: 0.5s;
   box-shadow: 0 0 10px var(--color-fuerte2);
 }
 
-@media screen and (max-width: 1000px) {
+
+
+/* .add-event {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #878895;
+  border: 2px solid #878895;
+  opacity: 0.5;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+}
+.add-event:hover {
+  opacity: 1;
+}
+.add-event i {
+  pointer-events: none;
+}
+.events .no-event {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #878895;
+}
+.add-event-wrapper {
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  width: 90%;
+  max-height: 0;
+  overflow: hidden;
+  border-radius: 5px;
+  background-color: #fff;
+  transform: translateX(-50%);
+  transition: max-height 0.5s ease;
+}
+.add-event-wrapper.active {
+  max-height: 300px;
+}
+.add-event-header {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  color: #373c4f;
+  border-bottom: 1px solid #f5f5f5;
+}
+.add-event-header .close {
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.add-event-header .close:hover {
+  color: var(--primary-clr);
+}
+.add-event-header .title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.add-event-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 20px;
+}
+.add-event-body .add-event-input {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.add-event-body .add-event-input input {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #f5f5f5;
+  padding: 0 10px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #373c4f;
+}
+.add-event-body .add-event-input input::placeholder {
+  color: #a5a5a5;
+}
+.add-event-body .add-event-input input:focus {
+  border-bottom: 1px solid var(--primary-clr);
+}
+.add-event-body .add-event-input input:focus::placeholder {
+  color: var(--primary-clr);
+}
+.add-event-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.add-event-footer .add-event-btn {
+  height: 40px;
+  font-size: 1rem;
+  font-weight: 500;
+  outline: none;
+  border: none;
+  color: #fff;
+  background-color: var(--primary-clr);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border: 1px solid var(--primary-clr);
+}
+.add-event-footer .add-event-btn:hover {
+  background-color: transparent;
+  color: var(--primary-clr);
+}
+ */
+/* media queries */
+
+/* @media screen and (max-width: 1000px) {
   body {
     align-items: flex-start;
     justify-content: flex-start;
@@ -328,20 +502,20 @@
     grid-template-areas: "izquierdo derecho";
     grid-template-columns: 1fr;
   }
-  .contenedor .izquierda {
+  .contenedor .left {
     width: 100%;
     height: 100%;
     padding: 20px 0;
     grid-area: izquierdo;
   }
-  .contenedor .derecha {
+  .contenedor .right {
     width: 100%;
     height: 100%;
     padding: 20px 0;
     grid-area: derecho;
   }
-  .calendario::before,
-  .calendario::after {
+  .calendar::before,
+  .calendar::after {
     top: 100%;
     left: 50%;
     width: 97%;
@@ -349,44 +523,115 @@
     border-radius: 0 0 5px 5px;
     transform: translateX(-50%);
   }
-  .calendario::before {
+  .calendar::before {
     width: 94%;
     top: calc(100% + 12px);
   }
-  .eventos {
+  .events {
     padding-bottom: 340px;
   }
 }
 @media screen and (max-width: 750px) {
   .contenedor {
     display: grid;
-    grid-template-areas: "izquierdo" "derecho";
+    grid-template-areas: "left" "right";
     grid-template-rows: auto auto;
     height: 1300px;
   }
-  .calendario .derecha {
+  .calendar .right {
     grid-area: derecho;
   }
-  .calendario .izquierda {
+  .calendar .left {
     grid-area: izquierdo;
   }
-  .calendario .mes {
+  .calendar .month {
     height: 75px;
   }
-  .calendario .diasLaborables {
+  .calendar .weekdays {
     height: 50px;
   }
-  .calendario .dias .dia {
+  .calendar .days .day {
     height: 40px;
     font-size: 0.8rem;
   }
-  .calendario .dias .dias.activar,
-  .calendario .dias .dia.hoy {
+  .calendar .days .days.active,
+  .calendar .days .days.today {
     font-size: 1rem;
   }
-  .derecha .hoy-fecha {
-    padding: 20px;
+  .right .today-date {
+    padding: 80px;
+  }
+} */
+
+@media screen and (max-width: 1000px) {
+  body {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .contenedor {
+    min-height: 100vh;
+    flex-direction: column;
+    border-radius: 0;
+    height: 1250px;
+  }
+  .contenedor .left {
+    width: 100%;
+    padding: 20px 0;
+    margin-left: 15px
+  }
+  .contenedor .right {
+    width: 100%;
+    height: 100%;
+    padding: 20px 0;
+  }
+  .calendar::before,
+  .calendar::after {
+    top: 100%;
+    left: 50%;
+    width: 97%;
+    height: 12px;
+    border-radius: 0 0 5px 5px;
+    transform: translateX(-50%);
+  }
+  .calendar::before {
+    width: 94%;
+    top: calc(100% + 12px);
+  }
+  .events {
+    padding-bottom: 340px;
+    width: 100%;
+  }
+  .botones{
+    width: 80%;
+    transform: translateY(-20%);
+    float: lef;
+    margin-left: -20px;
   }
 }
+@media screen and (max-width: 500px) {
+  .calendar .month {
+    height: 75px;
+  }
+  .calendar .weekdays {
+    height: 50px;
+  }
+  .calendar .days .day {
+    height: 40px;
+    font-size: 0.8rem;
+  }
+  .calendar .days .day.active,
+  .calendar .days .day.today {
+    font-size: 1rem;
+  }
+  .right .today-date {
+    padding: 20px;
+  }
+  .botones{
+    width: 80%;
+    transform: translateY(-20%);
+    float: lef;
+    margin-left: -80px;
+  }
 
-/*# sourceMappingURL=estilos.cronograma.css.map */
+}
+
