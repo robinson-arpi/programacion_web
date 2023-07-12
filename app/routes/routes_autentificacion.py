@@ -216,8 +216,14 @@ def agregar_a_favoritos():
 def cronograma():
     return render_template('services/cronograma.html', usuario = current_user)
 
+
+
+
+
+
+
 # ------------------------------------------------------
 # Sección de acerca de nosotros
 @app.route('/acerca_de_nosotros')
 def acerca_de_nosotros():
-    return render_template('page_statics/acerca-de-nosotros.html')
+    return render_template('page_statics/acerca-de-nosotros.html',usuario = current_user)
