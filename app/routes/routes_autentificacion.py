@@ -49,11 +49,13 @@ def cargar_usuario(id):
 def index():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
-    return render_template('auth/login.html', usuario = current_user)
+    return redirect(url_for('login'))
 
 # Ruta loguin para ingreso de credenciales
 @app.route('/login', methods=['GET', 'POST'])
-def login():    
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))    
     if request.method == 'POST':
         #Captura de credenciales
         credenciales_usuario = [request.form['email'],request.form['password']]
@@ -83,7 +85,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return render_template('auth/login.html', usuario = current_user)
+    return redirect(url_for('login'))
 
 # Ruta para vista home
 @app.route('/home')
