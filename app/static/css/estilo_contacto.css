@@ -6,7 +6,9 @@
   font-family: "Poppins", sans-serif;
 }
 
-section, .contenedor_informacion {
+section, .contenedor_informacion .info {
+  padding: 15px;
+  width: 100%;
   display: flex;
   align-items: center;
 }

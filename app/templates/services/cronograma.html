@@ -10,19 +10,14 @@
 
 {% block cuerpo %}
 <div class="contenedor">
-
-  <div class="izquierda">
-    <div class="calendario">
-
-
-      <div class="mes">
-        <i class="fa fa-angle-left prev"></i>
-        <div class="fecha"></div>
-        <i class="fa fa-angle-right next"></i>
+  <div class="left">
+    <div class="calendar">
+      <div class="month">
+        <i class="fas fa-angle-left prev"></i>
+        <div class="date">december 2015</div>
+        <i class="fas fa-angle-right next"></i>
       </div>
-
-
-      <div class="diasLaborables">
+      <div class="weekdays">
         <div>Dom</div>
         <div>Lun</div>
         <div>Ma</div>
@@ -31,120 +26,91 @@
         <div>Vie</div>
         <div>Sab</div>
       </div>
+      <div class="days"></div>
 
-      <div class="dias">
-        <!--
 
-            Aqui van todoos los dias se desarrolla con Js
-          
-
-          <div class="dia anterior-fecha">26</div>
-          <div class="dia anterior-fecha">27</div>
-          <div class="dia anterior-fecha">28</div>
-          <div class="dia anterior-fecha">29</div>
-          <div class="dia anterior-fecha">30</div>
-          <div class="dia anterior-fecha">31</div>
-          <div class="dia">1</div>
-          <div class="dia">2</div>
-          <div class="dia">3</div>
-          <div class="dia">4</div>
-          <div class="dia evento">5</div>
-          <div class="dia">6</div>
-          <div class="dia">7</div>
-          <div class="dia">8</div>
-          <div class="dia">9</div>
-          <div class="dia">10</div>
-          <div class="dia">11</div>
-          <div class="dia">12</div>
-          <div class="dia">13</div>
-          <div class="dia evento activar">14</div>
-          <div class="dia hoy">15</div>
-          <div class="dia">16</div>
-          <div class="dia">17</div>
-          <div class="dia">18</div>
-          <div class="dia evento ">19</div>
-          <div class="dia">20</div>
-          <div class="dia">21</div>
-          <div class="dia">22</div>
-          <div class="dia">23</div>
-          <div class="dia">24</div>
-          <div class="dia">25</div>
-          <div class="dia">26</div>
-          <div class="dia">27</div>
-          <div class="dia">28</div>
-          <div class="dia">29</div>
-          <div class="dia">30</div>
-          <div class="dia proximo-fecha">1</div>
-          <div class="dia proximo-fecha">2</div>
-          <div class="dia proximo-fecha">3</div>
-          <div class="dia proximo-fecha">4</div>
-          <div class="dia proximo-fecha">5</div>
-          <div class="dia proximo-fecha">6</div>
-          -->
-
-      </div>
-
-      <div class="ir-a-hoy">
-
-        <div class="ir">
-          <input type="text" placeholder="mm/yyyy" class="date-input">
-          <button class="ir-boton">ir</button>
+      <div class="goto-today">
+        <div class="goto">
+          <input type="text" placeholder="mm/yyyy" class="date-input" />
+          <button class="goto-btn">Ir</button>
         </div>
-
-        <button class="hoy-boton">hoy</button>
-
+        <button class="today-btn">Hoy</button>
       </div>
-
-
     </div>
-
   </div>
 
-
-  <div class="derecha">
-
-    <div class="hoy-fecha">
-      <div class="evento-dia">Jueves</div>
-      <div class="evento-fecha">7 Mayo 2023</div>
+  <div class="right">
+    <div class="today-date">
+      <div class="event-day">Mie</div>
+      <div class="event-date">19 Julio 2023</div>
     </div>
 
-    <div class="eventos">
-
-      <div class="evento">
-        <div class="titulo">
+    <div class="events">
+      <div class="event">
+        <div class="title">
           <i class="fas fa-circle"></i>
-          <h3 class="evento-titulo">Servicio1</h3>
+          <h3 class="event-title">Servicio1</h3>
         </div>
-
-        <div class="evento-tiempo">10:00AM - 12:00PM</div>
-
+        <div class="event-time">10:00AM - 12:00PM</div>
+        <div class="event-time">10:00AM - 12:00PM</div>
+        <div class="event-time">10:00AM - 12:00PM</div>
       </div>
-
-      <div class="evento">
-
-        <div class="titulo">
+      <div class="event">
+        <div class="title">
           <i class="fas fa-circle"></i>
-          <h3 class="evento-titulo">Servicio1</h3>
+          <h3 class="event-title">Servicio1</h3>
         </div>
-        <div class="evento-tiempo">10:00AM - 12:00PM</div>
-
+        <div class="event-time">10:00AM - 12:00PM</div>
       </div>
-
-      <div class="evento">
-        <div class="titulo">
+      <div class="event">
+        <div class="title">
           <i class="fas fa-circle"></i>
-          <h3 class="evento-titulo">Servicio1</h3>
+          <h3 class="event-title">Servicio1</h3>
         </div>
-        <div class="evento-tiempo">10:00AM - 12:00PM</div>
+        <div class="event-time">10:00AM - 12:00PM</div>
       </div>
-
-      <div class="botones">
-        <button class="salir" onclick="salir(event)">Salir</button>
+      <div class="event">
+        <div class="title">
+          <i class="fas fa-circle"></i>
+          <h3 class="event-title">Servicio1</h3>
+        </div>
+        <div class="event-time">10:00AM - 12:00PM</div>
       </div>
-
+      <div class="event">
+        <div class="title">
+          <i class="fas fa-circle"></i>
+          <h3 class="event-title">Servicio1</h3>
+        </div>
+        <div class="event-time">10:00AM - 12:00PM</div>
+      </div>
+      <div class="event">
+        <div class="title">
+          <i class="fas fa-circle"></i>
+          <h3 class="event-title">Servicio1</h3>
+        </div>
+        <div class="event-time">10:00AM - 12:00PM</div>
+      </div>
+      <div class="event">
+        <div class="title">
+          <i class="fas fa-circle"></i>
+          <h3 class="event-title">Servicio1</h3>
+        </div>
+        <div class="event-time">10:00AM - 12:00PM</div>
+      </div>
+      <div class="event">
+        <div class="title">
+          <i class="fas fa-circle"></i>
+          <h3 class="event-title">Servicio1</h3>
+        </div>
+        <div class="event-time">10:00AM - 12:00PM</div>
+      </div>
+      
+      
     </div>
 
-
+    <div class="botones">
+      <button class="salir" onclick="salir(event)">Salir</button>
+    </div>
   </div>
 </div>
 
