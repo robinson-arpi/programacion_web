@@ -1,5 +1,6 @@
 from .entities.Servicio import Servicio
 from sqlalchemy import or_
+from .. import db
 
 class ModeloServicio():
 
@@ -43,7 +44,19 @@ class ModeloServicio():
             return servicios
         except Exception as ex:
             raise Exception(ex)
- 
-    
+
+    @classmethod
+    def eliminar_servicio(cls, user_id, serv_id):
+        try:
+
+            servicio = Servicio.query.filter_by(usuario_id = user_id, id = serv_id).first()
+            if servicio:
+                db.session.delete(servicio)
+                db.session.commit()
+                return True
+            else:
+                return False
+        except Exception as ex:
+            raise Exception(str(ex)) 
 
     

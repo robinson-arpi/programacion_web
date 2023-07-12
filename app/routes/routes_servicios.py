@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, flash, request, get_flashed_messages
+from flask import render_template, Blueprint, flash, request, get_flashed_messages, redirect, url_for
 from flask_login import login_required, current_user
 from ..models.entities.Servicio import Servicio
 from ..models.entities.Categoria import Categoria
@@ -65,23 +65,13 @@ def agregar_servicio():
             flash('Se ha agregado un nuevo servicio con éxito!', 'success')
 
             cat = Categoria.query.all()  
-            return render_template('services/agregar-servicio.html', categorias=cat)    
+            return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)    
             
         except:
             # Si hubo un error al agregar el servicio
             flash('Hubo un error al agregar el servicio', 'error')
             cat = Categoria.query.all()   
-            return render_template('services/agregar-servicio.html', categorias=cat)
-
-<<<<<<< HEAD
-=======
-        # Create new service
-        servicio = Servicio(usuario_id, titulo, descripcion, ciudad, categoria, disponibilidad, requisitos, imagen)
-        db.session.add(servicio)
-        db.session.commit()     
-        cat = Categoria.query.all()   
-        return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)
->>>>>>> 372b214d1436c24f3b9198bc8bdc1fd3d9395431
+            return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)
     else:
         cat = Categoria.query.all()  
         return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)
@@ -120,3 +110,16 @@ def stringAleatorio():
     resultado_aleatorio  = sample(secuencia, longitud)
     string_aleatorio     = "".join(resultado_aleatorio)
     return string_aleatorio
+
+#Implementacion extra
+#Eliminar un servicio
+@servicios_blueprint.route('/eliminar_servicio', methods=['POST'])
+@login_required
+def eliminar_servicio():
+    servicio_id = request.form.get('servicio_id')
+    eliminado = ModeloServicio.eliminar_servicio(current_user.id, servicio_id)
+    if eliminado:
+        flash("Servicio eliminado exitosamente.")
+    else:
+        flash("Error al eliminar el favorito.")
+    return redirect(url_for('perfil'))
