@@ -13,7 +13,7 @@
 
   <div class="contenedor_derecho">
     <div class="imagen_descripcion">
-      <img src="{{ url_for('static', filename='img/uploads/' + servicio.imagen) }}" alt="">
+      <img src="{{ url_for('static', filename='img/uploads/' + servicio.imagen) }}" alt="" class="card-img-top">
     </div>
     <div class="favoritos">
       <form action="{{ url_for('agregar_a_favoritos') }}" method="POST">
