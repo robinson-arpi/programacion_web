@@ -41,8 +41,8 @@ app.register_blueprint(terminos_blueprint)
 
 # Manejo de logueo
 @login_manager_app.user_loader
-def cargar_usuario(id):
-    return Usuario.query.get(id == id)
+def load_user(id):
+    return Usuario.query.get(int(id))
 
 # Incio de app para amndar a login
 @app.route('/')
@@ -110,7 +110,7 @@ def agregar_usuario():
         db.session.commit()
         credenciales_usuario = [request.form['email'],request.form['password1']]
         usuario_logueado = ModeloUsuario.login(credenciales_usuario)
-        login_user(usuario_logueado, remember=True)
+        login_user(usuario_logueado, remember=False)
         return redirect(url_for('perfil'))
     else:
         return render_template('auth/registro.html', usuario = current_user)
@@ -143,7 +143,9 @@ def actualizar_usuario(id):
 @app.route('/perfil')
 @login_required
 def perfil():
-    return render_template('usuario/perfil-usuario.html', usuario = current_user)
+    # Accede a los servicios del usuario
+    #servicios = usuario.servicios
+    return render_template('usuario/perfil-usuario.html', usuario = current_user, servicios = current_user.servicios)
 
 @app.route('/ayuda')
 def ayuda():

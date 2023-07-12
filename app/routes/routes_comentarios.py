@@ -21,14 +21,11 @@ def comentarios_route():
         )
         if (resultado):
             flash("Comentario Agregado")
-            cat = Categoria.query.all()
-            com = ModeloComentario.get_all()
-            return render_template('comments/comentarios.html', categorias = cat, comentarios = com, usuario = current_user)
         else:
-            flash("Ocurrió un error al crear un comentario")
-            cat = Categoria.query.all()
-            com = ModeloComentario.get_all()
-            return render_template('comments/comentarios.html', categorias = cat, comentarios = com, usuario = current_user)
+            flash("Ocurrió un error al crear un comentario",'error')
+        cat = Categoria.query.all()
+        com = ModeloComentario.get_all()
+        return render_template('comments/comentarios.html', categorias = cat, comentarios = com, usuario = current_user)
     else:
         cat = Categoria.query.all()
         com = ModeloComentario.get_all()
