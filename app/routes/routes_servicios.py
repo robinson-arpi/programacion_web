@@ -1,4 +1,4 @@
-from flask import render_template, Blueprint, flash, request, get_flashed_messages
+from flask import render_template, Blueprint, flash, request, get_flashed_messages, redirect, url_for
 from flask_login import login_required, current_user
 from ..models.entities.Servicio import Servicio
 from ..models.entities.Categoria import Categoria
@@ -65,14 +65,13 @@ def agregar_servicio():
             flash('Se ha agregado un nuevo servicio con éxito!', 'success')
 
             cat = Categoria.query.all()  
-            return render_template('services/agregar-servicio.html', categorias=cat)    
+            return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)    
             
         except:
             # Si hubo un error al agregar el servicio
             flash('Hubo un error al agregar el servicio', 'error')
             cat = Categoria.query.all()   
-            return render_template('services/agregar-servicio.html', categorias=cat)
-
+            return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)
     else:
         cat = Categoria.query.all()  
         return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)
@@ -111,3 +110,16 @@ def stringAleatorio():
     resultado_aleatorio  = sample(secuencia, longitud)
     string_aleatorio     = "".join(resultado_aleatorio)
     return string_aleatorio
+
+#Implementacion extra
+#Eliminar un servicio
+@servicios_blueprint.route('/eliminar_servicio', methods=['POST'])
+@login_required
+def eliminar_servicio():
+    servicio_id = request.form.get('servicio_id')
+    eliminado = ModeloServicio.eliminar_servicio(current_user.id, servicio_id)
+    if eliminado:
+        flash("Servicio eliminado exitosamente.")
+    else:
+        flash("Error al eliminar el favorito.")
+    return redirect(url_for('perfil'))

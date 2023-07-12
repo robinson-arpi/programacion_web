@@ -8,6 +8,7 @@ from app import db
 class Usuario(db.Model, UserMixin):
     __tablename__ = 'usuarios'
     id = Column(Integer, primary_key=True)
+    imagen = Column(String(100))
     email = Column(String(100), nullable=False, unique = True)
     username = Column(String(150), nullable=False, unique=True)
     nombre = Column(String(150), nullable=False)
