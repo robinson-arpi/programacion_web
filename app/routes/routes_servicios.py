@@ -73,15 +73,6 @@ def agregar_servicio():
             cat = Categoria.query.all()   
             return render_template('services/agregar-servicio.html', categorias=cat)
 
-<<<<<<< HEAD
-=======
-        # Create new service
-        servicio = Servicio(usuario_id, titulo, descripcion, ciudad, categoria, disponibilidad, requisitos, imagen)
-        db.session.add(servicio)
-        db.session.commit()     
-        cat = Categoria.query.all()   
-        return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)
->>>>>>> 372b214d1436c24f3b9198bc8bdc1fd3d9395431
     else:
         cat = Categoria.query.all()  
         return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)

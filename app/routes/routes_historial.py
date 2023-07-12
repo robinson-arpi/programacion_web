@@ -1,5 +1,5 @@
 from flask import render_template
-from flask_login import login_required
+from flask_login import login_required, current_user
 from flask import Blueprint, render_template
 
 historial_blueprint = Blueprint('historial', __name__)
@@ -8,7 +8,7 @@ historial_blueprint = Blueprint('historial', __name__)
 @historial_blueprint.route('/historial')
 @login_required
 def historial_route():
-    return render_template('historial/historial.html')
+    return render_template('historial/historial.html', usuario = current_user)
 
 # Ruta protegida de historial
 @historial_blueprint.route('/protected_historial')
