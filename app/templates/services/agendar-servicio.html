@@ -20,12 +20,12 @@
             <div class="section2">
                 <p id="nom-servicio"> <span style="font-weight: bold;">Título:</span> {{servicio.titulo}} <br>
                 <span style="font-weight: bold;">Operador:</span> {{operador.nombre}} {{operador.apellido}}  <br><span style="font-weight: bold;">Disponibilidad:</span>{{servicio.disponibilidad}}</p>
-                <input type="hidden" name="idDuenio" value="{{ operador.id }}">
+                
             </div>
             <form class="form_registro" action="{{ url_for('agendar.crear_agendamiento') }}" method = "POST">
                 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <input type="hidden" name="idServicio" value="{{ servicio.id }}">
-                
+                <input type="hidden" name="idDuenio" value="{{ operador.id }}">
                 <input type="hidden" name="disponibilidad" value="{{servicio.disponibilidad}}">
                 <div class = "entrada">
                     <input type = "date" class="fecha" name = "fecha" id="fecha" required title="Elija una fecha por favor.">

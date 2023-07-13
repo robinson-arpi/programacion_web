@@ -18,9 +18,9 @@ class Agendamiento(db.Model, UserMixin):
     servicio = relationship("Servicio", back_populates="agendamientos")
 
 
-    def __init__(self, idUser, id_duenio, idService, date, hour, direction):
+    def __init__(self, idUser, idDue, idService, date, hour, direction):
         self.idUsuario = idUser
-        self.id_duenio = id_duenio
+        self.idDuenio = idDue
         self.idServicio = idService
         self.fecha = date
         self.hora = hour
