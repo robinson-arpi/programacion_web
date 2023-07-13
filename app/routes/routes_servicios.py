@@ -2,6 +2,7 @@ from flask import render_template, Blueprint, flash, request, get_flashed_messag
 from flask_login import login_required, current_user
 from ..models.entities.Servicio import Servicio
 from ..models.entities.Categoria import Categoria
+from ..models.entities.Busqueda import Busqueda
 from ..models.ModeloServicios import ModeloServicio
 from .. import db
 from .. import app
@@ -25,8 +26,11 @@ def servicios_route():
 def buscar_servicios():
     # Obtener el término de búsqueda ingresado por el usuario
     termino_busqueda = request.args.get('busqueda', '')
+    # print(termino_busqueda)
 
-    print(termino_busqueda)
+    busqueda = Busqueda(current_user.id, termino_busqueda)
+    db.session.add(busqueda)
+    db.session.commit()
 
     # Realizar la búsqueda en la base de datos y obtener los servicios correspondientes
     servicios = ModeloServicio.buscar_servicios(termino_busqueda)
