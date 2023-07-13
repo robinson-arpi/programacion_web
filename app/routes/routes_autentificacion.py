@@ -221,12 +221,6 @@ def cronograma():
     Agendado = ModeloAgendamiento.get_agendamiento_usuario(current_user.id)
     return render_template('services/cronograma.html', usuario = current_user)
 
-
-
-
-
-
-
 # ------------------------------------------------------
 # Sección de acerca de nosotros
 @app.route('/acerca_de_nosotros')
