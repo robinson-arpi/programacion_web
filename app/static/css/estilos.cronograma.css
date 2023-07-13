@@ -20,14 +20,13 @@
   background: var(--primary-clr);
   border-radius: 50px;
 }
-
-
 .contenedor{
   width: 100%;
   height: 660px;
   color: #fff;
   display: flex;
   background-color: #373c4f;
+  position: relative;
 }
 
 .left {
@@ -73,11 +72,6 @@
   background-color: rgba(211, 212, 214, 0.8431372549);
   transform: translateY(-50%);
 }
-/* .calendar::before {
-  height: 94%;
-  left: calc(100% + 12px);
-  background-color: rgb(153, 153, 153);
-} */
 .calendar .month {
   width: 100%;
   height: 60px;
@@ -132,18 +126,6 @@
   cursor: pointer;
   border: 1px solid #f5f5f5;
 }
-/* .calendar .days .day:nth-child(7n + 1) {
-  border-left: 2px solid #f5f5f5;
-}
-.calendar .days .day:nth-child(7n) {
-  border-right: 2px solid #f5f5f5;
-}
-.calendar .days .day:nth-child(-n + 7) {
-  border-top: 2px solid #f5f5f5;
-}
-.calendar .days .day:nth-child(n + 29) {
-  border-bottom: 2px solid #f5f5f5;
-} */
 
 .calendar .days .day:not(.prev-date, .next-date):hover {
   color: #fff;
@@ -159,7 +141,7 @@
   color: #fff;
   background-color: var(--primary-clr);
 }
-/* .calendar .days .active::before {
+.calendar .days .active::before {
   content: "";
   position: absolute;
   top: 0;
@@ -167,7 +149,7 @@
   width: 100%;
   height: 100%;
   box-shadow: 0 0 10px 2px var(--primary-clr);
-} */
+}
 .calendar .days .today {
   font-size: 2rem;
 }
@@ -254,8 +236,8 @@
 
 
 .right .today-date .event-day {
-  margin-right: 200px;
-  font-size: 2rem;
+  margin-right: 150px;
+  font-size: 1.8rem;
   color: white;
 }
 .right .today-date .event-date {
@@ -288,11 +270,23 @@
 .events .event:hover {
   background: linear-gradient(90deg, var(--primary-clr), transparent);
 }
-.events .event .title {
+.events .event .title{
   display: flex;
   align-items: center;
   pointer-events: none;
 }
+.no-event {
+  height: 100px; /* Ajusta el valor de altura según sea necesario */
+  text-align: center;
+  margin-top: 100px; /* Puedes usar margin-top en lugar de margin-bottom */
+}
+
+
+.no-event h3 {
+  font-size: 20px;
+  text-align: center;
+}
+
 .events .event .title .event-title {
   font-size: 1rem;
   margin-left: 20px;
@@ -335,11 +329,14 @@
   display: flex;
 }
 .botones{
-  width: 100%;
+  width: 50%;
+  position: absolute;
+  bottom:30px;
+  right: 10px;
 }
 .botones .salir {
   border: none;
-  width: 45%;
+  width: 35%;
   height: 50px;
   font-size: var(--tamano-texto);
   font-weight: bold;
@@ -347,221 +344,14 @@
   border-radius: 25px;
   color: var(--color-texto);
   cursor: pointer;
-  margin-top: 70px;
-  margin-left: 250px;
+  margin-top: 100px;
+  margin-left: 400px;
 }
 .botones .salir:hover {
   color: var(--color-fondo);
   transition: 0.5s;
   box-shadow: 0 0 10px var(--color-fuerte2);
 }
-
-
-
-/* .add-event {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  color: #878895;
-  border: 2px solid #878895;
-  opacity: 0.5;
-  border-radius: 50%;
-  background-color: transparent;
-  cursor: pointer;
-}
-.add-event:hover {
-  opacity: 1;
-}
-.add-event i {
-  pointer-events: none;
-}
-.events .no-event {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #878895;
-}
-.add-event-wrapper {
-  position: absolute;
-  bottom: 100px;
-  left: 50%;
-  width: 90%;
-  max-height: 0;
-  overflow: hidden;
-  border-radius: 5px;
-  background-color: #fff;
-  transform: translateX(-50%);
-  transition: max-height 0.5s ease;
-}
-.add-event-wrapper.active {
-  max-height: 300px;
-}
-.add-event-header {
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
-  color: #373c4f;
-  border-bottom: 1px solid #f5f5f5;
-}
-.add-event-header .close {
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-.add-event-header .close:hover {
-  color: var(--primary-clr);
-}
-.add-event-header .title {
-  font-size: 1.2rem;
-  font-weight: 500;
-}
-.add-event-body {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 20px;
-}
-.add-event-body .add-event-input {
-  width: 100%;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-.add-event-body .add-event-input input {
-  width: 100%;
-  height: 100%;
-  outline: none;
-  border: none;
-  border-bottom: 1px solid #f5f5f5;
-  padding: 0 10px;
-  font-size: 1rem;
-  font-weight: 400;
-  color: #373c4f;
-}
-.add-event-body .add-event-input input::placeholder {
-  color: #a5a5a5;
-}
-.add-event-body .add-event-input input:focus {
-  border-bottom: 1px solid var(--primary-clr);
-}
-.add-event-body .add-event-input input:focus::placeholder {
-  color: var(--primary-clr);
-}
-.add-event-footer {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-}
-.add-event-footer .add-event-btn {
-  height: 40px;
-  font-size: 1rem;
-  font-weight: 500;
-  outline: none;
-  border: none;
-  color: #fff;
-  background-color: var(--primary-clr);
-  border-radius: 5px;
-  cursor: pointer;
-  padding: 5px 10px;
-  border: 1px solid var(--primary-clr);
-}
-.add-event-footer .add-event-btn:hover {
-  background-color: transparent;
-  color: var(--primary-clr);
-}
- */
-/* media queries */
-
-/* @media screen and (max-width: 1000px) {
-  body {
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-  .contenedor {
-    min-height: 100vh;
-    flex-direction: column;
-    border-radius: 0;
-    display: grid;
-    grid-template-areas: "izquierdo derecho";
-    grid-template-columns: 1fr;
-  }
-  .contenedor .left {
-    width: 100%;
-    height: 100%;
-    padding: 20px 0;
-    grid-area: izquierdo;
-  }
-  .contenedor .right {
-    width: 100%;
-    height: 100%;
-    padding: 20px 0;
-    grid-area: derecho;
-  }
-  .calendar::before,
-  .calendar::after {
-    top: 100%;
-    left: 50%;
-    width: 97%;
-    height: 12px;
-    border-radius: 0 0 5px 5px;
-    transform: translateX(-50%);
-  }
-  .calendar::before {
-    width: 94%;
-    top: calc(100% + 12px);
-  }
-  .events {
-    padding-bottom: 340px;
-  }
-}
-@media screen and (max-width: 750px) {
-  .contenedor {
-    display: grid;
-    grid-template-areas: "left" "right";
-    grid-template-rows: auto auto;
-    height: 1300px;
-  }
-  .calendar .right {
-    grid-area: derecho;
-  }
-  .calendar .left {
-    grid-area: izquierdo;
-  }
-  .calendar .month {
-    height: 75px;
-  }
-  .calendar .weekdays {
-    height: 50px;
-  }
-  .calendar .days .day {
-    height: 40px;
-    font-size: 0.8rem;
-  }
-  .calendar .days .days.active,
-  .calendar .days .days.today {
-    font-size: 1rem;
-  }
-  .right .today-date {
-    padding: 80px;
-  }
-} */
 
 @media screen and (max-width: 1000px) {
   body {
