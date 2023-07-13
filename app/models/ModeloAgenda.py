@@ -10,6 +10,12 @@ class ModeloAgendamiento():
             return Agendamiento.query.filter_by(id = idUser).first()
         except Exception as ex:
             raise Exception(ex)
+    @classmethod
+    def get_all(self):
+        try:
+            return Agendamiento.query.all()
+        except Exception as ex:
+            raise Exception(ex)
     
     # Crear un nuevo agendamiento a la base de datos
     @classmethod
@@ -17,7 +23,6 @@ class ModeloAgendamiento():
         try: 
             nuevo_agendamiento = Agendamiento(idUser=id_usuario,idDue=id_duenio, idService=id_servicio,
                                              date=fecha, hour=hora, direction=direccion)
-
             db.session.add(nuevo_agendamiento)
             db.session.commit()
             if nuevo_agendamiento:
