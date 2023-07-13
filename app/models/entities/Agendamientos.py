@@ -16,7 +16,7 @@ class Agendamiento(db.Model, UserMixin):
 
     usuario = relationship("Usuario", back_populates="agendamientos")
     servicio = relationship("Servicio", back_populates="agendamientos")
-
+    
 
     def __init__(self, idUser, idDue, idService, date, hour, direction):
         self.idUsuario = idUser
