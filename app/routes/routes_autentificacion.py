@@ -219,7 +219,6 @@ def agregar_a_favoritos():
 def cronograma():
     print(current_user.id)
     Agendado = ModeloAgendamiento.get_agendamiento_usuario(current_user.id)
-    print((Agendado.direccion))
     return render_template('services/cronograma.html', usuario = current_user)
 
 

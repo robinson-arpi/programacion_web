@@ -25,6 +25,7 @@ def agendar_route():
 def crear_agendamiento():
     disponibilidad = request.form.get('disponibilidad')
     idServicio = request.form.get('idServicio')
+    idDuenio = request.form.get('idDuenio')
     fecha = request.form.get('fecha')
     hora = request.form.get('hora')
     direccion = request.form.get('direccion')
@@ -37,14 +38,14 @@ def crear_agendamiento():
         return redirect(url_for('descripcion_servicios', id = idServicio))
     else:
         if ((disponibilidad == 'Todo el día') or (disponibilidad == 'Virtual')):
-            aux2 = ModeloAgendamiento.crear_agendamiento(id_usuario = current_user.id, id_servicio = idServicio, fecha = fecha, hora=hora, direccion=direccion)
+            aux2 = ModeloAgendamiento.crear_agendamiento(id_usuario = current_user.id, id_duenio = idDuenio, id_servicio = idServicio, fecha = fecha, hora=hora, direccion=direccion)
             if aux2:
                 flash("Su agendamiento ha sido creado.")
             else:
                 flash("Error al crear su agendamiento.", "error")
         elif ((disponibilidad == 'Por la mañana')):
             if (hora_entregada > time(6,0) and hora_entregada < time(12,0)):
-                aux2 = ModeloAgendamiento.crear_agendamiento(id_usuario = current_user.id, id_servicio = idServicio, fecha = fecha, hora=hora, direccion=direccion)
+                aux2 = ModeloAgendamiento.crear_agendamiento(id_usuario = current_user.id, id_duenio = idDuenio, id_servicio = idServicio, fecha = fecha, hora=hora, direccion=direccion)
                 if aux2:
                     flash("Su agendamiento ha sido creado.")
                 else:
@@ -54,7 +55,7 @@ def crear_agendamiento():
 
         elif ((disponibilidad == 'Por la tarde')):
             if (hora_entregada > time(13,0) and hora_entregada < time(17,0)):
-                aux2 = ModeloAgendamiento.crear_agendamiento(id_usuario = current_user.id, id_servicio = idServicio, fecha = fecha, hora=hora, direccion=direccion)
+                aux2 = ModeloAgendamiento.crear_agendamiento(id_usuario = current_user.id, id_duenio = idDuenio, id_servicio = idServicio, fecha = fecha, hora=hora, direccion=direccion)
                 if aux2:
                     flash("Su agendamiento ha sido creado.")
                 else:
@@ -64,7 +65,7 @@ def crear_agendamiento():
 
         elif ((disponibilidad == 'Por la noche')):
             if (hora_entregada > time(18,0) and hora_entregada < time(23,0)):
-                aux2 = ModeloAgendamiento.crear_agendamiento(id_usuario = current_user.id, id_servicio = idServicio, fecha = fecha, hora=hora, direccion=direccion)
+                aux2 = ModeloAgendamiento.crear_agendamiento(id_usuario = current_user.id, id_duenio = idDuenio, id_servicio = idServicio, fecha = fecha, hora=hora, direccion=direccion)
                 if aux2:
                     flash("Su agendamiento ha sido creado.")
                 else:

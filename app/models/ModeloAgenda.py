@@ -13,9 +13,9 @@ class ModeloAgendamiento():
     
     # Crear un nuevo agendamiento a la base de datos
     @classmethod
-    def crear_agendamiento(self, id_usuario, id_servicio, fecha, hora, direccion):
+    def crear_agendamiento(self, id_usuario,id_duenio, id_servicio, fecha, hora, direccion):
         try: 
-            nuevo_agendamiento = Agendamiento(idUser=id_usuario, idService=id_servicio,
+            nuevo_agendamiento = Agendamiento(idUser=id_usuario,id_duenio = id_duenio, idService=id_servicio,
                                              date=fecha, hour=hora, direction=direccion)
             db.session.add(nuevo_agendamiento)
             db.session.commit()
