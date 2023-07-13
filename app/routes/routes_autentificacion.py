@@ -4,6 +4,7 @@ from flask import Flask
 from ..models.ModeloUsuario import ModeloUsuario
 from ..models.ModeloServicios import ModeloServicio
 from ..models.ModeloFavoritos import ModeloFavorito
+from ..models.ModeloAgenda import ModeloAgendamiento
 from ..models.entities.Usuario import Usuario
 from ..models.entities.Servicio import Servicio
 from ..models.entities.Contactenos import Contactenos
@@ -216,7 +217,15 @@ def agregar_a_favoritos():
 @app.route('/cronograma')
 @login_required
 def cronograma():
+    print(current_user.id)
+    Agendado = ModeloAgendamiento.get_agendamiento_usuario(current_user.id)
     return render_template('services/cronograma.html', usuario = current_user)
+
+
+
+
+
+
 
 # ------------------------------------------------------
 # Sección de acerca de nosotros
