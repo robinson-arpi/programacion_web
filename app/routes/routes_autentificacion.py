@@ -271,4 +271,4 @@ def separarInformacionCronograma(lista):
 # Sección de acerca de nosotros
 @app.route('/acerca_de_nosotros')
 def acerca_de_nosotros():
-    return render_template('page_statics/acerca-de-nosotros.html',usuario = current_user)
+    return render_template('page_statics/acerca-de-nosotros.html', usuario = current_user)
