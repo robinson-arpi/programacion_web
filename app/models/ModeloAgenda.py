@@ -15,8 +15,14 @@ class ModeloAgendamiento():
     @classmethod
     def crear_agendamiento(self, id_usuario,id_duenio, id_servicio, fecha, hora, direccion):
         try: 
-            nuevo_agendamiento = Agendamiento(idUser=id_usuario,id_duenio = id_duenio, idService=id_servicio,
+            nuevo_agendamiento = Agendamiento(idUser=id_usuario,idDue=id_duenio, idService=id_servicio,
                                              date=fecha, hour=hora, direction=direccion)
+           
+            print(nuevo_agendamiento.id)
+            print(nuevo_agendamiento.idUsuario)
+            print(nuevo_agendamiento.idDuenio)
+            print(nuevo_agendamiento.idServicio)
+            print(nuevo_agendamiento.hora)
             db.session.add(nuevo_agendamiento)
             db.session.commit()
             if nuevo_agendamiento:
