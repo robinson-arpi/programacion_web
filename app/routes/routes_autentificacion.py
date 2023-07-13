@@ -11,6 +11,7 @@ from ..models.entities.Contactenos import Contactenos
 from ..models.entities.Categoria import Categoria
 from ..models.entities.Correo import Correo
 from ..models.entities.Comentarios import Comentario
+from ..models.entities.Cronograma import Cronograma
 from flask import render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
@@ -219,13 +220,14 @@ def cronograma():
     elementos = []
     for ag in Agendado:
         if ag.idDuenio == current_user.id:
-            elementos.append(Cronograma())
-            print(ag.direccion)
+            cronograma = Cronograma(ag.fecha,ModeloServicio.get_by_id(ag.idServicio).titulo, ModeloUsuario.get_by_id(ag.idUsuario).nombre+" "+ModeloUsuario.get_by_id(ag.idUsuario).apellido, ag.direccion, ag.hora)
+            print(cronograma)
+            """ print(ag.direccion)
             print(ModeloUsuario.get_by_id(ag.idUsuario).nombre)
             print(ModeloUsuario.get_by_id(ag.idUsuario).apellido)
             print(ModeloServicio.get_by_id(ag.idServicio).titulo)
             print(ag.hora)
-            print(ag.fecha)
+            print(ag.fecha) """
     return render_template('services/cronograma.html', usuario = current_user)
 
 # ------------------------------------------------------
