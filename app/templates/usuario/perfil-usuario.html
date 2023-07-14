@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/estilos_generales.css')}}">
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/estilo_perfil.css')}}">
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/styles_buscador.css')}}">
+<link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/estilo_terminos.css')}}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 {% endblock %}
 
 {% block cuerpo %}
@@ -159,61 +161,39 @@
             </section>
             
             <section class="servicios">
-                <h2>Historial</h2>
-                <div class="row mt-4">
+                <h2>Servicios Agendados</h2>
+              {% if agendamientos %}
+              <div class="row mt-4">
+                {% for serAgen in agendamientos %}
                   <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="card service-box">
-                      <div class="card-header">
-                        <button type="button" class="btn btn-danger btn-sm float-right">
-                          <!-- icono de basurero -->
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                          </svg>
-                        </button>
+                      <div class="card_fav service-box">
+                          <div class="card-header">
+                              <form>
+                                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                  <input type="hidden" name="servicio_id" value="{{ serAgen['agendamiento'].id }}">
+                                  <button type="submit" class="btn btn-danger btn-sm float-right" id="eliminar_favorito1">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
+                                          <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                                      </svg>
+                                  </button>
+                              </form>
+                          </div>
+                          <img src="static/img/uploads/{{ serAgen['servicio'].imagen }}" class="card-img-top" alt="Servicio 1">
+                          <div class="card-body">
+                              <h5 class="card-title">{{serAgen['servicio'].titulo}}</h5>
+                              <p class="card-text">{{serAgen['agendamiento'].fecha}} - {{serAgen['agendamiento'].hora}}</p>
+                              <a href="/descripcion_servicios?id={{ serAgen.id }}" class="btn btn-rosado">Más información</a>
+                          </div>
                       </div>
-                      <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Servicio 1">
-                      <div class="card-body">
-                        <h5 class="card-title">Servicio 1</h5>
-                        <p class="card-text">Descripción del servicio 1.</p>
-                        <a href="../HTML/descripcion_servicios.html" class="btn btn-rosado">Más información</a>
-                      </div>
-                    </div>
                   </div>
-                  <div class="col-md-3 col-sm-6 mb-4" id = "servicio_h2">
-                    <div class="card service-box">
-                      <div class="card-header">
-                        <button type="button" class="btn btn-danger btn-sm float-right" id = "eliminar_servicio_h2">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                          </svg>
-                        </button>
-                      </div>
-                      <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Servicio 2">
-                      <div class="card-body ">
-                        <h5 class="card-title">Servicio 2</h5>
-                        <p class="card-text">Descripción del servicio 2.</p>
-                        <a href="../HTML/descripcion_servicios.html" class="btn btn-rosado">Más información</a>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-3 col-sm-6 mb-4" id = "servicio_h3">
-                    <div class="card service-box">
-                      <div class="card-header">
-                        <button type="button" class="btn btn-danger btn-sm float-right" id = "eliminar_servicio_h3">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                          </svg>
-                        </button>
-                      </div>
-                      <img src="https://via.placeholder.com/350x200" class="card-img-top" alt="Servicio 2">
-                      <div class="card-body ">
-                        <h5 class="card-title">Servicio 3</h5>
-                        <p class="card-text">Descripción del servicio 2.</p>
-                        <a href="../HTML/descripcion_servicios.html" class="btn btn-rosado">Más información</a>
-                      </div>
-                    </div>
-                  </div>
+                {% endfor %}
+              </div>
+              {% else %}
+                <div class="alert alert-primary alert-dismissible" role="alert" style="background-color:#ffcff1;">
+                  <strong>Aún no ha realizado agendamientos de servicios.</strong>
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
+              {% endif %}
             </section>
 
         </main>
