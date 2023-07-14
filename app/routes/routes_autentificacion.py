@@ -155,7 +155,6 @@ def ayuda():
 #------------------------------------------------------------------
 # Sección de blog
 @app.route('/blog')
-@login_required
 def blog():
     return render_template('page_statics/blog.html', usuario = current_user)
 
@@ -194,6 +193,7 @@ def contacto():
 #Sección de descripción de servicios
 
 @app.route('/descripcion_servicios')
+@login_required
 def descripcion_servicios():
     servicio_id = request.args.get('id') 
     servicio = Servicio.query.get(servicio_id)
@@ -217,7 +217,7 @@ def agregar_a_favoritos():
 @app.route('/cronograma')
 @login_required
 def cronograma():
-    Agendado = ModeloAgendamiento.get_agendamiento_usuario(current_user.id)
+    Agendado = ModeloAgendamiento.get_agendamientos_usuario(current_user.id)
     Agendado = ModeloAgendamiento.get_all()
     elementos = []
     for ag in Agendado:
