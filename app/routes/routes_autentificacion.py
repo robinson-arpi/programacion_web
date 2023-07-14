@@ -4,6 +4,7 @@ from flask import Flask
 from ..models.ModeloUsuario import ModeloUsuario
 from ..models.ModeloServicios import ModeloServicio
 from ..models.ModeloFavoritos import ModeloFavorito
+from ..models.ModeloAgenda import ModeloAgendamiento
 from ..models.entities.Usuario import Usuario
 from ..models.entities.Servicio import Servicio
 from ..models.entities.Contactenos import Contactenos
@@ -143,9 +144,10 @@ def actualizar_usuario(id):
 @app.route('/perfil')
 @login_required
 def perfil():
+    lista_agen = ModeloAgendamiento.get_agendamientos_usuario_json(current_user.id)
     # Accede a los servicios del usuario
     #servicios = usuario.servicios
-    return render_template('usuario/perfil-usuario.html', usuario = current_user, servicios = current_user.servicios)
+    return render_template('usuario/perfil-usuario.html', usuario = current_user, servicios = current_user.servicios, agendamientos = lista_agen)
 
 @app.route('/ayuda')
 def ayuda():
