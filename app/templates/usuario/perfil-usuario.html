@@ -162,29 +162,37 @@
             
             <section class="servicios">
                 <h2>Servicios Agendados</h2>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class="alert alert-primary alert-dismissible" role="alert" style="background-color:#ffcff1">
+                            <strong>{{ message }}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
               {% if agendamientos %}
               <div class="row mt-4">
                 {% for serAgen in agendamientos %}
-                  <div class="col-md-3 col-sm-6 mb-4">
+                  <div class="col-md-3 col-sm-6">
+                    <a href="/descripcion_servicios?id={{ serAgen['servicio'].id }}" style="text-decoration: none; color: black;">
                       <div class="card_fav service-box">
                           <div class="card-header">
-                              <form>
-                                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                                  <input type="hidden" name="servicio_id" value="{{ serAgen['agendamiento'].id }}">
-                                  <button type="submit" class="btn btn-danger btn-sm float-right" id="eliminar_favorito1">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill" viewBox="0 0 16 16">
-                                          <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
-                                      </svg>
-                                  </button>
-                              </form>
+                            <h5 class="card-title" style="font-weight: bold;">📚{{serAgen['servicio'].titulo}}</h5>
                           </div>
                           <img src="static/img/uploads/{{ serAgen['servicio'].imagen }}" class="card-img-top" alt="Servicio 1">
                           <div class="card-body">
-                              <h5 class="card-title">{{serAgen['servicio'].titulo}}</h5>
-                              <p class="card-text">{{serAgen['agendamiento'].fecha}} - {{serAgen['agendamiento'].hora}}</p>
-                              <a href="/descripcion_servicios?id={{ serAgen.id }}" class="btn btn-rosado">Más información</a>
+                              <p class="card-text">📆 <strong>Fecha :</strong> {{serAgen['agendamiento'].fecha}} <br> ⏰ <Strong>Hora:</Strong> {{serAgen['agendamiento'].hora}}</p>                              <form action="{{ url_for('agendar.eliminar_agendamiento') }}" method="POST">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="agendamiento_id" value="{{ serAgen['agendamiento'].id }}">
+                                <button type="submit" class="btn btn-danger btn-sm float-right" id="eliminar_favorito1">
+                                  <strong>🚮 Desagendar</strong>
+                                </button>
+                            </form>
                           </div>
                       </div>
+                    </a>
                   </div>
                 {% endfor %}
               </div>

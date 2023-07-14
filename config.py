@@ -14,8 +14,8 @@ class DevelopmentConfig(Config):
     # Depuracion
     DEBUG = True
     # Enlace a la base de datos
-    #SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:@localhost:3306/sabiduria_en_linea'
-    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:sfq8YzH1yCuC22bu0qEg@containers-us-west-195.railway.app:6733/railway'
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:@localhost:3306/sabiduria_en_linea'
+    #SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:sfq8YzH1yCuC22bu0qEg@containers-us-west-195.railway.app:6733/railway'
 
 config = {
     "development": DevelopmentConfig,
