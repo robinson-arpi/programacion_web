@@ -217,7 +217,7 @@ def agregar_a_favoritos():
 @app.route('/cronograma')
 @login_required
 def cronograma():
-    Agendado = ModeloAgendamiento.get_agendamiento_usuario(current_user.id)
+    Agendado = ModeloAgendamiento.get_agendamientos_usuario(current_user.id)
     Agendado = ModeloAgendamiento.get_all()
     elementos = []
     for ag in Agendado:
