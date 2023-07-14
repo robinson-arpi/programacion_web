@@ -8,6 +8,7 @@ class Agendamiento(db.Model, UserMixin):
     __tablename__ = 'agendamientos'
     id = Column(Integer, primary_key=True)
     idUsuario = Column(Integer, ForeignKey('usuarios.id'))
+    idDuenio = Column(Integer, nullable=False)
     idServicio = Column(Integer, ForeignKey('servicios.id'))
     fecha = Column(Date, nullable=False)
     hora = Column(Time, nullable=False)
@@ -15,10 +16,11 @@ class Agendamiento(db.Model, UserMixin):
 
     usuario = relationship("Usuario", back_populates="agendamientos")
     servicio = relationship("Servicio", back_populates="agendamientos")
+    
 
-
-    def __init__(self, idUser, idService, date, hour, direction):
+    def __init__(self, idUser, idDue, idService, date, hour, direction):
         self.idUsuario = idUser
+        self.idDuenio = idDue
         self.idServicio = idService
         self.fecha = date
         self.hora = hour

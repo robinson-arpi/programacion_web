@@ -1,6 +1,7 @@
 from sqlalchemy import Column, Integer, Text, ForeignKey, Date
 from sqlalchemy.orm import relationship
 from app import db
+from datetime import datetime
 
 class Busqueda(db.Model):
     __tablename__ = 'busquedas'
@@ -12,7 +13,7 @@ class Busqueda(db.Model):
     # Relación con el usuario propietario
     usuario = relationship("Usuario", back_populates="busquedas")
 
-    def __init__(self, usuario_id, texto, fecha):
+    def __init__(self, usuario_id, texto):
         self.usuario_id = usuario_id
         self.texto = texto
-        self.fecha = fecha
+        self.fecha = datetime.now().date()

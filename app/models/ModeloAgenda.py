@@ -30,12 +30,18 @@ class ModeloAgendamiento():
             return lista_resultante
         except Exception as ex:
             raise Exception(ex)
+    @classmethod
+    def get_all(self):
+        try:
+            return Agendamiento.query.all()
+        except Exception as ex:
+            raise Exception(ex)
     
     # Crear un nuevo agendamiento a la base de datos
     @classmethod
-    def crear_agendamiento(self, id_usuario, id_servicio, fecha, hora, direccion):
+    def crear_agendamiento(self, id_usuario,id_duenio, id_servicio, fecha, hora, direccion):
         try: 
-            nuevo_agendamiento = Agendamiento(idUser=id_usuario, idService=id_servicio,
+            nuevo_agendamiento = Agendamiento(idUser=id_usuario,idDue=id_duenio, idService=id_servicio,
                                              date=fecha, hour=hora, direction=direccion)
             db.session.add(nuevo_agendamiento)
             db.session.commit()
