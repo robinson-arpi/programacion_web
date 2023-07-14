@@ -9,6 +9,15 @@ const calendar = document.querySelector(".calendar"),
   eventDay = document.querySelector(".event-day"),
   eventDate = document.querySelector(".event-date"),
   eventsContainer = document.querySelector(".events");
+  addEventBtn = document.querySelector(".add-event"),
+  /* Agregado */
+  addEventWrapper = document.querySelector(".add-event-wrapper "),
+  addEventCloseBtn = document.querySelector(".close "),
+  addEventTitle = document.querySelector(".event-name "),
+  addEventFrom = document.querySelector(".event-time-from "),
+  addEventTo = document.querySelector(".event-time-to "),
+  addEventSubmit = document.querySelector(".add-event-btn ");
+  /*  */
 
 let today = new Date();
 let activeDay;
@@ -88,6 +97,7 @@ function initCalendar() {
       }
     });
     if (i === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth()) {
+      
       if (event) {
         days += `<div class="day today active event">${i}</div>`;
       } else {
@@ -134,7 +144,7 @@ next.addEventListener("click", nextMonth);
 
 initCalendar();
 updateEvents(today.getDate());
-getActiveDay(today.getDate());
+
 
 //function to add active on day
 function addListner() {
@@ -260,7 +270,7 @@ function updateEvents(date) {
               <span class="event-time">Dirección ${event.direction}</span>
             </div>
             <div class="event-time">
-              <span class="event-time">Hora: ${event.time}</span>
+              <span class="event-time">Hora: ${convertTime(event.time)}</span>
             </div>
         </div>`;
       });
@@ -284,3 +294,20 @@ if (!activeDayEl.classList.contains("event")) {
 function salir(event) {
   window.location.href = "home";
 }
+
+function saveEvents() {
+  localStorage.setItem("events", JSON.stringify(eventsArr));
+}
+
+function convertTime(time) {
+  //convert time to 24 hour format
+  let timeArr = time.split(":");
+  let timeHour = timeArr[0];
+  let timeMin = timeArr[1];
+  let timeFormat = timeHour >= 12 ? "PM" : "AM";
+  timeHour = timeHour % 12 || 12;
+  time = timeHour + ":" + timeMin + " " + timeFormat;
+  return time;
+}
+
+

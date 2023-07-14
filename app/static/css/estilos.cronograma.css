@@ -363,7 +363,7 @@
     min-height: 100vh;
     flex-direction: column;
     border-radius: 0;
-    height: 1250px;
+    height: 1400px;
   }
   .contenedor .left {
     width: 100%;
@@ -393,10 +393,8 @@
     width: 100%;
   }
   .botones{
-    width: 80%;
-    transform: translateY(-20%);
-    float: lef;
-    margin-left: -20px;
+    position: relative;
+    left: -80px;
   }
 }
 @media screen and (max-width: 500px) {
