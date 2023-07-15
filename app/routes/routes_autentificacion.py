@@ -145,7 +145,7 @@ def actualizar_usuario(id):
 def perfil():
     # Accede a los servicios del usuario
     #servicios = usuario.servicios
-    return render_template('usuario/perfil-usuario.html', usuario = current_user, servicios = current_user.servicios)
+    return render_template('usuario/perfil-usuario.html', usuario = current_user, servicios = current_user.servicios, servicios_agendados = current_user.agendamientos)
 
 @app.route('/ayuda')
 def ayuda():
