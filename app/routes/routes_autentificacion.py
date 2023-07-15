@@ -1,6 +1,6 @@
 from .. import create_app
 from .. import db
-from flask import Flask
+from datetime import datetime, time
 from ..models.ModeloUsuario import ModeloUsuario
 from ..models.ModeloServicios import ModeloServicio
 from ..models.ModeloFavoritos import ModeloFavorito
@@ -8,12 +8,11 @@ from ..models.ModeloAgenda import ModeloAgendamiento
 from ..models.entities.Usuario import Usuario
 from ..models.entities.Servicio import Servicio
 from ..models.entities.Contactenos import Contactenos
+from ..models.entities.Cronograma import Cronograma
 from ..models.entities.Categoria import Categoria
 from ..models.entities.Correo import Correo
 from ..models.entities.Comentarios import Comentario
-from ..models.entities.Busqueda import Busqueda
-
-
+from ..models.entities.Cronograma import Cronograma
 from flask import render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
@@ -144,9 +143,10 @@ def actualizar_usuario(id):
 @app.route('/perfil')
 @login_required
 def perfil():
+    lista_agen = ModeloAgendamiento.get_agendamientos_usuario_json(current_user.id)
     # Accede a los servicios del usuario
     #servicios = usuario.servicios
-    return render_template('usuario/perfil-usuario.html', usuario = current_user, servicios = current_user.servicios)
+    return render_template('usuario/perfil-usuario.html', usuario = current_user, servicios = current_user.servicios, agendamientos = lista_agen)
 
 @app.route('/ayuda')
 def ayuda():
@@ -155,7 +155,6 @@ def ayuda():
 #------------------------------------------------------------------
 # Sección de blog
 @app.route('/blog')
-@login_required
 def blog():
     return render_template('page_statics/blog.html', usuario = current_user)
 
@@ -194,6 +193,7 @@ def contacto():
 #Sección de descripción de servicios
 
 @app.route('/descripcion_servicios')
+@login_required
 def descripcion_servicios():
     servicio_id = request.args.get('id') 
     servicio = Servicio.query.get(servicio_id)
@@ -217,9 +217,54 @@ def agregar_a_favoritos():
 @app.route('/cronograma')
 @login_required
 def cronograma():
-    print(current_user.id)
-    Agendado = ModeloAgendamiento.get_agendamiento_usuario(current_user.id)
-    return render_template('services/cronograma.html', usuario = current_user)
+    Agendado = ModeloAgendamiento.get_agendamientos_usuario(current_user.id)
+    Agendado = ModeloAgendamiento.get_all()
+    elementos = []
+    for ag in Agendado:
+        type(ag.fecha)
+        if ag.idDuenio == current_user.id:
+            cronograma = Cronograma(ag.fecha,ModeloServicio.get_by_id(ag.idServicio).titulo, ModeloUsuario.get_by_id(ag.idUsuario).nombre+" "+ModeloUsuario.get_by_id(ag.idUsuario).apellido, ag.direccion, ag.hora)
+            elementos.append(cronograma)
+    events_arr = separarInformacionCronograma(elementos)
+    return render_template('services/cronograma.html', usuario = current_user, lista=events_arr)
+
+def time_to_string(obj):
+    if isinstance(obj, time):
+        return obj.strftime('%H:%M:%S')
+    return obj
+
+def separarInformacionCronograma(lista):
+    servicios = []
+    for item in lista:
+        fecha_str = item.fecha
+        nombre = item.nombre
+        cliente = item.cliente
+        direccion = item.direccion
+        hora = item.hora
+        fecha = datetime.strptime(str(fecha_str), '%Y-%m-%d')
+        day = fecha.day
+        month = fecha.month
+        year = fecha.year
+        # Crear el evento
+        event = {
+            'title': nombre,
+            'client': cliente,
+            'direction': direccion,
+            'time': str(hora)
+        }
+        # Buscar si ya existe un evento en servicios para la misma fecha
+        existing_event = next((e for e in servicios if e['day'] == day and e['month'] == month and e['year'] == year), None)
+        if existing_event:
+            existing_event['events'].append(event)
+        else:
+            new_event = {
+                'day': day,
+                'month': month,
+                'year': year,
+                'events': [event]
+            }
+            servicios.append(new_event)
+    return servicios
 
 # ------------------------------------------------------
 # Sección de acerca de nosotros

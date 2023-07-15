@@ -74,6 +74,19 @@ def crear_agendamiento():
             else: 
                 flash("El servicio no está disponible en este horario.", "error")
         return redirect(url_for('descripcion_servicios', id = idServicio))
+
+#Eliminar un servicio Favorito
+@agendar_blueprint.route('/eliminar_agendamiento', methods=['POST'])
+@login_required
+def eliminar_agendamiento():
+    agendamiento_id = request.form.get('agendamiento_id')
+    eliminado = ModeloAgendamiento.eliminar_agendamiento(idAgendamiento=agendamiento_id)
+    if eliminado:
+        flash("Agendamiento eliminado exitosamente.")
+    else:
+        flash("Error al eliminar el agendamiento.")
+    return redirect(url_for('perfil'))
+
 # Ruta protegida de agendar
 @agendar_blueprint.route('/protected_agendar')
 @login_required

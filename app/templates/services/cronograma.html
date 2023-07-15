@@ -3,8 +3,11 @@
 {% block autor_pagina %}Mauro Mizhquiri{% endblock %}
 
 {% block customCSS %}
-
 <link rel="stylesheet" href="{{ url_for('static', filename = 'css/estilos.cronograma.css')}}">
+<script>
+  var listaString = '{{ lista|tojson }}';
+  var lista = JSON.parse(listaString);
+</script>
 {% endblock %}
 
 
@@ -44,69 +47,8 @@
       <div class="event-day">Mie</div>
       <div class="event-date">19 Julio 2023</div>
     </div>
-
-    <div class="events">
-      <div class="event">
-        <div class="title">
-          <i class="fas fa-circle"></i>
-          <h3 class="event-title">Servicio1</h3>
-        </div>
-        <div class="event-time">10:00AM - 12:00PM</div>
-        <div class="event-time">10:00AM - 12:00PM</div>
-        <div class="event-time">10:00AM - 12:00PM</div>
-      </div>
-      <div class="event">
-        <div class="title">
-          <i class="fas fa-circle"></i>
-          <h3 class="event-title">Servicio1</h3>
-        </div>
-        <div class="event-time">10:00AM - 12:00PM</div>
-      </div>
-      <div class="event">
-        <div class="title">
-          <i class="fas fa-circle"></i>
-          <h3 class="event-title">Servicio1</h3>
-        </div>
-        <div class="event-time">10:00AM - 12:00PM</div>
-      </div>
-      <div class="event">
-        <div class="title">
-          <i class="fas fa-circle"></i>
-          <h3 class="event-title">Servicio1</h3>
-        </div>
-        <div class="event-time">10:00AM - 12:00PM</div>
-      </div>
-      <div class="event">
-        <div class="title">
-          <i class="fas fa-circle"></i>
-          <h3 class="event-title">Servicio1</h3>
-        </div>
-        <div class="event-time">10:00AM - 12:00PM</div>
-      </div>
-      <div class="event">
-        <div class="title">
-          <i class="fas fa-circle"></i>
-          <h3 class="event-title">Servicio1</h3>
-        </div>
-        <div class="event-time">10:00AM - 12:00PM</div>
-      </div>
-      <div class="event">
-        <div class="title">
-          <i class="fas fa-circle"></i>
-          <h3 class="event-title">Servicio1</h3>
-        </div>
-        <div class="event-time">10:00AM - 12:00PM</div>
-      </div>
-      <div class="event">
-        <div class="title">
-          <i class="fas fa-circle"></i>
-          <h3 class="event-title">Servicio1</h3>
-        </div>
-        <div class="event-time">10:00AM - 12:00PM</div>
-      </div>
-      
-      
-    </div>
+    
+    <div class="events"></div>
 
     <div class="botones">
       <button class="salir" onclick="salir(event)">Salir</button>
