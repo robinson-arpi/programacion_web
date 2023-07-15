@@ -58,6 +58,11 @@ const listaTransformada = listaOriginal.map(item => {
     events: transformedEvents
   };
 });
+listaTransformada.forEach(item => {
+  item.events.sort((a, b) => {
+    return a.time.localeCompare(b.time);
+  });
+});
 const eventsArr = listaTransformada;
 
 //function to add days in days with class day and prev-date next-date on previous month and next month days and active on today
