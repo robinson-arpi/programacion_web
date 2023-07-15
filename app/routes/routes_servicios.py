@@ -36,7 +36,7 @@ def buscar_servicios():
     servicios = ModeloServicio.buscar_servicios(termino_busqueda)
 
     # Renderizar el template con los resultados de la búsqueda
-    return render_template('services/servicios.html', servicios=servicios, usuario = current_user)
+    return render_template('services/servicios.html', servicios=servicios, usuario = current_user, busqueda = termino_busqueda)
 
 
 @servicios_blueprint.route('/agregar_servicio', methods=['POST', 'GET'])
