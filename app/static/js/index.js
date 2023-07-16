@@ -1,14 +1,3 @@
-//Control de opciones 
-const botonBuscar = document.querySelector(".boton_busqueda");
-
-botonBuscar.addEventListener("click", function(event) {
-  // Verifica si los campos required están llenos
-  var inputs = document.querySelectorAll('.entrada_busqueda');
-  event.preventDefault(); // Evita el envío del formulario por defecto
-  window.location.href = '../HTML/servicios.html';
-  
-});
-
 let bandera = localStorage.getItem('sesion_iniciada') === 'true'
 const sub_menu_usuario= document.querySelector('.sub_menu');
 const menu_opciones_usuario= document.querySelector('.nav_menu_usuario');

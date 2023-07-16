@@ -50,19 +50,29 @@ window.addEventListener("resize", realizarTareaSiPantallaPequena);
 menuButton.addEventListener('click', realizarTareaSiPantallaPequena);
 
 
-const salirElemento = document.getElementById('salir');
-salirElemento.addEventListener('click', function() {
-  localStorage.removeItem("sesion_iniciada");
-});
 
 /*----------------------------------------
 Búsqueda
 ----------------------------------------*/
 
-document.getElementById("btn-busqueda").addEventListener("click", function(event) {
-  var busqueda = document.getElementById("busqueda").value.trim();
-  console.log("Busqueda")
-  if (busqueda === "") {
-    event.preventDefault(); // Evita enviar la solicitud si no hay texto de búsqueda
+$(document).on('click', '#btn-busqueda', function() {
+  const searchTerm = $('#busqueda').val().trim(); // Obtener el contenido del campo de búsqueda
+  
+  if (searchTerm === "") {    
+    // Evitar enviar la solicitud si no hay texto de búsqueda
+    return;
+  } else {
+    // Modificar el atributo href del enlace
+    const url = `/servicios/busqueda?busqueda=${encodeURIComponent(searchTerm)}`; // Construir la URL con el término de búsqueda
+
+    // Realizar una solicitud GET al backend utilizando fetch
+    fetch(url)
+      .then(response => response.text()) // Obtener el cuerpo de la respuesta como texto
+      .then(data => {
+        // Reemplazar el contenido de la página con el HTML recibido
+        document.documentElement.innerHTML = data;
+      })
+      .catch(error => console.error(error));
   }
 });
+

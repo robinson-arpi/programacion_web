@@ -70,5 +70,80 @@ ul {
     flex-basis: 100%;
   }
 }
+.boton {
+  height: 50px;
+  font-size: var(--tamano-texto);
+  font-weight: bold;
+  background: var(--color-fuerte);
+  border: none;
+  border-radius: 25px;
+  color: var(--color-texto);
+  cursor: pointer;
+}
+.boton:hover {
+  color: var(--color-fondo) !important;
+  transition: 0.5s !important;
+  box-shadow: 0 0 10px var(--color-fuerte2) !important;
+}
 
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+form .nombre_completo, form .passwords {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+form .entrada {
+  position: relative;
+  border-bottom: 1px solid silver;
+  margin: 10px 0;
+}
+form .entrada input, form .entrada input[type=date] {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: var(--tamano-texto);
+  border: none;
+  background: none;
+  outline: none;
+}
+form .entrada label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: var(--color-before);
+  transform: translateY(-50%);
+  font-size: var(--tamano-texto);
+  pointer-events: none;
+  transition: 0.5s;
+}
+form .entrada span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--color-fuerte);
+}
+form input:focus ~ label,
+form input:valid ~ label {
+  top: -5px;
+  color: var(--color-texto);
+  font-weight: bold;
+}
+form input:focus ~ span::before,
+form input:valid ~ span::before {
+  width: 100%;
+}
+form .f_nacimiento, form .correo, form .fecha, form .hora {
+  color: white;
+}
+form .f_nacimiento:focus, form .f_nacimiento:valid, form .correo:focus, form .correo:valid, form .fecha:focus, form .fecha:valid, form .hora:focus, form .hora:valid {
+  color: var(--color-texto);
+  font-family: Arial, Helvetica, sans-serif;
+}
 /*# sourceMappingURL=estilo_perfil.css.map */

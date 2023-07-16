@@ -2,6 +2,7 @@ from flask import render_template, Blueprint, flash, request, get_flashed_messag
 from flask_login import login_required, current_user
 from ..models.entities.Servicio import Servicio
 from ..models.entities.Categoria import Categoria
+from ..models.entities.Busqueda import Busqueda
 from ..models.ModeloServicios import ModeloServicio
 from .. import db
 from .. import app
@@ -21,16 +22,21 @@ def servicios_route():
     return render_template('services/servicios.html', servicios = servicios, usuario = current_user)
    
 
-@servicios_blueprint.route('/servicios', methods=['GET'])
+@servicios_blueprint.route('/servicios/busqueda', methods=['GET'])
 def buscar_servicios():
     # Obtener el término de búsqueda ingresado por el usuario
     termino_busqueda = request.args.get('busqueda', '')
+    # print(termino_busqueda)
+
+    busqueda = Busqueda(current_user.id, termino_busqueda)
+    db.session.add(busqueda)
+    db.session.commit()
 
     # Realizar la búsqueda en la base de datos y obtener los servicios correspondientes
     servicios = ModeloServicio.buscar_servicios(termino_busqueda)
 
     # Renderizar el template con los resultados de la búsqueda
-    return render_template('services/servicios.html', servicios=servicios)
+    return render_template('services/servicios.html', servicios=servicios, usuario = current_user, busqueda = termino_busqueda)
 
 
 @servicios_blueprint.route('/agregar_servicio', methods=['POST', 'GET'])
@@ -39,7 +45,6 @@ def agregar_servicio():
     if request.method == 'POST':  
 
         try:
-
             # Si se envía una foto a guardar
             if 'imagen' in request.files:
                 file     = request.files['imagen'] #recibiendo el archivo
@@ -62,7 +67,7 @@ def agregar_servicio():
             db.session.commit()
 
             # Si el servicio se agregó correctamente
-            flash('Se ha agregado un nuevo servicio con éxito!', 'success')
+            flash('Se ha agregado un nuevo servicio con éxito! Puede verlo en el perfil', 'success')
 
             cat = Categoria.query.all()  
             return render_template('services/agregar-servicio.html', categorias=cat, usuario = current_user)    
