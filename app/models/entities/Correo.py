@@ -20,11 +20,17 @@ class Correo:
             self.mail.send(msg)
 
     def getMessageAdmins(self, usuario, correo, mensaje):
-        return "Has recibido un mensaje de un usuario en la sección de 'Contáctenos' de la página web Sabiduría en Linea. A continuación, se muestra el contenido del mensaje:\n\n\nDe: " + str(usuario) + "\nCorreo electrónico: " + str(correo) + "\n\nMensaje: " + str(mensaje) + "\n\n\nSaludos, " + str(usuario)
-        
-
+        return "Has recibido un mensaje de un usuario en la sección de 'Contáctenos' de la página web Sabiduría en Línea. A continuación, se muestra el contenido del mensaje:\n\n\nDe: " + str(usuario) + "\nCorreo electrónico: " + str(correo) + "\n\nMensaje: " + str(mensaje) + "\n\n\nSaludos, " + str(usuario)
+    
+    def getMessageScheduling(self, nombre, titulo, propietario, correo):
+        return "Estimado " + nombre +",\n\n\
+Se le informa que ha realizado un agendamiento de un servicio en nuestro sitio web de Sabuduría en Línea.\n\
+A continuación, se detallan los datos de contacto del propietario del servicio para que pueda contactarlo en caso de requerir detalles específicos.\n\n\
+Servicio: "+titulo+"\nPropietario: "+propietario+"\nCorreo: "+correo+"\n\nSaludos cordiales, Sabíduria en Línea"
+    
     def getMessageUsers(self, nombre, asunto, mensaje):
         return "Estimado "+nombre+", \nGracias por contactarnos. Hemos recibido tu consulta y estamos trabajando en brindarte una respuesta lo antes posible.\n\n\
 Detalles de tu consulta \nAsunto: "+asunto+" \nMensaje: "+mensaje+"\n\nNuestro equipo de soporte revisará tu consulta y te proporcionará una respuesta detallada en breve. \
 Si tienes alguna otra pregunta o necesitas más información, no dudes en contactarnos nuevamente. \n\nApreciamos tu interés en nuestros productos/servicios y estamos aquí \
 para ayudarte en todo lo que necesites. \n\nSaludos cordiales, Sabíduria en Línea"
+
