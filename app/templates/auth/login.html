@@ -36,6 +36,7 @@
                         <input class = "correo" name = "email" type = "email" required>
                         <label>Correo</label>
                     </div>
+                    <span id="mensaje-error" style="color: red;"></span>
                     <div class="entrada">
                         <input class = "password" name = "password" type="password" required>
                         <label>Contraseña</label>
@@ -51,8 +52,30 @@
                         <a href ="/registro">¿Quiere registrarse?</a>
                     </div>
                 </form>
+                <!-- Modal de MostrarMensaje -->
+                <div class="modal fade" id="mensajeModal" tabindex="-1" role="dialog" aria-labelledby="mensajeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="mensajeModalLabel"></h5>
+                            <button id="XCerrarModal" type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body"></div>
+                        <div class="modal-footer">
+                        <button id="btnCerrarModal" type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
             </div>
         </main>
     </div>
 </div>
+{% endblock %}
+
+{% block customJS %}
+    <script src="{{url_for('static', filename = 'js/inicio.js')}}"></script>
 {% endblock %}

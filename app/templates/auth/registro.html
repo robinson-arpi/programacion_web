@@ -41,11 +41,12 @@
                             <label>Apellido</label>
                         </div>
                     </div>  
-                      
+                    <span class="error" id="nombre_completo_error" style="color: red;"></span> <!-- Mensaje de error para el nombre -->
                     <div class = "entrada">
                         <input class = "correo" name = "email" type ="email" required >
                         <label>Correo</label>
                     </div>
+                    <span class="error" id="correo-error" style="color: red;"></span> <!-- Mensaje de error para el correo -->
                     <div class = "passwords">
                         <div class = "entrada">
                             <input class = "password1" name = "password1" type = "password" required>
@@ -56,9 +57,11 @@
                             <label>Confirmar contraseña</label>
                         </div>
                     </div>
+                    <span class="error" id="password-error" style="color: red;"></span> <!-- Mensaje de error para la contraseña -->
+                    <span class="error" id="confirm-password-error" style="color: red;"></span> <!-- Mensaje de error para la confirmación de contraseña -->
                     <div class = "passwords">
                         <div class = "entrada">
-                            <input class = "nombre" name = "username" type = "text" required>
+                            <input class = "nombre" id = "username" name = "username" type = "text" required>
                             <label>Nickname</label>
                         </div>
                         <div class = "entrada">
@@ -66,6 +69,8 @@
                             <label>F. nacimiento</label>
                         </div>
                     </div>
+                    <span class="error" id="username-error" style="color: red;"></span> <!-- Mensaje de error para el nombre de usuario -->
+                    <span class="error" id="fecha-error" style="color: red;"></span> <!-- Mensaje de error para la fecha de nacimiento -->
                         <button class = "iniciar boton_registrar">Registrarme</button>
                     <div class = "registrarse">
                         <a href = "/login">¿Ya tiene una cuenta?</a>

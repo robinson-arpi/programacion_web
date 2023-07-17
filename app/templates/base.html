@@ -51,12 +51,12 @@
       <div class="header_usuario">
         <nav class="lista_desplegable">
             <ul class = "navbar-usuario">
-              <li class = "item_usuario"><a href="/perfil"><i class="fas fa-user"></i>Usuario</a>
-                <ul class = "sub_menu">
-                  <li><a href="/agregar_servicio">Agregar servicio</a></li>
-                  <li><a href="/cronograma">Cronograma</a></li>
-                  <li><a href="/historial">Historial</a></li>
-                  <li  id = "salir" ><a href="/logout">Salir</a></li>
+              <li class = "item_usuario d-flex align-items-center ustify-content-center"><a href="/perfil"><i class="fas fa-user"></i>{{usuario.username}}</a>
+                <ul class = "sub_menu droptown-menu">
+                  <li><a class = "" href="/agregar_servicio">Agregar servicio</a></li>
+                  <li><a class = "" href="/cronograma">Cronograma</a></li>
+                  <li><a class = "" href="/historial">Historial</a></li>
+                  <li  id = "salir" class = "" ><a href="/logout">Salir</a></li>
                 </ul>
               </li>
               <!-- <li class = "item_notificacion"><a href=""><i class="fas fa-bell"></i>Notificaciones</a></li> -->
@@ -109,6 +109,7 @@
     integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
     crossorigin="anonymous"></script>
     <script src="{{ url_for('static', filename = 'js/header_footer.js')}}"></script>
+    <script src="{{url_for('static', filename = 'js/menu_hamburguesa.js')}}"></script>
     {% block customJS %}
     {% endblock %}
 

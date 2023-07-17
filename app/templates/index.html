@@ -18,16 +18,16 @@
       <div class="container">
         <div class="row card-deck">
           {% for categoria in categorias %}
-          <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-1">
-            <div class="card clickable card-body" id = "card">
-              <div class="card-block text-center">
-                <h2><i class="{{ categoria.icono }} fa-3x"></i></h2>
-              </div>
-              <h5 class="card-title text-center">{{ categoria.nombre }}</h5>
-              <p class="card-text">{{ categoria.descripcion }}</p>          
-            </div>  
-          </div>
-        {% endfor %}
+            <div class="col-lg-3 col-md-4 col-sm-6 col-6  mb-1">
+              <div class="card clickable card-body" id = "card">
+                <div class="card-block text-center">
+                  <h2><i class="{{ categoria.icono }} fa-3x"></i></h2>
+                </div>
+                <h5 class="card-title text-center">{{ categoria.nombre }}</h5>
+                <p class="card-text">{{ categoria.descripcion }}</p>          
+              </div>  
+            </div>
+          {% endfor %}
         </div>  
       </div>  
       
@@ -49,7 +49,7 @@
               <h5 class="card-title">{{ comentario.nombre }}</h5>
               <p class="card-text">{{ comentario.calificacion }}</p>
               <p class="card-text">{{ comentario.mensaje }}</p>
-              <a href="#" class="btn btn-primary">Reportar</a>
+              <a href="#" class="">Reportar</a>
             </div>
           </div> 
         </div>
@@ -63,7 +63,5 @@
 {% endblock %}
 
 {% block customJS %}
-<script src="{{url_for('static', filename = 'js/index.js')}}"></script>
-<script src="{{url_for('static', filename = 'js/menu_hamburguesa.js')}}"></script>
 {% endblock %}
 

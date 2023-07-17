@@ -50,10 +50,6 @@ window.addEventListener("resize", realizarTareaSiPantallaPequena);
 menuButton.addEventListener('click', realizarTareaSiPantallaPequena);
 
 
-const salirElemento = document.getElementById('salir');
-salirElemento.addEventListener('click', function() {
-  localStorage.removeItem("sesion_iniciada");
-});
 
 /*----------------------------------------
 Búsqueda
