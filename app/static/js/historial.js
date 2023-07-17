@@ -32,6 +32,20 @@ searchBoxes.forEach((searchBox) => {
     // Obtener el ID de búsqueda
     const busquedaId = encodeURIComponent(closeIcon.id);
 
+    // Obtener todas las fechas
+    var fechas = document.querySelectorAll('.fecha-container');
+
+    // Recorrer todas las fechas y verificar si tienen elementos de búsqueda asociados
+    for (var i = 0; i < fechas.length; i++) {
+      var fecha = fechas[i];
+      var busquedasFecha = fecha.getElementsByClassName('search-box');
+
+      // Verificar si hay elementos de búsqueda asociados a la fecha
+      if (busquedasFecha.length === 0) {
+        fecha.remove(); // Eliminar la fecha y las búsquedas asociadas del DOM
+      }
+    }
+
     // Obtener el valor del token CSRF
     const csrfToken = document.querySelector('input[name="csrf_token"]').value;
 
@@ -84,33 +98,59 @@ searchBoxes.forEach((searchBox) => {
   });
 });
 
-// para poner las fechas en el historial
-// // Obtener la fecha actual
-// const fechaHoy = new Date();
+// Para realizar las búsquedas
 
-// // Obtener el nombre del día de la semana actual
-// const diasSemana = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
-// const nombreDia = diasSemana[fechaHoy.getDay()];
+// Obtener el campo de entrada de búsqueda
+var busquedaInput = document.getElementById('busquedaH');
 
-// // Obtener la fecha en formato deseado
-// const fechaActual = fechaHoy.toLocaleDateString("es-ES", { 
-//   day: "numeric",
-//   month: "long",
-//   year: "numeric",
-// });
+// Agregar un evento de escucha para detectar cambios en el campo de entrada
+busquedaInput.addEventListener('input', function(event) {
 
-// // Actualizar el contenido del elemento HTML correspondiente
-// document.getElementById("fecha-hoy").textContent = `${nombreDia}, ${fechaActual}`;
+  // Obtener el texto ingresado en el campo de búsqueda
+  var textoBusqueda = event.target.value.toLowerCase();
 
-// // Obtener la fecha de ayer en formato deseado
-// const fechaAyer = new Date(fechaHoy);
-// fechaAyer.setDate(fechaHoy.getDate() - 1);
-// const nombreDiaAyer = diasSemana[fechaAyer.getDay()];
-// const fechaAyerFormateada = fechaAyer.toLocaleDateString("es-ES", { 
-//   day: "numeric",
-//   month: "long",
-//   year: "numeric",
-// });
+  // Obtener todas las cajas de búsqueda
+  var searchBoxes = document.getElementsByClassName('search-box');
 
-// // Actualizar el contenido del elemento HTML correspondiente
-// document.getElementById("fecha-ayer").textContent = `${nombreDiaAyer}, ${fechaAyerFormateada}`;
+  // Recorrer todas las cajas de búsqueda y mostrar solo las que coinciden con el texto de búsqueda
+  for (var i = 0; i < searchBoxes.length; i++) {
+    var searchBox = searchBoxes[i];
+    var searchBoxTexto = searchBox.getElementsByClassName('search-text')[0].textContent.toLowerCase();
+
+    // Verificar si el texto de búsqueda está presente en el texto de la caja de búsqueda
+    if (searchBoxTexto.includes(textoBusqueda)) {
+      searchBox.style.display = 'flex'; // Mostrar la caja de búsqueda
+    } else {
+      searchBox.style.display = 'none'; // Ocultar la caja de búsqueda
+    }
+  }
+
+  // Obtener todas las fechas
+  var fechas = document.querySelectorAll('.fecha-container');
+
+  // Recorrer todas las fechas y verificar si todos los elementos de búsqueda están ocultos
+  for (var i = 0; i < fechas.length; i++) {
+    var fecha = fechas[i];
+    var busquedasFecha = fecha.getElementsByClassName('search-box');
+
+    var todosOcultos = true;
+
+    // Verificar si todos los elementos de búsqueda están ocultos
+    for (var j = 0; j < busquedasFecha.length; j++) {
+      var busqueda = busquedasFecha[j];
+
+      if (busqueda.style.display !== 'none') {
+        todosOcultos = false;
+        break;
+      }
+    }
+
+    // Ocultar el contenedor de fecha si todos los elementos de búsqueda están ocultos
+    if (todosOcultos) {
+      fecha.style.display = 'none';
+    } else {
+      fecha.style.display = 'block';
+    }
+  }
+
+});

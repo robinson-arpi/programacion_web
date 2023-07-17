@@ -1,5 +1,5 @@
 from flask_login import login_required, current_user
-from flask import Blueprint, render_template, flash, request
+from flask import Blueprint, render_template, flash, request, jsonify
 from ..models.modeloBusqueda import ModeloBusqueda
 from datetime import date, timedelta
 import locale
@@ -48,10 +48,11 @@ def eliminar_busqueda():
     # Obtener el término de búsqueda ingresado por el usuario
     busqueda_id = request.form.get('busqueda_id', '')
     eliminado = ModeloBusqueda.eliminar_busqueda(current_user.id, busqueda_id)
-    # if eliminado:
-    #     flash("Búsqueda eliminada exitosamente.")
-    # else:
-    #     flash("Error al eliminar la búsqueda")    
+
+    if eliminado:
+        return jsonify({'mensaje': 'Búsqueda eliminada exitosamente'})
+    else:
+        return jsonify({'mensaje': 'Error al eliminar la búsqueda'})  
 
 # Ruta protegida de historial
 @historial_blueprint.route('/protected_historial')
