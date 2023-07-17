@@ -65,4 +65,18 @@
   color: var(--color-fuerte);
 }
 
+#busquedaH {
+  outline: none !important;
+}
+
+#busquedaH:hover {
+  box-shadow: 0 0 10px var(--color-fuerte);
+  outline: none !important;
+}
+
+.form-control:focus {
+  border-color: var(--color-fuerte); /* Cambia el color del borde de enfoque a morado */
+  box-shadow: 0 0 5px var(--color-fuerte); /* Cambia el sombreado del enfoque con transparencia */
+}
+
 /*# sourceMappingURL=estilo_historial.css.map */

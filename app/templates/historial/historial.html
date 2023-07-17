@@ -21,70 +21,72 @@
 <!-- contenido -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3 border" style="border-color: #c53678; height: 73vh;">
-            <ul class="list-group">
-                <li class="list-group-item"><a href="#historial-hoy" class="list-group-link active" id="hoy">Hoy</a></li>
-                <li class="list-group-item"><a href="#historial-ayer" class="list-group-link" id="ayer">Ayer</a></li>
-                <li class="list-group-item"><a href="#historial-antiguos" class="list-group-link" id="antiguos">Más antiguos</a></li>
-            </ul>
-
-            <div class="header_busqueda">
-                <input class="c_busqueda_entrada entrada_busqueda" type="text" id="busqueda" name="busqueda" placeholder="Buscar en el historial" onkeydown="if(event.keyCode === 13) document.getElementById('btn-busqueda').click()"></input>
-                <button class="c_busqueda_boton boton_busqueda" id="btn-busqueda" href=""><i class="fas fa-search"></i></button>
+        <div class="col-md-12 col-lg-3 border  mb-2" style="border: solid 1px #c53678; height: 71vh; height: auto;">
+          <div class="input-group mb-3 mt-3">
+            <input type="text" class="form-control" id="busquedaH" name="busqueda" placeholder="Buscar en el historial" style="border: solid 1px #c53678;">
+          </div>
+      
+          <ul class="list-group">
+            <li class="list-group-item"><a href="#historial-hoy" class="list-group-link active" id="hoy">Hoy</a></li>
+            <li class="list-group-item"><a href="#historial-ayer" class="list-group-link" id="ayer">Ayer</a></li>
+            <li class="list-group-item"><a href="#historial-antiguos" class="list-group-link" id="antiguos">Más antiguos</a></li>
+          </ul>
+        </div>
+      
+        <div class="col-md-12 col-lg-9">
+          <div id="historial-container" style="height: 71vh; overflow-y: auto; overflow-x: hidden;">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <div id="historial-hoy">
+              <h6> Hoy - <span id="fecha-hoy">{{ fecha_actual }}</span></h6>
+              <!-- historial de hoy -->
+              {% for busqueda in busquedas_hoy %}
+              <div class="search-box" id="h{{ loop.index }}">
+                <span class="search-text">{{ busqueda.texto }}</span>
+                <span class="search-icons">
+                  <i class="fas fa-search"></i>
+                  <i class="fas fa-times" id="{{ busqueda.id }}"></i>
+                </span>
+              </div>
+              {% endfor %}
             </div>
-
-        </div>       
-
-        <div class="col-9">
-            <div id="historial-container" style="height: 73vh; overflow-y: auto; overflow-x: hidden;">
-                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                <div id="historial-hoy">
-                    <h6> Hoy - <span id="fecha-hoy">{{ fecha_actual }}</span></h6>
-                    <!-- historial de hoy -->
-                    {% for busqueda in busquedas_hoy %}
-                    <div class="search-box" id="h{{ loop.index }}">
-                        <span class="search-text">{{ busqueda.texto }}</span>
-                        <span class="search-icons">
-                            <i class="fas fa-search"></i>
-                            <i class="fas fa-times" id="{{ busqueda.id }}"></i>
-                        </span>
-                    </div>
-                    {% endfor %}
-                </div>
-        
-                <div id="historial-ayer">
-                    <h6> Ayer - <span id="fecha-ayer">{{ fecha_ayer }}</span></h6>
-                    <!-- historial de ayer -->
-                    {% for busqueda in busquedas_ayer %}
-                    <div class="search-box" id="h{{ loop.index }}">
-                        <span class="search-text">{{ busqueda.texto }}</span>
-                        <span class="search-icons">
-                            <i class="fas fa-search"></i>
-                            <i class="fas fa-times" id="{{ busqueda.id }}"></i>
-                        </span>
-                    </div>
-                    {% endfor %}
-                </div>
-        
-                <div id="historial-antiguos">
-                    <h6 style="color: #c53678; padding-bottom: 10px;"> Anteriores búsquedas</h6>
-                    {% for fecha, busquedas_fecha in busquedas_antiguas.items() %}
+      
+            <div id="historial-ayer">
+              <h6> Ayer - <span id="fecha-ayer">{{ fecha_ayer }}</span></h6>
+              <!-- historial de ayer -->
+              {% for busqueda in busquedas_ayer %}
+              <div class="search-box" id="h{{ loop.index }}">
+                <span class="search-text">{{ busqueda.texto }}</span>
+                <span class="search-icons">
+                  <i class="fas fa-search"></i>
+                  <i class="fas fa-times" id="{{ busqueda.id }}"></i>
+                </span>
+              </div>
+              {% endfor %}
+            </div>
+      
+            <div id="historial-antiguos">
+              <h6 style="color: #c53678; padding-bottom: 10px;"> Anteriores búsquedas</h6>
+              {% for fecha, busquedas_fecha in busquedas_antiguas.items() %}
+                {% if busquedas_fecha %}
+                  <div class="fecha-container">
                     <h6> {{ fecha }} </h6>
                     <!-- historial de la fecha -->
                     {% for busqueda in busquedas_fecha %}
-                    <div class="search-box" id="h{{ loop.index }}">
+                      <div class="search-box" id="h{{ loop.index }}">
                         <span class="search-text">{{ busqueda.texto }}</span>
                         <span class="search-icons">
-                            <i class="fas fa-search"></i>
-                            <i class="fas fa-times" id="{{ busqueda.id }}"></i>
+                          <i class="fas fa-search"></i>
+                          <i class="fas fa-times" id="{{ busqueda.id }}"></i>
                         </span>
-                    </div>
+                      </div>
                     {% endfor %}
-                    {% endfor %}
-                </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
             </div>
+          </div>
         </div>
-    </div>
+      </div>      
 </div>
 {% endblock %}
 
@@ -92,5 +94,6 @@
 {% block customJS %}    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>    
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
     <script src="{{url_for('static', filename = 'js/historial.js')}}"></script>
 {% endblock %}

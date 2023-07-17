@@ -24,8 +24,10 @@ class ModeloBusqueda():
             if busqueda:
                 db.session.delete(busqueda)
                 db.session.commit()
+                print("Eliminado")
                 return True
             else:
+                print("No eliminado")
                 return False
         except Exception as ex:
             raise Exception(str(ex))
