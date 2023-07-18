@@ -5,7 +5,6 @@
 {% block customCSS %}
     <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/styles_buscador.css')}}">
     <link rel = "stylesheet" href = "{{ url_for('static', filename = 'css/estilo_terminos.css')}}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 {% endblock %}
 
 {% block cuerpo %}
@@ -43,7 +42,7 @@
                 <div class="card-body">
                     <h5 class="card-title">{{serFav.titulo}}</h5>
                     <p class="card-text">{{serFav.descripcion}}</p>
-                    <a href="/descripcion_servicios?id={{ serFav.id }}" class="btn btn-rosado">Más información</a>
+                    <a href="/descripcion_servicios?id={{ serFav.id }}" class="btn iniciarA">Más información</a>
                 </div>
             </div>
         </div>
