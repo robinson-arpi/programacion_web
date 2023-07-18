@@ -13,9 +13,10 @@ from ..models.entities.Categoria import Categoria
 from ..models.entities.Correo import Correo
 from ..models.entities.Comentarios import Comentario
 from ..models.entities.Cronograma import Cronograma
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, url_for, flash, jsonify, get_flashed_messages
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from validate_email_address import validate_email
 from .routes_servicios import servicios_blueprint
 from .routes_historial import historial_blueprint
 from .routes_agendar import agendar_blueprint
@@ -115,6 +116,23 @@ def agregar_usuario():
     else:
         return render_template('auth/registro.html', usuario = current_user)
 
+
+@app.route('/verificar_correo', methods=['GET'])
+def verificar_correo():
+    correo = request.args.get('correo')
+    
+    # Realizar verificación del correo utilizando la biblioteca flask-mail
+    validacion_correo = validate_email(correo, verify=True)
+    
+    if validacion_correo:
+        # Realiza la verificación en la base de datos
+        existe_correo = Usuario.query.filter_by(email=correo).first() is not None
+    else:
+        existe_correo = False
+    
+    # Retorna la respuesta en formato JSON
+    return jsonify({'existe': existe_correo})
+
 @app.route('/actualizar_usuario/<int:id>', methods=['PUT', 'GET'])
 def actualizar_usuario(id):
     print("viene post")
@@ -130,14 +148,13 @@ def actualizar_usuario(id):
         usuario.fecha_nacimiento = datetime.strptime(request.form['fecha'],"%Y-%m-%d").date()
         db.session.add(usuario)
         db.session.commit()
-        flash('Usuario actualizado')
+        flash('Usuario actualizado', 'success')
 
         credenciales_usuario = [request.form['email'], request.form['password1']]
         usuario_logueado = ModeloUsuario.login(credenciales_usuario)
         login_user(usuario_logueado, remember=False)
     else:
-        print("como verga no va a ser metodo put")
-        flash('Usuario no actualizado')
+        flash('Usuario no actualizado','error')
     return redirect(url_for('perfil'))
 
 @app.route('/perfil')

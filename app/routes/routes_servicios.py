@@ -121,10 +121,15 @@ def stringAleatorio():
 @servicios_blueprint.route('/eliminar_servicio', methods=['POST'])
 @login_required
 def eliminar_servicio():
-    servicio_id = request.form.get('servicio_id')
-    eliminado = ModeloServicio.eliminar_servicio(current_user.id, servicio_id)
-    if eliminado:
-        flash("Servicio eliminado exitosamente.")
-    else:
-        flash("Error al eliminar el favorito.")
-    return redirect(url_for('perfil'))
+    try:
+        servicio_id = request.form.get('servicio_id')
+        eliminado = ModeloServicio.eliminar_servicio(current_user.id, servicio_id)
+        if eliminado:
+            flash('Servicio eliminado exitosamente', 'success')
+        else:
+            flash('El servicio no ha sido eliminado', 'error')
+        return redirect(url_for('perfil'))
+    except:
+        # Si hubo un error al agregar el servicio
+        flash('El servicio esta vinculado a agendamientos', 'error')
+        return redirect(url_for('perfil'))

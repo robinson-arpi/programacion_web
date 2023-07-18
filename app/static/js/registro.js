@@ -112,9 +112,28 @@ function validarCorreo() {
   } else if (!regexCorreo.test(correo)) {
     correoError.textContent = 'Ingrese un correo válido';
     formValid = false;
-  } else {
-    correoError.textContent = '';
-    formValid = true;
+  } else{
+    // Realizar petición AJAX para verificar si el correo ya existe
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/verificar_correo?correo=' + correo);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+          if (response.existe) {
+            correoError.textContent = 'El correo ya está registrado';
+            formValid = false;
+          } else {
+            correoError.textContent = '';
+            formValid = true;
+          }
+        } else {
+          correoError.textContent = 'Error en la verificación del correo';
+          formValid = false;
+        }
+      }
+    };
+  xhr.send();
   }
 }
 
