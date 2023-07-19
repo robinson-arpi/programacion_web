@@ -18,7 +18,6 @@ from flask_oauthlib.client import OAuth
 import os
 from google_auth_oauthlib.flow import Flow
 from google.oauth2.credentials import Credentials
-import googleapiclient.discovery
 
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
