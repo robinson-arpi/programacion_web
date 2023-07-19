@@ -38,6 +38,19 @@ def buscar_servicios():
     # Renderizar el template con los resultados de la búsqueda
     return render_template('services/servicios.html', servicios=servicios, usuario = current_user, busqueda = termino_busqueda)
 
+@servicios_blueprint.route('/servicios/busqueda_categoria', methods=['GET'])
+def buscar_servicios_categoria():
+    # Obtener el término de búsqueda ingresado por el usuario
+    termino_busqueda = request.args.get('busqueda_categoria', '')
+    try:
+        # Realizar la búsqueda en la base de datos y obtener los servicios correspondientes
+        servicios_cat =  Servicio.query.filter(Servicio.categoria.ilike(f'%{termino_busqueda}%')).all()
+    except:
+        print("aaaaah")
+
+    # Renderizar el template con los resultados de la búsqueda
+    return render_template('services/servicios.html', servicios=servicios_cat, usuario = current_user, busqueda = termino_busqueda)
+
 
 @servicios_blueprint.route('/agregar_servicio', methods=['POST', 'GET'])
 def agregar_servicio():

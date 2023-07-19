@@ -44,11 +44,20 @@ class ModeloServicio():
             return servicios
         except Exception as ex:
             raise Exception(ex)
+        
+    @classmethod
+    def buscar_servicios_por_categoria(cls, categoria):
+        try:
+            # Realizar la consulta a la base de datos para buscar servicios por categoría
+            servicios = Servicio.query.filter_by(categoria=categoria).all()
+
+            return servicios
+        except Exception as ex:
+            raise Exception(ex)    
 
     @classmethod
     def eliminar_servicio(cls, user_id, serv_id):
         try:
-
             servicio = Servicio.query.filter_by(usuario_id = user_id, id = serv_id).first()
             if servicio:
                 db.session.delete(servicio)

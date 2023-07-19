@@ -31,7 +31,7 @@ $('.modificar-btn').click(function() {
             $('#modalEditar').modal('hide');
           },
           error: function(error) {
-            // Manejar el error
+            $('#modalEditar').modal('hide');
           }
         });
       });

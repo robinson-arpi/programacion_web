@@ -13,7 +13,13 @@ from ..models.entities.Categoria import Categoria
 from ..models.entities.Correo import Correo
 from ..models.entities.Comentarios import Comentario
 from ..models.entities.Cronograma import Cronograma
-from flask import render_template, request, redirect, url_for, flash, jsonify, get_flashed_messages
+from flask import render_template, request, redirect, url_for, flash, jsonify, get_flashed_messages, session
+from flask_oauthlib.client import OAuth
+import os
+from google_auth_oauthlib.flow import Flow
+from google.oauth2.credentials import Credentials
+import googleapiclient.discovery
+
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 from validate_email_address import validate_email
@@ -44,6 +50,75 @@ app.register_blueprint(terminos_blueprint)
 @login_manager_app.user_loader
 def load_user(id):
     return Usuario.query.get(int(id))
+
+# __________GOOGLE____________
+oauth = OAuth(app)
+
+google = oauth.remote_app(
+    'google',
+    consumer_key='589751040247-lb089r9mctdbr9ucft2171qr9dg59snn.apps.googleusercontent.com',
+    consumer_secret='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',
+    request_token_params={
+        'scope': 'email'  # Solicita el alcance para acceder al correo electrónico del usuario
+    },
+    base_url='https://www.googleapis.com/oauth2/v1/',
+    request_token_url=None,
+    access_token_method='POST',
+    access_token_url='https://accounts.google.com/o/oauth2/token',
+    authorize_url='https://accounts.google.com/o/oauth2/auth',
+)
+
+# Manejo de logueo con Google
+@app.route('/login_google')
+def login_google():
+    return google.authorize(callback=url_for('authorized_google', _external=True))
+
+# Ruta de autorización para el inicio de sesión con Google
+@app.route('/authorized_google')
+def authorized_google():
+    response = google.authorized_response()
+
+    if response is None or response.get('access_token') is None:
+        return 'Error al autorizar'
+
+    session['google_token'] = (response['access_token'], '')
+    user_info = google.get('userinfo')
+
+    email = user_info.data['email']
+    nickname = email.split('@')[0]
+
+    # El resto del código para el registro e inicio de sesión con Google sigue igual
+    password = 'default'
+    nombre = 'default'
+    apellido = 'default'
+    fecha_nacimiento = datetime.now().strftime("%Y-%m-%d")
+
+    # Supongamos que aquí tienes una función para verificar si el correo electrónico ya está registrado en tu base de datos
+    usuario_existente = ModeloUsuario.get_by_email(email)
+
+    if usuario_existente:
+        usuario_logueado = ModeloUsuario.login_google(email)
+        # Si usuario existe
+        if usuario_logueado != None:
+            # pass = 1 entonces tiene credenciales correctas 
+            if usuario_logueado.password:
+                login_user(usuario_logueado)
+                return redirect(url_for('home'))
+        return redirect(url_for('login'))
+    else:
+        # Si el usuario no existe, lo agregamos a la base de datos
+        usuario = Usuario(0, email, password, nombre, apellido, nickname, fecha_nacimiento)
+        db.session.add(usuario)
+        db.session.commit()
+
+        # Autenticar al usuario recién registrado
+        usuario_logueado = ModeloUsuario.login([email, password])
+        login_user(usuario_logueado, remember=False)
+        return redirect(url_for('perfil'))
+
+@google.tokengetter
+def get_google_oauth_token():
+    return session.get('google_token')
 
 # Incio de app para amndar a login
 @app.route('/')

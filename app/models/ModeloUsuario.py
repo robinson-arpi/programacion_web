@@ -21,6 +21,26 @@ class ModeloUsuario():
 
         except Exception as ex:
             raise Exception(ex)
+    
+    @classmethod
+    def login_google(self, correo):
+        try:
+            # Verifica si entro un correo
+            u = Usuario.query.filter_by(email = correo).first()
+            # if "@" in entrada_usuario:
+            #     u = Usuario.query.filter_by(email = entrada_usuario).first()
+            # else:
+            #     u = Usuario.query.filter_by(username = entrada_usuario).first()
+            
+            # Verifica existencia de usuario
+            if u == None:
+                return None
+            else:
+                return Usuario(u.id, u.email, True, u.nombre, u.apellido, u.username, u.fecha_nacimiento)
+
+        except Exception as ex:
+            raise Exception(ex)
+
 
     @classmethod
     def get_by_id(self, u):
